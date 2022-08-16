@@ -1,0 +1,50 @@
+.leftnav {
+    flex: 1;
+    height: 100vh;
+    /* position: sticky; */
+    /* top: 50px; */
+    border-right: 2.4px solid rgb(240, 240, 240);
+}
+
+.leftnavWrapper {
+    padding: 8px;
+    color: #444;
+}
+
+.leftnavMenu {
+    margin-bottom: 2rem;
+}
+
+.leftnavTitle {
+    font-size: 1.1rem;
+    /* color: #555; */
+    text-align: center;
+}
+
+.leftnavList {
+    font-size: 1rem;
+    color: #777;
+    font-weight: bold;
+    list-style: none;
+    padding: 2px;
+}
+
+.leftnavListItem {
+    padding: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.leftnavListItem.active,
+.leftnavListItem:hover {
+    background-color: cornsilk;
+}
+
+.leftnavListItem img {
+    width: 1rem;
+    height: 1rem;
+    /* object-fit: contain; */
+    margin-right: 0.7rem;
+}

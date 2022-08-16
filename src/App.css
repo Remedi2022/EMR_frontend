@@ -1,4 +1,15 @@
-.App {
+.container {
+  display: flex;
+}
+
+.others {
+  flex: 4;
+}
+
+
+/* 원래 있던 것 */
+
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +46,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
