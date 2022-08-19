@@ -6,7 +6,7 @@ function Content() {
     return (
         <div className="content">
             <div className="homeMenu">
-            <div className="homeMenuItem">
+                <div className="homeMenuItem">
                     <span className="homeMenuItemTitle">원무</span>
                     <span className="homeMenuItemDetail">신환 등록 / 접수 / 수납이 필요하신가요?</span>
                     {/* <div className="buttonWrapper"> */}
@@ -17,7 +17,7 @@ function Content() {
                     <span className="homeMenuItemTitle">진료</span>
                     <span className="homeMenuItemDetail">진료 관련 업무를 보시나요?</span>
                     {/* <div className="buttonWrapper"> */}
-                        <button>접수 바로가기</button>
+                        <button>진료 바로가기</button>
                     {/* </div> */}
                 </div>
             </div>

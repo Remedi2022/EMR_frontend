@@ -6,19 +6,39 @@
     align-items: stretch; */
 }
 
+.topBarContainer {
+    flex: 12;
+}
+
 .content {
-    flex: 10;
-    background-color: rgb(214, 222, 234);
+    flex: 8;
+    background-color: #d6dcea;
     /* position: relative; */
     display: flex;
     justify-content: center;
     align-items: center;
+    height: calc(100vh - 44px);
+    position: sticky;
+    top: 50px;
 }
 
 .homeMenu {
     /* position: absolute; */
     /* top: 300px; */
+    width: 720px;
     display: flex;
+    flex-wrap: wrap;
+}
+
+#long {
+    background-color: #fff;
+    width: 720px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 25px;
+    border-radius: 25px;
+    align-items: flex-start;
+    margin: 10px;
 }
 
 .homeMenuItem {
@@ -55,6 +75,11 @@
     background-color: rgb(231, 231, 231);
     font-weight: bold;
 }
+
+.patientlistContainer {
+    display: flex;
+}
+
 
 /* .others {
     flex: 10;

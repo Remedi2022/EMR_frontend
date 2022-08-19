@@ -3,22 +3,24 @@
     height: 100vh;
     /* position: sticky; */
     /* top: 50px; */
-    border-right: 2.4px solid rgb(240, 240, 240);
+    border-right: 2.4px solid #f0f0f0;
+    /* position: relative; */
 }
 
 .leftnavWrapper {
     padding: 8px;
-    color: #444;
+    /* color: #444; */
 }
 
-.leftnavMenu {
-    margin-bottom: 2rem;
-}
+/* .leftnavMenu {
+    margin-bottom: 10px;
+} */
 
 .leftnavTitle {
     font-size: 1.1rem;
     /* color: #555; */
     text-align: center;
+    margin-top: 4px;
 }
 
 .leftnavList {
@@ -30,6 +32,7 @@
 }
 
 .leftnavListItem {
+    font-size: 0.9rem;
     padding: 8px;
     cursor: pointer;
     display: flex;
@@ -39,7 +42,7 @@
 
 .leftnavListItem.active,
 .leftnavListItem:hover {
-    background-color: cornsilk;
+    background-color: rgb(231, 231, 231);
 }
 
 .leftnavListItem img {
@@ -47,4 +50,14 @@
     height: 1rem;
     /* object-fit: contain; */
     margin-right: 0.7rem;
+}
+
+.toggleMenu {
+    font-size: 0.9rem;
+    position: absolute;
+    bottom: 30px;
+    margin-left: 8px;
+    color: #777;
+    text-align: center;
+    cursor: pointer;
 }

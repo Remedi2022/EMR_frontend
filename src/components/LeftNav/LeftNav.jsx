@@ -6,7 +6,7 @@ export default function LeftNav() {
     <div className='leftnav'>
       <div className='leftnavWrapper'>
         <div className='leftnavMenu'>
-          <h3 className='leftnavTitle'> REMEDI </h3>
+          <h3 className='leftnavTitle'>REMEDI</h3>
           <ul className='leftnavList'>
             <li className='leftnavListItem'>
               <img className='homeIcon' src={ process.env.PUBLIC_URL + '/icons/home50_555.png' } />
@@ -22,11 +22,13 @@ export default function LeftNav() {
             </li>
           </ul>
         </div>
+        <span className='toggleMenu'>《 메뉴 접기</span>
       </div>
     </div>
   )
 }
 
+// 생활코딩
 // function leftNav(props){
 //     const lis = []
 //     //topics로 전달된 값 받아서 {lis}에 동적으로 태그를 만들어서 배열에 담아주기 map 대신 단순한 for문 사용해봄. 
