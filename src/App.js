@@ -4,11 +4,15 @@ import './App.css';
 // import Main from "./pages/Main"
 import Home from './pages/Home';
 import Administration from './pages/Administration'
-
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 function App() {
   return (
-    <Administration />
+    <Home />
+    // <Login />
+    // <Register />
+    // <Administration />
     
     // <div className='App'>
     //   <div className='container'>
