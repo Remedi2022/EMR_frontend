@@ -1,0 +1,151 @@
+.container {
+	display: flex;
+	/* display: inline-flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch; */
+}
+
+.topbarContainer {
+    flex: 12;
+}
+
+.patientlistContainer {
+    display: flex;
+}
+
+.content {
+    flex: 8; 
+    background-color: #d9e6d3;
+    /* position: relative; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 47px);
+    position: sticky;
+    top: 50px;
+}
+
+.title {
+    font-weight: bold;
+}
+
+.patientSummary {
+    position: absolute;
+    top: 0px;
+    width: 95%;
+    /* flex-basis: 1000px; */
+    /* flex-grow: 1; */
+    background-color: #fff;
+    height: 15px;
+    font-size: 0.8rem;
+    /* display: flex; */
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* visitHistory, paymentWrapper, MDList의 컨테이너 */
+.examinationContainer {
+    display: flex;
+    width: 100%;
+    /* height: calc(100vh - 90px); */
+    height: calc(100% - 44px);
+    position: sticky;
+    top: 100px;
+}
+
+.visitHistory {
+    flex: 7;
+    background-color: #fff;
+    font-size: 0.8rem;
+    /* display: flex; */
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 10px 0 10px 10px;
+    /* display: flex; */
+    /* align-items: center; */
+    justify-content: space-between;
+}
+
+.visitList {
+    padding-left: 0;
+    /* display: flex; */
+}
+
+.addChart {
+    border: 1px solid #779FFF;
+    border-radius: 10px;
+    width: 100%;
+    font-size: 0.9rem;
+    position: absolute;
+    bottom: 30px;
+    flex-grow: 1;
+    color: #777;
+    text-align: center;
+    cursor: pointer;
+}
+
+.examinationWrapper {
+    flex: 20;
+    background-color: #fff;
+    font-size: 0.8rem;
+    /* display: flex; */
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 10px;
+    /* align-items: center; */
+    justify-content: space-between;
+}
+
+.examinationContentWrapper {
+    font-size: 0.85rem;
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 1px solid #d9e6d3;
+    margin-top: 10px;
+}
+
+.itemAmount {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    margin: 10px;
+}
+
+.itemAmountDetail {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: gray;
+    margin: 15px 10px 15px 15px;
+}
+
+.addPayment {
+    font-size: 0.85rem;
+    margin: 10px;
+    color: #94AA95;
+}
+
+.divider {
+    border: 1px solid #d9e6d3;
+    /* background-color: #d6dcea; */
+}
+
+
+
+.MDList {
+    flex: 7;
+    background-color: #fff;
+    font-size: 0.8rem;
+    /* display: flex; */
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 10px 10px 10px 0;
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-between;
+}

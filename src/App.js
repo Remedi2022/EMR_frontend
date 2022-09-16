@@ -1,14 +1,14 @@
 // import logo from './logo.svg';
 import './App.css';
 // import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-// import Main from "./pages/Main"
-import Home from './pages/Home';
-import Administration from './pages/Administration'
+// import Home from './pages/Home';
+import Examination from './pages/Examination'
+// import Administration from './pages/Administration'
 
 
 function App() {
   return (
-    <Administration />
+    <Examination />
     
     // <div className='App'>
     //   <div className='container'>

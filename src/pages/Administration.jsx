@@ -8,6 +8,14 @@ function Content() {
     return (
         <div className="content">
             <div className="homeMenu">
+                <div class="Searchbar">
+                    <form className="Form" action="/" method="GET">
+                        <input className="Search-field" type="search" placeholder="이름 / 전화번호 / 생년월일(6자리) / 환자번호로 검색"/>
+                        <button className="Search-button" type="submit">
+                            <img className='SearchIcon' src={ process.env.PUBLIC_URL + '/icons/search50_999.png' } />
+                        </button>
+                    </form>
+                </div>
                 <div className="homeMenuItem" id="long">
                     <span className="homeMenuItemTitle">수납실</span>
                     <span className="homeMenuItemDetail">이메디 남 17개월 #VIP<br></br>(텍스트별 크기 조정하기)건강보험 일반진료 1진료실</span>
@@ -34,12 +42,12 @@ function Content() {
     )
 }
 
-export default function Home() {
+export default function Administration() {
     return (
-        <div className="Home">
+        <div className="Administration">
             <div className="container">
                 <LeftNav />
-                <div className='topBarContainer'>
+                <div className='topbarContainer'>
                     <TopBar />
                     <div className='patientlistContainer'>
                         <PatientList/>
