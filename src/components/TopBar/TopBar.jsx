@@ -8,7 +8,7 @@ export default function TopBar() {
                     <span className="title">원무</span>
                     <div class="searchbar">
                         <form className="form" action="/" method="GET">
-                            <input className="search-field" type="search" placeholder="검색"/>
+                            <input className="search-field" type="search" placeholder="환자 검색"/>
                             <button className="search-button" type="submit">
                                 <img className='searchIcon' src={ process.env.PUBLIC_URL + '/icons/search50_999.png' } />
                             </button>
