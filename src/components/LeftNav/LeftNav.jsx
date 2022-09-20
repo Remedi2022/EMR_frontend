@@ -15,7 +15,7 @@ export default function LeftNav() {
             </li>
             <li className='leftnavListItem'>
             <img className='homeIcon' src={ process.env.PUBLIC_URL + '/icons/administration50_555.png' } />
-            <Link to = "/Administration" className="gray">원무</Link>
+            <Link to = "/Administration">원무</Link>
             </li>
             <li className='leftnavListItem'>
             <img className='homeIcon' src={ process.env.PUBLIC_URL + '/icons/doctor50_555.png' } />

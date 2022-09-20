@@ -1,6 +1,5 @@
 // import logo from './logo.svg';
 import './App.css';
-// import { BrowserRouter as Router, Switch, Routes, Route } from "react-router-dom";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import Main from "./pages/Main"
 import Home from './pages/Home';
@@ -31,7 +30,6 @@ function App() {
     // <Login />
     // <Register />
     // <Administration />
-    
     
     // <div className='App'>
     //   <div className='container'>
