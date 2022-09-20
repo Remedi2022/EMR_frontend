@@ -7,7 +7,7 @@ export default function Login(){
         {/* <div className="loginContainer"> */}
             <div className="loginContenBox">
                 <div className="loginContent">
-                    <span className="remedi"> REMEDI </span>
+                    <span className="remedi"> REMEDi </span>
 
 
                     <div className="inputWrapper">

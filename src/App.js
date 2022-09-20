@@ -1,29 +1,35 @@
 // import logo from './logo.svg';
 import './App.css';
-// import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-<<<<<<< HEAD
-// import Home from './pages/Home';
-import Examination from './pages/Examination'
-// import Administration from './pages/Administration'
-
-
-function App() {
-  return (
-    <Examination />
-=======
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import Main from "./pages/Main"
 import Home from './pages/Home';
 import Administration from './pages/Administration'
 import Login from './pages/Login';
 import Register from './pages/Register';
 
+
 function App() {
   return (
-    <Home />
+
+
+    <div className='App'>
+    <BrowserRouter>
+      <Routes>
+      <Route path="/" element={<Home />}></Route>
+      <Route path="/administration/*" element={<Administration />}></Route>
+
+        {/* <Route path="/" component={ Home } />
+        <Route path="/administration" component={ Administration } />   */}
+      </Routes>
+      
+    </BrowserRouter>
+  </div>
+
+
+    // <Home />
     // <Login />
     // <Register />
     // <Administration />
->>>>>>> main
     
     // <div className='App'>
     //   <div className='container'>
@@ -37,6 +43,10 @@ function App() {
     //     <Route path="/"> <Main/> </Route>
     //   </Switch>
     // </Router>
+
+    
+
+
   )
 }
 

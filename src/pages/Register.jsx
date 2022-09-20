@@ -7,7 +7,7 @@ export default function Register(){
         {/* <div className="registerContainer"> */}
             <div className="registerContentBox">
                 <div className="registerContent">
-                    <span className="remedi"> REMEDI </span>
+                    <span className="remedi"> REMEDi </span>
 
                     <div className="inputWrapper">
                         <div className="inputBoxHospital">

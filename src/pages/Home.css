@@ -60,3 +60,17 @@
     flex: 10;
     background-color:rgb(214, 222, 234);
 } */
+
+.homeMenu a:link{
+    text-decoration:none;
+}
+
+.homeMenu a:visited{
+    text-decoration:none;
+    color:black;
+}
+
+.homeMenu a:hover{
+    text-decoration:none;
+    color:#779FFF;
+}

@@ -1,6 +1,7 @@
 // import React from "react"
 import './Home.css'
 import LeftNav from "../components/LeftNav/LeftNav"
+import { Link } from 'react-router-dom';
 
 function Content() {
     return (
@@ -10,7 +11,7 @@ function Content() {
                     <span className="homeMenuItemTitle">원무</span>
                     <span className="homeMenuItemDetail">신환 등록 / 접수 / 수납이 필요하신가요?</span>
                     {/* <div className="buttonWrapper"> */}
-                        <button>원무 바로가기</button>
+                        <button><Link to = "/Administration">원무 바로가기</Link></button>
                     {/* </div> */}
                 </div>
                 <div className="homeMenuItem">
