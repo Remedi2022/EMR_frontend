@@ -7,7 +7,7 @@ export default function LeftNav() {
     <div className='leftnav'>
       <div className='leftnavWrapper'>
         <div className='leftnavMenu'>
-          <h3 className='leftnavTitle'><Link to = "/">REMEDI</Link></h3>
+          <h3 className='leftnavTitle'><Link to = "/">REMEDi</Link></h3>
           <ul className='leftnavList'>
             <li className='leftnavListItem'>
               <img className='homeIcon' src={ process.env.PUBLIC_URL + '/icons/home50_555.png' } />
