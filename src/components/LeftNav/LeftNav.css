@@ -61,3 +61,32 @@
     text-align: center;
     cursor: pointer;
 }
+
+.leftnavTitle a:link{
+    text-decoration:none;
+}
+
+.leftnavTitle a:visited{
+    text-decoration:none;
+    color:black;
+}
+
+.leftnavTitle a:hover{
+    text-decoration:none;
+    color:#779FFF;
+}
+
+.leftnavList a:link{
+    text-decoration:none;
+}
+ 
+.leftnavList a:visited{
+    text-decoration:none;
+    color:#777;
+}
+
+.leftnavList a:hover {
+    text-decoration:none;
+    color:#779FFF;
+}
+
