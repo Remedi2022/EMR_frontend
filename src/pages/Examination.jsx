@@ -39,10 +39,24 @@ function Content() {
                     </div>
                     <div className="examinationContentWrapper">
                         <span className="title">진단 및 처방</span>
+                        <form className="form" action="/" method="GET">
+                            <input className="order-search-field" type="search" placeholder="오더 검색"/>
+                            <button className="search-button" type="submit">
+                                <img className='searchIcon' src={ process.env.PUBLIC_URL + '/icons/search50_999.png' } />
+                            </button>
+                        </form>
                         <hr className="divider"></hr>
-                        <li className='mdItem'>
-                            아토베리어 크림 MD
-                        </li>
+                        <div className="mdAmount">
+                            <li className='mdItem'>
+                                아토베리어 크림 MD
+                            </li>
+                            <div className="amounts">
+                                <span className="amount">1</span>
+                                <span className="amount">1</span>
+                                <span className="amount">1</span>
+                            </div>
+                        </div>
+                        
                         <li className='mdItem'>
                             아토베리어 로션 MD
                         </li>
@@ -52,6 +66,7 @@ function Content() {
 
                 <div className="MDList">
                     <span className="title">MD 리스트</span>
+                    <span className="mdlistToggle">▼ </span>
                     <ul className='visitList'>
                         <li className='mdlistItem'>
                             아토베리어 크림 MD
@@ -69,10 +84,6 @@ function Content() {
                              뮤테라실
                         </li>
                     </ul>
-
-                    {/* <div className="addMD">
-                        <span> MD 추가</span>
-                    </div> */}
                 </div>
             </div>
         </div>

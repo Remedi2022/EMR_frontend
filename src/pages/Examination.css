@@ -152,8 +152,15 @@
     
 }
 
+
+.mdlistToggle{
+    margin-left: 100px;
+    color:rgb(50, 50, 50);
+    cursor: pointer;
+}
+
 .mdlistItem{
-        padding: 3px;
+        padding: 5.5px;
         cursor: pointer;
         display: flex;
         align-items: center;
@@ -172,15 +179,37 @@
     border-radius: 10px;
 }
 
-.addMD {
-    display: flex;
-    align-items: center;
-    /* color: #9AACCF; */
-    font-size: 0.8rem;
-    font-weight: bold;
-    border: 1px solid gray;
+.order-search-field{
+    width: 100%;
+    height: 30px;
+    padding: 5px 55px 3px 2px;
+    border: none;
     border-radius: 10px;
-    margin: 60px;
-    padding: 4px 8px;
-    cursor: pointer;
+    outline-style: none;
+    background-color: white;
+    font-size: 0.9rem;
+}
+
+.shortDivider{
+    /* display: flex; */
+    /* flex-direction: row; */
+    border: 0.5px solid #d9e6d3;
+    width:90%;
+}
+
+.mdAmount{
+    display: flex;
+    /* flex-direction: row; */
+}
+.amount{
+    /* display: flex;
+    flex-direction: row; */
+    /* margin-left: 100px; */
+    padding-left: 20px;
+    /* text-decoration: underline; */
+}
+
+.amounts{
+    display: flex;
+    padding-right: -10px;
 }
