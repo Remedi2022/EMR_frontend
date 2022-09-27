@@ -52,9 +52,9 @@ function Content() {
     )
 }
 
-export default function Payment() {
+export default function Examination() {
     return (
-        <div className="Payment">
+        <div className="Examination">
             <div className="container">
                 <LeftNav />
                 <div className='topbarContainer'>
