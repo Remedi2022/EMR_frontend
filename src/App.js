@@ -1,29 +1,17 @@
 // import logo from './logo.svg';
 import './App.css';
 // import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-<<<<<<< HEAD
 // import Home from './pages/Home';
-import Examination from './pages/Examination'
+// import Examination from './pages/Examination'
+import Payment from './pages/Payment';
 // import Administration from './pages/Administration'
+// import Registration from './pages/Registration'
+// import Login from './pages/Login';
 
 
 function App() {
   return (
-    <Examination />
-=======
-// import Main from "./pages/Main"
-import Home from './pages/Home';
-import Administration from './pages/Administration'
-import Login from './pages/Login';
-import Register from './pages/Register';
-
-function App() {
-  return (
-    <Home />
-    // <Login />
-    // <Register />
-    // <Administration />
->>>>>>> main
+    <Payment />
     
     // <div className='App'>
     //   <div className='container'>
