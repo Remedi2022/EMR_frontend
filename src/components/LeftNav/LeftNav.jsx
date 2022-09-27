@@ -7,11 +7,11 @@ export default function LeftNav() {
     <div className='leftnav'>
       <div className='leftnavWrapper'>
         <div className='leftnavMenu'>
-          <h3 className='leftnavTitle'><Link to = "/">REMEDi</Link></h3>
+          <h3 className='leftnavTitle'>REMEDi</h3>
           <ul className='leftnavList'>
             <li className='leftnavListItem'>
               <img className='homeIcon' src={ process.env.PUBLIC_URL + '/icons/home50_555.png' } />
-              홈
+              <Link to = "/">홈</Link>
             </li>
             <li className='leftnavListItem'>
             <img className='homeIcon' src={ process.env.PUBLIC_URL + '/icons/administration50_555.png' } />
@@ -19,7 +19,7 @@ export default function LeftNav() {
             </li>
             <li className='leftnavListItem'>
             <img className='homeIcon' src={ process.env.PUBLIC_URL + '/icons/doctor50_555.png' } />
-              진료
+            <Link to = "/Examination">진료</Link>
             </li>
           </ul>
         </div>

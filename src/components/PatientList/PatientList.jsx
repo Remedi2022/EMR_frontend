@@ -6,7 +6,7 @@ export default function PatientList() {
             <div className='patientlistWrapper'>
                 <span id='listTitle'>환자 리스트</span>
                 <div className='patientlistMenu' id='waiting'>
-                    <span className='patientlistTitle'>🌝대기</span>
+                    <span className='patientlistTitle'>🌝 대기</span>
                     <ul className='patientlistList'>
                         <li className='patientlistItem'>
                             우성주
@@ -20,7 +20,7 @@ export default function PatientList() {
                     </ul>
                 </div>
                 <div className='patientlistMenu' id='reservation'>
-                    <span className='patientlistTitle'>🌚예약</span>
+                    <span className='patientlistTitle'>🌚 예약</span>
                     <ul className='patientlistList'>
                         <li className='patientlistItem'>
                             주성우

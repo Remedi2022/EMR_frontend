@@ -6,23 +6,29 @@ import Home from './pages/Home';
 import Administration from './pages/Administration'
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Payment from './pages/Examination';
+// import Payment from './pages/Payment';
 
 
 function App() {
   return (
 
-
+    
+  
+      
     <div className='App'>
     <BrowserRouter>
       <Routes>
       <Route path="/" element={<Home />}></Route>
       <Route path="/administration/*" element={<Administration />}></Route>
+      <Route path="/examination/*" element={<Payment />}></Route>
 
         {/* <Route path="/" component={ Home } />
         <Route path="/administration" component={ Administration } />   */}
       </Routes>
       
     </BrowserRouter>
+
   </div>
 
 

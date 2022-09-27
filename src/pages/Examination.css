@@ -145,7 +145,42 @@
     padding: 10px 20px;
     border-radius: 10px;
     margin: 10px 10px 10px 0;
-    display: flex;
+    /* display: flex; */
     /* align-items: center; */
     justify-content: space-between;
+
+    
+}
+
+.mdlistItem{
+        padding: 3px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        border-radius: 7px;
+}
+
+.mdlistItem.active,
+.mdlistItem:hover{
+    background-color: rgb(241, 241, 241);
+}
+
+.mdItem{
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.addMD {
+    display: flex;
+    align-items: center;
+    /* color: #9AACCF; */
+    font-size: 0.8rem;
+    font-weight: bold;
+    border: 1px solid gray;
+    border-radius: 10px;
+    margin: 60px;
+    padding: 4px 8px;
+    cursor: pointer;
 }

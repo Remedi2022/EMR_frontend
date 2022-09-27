@@ -8,7 +8,7 @@
 } 
 
 
-.loginContenBox{
+.loginContentBox{
     /* display: inline-block; */
     background-color:white;
     border-radius: 5%;
@@ -19,10 +19,11 @@
 }
 
 .loginContent{
-    padding-top: 90px;
+    padding: 90px 20px 50px 40px;
+    /* padding-top: 90px;
     padding-left: 40px;
     padding-right: 20px;
-    padding-bottom: 50px;
+    padding-bottom: 50px; */
 }
 
 
@@ -55,7 +56,7 @@
     padding: 0px;
     text-indent: 2em;
     font-size: 14px;
-    background-image: url('/Users/miiiniii/Desktop/GRADU/frontend/public/icons/userlogin.png');
+    background-image: url('/public/icons/userlogin.png');
     background-repeat: no-repeat;
     background-size: 17px;
     background-position: 5px;
@@ -72,7 +73,7 @@
     padding: 0px;
     text-indent: 2em;
     font-size: 14px;
-    background-image: url('/Users/miiiniii/Desktop/GRADU/frontend/public/icons/free-icon-lock-5525365.png');
+    background-image: url('/public/icons/free-icon-lock-5525365.png');
     background-repeat: no-repeat;
     background-size: 18px;
     background-position: 5px;

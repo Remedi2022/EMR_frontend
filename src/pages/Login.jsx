@@ -5,7 +5,7 @@ export default function Login(){
     return(
         <div className="loginHome">
         {/* <div className="loginContainer"> */}
-            <div className="loginContenBox">
+            <div className="loginContentBox">
                 <div className="loginContent">
                     <span className="remedi"> REMEDi </span>
 

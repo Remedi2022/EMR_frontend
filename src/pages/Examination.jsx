@@ -40,12 +40,39 @@ function Content() {
                     <div className="examinationContentWrapper">
                         <span className="title">진단 및 처방</span>
                         <hr className="divider"></hr>
+                        <li className='mdItem'>
+                            아토베리어 크림 MD
+                        </li>
+                        <li className='mdItem'>
+                            아토베리어 로션 MD
+                        </li>
                         
                     </div>
                 </div>
 
                 <div className="MDList">
                     <span className="title">MD 리스트</span>
+                    <ul className='visitList'>
+                        <li className='mdlistItem'>
+                            아토베리어 크림 MD
+                        </li>
+                        <li className='mdlistItem'>
+                            아토베리어 로션 MD
+                        </li>
+                        <li className='mdlistItem'>
+                             제로이드 인텐시브 크림 MD 80ml
+                        </li>
+                        <li className='mdlistItem'>
+                             에피세람
+                        </li>
+                        <li className='mdlistItem'>
+                             뮤테라실
+                        </li>
+                    </ul>
+
+                    {/* <div className="addMD">
+                        <span> MD 추가</span>
+                    </div> */}
                 </div>
             </div>
         </div>
