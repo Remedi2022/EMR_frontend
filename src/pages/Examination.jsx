@@ -57,9 +57,16 @@ function Content() {
                             </div>
                         </div>
                         
-                        <li className='mdItem'>
-                            아토베리어 로션 MD
-                        </li>
+                        <div className="mdAmount">
+                            <li className='mdItem'>
+                                아토베리어 로션 MD
+                            </li>
+                            <div className="amounts">
+                                <span className="amount">1</span>
+                                <span className="amount">1</span>
+                                <span className="amount">1</span>
+                            </div>
+                        </div>
                         
                     </div>
                 </div>
