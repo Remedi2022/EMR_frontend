@@ -9,18 +9,24 @@ export default function LeftNav() {
         <div className='leftnavMenu'>
           <h3 className='leftnavTitle'>REMEDi</h3>
           <ul className='leftnavList'>
+          <Link to = "/">
             <li className='leftnavListItem'>
               <img className='homeIcon' src={ process.env.PUBLIC_URL + '/icons/home50_555.png' } />
-              <Link to = "/">홈</Link>
-            </li>
+              홈
+              </li>
+            </Link>
+            <Link to = "/Administration">
+              <li className='leftnavListItem'>
+              <img className='homeIcon' src={ process.env.PUBLIC_URL + '/icons/administration50_555.png' } />
+              원무
+              </li>
+            </Link>
+            <Link to = "/Examination">
             <li className='leftnavListItem'>
-            <img className='homeIcon' src={ process.env.PUBLIC_URL + '/icons/administration50_555.png' } />
-            <Link to = "/Administration">원무</Link>
-            </li>
-            <li className='leftnavListItem'>
-            <img className='homeIcon' src={ process.env.PUBLIC_URL + '/icons/doctor50_555.png' } />
-            <Link to = "/Examination">진료</Link>
-            </li>
+              <img className='homeIcon' src={ process.env.PUBLIC_URL + '/icons/doctor50_555.png' } />
+              진료
+              </li>
+            </Link>
           </ul>
         </div>
         <span className='toggleMenu'>《 메뉴 접기</span>

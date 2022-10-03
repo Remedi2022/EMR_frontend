@@ -48,13 +48,26 @@
 }
 
 .homeMenuItem button {
-    align-self: flex-end;
+    /* align-self: flex-end; */
+    flex-direction: row;
     padding: 10px 20px;
     border-radius: 10px;
     border: none;
     background-color: rgb(231, 231, 231);
     font-weight: bold;
+    cursor: pointer;
 }
+
+.homeMenuButton{
+    align-self: flex-end;
+}
+
+/* .homeMenuItem button:active, */
+.homeMenuItem button:hover{ 
+    /*  // 버튼 색 바꾸는 것 background-color: ; */
+    color:#779FFF;
+}
+
 
 /* .others {
     flex: 10;

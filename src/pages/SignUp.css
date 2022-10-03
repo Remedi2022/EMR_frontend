@@ -1,4 +1,4 @@
-.registerHome{
+.signUpHome{
     width:100vw;
     height:100vh;
     background-color: #d6dcea;
@@ -7,14 +7,14 @@
     justify-content: center;    /*loginContentBox창을 가운데 정렬하기 위해 부모요소에 작성*/
 } 
 
-.registerContentBox{
+.signUpContentBox{
     background-color:white;
     border-radius: 5%;
     width: 390px;
     height: 550px;
 }
 
-.registerContent{
+.signUpContent{
     padding: 90px 20px 50px 40px;
 }
 
@@ -96,7 +96,7 @@
 }
 
 
-.buttonWrapperRegister{
+.buttonWrapperSignUp{
     padding-top: 45px;
 }
 

@@ -1,12 +1,12 @@
-import './Register.css';
+import './SignUp.css';
 
 
-export default function Register(){
+export default function SignUp(){
     return(
-        <div className="registerHome">
-        {/* <div className="registerContainer"> */}
-            <div className="registerContentBox">
-                <div className="registerContent">
+        <div className="signUpHome">
+        {/* <div className="signUpContainer"> */}
+            <div className="signUpContentBox">
+                <div className="signUpContent">
                     <span className="remedi"> REMEDi </span>
 
                     <div className="inputWrapper">
@@ -54,7 +54,7 @@ export default function Register(){
                         </div>
                     </div>  
 
-                    <div className="buttonWrapperRegister">
+                    <div className="buttonWrapperSignUp">
                         <button className="Button">회원가입</button>
                     </div>
                 
