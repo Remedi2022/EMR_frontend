@@ -11,7 +11,7 @@
     background-color:white;
     border-radius: 5%;
     width: 390px;
-    height: 550px;
+    height: 500px;
 }
 
 .signUpContent{
@@ -97,7 +97,7 @@
 
 
 .buttonWrapperSignUp{
-    padding-top: 45px;
+    padding-top: 48px;
 }
 
 .inputBoxHospital{

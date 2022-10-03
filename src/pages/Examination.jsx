@@ -75,7 +75,6 @@ function Content() {
                 </div>
 
                 <div className="MDList">
-                    
                     <span className="title">MD 리스트ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ ▼</span>
                     <form className="form" action="/" method="GET">
                         <input className="md-search-field" type="search" placeholder="오더세트 검색"/>
