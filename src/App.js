@@ -8,11 +8,11 @@ import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Examination from './pages/Examination';
 import Payment from './pages/Payment';
+import UseModal from './pages/UseModal'
 
 
 function App() {
   return (
-
     <div className='App'>
     <BrowserRouter>
       <Routes>
@@ -25,12 +25,11 @@ function App() {
       </Routes>   
     </BrowserRouter>
   </div>
+  
+  // <Examination />
 
+    ///////////////////////////////////////////////////////////////////
 
-    // <Home />
-    // <Login />
-    // <Administration />
-    
     // <div className='App'>
     //   <div className='container'>
     //     <Home />
@@ -43,10 +42,6 @@ function App() {
     //     <Route path="/"> <Main/> </Route>
     //   </Switch>
     // </Router>
-
-    
-
-
   )
 }
 
