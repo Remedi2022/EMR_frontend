@@ -1,28 +1,28 @@
 // import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-// import Main from "./pages/Main";
-// import Home from './pages/Home';
-// import Administration from './pages/Administration';
-// import Payment from './pages/Payment'
-// import Examination from './pages/Examination';
-// import Registration from './pages/Registration';
+// import Main from "./pages/Main"
+import Home from './pages/Home';
+import Administration from './pages/Administration'
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
+import Examination from './pages/Examination';
+import Payment from './pages/Payment';
 import UseModal from './pages/UseModal'
-// import Login from './pages/Login';
-// import Register from './pages/Register';
 
 
 function App() {
   return (
     <div className='App'>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<UseModal />}></Route>
-          {/* <Route path="/administration/*" element={<Administration />}></Route> */}
-      
-            {/* <Route path="/" component={ Home } />
-          <Route path="/administration" component={ Administration } />   */}
-      </Routes>
+    <BrowserRouter>
+      <Routes>
+
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/administration/*" element={<Administration />}></Route>
+        <Route path="/examination/*" element={<Examination />}></Route>
+        <Route path="/payment/*" element={<Payment />}></Route>
+        
+      </Routes>   
     </BrowserRouter>
   </div>
   

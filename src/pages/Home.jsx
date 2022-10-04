@@ -11,14 +11,22 @@ function Content() {
                     <span className="homeMenuItemTitle">원무</span>
                     <span className="homeMenuItemDetail">신환 등록 / 접수 / 수납이 필요하신가요?</span>
                     {/* <div className="buttonWrapper"> */}
-                        <button><Link to = "/Administration">원무 바로가기</Link></button>
+                    <div className="homeMenuButton">
+                        <Link to = "/Administration">
+                            <button>원무 바로가기</button>
+                        </Link>
+                    </div>
                     {/* </div> */}
                 </div>
                 <div className="homeMenuItem">
                     <span className="homeMenuItemTitle">진료</span>
                     <span className="homeMenuItemDetail">진료 관련 업무를 보시나요?</span>
                     {/* <div className="buttonWrapper"> */}
-                        <button>진료 바로가기</button>
+                    <div className="homeMenuButton">
+                        <Link to = "/Examination">
+                            <button>진료 바로가기</button>
+                        </Link>
+                    </div>
                     {/* </div> */}
                 </div>
             </div>
