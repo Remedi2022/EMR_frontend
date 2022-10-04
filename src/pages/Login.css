@@ -42,7 +42,16 @@
     padding-top: 9px;
     margin: 0px;
     padding-bottom: 9px;
+    position: relative;
     /* align-items: flex-start; */
+}
+
+
+.inputBoxID  img{
+    position: absolute;
+    display: flex;
+    width:5.5%;
+    height: 35%;
 }
 
 .inputBoxID input{
