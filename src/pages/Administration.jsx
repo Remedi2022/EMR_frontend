@@ -3,8 +3,13 @@ import LeftNav from "../components/LeftNav/LeftNav"
 import TopBar from "../components/TopBar/TopBar"
 import PatientList from "../components/PatientList/PatientList"
 import { Link } from 'react-router-dom';
+import UseModal from '../hooks/UseModal';
+
+
 
 function Content() {
+    const m = UseModal();
+
     return (
         <div className="content">
             <div className="homeMenu">
@@ -29,7 +34,8 @@ function Content() {
                     <span className="homeMenuItemTitle">신환 등록</span>
                     <span className="homeMenuItemDetail">신규환자를 등록하시겠습니까?</span>
                     <div className="homeMenuButton">
-                        <button>신환 등록하기</button>
+                        {/* <button>신환 등록하기</button> */}
+                        <UseModal></UseModal>
                     </div>
                 </div>
                 <div className="homeMenuItem">

@@ -20,7 +20,7 @@ export default function SignUp(){
                         <div className="inputBoxLicense">
                             <input id="licenseContent"
                                 type="text"
-                                name="llicenseContent"
+                                name="licenseContent"
                                 placeholder="면허 번호"
                             />
                         </div>

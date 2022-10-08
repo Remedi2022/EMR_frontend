@@ -1,4 +1,4 @@
-import './Examination.css'
+import './Chart.css'
 import LeftNav from "../components/LeftNav/LeftNav"
 import TopBar from "../components/TopBar/TopBar"
 import PatientList from "../components/PatientList/PatientList"
@@ -14,7 +14,7 @@ function Content() {
                 </div>
                 <span>체온 37&nbsp;&nbsp;체중 55&nbsp;&nbsp;신장 160&nbsp;&nbsp;혈압 129/87&nbsp;&nbsp;혈당 86</span>
             </div>
-            <div className="examinationContainer">
+            <div className="chartContainer">
                 <div className="visitHistory">
                     <span className="title">내원 이력</span>
                     <ul className='visitList'>
@@ -30,14 +30,14 @@ function Content() {
                     </span>
                 </div>
 
-                <div className="examinationWrapper">
+                <div className="chartWrapper">
                     <span className="title">🖊 2022-08-03&nbsp;</span>
                     <span>김의사</span>
-                    <div className="examinationContentWrapper">
+                    <div className="chartContentWrapper">
                         <span className="title">진료 기록</span>
                         <hr className="divider"></hr>
                     </div>
-                    <div className="examinationContentWrapper">
+                    <div className="chartContentWrapper">
                         <span className="title">진단 및 처방</span>
                         <form className="form" action="/" method="GET">
                             <input className="order-search-field" type="search" placeholder="오더 검색"/>
@@ -70,7 +70,6 @@ function Content() {
                                 <span className="amount">용법</span>
                             </div>
                         </div>
-                        
                     </div>
                 </div>
 
@@ -107,9 +106,9 @@ function Content() {
     )
 }
 
-export default function Examination() {
+export default function Chart() {
     return (
-        <div className="Examination">
+        <div className="Chart">
             <div className="container">
                 <LeftNav />
                 <div className='topbarContainer'>

@@ -1,7 +1,7 @@
 .signUpHome{
     width:100vw;
     height:100vh;
-    background-color: #d6dcea;
+    background-color: #d9e6d3;
     display: flex;
     align-items: center;
     justify-content: center;    /*loginContentBox창을 가운데 정렬하기 위해 부모요소에 작성*/
@@ -19,12 +19,12 @@
 }
 
 
-.inputBox{
-    padding-top: 9px;
-    margin: 0px;
-    padding-bottom: 1.5px;
+/* .inputBox{ */
+    /* padding-top: 9px; */
+    /* margin: 0px; */
+    /* padding-bottom: 1.5px; */
     /* align-items: flex-start; */
-}
+/* } */
 
 .inputBoxHospital input{
     border-style: solid;

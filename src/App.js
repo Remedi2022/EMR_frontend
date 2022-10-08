@@ -4,11 +4,12 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import Main from "./pages/Main"
 import Home from './pages/Home';
 import Administration from './pages/Administration'
-import Login from './pages/Login';
-import SignUp from './pages/SignUp';
-import Examination from './pages/Examination';
+// import Login from './pages/Login';
+// import SignUp from './pages/SignUp';
+import Chart from './pages/Chart';
 import Payment from './pages/Payment';
-import UseModal from './pages/UseModal'
+// import UseModal from './hooks/UseModal';
+// import UseModal from './pages/UseModal'
 
 
 function App() {
@@ -17,9 +18,9 @@ function App() {
     <BrowserRouter>
       <Routes>
 
-        <Route path="/" element={<Home />}></Route>
+        <Route path="/" element={<Home/>}></Route>
         <Route path="/administration/*" element={<Administration />}></Route>
-        <Route path="/examination/*" element={<Examination />}></Route>
+        <Route path="/chart/*" element={<Chart />}></Route>
         <Route path="/payment/*" element={<Payment />}></Route>
         
       </Routes>   

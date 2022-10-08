@@ -15,7 +15,7 @@ export default function Login(){
                                 name="idContent"
                                 placeholder="id"
                             />
-                            <img className='userLogin' src={ process.env.PUBLIC_URL + '/icons/userlogin.png' } />
+                            {/* <img className='userLogin' src={ process.env.PUBLIC_URL + '/icons/userlogin.png' } /> */}
                         </div>
                         <div className="inputBoxPW">
                             <input id="pwContent"

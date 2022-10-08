@@ -1,7 +1,7 @@
  .loginHome{
     width:100vw;
     height:100vh;
-    background-color: #d6dcea;
+    background-color: #d9e6d3;
     display: flex;
     align-items: center;
     justify-content: center;    /*loginContentBox창을 가운데 정렬하기 위해 부모요소에 작성*/
