@@ -23,7 +23,7 @@ function Content() {
                     <span className="homeMenuItemDetail">진료 관련 업무를 보시나요?</span>
                     {/* <div className="buttonWrapper"> */}
                     <div className="homeMenuButton">
-                        <Link to = "/Examination">
+                        <Link to = "/Chart">
                             <button>진료 바로가기</button>
                         </Link>
                     </div>

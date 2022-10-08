@@ -1,0 +1,81 @@
+.patientRegistration {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.inputWrapper {
+    /* display: flex;
+    flex-wrap: wrap; */
+    width: 300px;
+}
+
+.inputWrapper div {
+    margin-left: 5px;
+}
+
+.inputBoxName input{
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    /* width: 310px; */
+    height: 30px;
+    margin: 0px;
+    padding: 0px;
+    text-indent: 0.4rem;
+    /* font-size: 14px; */
+}
+    .inputBoxName input:focus {
+        /* border-style: bold; */
+        border-color: #bababa;
+        outline: none;  
+    }
+
+.inputBoxRRN input {
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    width: 100px;
+    height: 30px;
+    margin: 0px;
+    padding: 0px;
+    text-indent: 0.4rem;
+    /* font-size: 14px; */
+}
+    .inputBoxRRN input:focus {
+        border-color: #bababa;
+        outline: none;  
+    }
+
+.inputBoxContact input {
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    width: 60px;
+    height: 30px;
+    margin: 0px;
+    padding: 0px;
+    text-indent: 0.4rem;
+    /* font-size: 14px; */
+}
+    .inputBoxContact input:focus {
+        border-color: #bababa;
+        outline: none;  
+    }
+
+.inputBoxEmergencyContact input {
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    width: 60px;
+    height: 30px;
+    margin: 0px;
+    padding: 0px;
+    text-indent: 0.4rem;
+    /* font-size: 14px; */
+}
+    .inputBoxEmergencyContact input:focus {
+        border-color: #bababa;
+        outline: none;  
+    }
+
+
+.termsWrapper {
+    width: 300px;
+}

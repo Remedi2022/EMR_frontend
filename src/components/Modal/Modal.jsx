@@ -18,9 +18,16 @@ const Modal = (props) => {
                     </header>
                     <main>{props.children}</main>
                     <footer>
-                        <button className="close" onClick={close}>
+                        {/* <button className="close" onClick={close}>
                             close
-                        </button>
+                        </button> */}
+                        <div className="buttonWrapperRegister">
+                            <button className="Button" id="withdraw" onClick={close}>취소</button>
+                            <div>
+                                <button className="Button">완료</button>
+                                <button className="Button">접수</button>
+                            </div>
+                        </div>
                     </footer>
                 </section>
             ) : null}

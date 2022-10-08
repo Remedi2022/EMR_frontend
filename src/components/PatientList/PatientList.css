@@ -19,13 +19,26 @@
     padding: 3px 7px 7px 7px;
     border-radius: 8px;
 }
+    #waiting.patientlistMenu {
+        background-color: #e8cfda;
+    }
+    #reservation.patientlistMenu {
+        background-color: #efe3e8;
+    }
 
-#waiting.patientlistMenu {
-    background-color: #e8cfda;
+.patientlistListWrapper {
+        height: 100px;
+        /* min-height: 50px;
+        max-height: 100px; */
+        overflow: auto;
 }
+    #todayWrapper.patientlistListWrapper {
+        min-height: calc(100vh - 410px);
+        /* max-height: calc(100vh - 430px); */
+    }
 
-#reservation.patientlistMenu {
-    background-color: #f0e9ec;
+#today.patientlistMenu {
+    background-color: #eeeeee;
 }
 
 .patientlistTitle {
@@ -42,7 +55,12 @@
     background-color: white;
     border-radius: 8px;
     margin: 6px 0 0 0;
+    min-height: 86px;
+    /* max-height: fit-content; */
 }
+    #todaylistlist{
+        min-height: calc(100% - 14px);
+    }
 
 .patientlistItem {
     padding: 3px;

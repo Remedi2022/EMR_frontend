@@ -21,7 +21,7 @@ export default function LeftNav() {
               원무
               </li>
             </Link>
-            <Link to = "/Examination">
+            <Link to = "/Chart">
             <li className='leftnavListItem'>
               <img className='homeIcon' src={ process.env.PUBLIC_URL + '/icons/doctor50_555.png' } />
               진료
@@ -29,7 +29,7 @@ export default function LeftNav() {
             </Link>
           </ul>
         </div>
-        <span className='toggleMenu'>《 메뉴 접기</span>
+        {/* <span className='toggleMenu'>《 메뉴 접기</span> */}
       </div>
     </div>
   )

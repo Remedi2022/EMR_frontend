@@ -49,7 +49,7 @@
 }
 
 /* visitHistory, paymentWrapper, MDList의 컨테이너 */
-.examinationContainer {
+.chartContainer {
     display: flex;
     width: 100%;
     /* height: calc(100vh - 90px); */
@@ -93,7 +93,7 @@
 	/* right: 0%; */
 }
 
-.examinationWrapper {
+.chartWrapper {
     flex: 20;
     background-color: #fff;
     font-size: 0.8rem;
@@ -105,7 +105,7 @@
     justify-content: space-between;
 }
 
-.examinationContentWrapper {
+.chartContentWrapper {
     font-size: 0.85rem;
     padding: 10px 15px;
     border-radius: 10px;

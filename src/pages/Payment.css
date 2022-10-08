@@ -94,7 +94,7 @@
 .paymentContentWrapper {
     /* height: calc(100vh - 190px); */
     height: 95%; /**paymentWrapper 기준*/
-    overflow: scroll;
+    overflow-y: scroll;
     /* overflow: auto; */
 }
 
