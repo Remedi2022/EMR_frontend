@@ -80,6 +80,7 @@
 
 .leftnavList a:link{
     text-decoration:none;
+    color:#777;
 }
  
 .leftnavList a:visited{

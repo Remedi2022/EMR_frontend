@@ -20,7 +20,7 @@ function Content() {
                     <span className="homeMenuItemTitle">수납실</span>
                     <span className="homeMenuItemDetail">이메디 남 17개월 #VIP<br></br>(텍스트별 크기 조정하기)건강보험 일반진료 1진료실</span>
                     <div className="homeMenuButton">
-                        <Link to = "/Payment">
+                        <Link to = "/payment">
                             <button>수납 진행하기</button>
                         </Link>
                     </div>
