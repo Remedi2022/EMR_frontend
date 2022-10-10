@@ -3,8 +3,19 @@ import LeftNav from "../components/LeftNav/LeftNav"
 import TopBar from "../components/TopBar/TopBar"
 import PatientList from "../components/PatientList/PatientList"
 import { Link } from 'react-router-dom';
+import {useState} from 'react';
+import ModalBasic from './RecModal';
 
 function Content() {
+
+        const [modalOpen,setModalOpen]=useState(false);
+
+        const showModal=()=>{
+            setModalOpen(true);
+        };
+
+    
+
     return (
         <div className="content">
             <div className="homeMenu">
@@ -36,7 +47,8 @@ function Content() {
                     <span className="homeMenuItemTitle">접수 신청</span>
                     <span className="homeMenuItemDetail">우성주 여 23세 #단골 #실손보험</span>
                     <div className="homeMenuButton">
-                        <button>접수하기</button>
+                        <button onClick={showModal}>접수하기</button>
+                        {/* {modalOpen&& <ModalBasic setModalOpen={setModalOpen} />} */}
                     </div>
                 </div>
             </div>

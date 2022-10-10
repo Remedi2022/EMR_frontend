@@ -66,9 +66,10 @@
     padding: 10px 20px;
     border-radius: 10px;
     margin: 10px 0 10px 10px;
-    align-items: center;
-    justify-content: space-between;
+    /* align-items: bottom; */
+    /* justify-content: center; */
     position: relative;
+    overflow: auto;
 }
 
 .visitList {
@@ -80,7 +81,7 @@
 .addChart {
     border: 1px solid #779FFF;
     border-radius: 10px;
-    width: 90%;
+    width: 80%;
     font-size: 0.9rem;
     position: absolute;
     /* align-self: flex-end; */
@@ -91,6 +92,8 @@
     bottom: 5%;
     /* left: 0%; */
 	/* right: 0%; */
+    padding-left: inherit;
+    padding-right: inherit;
 }
 
 .examinationWrapper {
