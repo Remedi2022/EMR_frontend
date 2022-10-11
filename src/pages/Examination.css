@@ -30,11 +30,6 @@
     font-weight: bold;
 }
 
-.MDTitle{
-    display:flex;
-    justify-content: space-between;
-}
-
 .patientSummary {
     position: absolute;
     top: 0px;
@@ -49,80 +44,18 @@
     border-radius: 10px;
     margin: 10px;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
-/* visitHistory, paymentWrapper, MDList의 컨테이너 */
-.examinationContainer {
-    display: flex;
-    width: 100%;
-    /* height: calc(100vh - 90px); */
-    height: calc(100% - 44px);
-    position: sticky;
-    top: 100px;
-}
-
-.visitHistory {
-    flex: 7;
-    background-color: #fff;
-    font-size: 0.8rem;
-    /* display: flex; */
-    padding: 10px 20px;
-    border-radius: 10px;
-    margin: 10px 0 10px 10px;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-}
-
-.visitList {
-    padding-left: 0;    /*없어도 됨*/
-    /* display: flex; */
-}
-
-
-.addChart {
-    border: 1px solid #779FFF;
-    border-radius: 10px;
-    width: 90%;
-    font-size: 0.9rem;
-    position: absolute;
-    /* align-self: flex-end; */
-    flex-grow: 1;
-    color: #777;
-    text-align: center;
-    cursor: pointer;
-    bottom: 5%;
-    /* left: 0%; */
-	/* right: 0%; */
-}
-
-.examinationWrapper {
-    flex: 20;
-    background-color: #fff;
-    font-size: 0.8rem;
-    /* display: flex; */
-    padding: 10px 20px;
-    border-radius: 10px;
+/* SEARCH BAR */
+.Searchbar {
     margin: 10px;
-    /* align-items: center; */
-    justify-content: space-between;
+    width: 720px;
 }
-
-.examinationContentWrapper {
-    font-size: 0.85rem;
-    padding: 10px 15px;
-    border-radius: 10px;
-    border: 1px solid #d9e6d3;
-    margin-top: 10px;
-}
-
-.itemAmount {
+  
+.Form {
     display: flex;
-    justify-content: space-between;
-    font-size: 0.85rem;
-    margin: 10px;
+    flex-direction: row;
 }
 
 .itemAmountDetail {
@@ -147,115 +80,89 @@
 
 .order-search-field{
     width: 100%;
-    height: 30px;
-    padding: 5px 55px 3px 2px;
+    height: 50px;
+    padding: 5px 55px 5px 25px;
     border: none;
-    border-radius: 10px;
-    outline-style: none;
+    border-radius: 25px;
+    outline: none;
     background-color: white;
     font-size: 0.9rem;
 }
 
-.divider {
-    border: 1px solid #d9e6d3;
+::placeholder {
+    color: #999;
+    opacity: 1;
+    /* font-weight: bold; */
 }
 
-.MDPrescription{
-    display: flex;
-    align-items: center;    
-    justify-content: space-between;
-    margin-right: 5px;
-}
-
-.MDItem{
-    padding: 3px;
+.Search-button {
+    background: transparent;
+    border: none;
+    outline: none;
+    margin-left: -50px;
     display: flex;
     align-items: center;
-    border-radius: 10px;
+}
+  
+.Search-button img {
+    width: 1.5rem;
+    height: 1.5rem;
+    object-fit: cover;
 }
 
-.amountList{
-    display: flex;
-    padding-right: -10px;
-    align-items: center;
-    /* margin-left: 90px; */
-}
-
-.amount{
-    padding-left: 20px;
-}
-
-.MDList {
-    flex: 7;
+/* MENU */
+#long {
     background-color: #fff;
-    font-size: 0.8rem;
+    width: 720px;
+    height: 115px;
     display: flex;
+    flex-direction: column;
+    padding: 20px 25px;
+    border-radius: 25px;
+    align-items: flex-start;
+    margin: 10px;
+}
+
+#long span {
+    margin-bottom: 0px;
+}
+
+.homeMenuItem {
+    background-color: #fff;
+    width: 280px;
+    height: 163px;
+    /* flex: 1; */
+    /* flex-basis: auto; */
+    display: flex;
+    flex-direction: column;
+    padding: 20px 25px;
+    border-radius: 25px;
+    /* align-items: flex-start; */
+    margin: 10px;
+    /* flex-wrap: wrap; */
+    position: relative;
+}
+
+.homeMenuItemTitle {
+    font-size: 13px;
+    font-weight: bold;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+.homeMenuItem span{
+    /* margin-top: 15px; */
+    font-weight: bold;
+}
+
+.homeMenuItem button {
+    align-self: flex-end;
     padding: 10px 20px;
     border-radius: 10px;
-    margin: 10px 10px 10px 0;
-    /* justify-content: space-between; */
-    flex-direction: column;
-    cursor: pointer;
-}
-
-.md-search-field{
-    width: 100%;
-    height: 30px;
-    margin: 10px;
-    margin-left: 0px;
-    /* margin-bottom: 0px; */
-    padding: 5px 55px 3px 7px;
     border: none;
-    border-radius: 9px;
-    outline-style: none;
-    background-color: rgb(251, 251, 251);;
-    font-size: 0.85rem;
+    background-color: rgb(231, 231, 231);
+    font-weight: bold;
+    position: absolute;
+    bottom: 20px;
+    right: 25px;
 }
-
-.mdHistory{
-    flex: 7;
-    background-color: #fff;
-    font-size: 0.8rem;
-    /* display: flex; */
-    /* padding: 10px 20px; */
-    border-radius: 10px;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-}   
-
-.MDListToggle{
-    /* margin-left: 10px; */
-    color:rgb(50, 50, 50);
-    cursor: pointer;
-}
-
-.MDListWrapper{
-    display: flex;
-    position:absolute;
-}
-
-
-.MDListItem{
-        padding: 5.5px;
-        /* padding-left: 0px; */
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        border-radius: 7px;
-}
-
-.MDListItem.active,
-.MDListItem:hover{
-    background-color: rgb(241, 241, 241);
-}
-
-.shortDivider{
-    /* display: flex; */
-    /* flex-direction: row; */
-    border: 0.5px solid #d9e6d3;
-    width:90%;
-}
-
-
-

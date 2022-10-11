@@ -1,7 +1,7 @@
 .signUpHome{
     width:100vw;
     height:100vh;
-    background-color: #d6dcea;
+    background-color: #d9e6d3;
     display: flex;
     align-items: center;
     justify-content: center;    /*loginContentBox창을 가운데 정렬하기 위해 부모요소에 작성*/
@@ -18,13 +18,12 @@
     padding: 90px 20px 50px 40px;
 }
 
-
-.inputBox{
-    padding-top: 9px;
-    margin: 0px;
-    padding-bottom: 1.5px;
+/* .inputBox{ */
+    /* padding-top: 9px; */
+    /* margin: 0px; */
+    /* padding-bottom: 1.5px; */
     /* align-items: flex-start; */
-}
+/* } */
 
 .inputBoxHospital input{
     border-style: solid;
@@ -42,12 +41,11 @@
     background-size: 17px;
     background-position: 5px;
 }
-
-.inputBoxHospital input:focus {
-    /* border-style: bold; */
-    border-color:#BDBDBD;
-    outline: none;  
-}
+    .inputBoxHospital input:focus {
+        /* border-style: bold; */
+        border-color:#BDBDBD;
+        outline: none;  
+    }
 
 
 .inputBoxLicense input{
@@ -66,14 +64,13 @@
     background-size: 17px;
     background-position: 5px;
 }
+    .inputBoxLicense input:focus {
+        /* border-style: bold; */
+        border-color:#BDBDBD;
+        outline: none;  
+    }
 
-.inputBoxLicense input:focus {
-    /* border-style: bold; */
-    border-color:#BDBDBD;
-    outline: none;  
-}
-
-.inputBoxDoctor input{
+.inputBoxEmail input{
     border-style: solid;
     border-radius: 5px;
     border-color:  #e6e6e6;
@@ -84,16 +81,36 @@
     padding: 0px;
     text-indent: 2em;
     font-size: 14px;
-    background-image: url('/public/icons/stethoscope.png');
+    background-image: url('/public/icons/userlogin.png');
     background-repeat: no-repeat;
     background-size: 16px;
     background-position: 5px;
 }
+    .inputBoxEmail input:focus {
+        border-color:#BDBDBD;
+        outline: none;  
+    }
 
-.inputBoxDoctor input:focus {
-    border-color:#BDBDBD;
-    outline: none;  
+.inputBoxPassword input{
+    border-style: solid;
+    border-radius: 5px;
+    border-color:  #e6e6e6;
+    border-width: 1px;
+    width: 310px;
+    height:33px;
+    margin:0px;
+    padding: 0px;
+    text-indent: 2em;
+    font-size: 14px;
+    background-image: url('/public/icons/free-icon-lock-5525365.png');
+    background-repeat: no-repeat;
+    background-size: 16px;
+    background-position: 5px;
 }
+    .inputBoxPassword input:focus {
+        border-color:#BDBDBD;
+        outline: none;  
+    }
 
 
 .buttonWrapperSignUp{
@@ -110,7 +127,12 @@
     margin: 0px;
 }
 
-.inputBoxDoctor{
+.inputBoxEmail{
+    padding-top: 9px;
+    margin: 0px;
+}
+
+.inputBoxPassword{
     padding-top: 9px;
     margin: 0px;
 }

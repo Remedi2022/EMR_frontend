@@ -1,0 +1,98 @@
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+  .modal button {
+    outline: none;
+    cursor: pointer;
+    border: 0;
+  }
+  .modal > section {
+    width: 700px;
+    height: 540px;
+    /* max-width: 850px; */
+    margin: 0 auto;
+    border-radius: 10px;
+    background-color: #fff;
+    /* 팝업 열릴 때 효과 */
+    animation: modal-show 0.3s;
+    overflow: hidden;
+    font-size: 0.9rem;
+    position: relative;
+  }
+  .modal > section > header {
+    position: relative;
+    padding: 10px 30px 0 30px;
+    /* background-color: #f1f1f1; */
+    font-weight: bold;
+  }
+  .modal > section > header button {
+    position: absolute;
+    top: 0px;
+    right: 15px;
+    /* width: 30px; */
+    font-size: 1.3rem; /*21px*/
+    /* text-align: center; */
+    color: #999;
+    background-color: transparent;
+  }
+  .modal > section > main {
+    padding:30px;
+    /* border-top: 1px solid #dee2e6; */
+    /* border-bottom: 1px solid #dee2e6; */
+  }
+  .modal > section > footer {
+    padding: 0 30px 30px 30px;
+    /* text-align: right; */
+    position: absolute;
+    bottom: 0px;
+    width: 640px;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* .buttonWrapperRegister{
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+  } */
+  .modal > section > footer button {
+    padding: 8px 17px;
+    color: #fff;
+    background-color: #6c757d;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    margin: 0 5px;
+  }
+  
+  .modal.openModal {
+    display: flex;
+    align-items: center;
+    /* 팝업이 열릴 때 스르륵 열리는 효과 */
+    animation: modal-bg-show 0.3s;
+  }
+  @keyframes modal-show {
+    from {
+      opacity: 0;
+      margin-top: -50px;
+    }
+    to {
+      opacity: 1;
+      margin-top: 0;
+    }
+  }
+  @keyframes modal-bg-show {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }

@@ -49,7 +49,7 @@
 }
 
 /* visitHistory, paymentWrapper, MDList의 컨테이너 */
-.paymentContainer {
+.chartContainer {
     display: flex;
     width: 100%;
     /* height: calc(100vh - 90px); */
@@ -66,16 +66,34 @@
     padding: 10px 20px;
     border-radius: 10px;
     margin: 10px 0 10px 10px;
-    /* display: flex; */
-    /* align-items: center; */
+    align-items: center;
     justify-content: space-between;
+    position: relative;
 }
 
 .visitList {
-    padding-left: 0;
+    padding-left: 0;    /*없어도 됨*/
+    /* display: flex; */
 }
 
-.paymentWrapper {
+
+.addChart {
+    border: 1px solid #779FFF;
+    border-radius: 10px;
+    width: 90%;
+    font-size: 0.9rem;
+    position: absolute;
+    /* align-self: flex-end; */
+    flex-grow: 1;
+    color: #777;
+    text-align: center;
+    cursor: pointer;
+    bottom: 5%;
+    /* left: 0%; */
+	/* right: 0%; */
+}
+
+.chartWrapper {
     flex: 20;
     background-color: #fff;
     font-size: 0.8rem;
@@ -87,47 +105,9 @@
     justify-content: space-between;
 }
 
-.paymentDate {
-    margin-bottom: 10px;
-}
-
-.paymentContentWrapper {
-    /* height: calc(100vh - 190px); */
-    height: 95%; /**paymentWrapper 기준*/
-    overflow-y: scroll;
-    /* overflow: auto; */
-}
-
-.paymentContentItem {
+.chartContentWrapper {
     font-size: 0.85rem;
     padding: 10px 15px;
-    border-radius: 10px;
-    border: 1px solid #d9e6d3;
-    /* margin-top: 10px; */
-}
-#itemPay {
-    margin-bottom: 10px;
-}
-
-.toBeReceived {
-    /* font-size: 0.85rem; */
-    padding: 0px 15px 10px 15px;
-    border-radius: 10px;
-    border: 1px solid #d9e6d3;
-    margin-top: 10px;
-}
-
-.received {
-    /* font-size: 0.85rem;  */
-    padding: 0px 15px 10px 15px;
-    border-radius: 10px;
-    border: 1px solid #d9e6d3;
-    margin-top: 10px;
-}
-
-.remaining {
-    /* font-size: 0.85rem; */
-    padding: 0px 15px;
     border-radius: 10px;
     border: 1px solid #d9e6d3;
     margin-top: 10px;
@@ -138,10 +118,6 @@
     justify-content: space-between;
     font-size: 0.85rem;
     margin: 10px;
-}
-
-#patientTotalToggle {
-    cursor: pointer;
 }
 
 .itemAmountDetail {
@@ -158,31 +134,117 @@
     color: #94AA95;
 }
 
+.order-search-field{
+    width: 100%;
+    height: 30px;
+    padding: 5px 55px 3px 2px;
+    border: none;
+    border-radius: 10px;
+    outline-style: none;
+    background-color: white;
+    font-size: 0.9rem;
+}
+
 .divider {
     border: 1px solid #d9e6d3;
-    /* background-color: #d6dcea; */
 }
 
-.calcToggleContent {
-    /* font-size: 0.85rem; */
-    padding: 10px 15px;
-    background-color: rgba(200, 200, 200, 0.15);
-    margin-top: 10px;
+.MDPrescription{
+    display: flex;
+    align-items: center;    
+    justify-content: space-between;
+    margin-right: 5px;
 }
 
-/* .documentListWrapper {
-    height: 50px;
-} */
+.MDItem{
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.amountList{
+    display: flex;
+    padding-right: -10px;
+    align-items: center;
+    /* margin-left: 90px; */
+}
+
+.amount{
+    padding-left: 20px;
+}
 
 .MDList {
     flex: 7;
     background-color: #fff;
     font-size: 0.8rem;
-    /* display: flex; */
+    display: flex;
     padding: 10px 20px;
     border-radius: 10px;
     margin: 10px 10px 10px 0;
-    display: flex;
-    /* align-items: center; */
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    flex-direction: column;
+    cursor: pointer;
 }
+
+.md-search-field{
+    width: 100%;
+    height: 30px;
+    margin: 10px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+    padding: 5px 55px 3px 7px;
+    border: none;
+    border-radius: 9px;
+    outline-style: none;
+    background-color: rgb(251, 251, 251);;
+    font-size: 0.85rem;
+}
+
+.mdHistory{
+    flex: 7;
+    background-color: #fff;
+    font-size: 0.8rem;
+    /* display: flex; */
+    /* padding: 10px 20px; */
+    border-radius: 10px;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}   
+
+.MDListToggle{
+    /* margin-left: 10px; */
+    color:rgb(50, 50, 50);
+    cursor: pointer;
+}
+
+.MDListWrapper{
+    display: flex;
+    position:absolute;
+}
+
+
+.MDListItem{
+        padding: 5.5px;
+        /* padding-left: 0px; */
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        border-radius: 7px;
+}
+
+.MDListItem.active,
+.MDListItem:hover{
+    background-color: rgb(241, 241, 241);
+}
+
+.shortDivider{
+    /* display: flex; */
+    /* flex-direction: row; */
+    border: 0.5px solid #d9e6d3;
+    width:90%;
+}
+
+
+

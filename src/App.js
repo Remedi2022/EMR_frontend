@@ -4,16 +4,16 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import Main from "./pages/Main"
 import Home from './pages/Home';
 import Administration from './pages/Administration'
+import Examination from './pages/Examination'
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
-import Examination from './pages/Examination';
 import Payment from './pages/Payment';
 import Users from './pages/Users';
 import Reception from './pages/Reception';
+import Chart from './pages/Chart'
 
 function App() {
   return (
-
     <div className='App'>
     <BrowserRouter>
       <Routes>
@@ -24,16 +24,18 @@ function App() {
         <Route path="/examination/*" element={<Examination />}></Route>
         <Route path="/payment/*" element={<Payment />}></Route>
         <Route path="/reception/*" element={<Reception />}></Route>
+        <Route path="/chart/*" element={<Chart />}></Route>
+        <Route path="/login/*" element={<Login />}></Route>
+        <Route path="/signup/*" element={<SignUp />}></Route>
         
       </Routes>   
     </BrowserRouter>
   </div>
+  
+  // <Examination />
 
+    ///////////////////////////////////////////////////////////////////
 
-    // <Home />
-    // <Login />
-    // <Administration />
-    
     // <div className='App'>
     //   <div className='container'>
     //     <Home />
@@ -46,10 +48,6 @@ function App() {
     //     <Route path="/"> <Main/> </Route>
     //   </Switch>
     // </Router>
-
-    
-
-
   )
 }
 

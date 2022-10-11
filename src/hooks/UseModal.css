@@ -1,0 +1,130 @@
+.patientRegistration {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.inputWrapper {
+    /* display: flex;
+    flex-wrap: wrap; */
+    width: 300px;
+}
+
+.inputWrapper div {
+    margin-left: 5px;
+}
+
+.inputBoxName input{
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    /* width: 310px; */
+    height: 30px;
+    margin: 0px;
+    padding: 0px;
+    text-indent: 0.4rem;
+    /* font-size: 14px; */
+}
+    .inputBoxName input:focus {
+        /* border-style: bold; */
+        border-color: #bababa;
+        outline: none;  
+    }
+
+.inputBoxRRN input {
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    width: 100px;
+    height: 30px;
+    margin: 0px;
+    padding: 0px;
+    text-indent: 0.4rem;
+    /* font-size: 14px; */
+}
+    .inputBoxRRN input:focus {
+        border-color: #bababa;
+        outline: none;  
+    }
+
+.inputBoxContact input {
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    width: 60px;
+    height: 30px;
+    margin: 0px;
+    padding: 0px;
+    text-indent: 0.4rem;
+    /* font-size: 14px; */
+}
+    .inputBoxContact input:focus {
+        border-color: #bababa;
+        outline: none;  
+    }
+
+.inputBoxEmergencyContact input {
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    width: 60px;
+    height: 30px;
+    margin: 0px;
+    padding: 0px;
+    text-indent: 0.4rem;
+    /* font-size: 14px; */
+}
+    .inputBoxEmergencyContact input:focus {
+        border-color: #bababa;
+        outline: none;  
+    }
+
+    .inputBoxAddress {
+        /* display: flex;
+        flex-direction: column; */
+        position: relative;
+    }
+    /* .inputBoxAddress button { */
+        #postcodeButton {
+        border: 1px solid #e6e6e6;
+        border-radius: 25px;
+        width: 80px;
+        height: 30px;
+        margin: 0px;
+        padding: 0px;
+        font-weight: normal;
+        font-size: 0.8rem;
+        position: absolute;
+        top: 20px;
+        left: 0;
+    }
+    
+    .inputBoxAddress input{
+        border: 1px solid #e6e6e6;
+        border-radius: 10px;
+        width: 215px;
+        height: 30px;
+        margin: 0px;
+        padding: 0px;
+        text-indent: 0.4rem;
+    }
+    #addressContent {
+        position: absolute;
+        top: 55px;
+    }
+    #addressDetailContent {
+        position: absolute;
+        top: 90px;
+    }
+        .inputBoxAddress input:focus {
+            border-color: #bababa;
+            outline: none;  
+        }
+
+#postcodeWrapper {
+    position: absolute;
+    right: -17px;
+    top: 0px;
+    /* z-index: 99; */
+}
+
+
+.termsWrapper {
+    width: 300px;
+}

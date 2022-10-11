@@ -2,107 +2,46 @@ import './Examination.css'
 import LeftNav from "../components/LeftNav/LeftNav"
 import TopBar from "../components/TopBar/TopBar"
 import PatientList from "../components/PatientList/PatientList"
+import { Link } from 'react-router-dom';
+import UseModal from '../hooks/UseModal';
+
 
 
 function Content() {
     return (
         <div className="content">
-            <div className="patientSummary">
-                <div>
-                    <span style={{fontWeight:"bold"}}>김메디&nbsp;&nbsp;</span>
-                    <span>여, 25세</span>
-                </div>
-                <span>체온 37&nbsp;&nbsp;체중 55&nbsp;&nbsp;신장 160&nbsp;&nbsp;혈압 129/87&nbsp;&nbsp;혈당 86</span>
-            </div>
-            <div className="examinationContainer">
-                <div className="visitHistory">
-                    <span className="title">내원 이력</span>
-                    <ul className='visitList'>
-                        <li className='patientlistItem'>
-                            2022-06-19 김의사
-                        </li>
-                        <li className='patientlistItem'>
-                            2022-08-03 김의사
-                        </li>
-                    </ul>
-                    <span className="addChart">
-                        🖊 새 차트 생성
-                    </span>
-                </div>
-
-                <div className="examinationWrapper">
-                    <span className="title">🖊 2022-08-03&nbsp;</span>
-                    <span>김의사</span>
-                    <div className="examinationContentWrapper">
-                        <span className="title">진료 기록</span>
-                        <hr className="divider"></hr>
-                    </div>
-                    <div className="examinationContentWrapper">
-                        <span className="title">진단 및 처방</span>
-                        <form className="search-form" action="/" method="GET">
-                            <input className="order-search-field" type="search" placeholder="오더 검색"/>
-                            <button className="search-button" type="submit">
-                                <img className='searchIcon' src={ process.env.PUBLIC_URL + '/icons/search50_999.png' } />
-                            </button>
-                        </form>
-                        <hr className="divider"></hr>
-
-                        <div className="MDPrescription">
-                            <li className='MDItem'>
-                                아토베리어 크림 MD
-                            </li>
-                            <div className="amountList">
-                                <span className="amount">1</span>
-                                <span className="amount">1</span>
-                                <span className="amount">1</span>
-                                <span className="amount">용법</span>
-                            </div>
-                        </div>
-                        
-                        <div className="MDPrescription">
-                            <li className='MDItem'>
-                                아토베리어 로션 MD
-                            </li>
-                            <div className="amountList">
-                                <span className="amount">1</span>
-                                <span className="amount">1</span>
-                                <span className="amount">1</span>
-                                <span className="amount">용법</span>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-
-                <div className="MDList">
-                    <div className="MDTitle">
-                        <span className="title">MD 리스트</span>
-                        <span>▼</span>
-                    </div>
-                    <form className="form" action="/" method="GET">
-                        <input className="md-search-field" type="search" placeholder="오더세트 검색"/>
-                        <button className="search-button" type="submit">
-                            <img className='searchIcon' src={ process.env.PUBLIC_URL + '/icons/search50_999.png' } />
+            <div className="homeMenu">
+                <div class="Searchbar">
+                    <form className="Form" action="/" method="GET">
+                        <input className="Search-field" type="search" placeholder="이름 / 전화번호 / 생년월일(6자리) / 환자번호로 검색"/>
+                        <button className="Search-button" type="submit">
+                            <img className='SearchIcon' src={ process.env.PUBLIC_URL + '/icons/search50_999.png' } />
                         </button>
                     </form>
-                    <div className="mdHistory">
-                        <ul className='visitList'>
-                            <li className='MDListItem'>
-                                아토베리어 크림 MD
-                            </li>
-                            <li className='MDListItem'>
-                                아토베리어 로션 MD
-                            </li>
-                            <li className='MDListItem'>
-                                    제로이드 인텐시브 크림 MD 80ml
-                            </li>
-                            <li className='MDListItem'>
-                                    에피세람
-                            </li>
-                            <li className='MDListItem'>
-                                    뮤테라실
-                            </li>
-                        </ul>
+                </div>
+                <div className="homeMenuItem" id="long">
+                    <span className="homeMenuItemTitle">수납실</span>
+                    <span className="homeMenuItemDetail">김우주 여 31세 #VIP<br></br>(텍스트별 크기 조정하기)건강보험 일반진료 박원장</span>
+                    <div className="homeMenuButton">
+                        <Link to = "/Chart">
+                            <button>진료 진행하기</button>
+                        </Link>
+                    </div>
+                </div>
+                <div className="homeMenuItem">
+                    <span className="homeMenuItemTitle">신환 등록</span>
+                    <span>신규환자를 등록하시겠습니까?</span>
+                    <div className="homeMenuButton">
+                        {/* <button>신환 등록하기</button> */}
+                        <UseModal></UseModal>
+                    </div>
+                </div>
+                <div className="homeMenuItem">
+                    <span className="homeMenuItemTitle">MD 등록 관리</span>
+                    <span>MD 제품들을 라이브러리에</span>
+                    <span>미리 등록하고 관리할 수 있습니다.</span>
+                    <div className="homeMenuButton">
+                        <button>MD 관리하기</button>
                     </div>
                 </div>
             </div>
@@ -112,7 +51,7 @@ function Content() {
 
 export default function Examination() {
     return (
-        <div className="Examination">
+        <div className="examination">
             <div className="container">
                 <LeftNav />
                 <div className='topbarContainer'>
@@ -122,6 +61,7 @@ export default function Examination() {
                         <Content />
                     </div>
                 </div>
+                {/* <div className=""> page </div> */}
             </div>
         </div>
     )
