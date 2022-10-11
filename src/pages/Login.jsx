@@ -4,7 +4,6 @@ import './Login.css'
 export default function Login(){
     return(
         <div className="loginHome">
-        {/* <div className="loginContainer"> */}
             <div className="loginContentBox">
                 <div className="loginContent">
                     <span className="remedi"> REMEDi </span>
@@ -24,22 +23,18 @@ export default function Login(){
                             />
                         </div>
                     </div>  
-
                     <div className="option">
-                        <input type="checkbox" id="id"/><label htmlFor="id"></label>
+                        <input type="checkbox" id="id"/>
+                        <label htmlFor="id"></label>
                         <label htmlFor="id" className="saveID">ID 저장 </label>  
                         <label className="forgetPW"> 비밀번호를 잊으셨나요?</label>
                    </div>
-
                     <div className="buttonWrapper">
                         <button className="Button">로그인</button>
                         <button className="Button">회원가입</button>
                     </div>
-                
-
                 </div>
             </div>
-        {/* </div> */}
         </div>
     )
 }

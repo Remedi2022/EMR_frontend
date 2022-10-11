@@ -39,7 +39,7 @@ function Content() {
                     </div>
                     <div className="examinationContentWrapper">
                         <span className="title">진단 및 처방</span>
-                        <form className="form" action="/" method="GET">
+                        <form className="search-form" action="/" method="GET">
                             <input className="order-search-field" type="search" placeholder="오더 검색"/>
                             <button className="search-button" type="submit">
                                 <img className='searchIcon' src={ process.env.PUBLIC_URL + '/icons/search50_999.png' } />
@@ -75,7 +75,10 @@ function Content() {
                 </div>
 
                 <div className="MDList">
-                    <span className="title">MD 리스트ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ ▼</span>
+                    <div className="MDTitle">
+                        <span className="title">MD 리스트</span>
+                        <span>▼</span>
+                    </div>
                     <form className="form" action="/" method="GET">
                         <input className="md-search-field" type="search" placeholder="오더세트 검색"/>
                         <button className="search-button" type="submit">
