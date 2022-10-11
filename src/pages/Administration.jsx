@@ -8,6 +8,15 @@ import UseModal from '../hooks/UseModal';
 
 
 function Content() {
+
+        const [modalOpen,setModalOpen]=useState(false);
+
+        const showModal=()=>{
+            setModalOpen(true);
+        };
+
+    
+
     return (
         <div className="content">
             <div className="homeMenu">

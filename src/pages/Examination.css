@@ -44,7 +44,8 @@
     border-radius: 10px;
     margin: 10px;
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
 }
 
 /* SEARCH BAR */
@@ -52,10 +53,20 @@
     margin: 10px;
     width: 720px;
 }
-  
-.Form {
+
+.examinationContentWrapper {
+    font-size: 0.85rem;
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 1px solid #d9e6d3;
+    margin-top: 10px;
+}
+
+.itemAmount {
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    margin: 10px;
 }
 
 .itemAmountDetail {
@@ -70,12 +81,6 @@
     font-size: 0.85rem;
     margin: 10px;
     color: #94AA95;
-}
-
-.search-form {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: -5px;
 }
 
 .order-search-field{

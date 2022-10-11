@@ -78,8 +78,10 @@
 }
 */
 
+/* 첫 로딩시 파란색 글자 방지용으로 color 추가 */
 .leftnavList a:link{
     text-decoration:none;
+    color:#777;
 }
  
 .leftnavList a:visited{
