@@ -119,7 +119,6 @@
     padding-left: 6px;
     cursor: pointer;
     color:gray;
-    font-weight: bold;
 }
 
 
@@ -184,8 +183,7 @@ input[id="id"] {
     font-size: 11px;
     color: gray;
     font-weight: bold;
-    cursor: pointer;
-    
+    cursor: pointer; 
 }
 
 

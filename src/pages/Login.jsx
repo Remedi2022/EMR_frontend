@@ -26,7 +26,7 @@ export default function Login(){
                     <div className="option">
                         <input type="checkbox" id="id"/>
                         <label htmlFor="id"></label>
-                        <label htmlFor="id" className="saveID">ID 저장 </label>  
+                        <label htmlFor="id" className="saveID" style={{fontWeight:"bold"}}>ID 저장 </label>  
                         <label className="forgetPW"> 비밀번호를 잊으셨나요?</label>
                    </div>
                     <div className="buttonWrapper">

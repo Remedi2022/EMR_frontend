@@ -8,7 +8,8 @@ import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Examination from './pages/Examination';
 import Payment from './pages/Payment';
-
+import Users from './pages/Users';
+import Reception from './pages/Reception';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/administration/*" element={<Administration />}></Route>
         <Route path="/examination/*" element={<Examination />}></Route>
         <Route path="/payment/*" element={<Payment />}></Route>
+        <Route path="/reception/*" element={<Reception />}></Route>
         
       </Routes>   
     </BrowserRouter>
