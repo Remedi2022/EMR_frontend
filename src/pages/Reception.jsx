@@ -79,15 +79,15 @@ function Content(){
                         <div className="receptionInfoWrapper">
                             <div className="receptionInfoTitle">
                                 <span className="patientInfoTitle">방문목적*</span>
-                                <button>목록보이기</button>
+                                <button className="infoButton">목록보이기</button>
                             </div>
                             <div className="receptionInfoTitle">
                                 <span className="patientInfoTitle">세부목적</span>
-                                <button>목록보이기</button>
+                                <button className="infoButton">목록보이기</button>
                             </div>
                             <div className="receptionInfoTitle">
                                 <span className="patientInfoTitle">담당의 선택*</span>
-                                <button>목록보이기</button>
+                                <button className="infoButton">목록보이기</button>
                             </div>
                             <div className="receptionInfoTitle">
                                 <span className="patientInfoTitle">임신여부</span>
