@@ -15,6 +15,7 @@
   }
   .modal > section {
     width: 700px;
+    height: 540px;
     /* max-width: 850px; */
     margin: 0 auto;
     border-radius: 10px;
@@ -23,6 +24,7 @@
     animation: modal-show 0.3s;
     overflow: hidden;
     font-size: 0.9rem;
+    position: relative;
   }
   .modal > section > header {
     position: relative;
@@ -48,12 +50,19 @@
   .modal > section > footer {
     padding: 0 30px 30px 30px;
     /* text-align: right; */
-  }
-
-  .buttonWrapperRegister{
+    position: absolute;
+    bottom: 0px;
+    width: 640px;
+    height: 40px;
     display: flex;
     justify-content: space-between;
   }
+
+  /* .buttonWrapperRegister{
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+  } */
   .modal > section > footer button {
     padding: 8px 17px;
     color: #fff;
@@ -62,9 +71,7 @@
     font-size: 0.8rem;
     margin: 0 5px;
   }
-    .withdraw{
-      
-    }
+  
   .modal.openModal {
     display: flex;
     align-items: center;

@@ -21,13 +21,13 @@ const Modal = (props) => {
                         {/* <button className="close" onClick={close}>
                             close
                         </button> */}
-                        <div className="buttonWrapperRegister">
+                        {/* <div className="buttonWrapperRegister"> */}
                             <button className="Button" id="withdraw" onClick={close}>취소</button>
                             <div>
                                 <button className="Button">완료</button>
                                 <button className="Button">접수</button>
                             </div>
-                        </div>
+                        {/* </div> */}
                     </footer>
                 </section>
             ) : null}
