@@ -1,7 +1,7 @@
 .patientRegistration {
     display: flex;
     justify-content: space-between;
-
+    position: relative;
 }
 
 .inputWrapper {
@@ -74,6 +74,55 @@
         border-color: #bababa;
         outline: none;  
     }
+
+    .inputBoxAddress {
+        /* display: flex;
+        flex-direction: column; */
+        position: relative;
+    }
+    /* .inputBoxAddress button { */
+        #postcodeButton {
+        border: 1px solid #e6e6e6;
+        border-radius: 25px;
+        width: 80px;
+        height: 30px;
+        margin: 0px;
+        padding: 0px;
+        font-weight: normal;
+        font-size: 0.8rem;
+        position: absolute;
+        top: 20px;
+        left: 0;
+    }
+    
+    .inputBoxAddress input{
+        border: 1px solid #e6e6e6;
+        border-radius: 10px;
+        width: 215px;
+        height: 30px;
+        margin: 0px;
+        padding: 0px;
+        text-indent: 0.4rem;
+    }
+    #addressContent {
+        position: absolute;
+        top: 55px;
+    }
+    #addressDetailContent {
+        position: absolute;
+        top: 90px;
+    }
+        .inputBoxAddress input:focus {
+            border-color: #bababa;
+            outline: none;  
+        }
+
+#postcodeWrapper {
+    position: absolute;
+    right: -17px;
+    top: 0px;
+    /* z-index: 99; */
+}
 
 
 .termsWrapper {
