@@ -15,13 +15,13 @@ export default function LeftNav() {
               홈
               </li>
             </Link>
-            <Link to = "/Administration">
+            <Link to = "/administration">
               <li className='leftnavListItem'>
               <img className='homeIcon' src={ process.env.PUBLIC_URL + '/icons/administration50_555.png' } />
               원무
               </li>
             </Link>
-            <Link to = "/Examination">
+            <Link to = "/examination">
             <li className='leftnavListItem'>
               <img className='homeIcon' src={ process.env.PUBLIC_URL + '/icons/doctor50_555.png' } />
               진료
