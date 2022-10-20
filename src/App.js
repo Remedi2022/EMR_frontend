@@ -10,8 +10,9 @@ import Login from './pages/Login';
 import Payment from './pages/Payment';
 import Chart from './pages/Chart'
 import SignUp from './pages/SignUp';
-// import UseModal from './hooks/UseModal';
-// import UseModal from './pages/UseModal'
+import Users from './pages/Users';
+import Reception from './pages/Reception';
+
 
 
 function App() {
@@ -27,7 +28,9 @@ function App() {
         <Route path="/chart/*" element={<Chart />}></Route>
         <Route path="/login/*" element={<Login />}></Route>
         <Route path="/signup/*" element={<SignUp />}></Route>
-        
+        <Route path="/users/*" element={<Users />}></Route>
+        <Route path="/reception/*" element={<Reception />}></Route>
+
       </Routes>   
     </BrowserRouter>
   </div>

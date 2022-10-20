@@ -1,0 +1,177 @@
+.display{
+    display:flex;
+    background-color: #d9e6d3;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.receptionContainer {
+    display: flex;
+    width: 100%;
+    height: calc(100% - 50px);
+    position: sticky;
+    top: 25px;
+    /* padding-right: 20px; */
+}
+
+.receptionWrapper {
+    flex: 30;
+    background-color: #fff;
+    font-size: 0.8rem;
+    /* display: flex; */
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 10px;
+    /* align-items: center; */
+    justify-content: space-between;
+}
+
+.receptionContentWrapper {
+    font-size: 0.85rem;
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 1px solid #d9e6d3;
+    margin-top: 10px;
+    display:flex;
+    flex-direction: column;
+}
+
+.patientInfoTitle{
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    color:gray;
+    padding-bottom: 5px;
+}
+
+.qualificationDate{
+    padding-top: 10px;
+}
+
+.receptionInfoTitle{
+    /* padding-bottom: 15px; */
+    width:15%;
+}
+
+.receptionInfoWrapper{
+    display: flex;
+    flex-direction: row;
+    padding-top: 15px;
+    padding-left: 5px;
+}
+
+.receptionContent{
+    display:flex;
+    flex-direction: column;
+}
+
+.titleWrapper{
+    display:flex;
+    justify-content: space-between;
+}
+
+.patientName{
+    padding-right: 10px;
+}
+
+.receptionBtnWrapper{
+    display:flex;
+    justify-content: space-between;
+    padding-top: 30px;
+}
+
+.receptionBtn{
+background-color: white;
+    border-style: solid;
+    border-radius: 5px;
+    border-color:  #e6e6e6;
+    border-width: 1px;
+    width: 60px;
+    height: 30px;
+    /* margin:0px; */
+    margin-bottom: 9px;
+    /* padding-bottom: 0; */
+    text-indent: 1em;
+    font-size: 15px;
+    text-align: center;
+    font-size: 11px;
+    color: gray;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.receptionBtn:active {
+    background-color: #d9e6d3;
+    outline: none;
+    color:white;
+}
+
+.insuranceTitle{
+    display:flex;
+    justify-content: space-between;
+}
+
+.checkPregnant{
+    font-size: 10px;
+    vertical-align: top;
+    padding-left: 6px;
+    cursor: pointer;
+    color:gray;
+}
+
+.listButton{
+    width: 200px;
+    height: 30px;
+    text-align: center;
+}
+
+.pregnant{
+    vertical-align: top;
+    padding-left: 5px;
+}
+
+.claimButtonWrapper{
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+.claimButton{
+    background-color: white;
+    border-style: solid;
+    border-radius: 5px;
+    border-color:  #e6e6e6;
+    border-width: 1px;
+    width: 90px;
+    height:30px;
+    padding-bottom: 0;
+    font-size: 15px;
+    text-align: center;
+    font-size: 11px;
+    color: gray;
+    font-weight: bold;
+    cursor: pointer; 
+}
+
+.claimButton:active {
+    background-color: #4B99FF;
+    outline: none;
+    color:white;
+}
+.infoButton{
+    background-color: white;
+    border-style: solid;
+    border-radius: 5px;
+    border-color:  #e6e6e6;
+    border-width: 1px;
+    width: 120px;
+    height:30px;
+    padding-bottom: 0;
+    font-size: 15px;
+    text-align:left;
+    padding-left:8px;
+    font-size: 11px;
+    color: gray;
+    font-weight: bold;
+    cursor: pointer; 
+}
