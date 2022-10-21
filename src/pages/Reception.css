@@ -51,7 +51,7 @@
 
 .receptionInfoTitle{
     /* padding-bottom: 15px; */
-    width:15%;
+    width:20%;
 }
 
 .receptionInfoWrapper{
@@ -79,8 +79,7 @@
     display:flex;
     justify-content: space-between;
     padding-top: 18px;
-    align-items: center;
-    text-align: center;
+    /* text-align: center; */
 }
 
 .receptionBtn{
@@ -91,13 +90,9 @@
     border-width: 1px;
     width: 60px;
     height: 30px;
-    /* margin:0px; */
     margin-bottom: 9px;
-    /* padding-bottom: 0; */
-    text-indent: 1em;
     font-size: 15px;
-    /* text-align: center; */
-    padding-left: 0;
+    text-align: center;
     font-size: 11px;
     color: gray;
     font-weight: bold;

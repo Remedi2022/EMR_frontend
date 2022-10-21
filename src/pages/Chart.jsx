@@ -109,7 +109,10 @@ function Content() {
                 </div>
 
                 <div className="MDList">
-                    <span className="title">MD 리스트ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ ▼</span>
+                    <div className="MDTitle">
+                        <span className="title">MD 리스트</span>
+                        <span>▼</span>
+                    </div>
                     <form className="form" action="/" method="GET">
                         <input className="md-search-field" type="search" placeholder="오더세트 검색"/>
                         <button className="search-button" type="submit">

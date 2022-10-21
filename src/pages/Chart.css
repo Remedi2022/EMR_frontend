@@ -1,250 +1,253 @@
 .container {
-	display: flex;
-	/* display: inline-flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: stretch; */
-}
-
-.topbarContainer {
-    flex: 12;
-}
-
-.patientlistContainer {
     display: flex;
-}
-
-.content {
-    flex: 8; 
-    background-color: #d9e6d3;
-    /* position: relative; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: calc(100vh - 47px);
-    position: sticky;
-    top: 50px;
-}
-
-.title {
-    font-weight: bold;
-}
-
-.patientSummary {
-    position: absolute;
-    top: 0px;
-    width: 95%;
-    /* flex-basis: 1000px; */
-    /* flex-grow: 1; */
-    background-color: #fff;
-    height: 15px;
-    font-size: 0.8rem;
-    /* display: flex; */
-    padding: 10px 20px;
-    border-radius: 10px;
-    margin: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-/* visitHistory, paymentWrapper, MDList의 컨테이너 */
-.chartContainer {
-    display: flex;
-    width: 100%;
-    /* height: calc(100vh - 90px); */
-    height: calc(100% - 44px);
-    position: sticky;
-    top: 100px;
-}
-
-.visitHistory {
-    flex: 7;
-    background-color: #fff;
-    font-size: 0.8rem;
-    /* display: flex; */
-    padding: 10px 20px;
-    border-radius: 10px;
-    margin: 10px 0 10px 10px;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-}
-
-.visitList {
-    padding-left: 0;    /*없어도 됨*/
-    /* display: flex; */
-}
-
-
-.addChart {
-    border: 1px solid #779FFF;
-    border-radius: 10px;
-    width: 83%;
-    font-size: 0.9rem;
-    position: absolute;
-    /* align-self: flex-end; */
-    flex-grow: 1;
-    color: #777;
-    text-align: center;
-    cursor: pointer;
-    bottom: 5%;
-    /* left: 0%; */
-	/* right: 0%; */
-}
-
-.chartWrapper {
-    flex: 20;
-    background-color: #fff;
-    font-size: 0.8rem;
-    /* display: flex; */
-    padding: 10px 20px;
-    border-radius: 10px;
-    margin: 10px;
-    /* align-items: center; */
-    justify-content: space-between;
-}
-
-.chartContentWrapper {
-    font-size: 0.85rem;
-    padding: 10px 15px;
-    border-radius: 10px;
-    border: 1px solid #d9e6d3;
-    margin-top: 10px;
-}
-
-.itemAmount {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.85rem;
-    margin: 10px;
-}
-
-.itemAmountDetail {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.75rem;
-    color: gray;
-    margin: 15px 10px 15px 15px;
-}
-
-.addPayment {
-    font-size: 0.85rem;
-    margin: 10px;
-    color: #94AA95;
-}
-
-.order-search-field{
-    width: 100%;
-    height: 30px;
-    padding: 5px 55px 3px 2px;
-    border: none;
-    border-radius: 10px;
-    outline-style: none;
-    background-color: white;
-    font-size: 0.9rem;
-}
-
-.divider {
-    border: 1px solid #d9e6d3;
-}
-
-.MDPrescription{
-    display: flex;
-    align-items: center;    
-    justify-content: space-between;
-    margin-right: 5px;
-}
-
-.MDItem{
-    padding: 3px;
-    display: flex;
-    align-items: center;
-    border-radius: 10px;
-}
-
-.amountList{
-    display: flex;
-    padding-right: -10px;
-    align-items: center;
-    /* margin-left: 90px; */
-}
-
-.amount{
-    padding-left: 20px;
-}
-
-.MDList {
-    flex: 7;
-    background-color: #fff;
-    font-size: 0.8rem;
-    display: flex;
-    padding: 10px 20px;
-    border-radius: 10px;
-    margin: 10px 10px 10px 0;
-    /* justify-content: space-between; */
-    flex-direction: column;
-    cursor: pointer;
-}
-
-.md-search-field{
-    width: 100%;
-    height: 30px;
-    margin: 10px;
-    margin-left: 0px;
-    margin-bottom: 0px;
-    padding: 5px 55px 3px 7px;
-    border: none;
-    border-radius: 9px;
-    outline-style: none;
-    background-color: rgb(251, 251, 251);;
-    font-size: 0.85rem;
-}
-
-.mdHistory{
-    flex: 7;
-    background-color: #fff;
-    font-size: 0.8rem;
-    /* display: flex; */
-    /* padding: 10px 20px; */
-    border-radius: 10px;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-}   
-
-.MDListToggle{
-    /* margin-left: 10px; */
-    color:rgb(50, 50, 50);
-    cursor: pointer;
-}
-
-.MDListWrapper{
-    display: flex;
-    position:absolute;
-}
-
-
-.MDListItem{
-        padding: 5.5px;
-        /* padding-left: 0px; */
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        border-radius: 7px;
-}
-
-.MDListItem.active,
-.MDListItem:hover{
-    background-color: rgb(241, 241, 241);
-}
-
-.shortDivider{
-    /* display: flex; */
-    /* flex-direction: row; */
-    border: 0.5px solid #d9e6d3;
-    width:90%;
-}
-
-
-
+    /* display: inline-flex;
+     flex-direction: row;
+     justify-content: flex-start;
+     align-items: stretch; */
+ }
+ 
+ .topbarContainer {
+     flex: 12;
+ }
+ 
+ .patientlistContainer {
+     display: flex;
+ }
+ 
+ .content {
+     flex: 8; 
+     background-color: #d9e6d3;
+     /* position: relative; */
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: calc(100vh - 47px);
+     position: sticky;
+     top: 50px;
+ }
+ 
+ .title {
+     font-weight: bold;
+ }
+ 
+ .patientSummary {
+     position: absolute;
+     top: 0px;
+     width: 95%;
+     /* flex-basis: 1000px; */
+     /* flex-grow: 1; */
+     background-color: #fff;
+     height: 15px;
+     font-size: 0.8rem;
+     /* display: flex; */
+     padding: 10px 20px;
+     border-radius: 10px;
+     margin: 10px;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+ }
+ 
+ /* visitHistory, paymentWrapper, MDList의 컨테이너 */
+ .chartContainer {
+     display: flex;
+     width: 100%;
+     /* height: calc(100vh - 90px); */
+     height: calc(100% - 44px);
+     position: sticky;
+     top: 100px;
+ }
+ 
+ .visitHistory {
+     flex: 7;
+     background-color: #fff;
+     font-size: 0.8rem;
+     /* display: flex; */
+     padding: 10px 20px;
+     border-radius: 10px;
+     margin: 10px 0 10px 10px;
+     align-items: center;
+     justify-content: space-between;
+     position: relative;
+ }
+ 
+ .visitList {
+     padding-left: 0;    /*없어도 됨*/
+     /* display: flex; */
+ }
+ 
+ 
+ .addChart {
+     border: 1px solid #779FFF;
+     border-radius: 10px;
+     width: 83%;
+     font-size: 0.9rem;
+     position: absolute;
+     /* align-self: flex-end; */
+     flex-grow: 1;
+     color: #777;
+     text-align: center;
+     cursor: pointer;
+     bottom: 5%;
+     /* left: 0%; */
+    /* right: 0%; */
+ }
+ 
+ .chartWrapper {
+     flex: 20;
+     background-color: #fff;
+     font-size: 0.8rem;
+     /* display: flex; */
+     padding: 10px 20px;
+     border-radius: 10px;
+     margin: 10px;
+     /* align-items: center; */
+     justify-content: space-between;
+ }
+ 
+ .chartContentWrapper {
+     font-size: 0.85rem;
+     padding: 10px 15px;
+     border-radius: 10px;
+     border: 1px solid #d9e6d3;
+     margin-top: 10px;
+ }
+ 
+ .itemAmount {
+     display: flex;
+     justify-content: space-between;
+     font-size: 0.85rem;
+     margin: 10px;
+ }
+ 
+ .itemAmountDetail {
+     display: flex;
+     justify-content: space-between;
+     font-size: 0.75rem;
+     color: gray;
+     margin: 15px 10px 15px 15px;
+ }
+ 
+ .addPayment {
+     font-size: 0.85rem;
+     margin: 10px;
+     color: #94AA95;
+ }
+ 
+ .order-search-field{
+     width: 100%;
+     height: 30px;
+     padding: 5px 55px 3px 2px;
+     border: none;
+     border-radius: 10px;
+     outline-style: none;
+     background-color: white;
+     font-size: 0.9rem;
+ }
+ 
+ .divider {
+     border: 1px solid #d9e6d3;
+ }
+ 
+ .MDPrescription{
+     display: flex;
+     align-items: center;    
+     justify-content: space-between;
+     margin-right: 5px;
+ }
+ 
+ .MDItem{
+     padding: 3px;
+     display: flex;
+     align-items: center;
+     border-radius: 10px;
+ }
+ 
+ .amountList{
+     display: flex;
+     padding-right: -10px;
+     align-items: center;
+     /* margin-left: 90px; */
+ }
+ 
+ .amount{
+     padding-left: 20px;
+ }
+ 
+ .MDList {
+     flex: 7;
+     background-color: #fff;
+     font-size: 0.8rem;
+     display: flex;
+     padding: 10px 20px;
+     border-radius: 10px;
+     margin: 10px 10px 10px 0;
+     /* justify-content: space-between; */
+     flex-direction: column;
+     cursor: pointer;
+ }
+ 
+ .md-search-field{
+     width: 100%;
+     height: 30px;
+     margin: 10px;
+     margin-left: 0px;
+     margin-bottom: 0px;
+     padding: 5px 55px 3px 7px;
+     border: none;
+     border-radius: 9px;
+     outline-style: none;
+     background-color: rgb(251, 251, 251);;
+     font-size: 0.85rem;
+ }
+ 
+ .mdHistory{
+     flex: 7;
+     background-color: #fff;
+     font-size: 0.8rem;
+     /* display: flex; */
+     /* padding: 10px 20px; */
+     border-radius: 10px;
+     align-items: center;
+     justify-content: space-between;
+     position: relative;
+ }   
+ 
+ .MDListToggle{
+     /* margin-left: 10px; */
+     color:rgb(50, 50, 50);
+     cursor: pointer;
+ }
+ 
+ .MDListWrapper{
+     display: flex;
+     position:absolute;
+ }
+ 
+ 
+ .MDListItem{
+         padding: 5.5px;
+         /* padding-left: 0px; */
+         cursor: pointer;
+         display: flex;
+         align-items: center;
+         border-radius: 7px;
+ }
+ 
+ .MDListItem.active,
+ .MDListItem:hover{
+     background-color: rgb(241, 241, 241);
+ }
+ 
+ .shortDivider{
+     /* display: flex; */
+     /* flex-direction: row; */
+     border: 0.5px solid #d9e6d3;
+     width:90%;
+ }
+ 
+ .MDTitle{
+     display:flex;
+     justify-content: space-between;
+ }
+ 

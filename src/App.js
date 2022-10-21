@@ -10,9 +10,9 @@ import Login from './pages/Login';
 import Payment from './pages/Payment';
 import Chart from './pages/Chart'
 import SignUp from './pages/SignUp';
-import Users from './pages/Users';
+import Users from './_api/TestMD';
 import Reception from './pages/Reception';
-
+import MD from './_api/Users'
 
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
     <BrowserRouter>
       <Routes>
 
-        <Route path="/" element={<Home/>}></Route>
+        <Route path="/" element={<MD/>}></Route>
         <Route path="/administration/*" element={<Administration />}></Route>
         <Route path="/examination/*" element={<Examination />}></Route>
         <Route path="/payment/*" element={<Payment />}></Route>
