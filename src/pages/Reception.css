@@ -46,7 +46,7 @@
 }
 
 .qualificationDate{
-    padding-top: 10px;
+    /* padding-top: 10px; */
 }
 
 .receptionInfoTitle{
@@ -73,6 +73,17 @@
 
 .patientName{
     padding-right: 10px;
+}
+
+.qualificationWrapper{
+    display:flex;
+    padding-top: 10px;
+}
+.CheckIcon{
+    width: 13px;
+    height: 13px;
+    padding-left: 5px;
+    padding-top: 2px;
 }
 
 .receptionBtnWrapper{

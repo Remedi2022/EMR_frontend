@@ -64,7 +64,10 @@ function Content(){
                             <button className="claimButton">공단청구</button> 
                             <button className="claimButton">비청구</button>
                         </div>
-                        <span className="qualificationDate">자격일자(2022-10-05) 조회됨</span>
+                        <div className="qualificationWrapper">
+                            <span className="qualificationDate">자격일자(2022-10-05) 조회됨</span>
+                            <img className='CheckIcon' src={ process.env.PUBLIC_URL + '/icons/Check.png' } />
+                        </div>
                         <div className="receptionInfoWrapper">
                             <div className="receptionInfoTitle">
                             <span className="patientInfoTitle">자격구분</span>
@@ -78,15 +81,15 @@ function Content(){
                         <div className="receptionInfoWrapper">
                             <div className="receptionInfoTitle">
                                 <span className="patientInfoTitle">방문목적*</span>
-                                <button className="infoButton">목록보이기</button>
+                                <button className="infoButton">일반진료</button>
                             </div>
                             <div className="receptionInfoTitle">
                                 <span className="patientInfoTitle">세부목적</span>
-                                <button className="infoButton">목록보이기</button>
+                                <button className="infoButton">아토피</button>
                             </div>
                             <div className="receptionInfoTitle">
                                 <span className="patientInfoTitle">담당의 선택*</span>
-                                <button className="infoButton">목록보이기</button>
+                                <button className="infoButton">김의사</button>
                             </div>
                             <div className="receptionInfoTitle">
                                 <span className="patientInfoTitle">임신여부</span>
