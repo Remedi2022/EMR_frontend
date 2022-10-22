@@ -22,7 +22,7 @@ function Content() {
                     <span className="homeMenuItemTitle">수납실</span>
                     <span className="homeMenuItemDetail">우성주 여 24세 #VIP<br></br>(텍스트별 크기 조정하기)건강보험 일반진료 박원장</span>
                     <div className="homeMenuButton">
-                        <Link to = "/Chart">
+                        <Link to = "/chart">
                             <button className="homeMenuItemButton">진료 진행하기</button>
                         </Link>
                     </div>

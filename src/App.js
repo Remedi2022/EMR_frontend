@@ -10,8 +10,9 @@ import Login from './pages/Login';
 import Payment from './pages/Payment';
 import Chart from './pages/Chart'
 import SignUp from './pages/SignUp';
-// import UseModal from './hooks/UseModal';
-// import UseModal from './pages/UseModal'
+import Users from './_api/TestMD';
+import Reception from './pages/Reception';
+import MD from './_api/Users'
 
 
 function App() {
@@ -20,14 +21,16 @@ function App() {
     <BrowserRouter>
       <Routes>
 
-        <Route path="/" element={<Home/>}></Route>
+        <Route path="/" element={<MD/>}></Route>
         <Route path="/administration/*" element={<Administration />}></Route>
         <Route path="/examination/*" element={<Examination />}></Route>
         <Route path="/payment/*" element={<Payment />}></Route>
         <Route path="/chart/*" element={<Chart />}></Route>
         <Route path="/login/*" element={<Login />}></Route>
         <Route path="/signup/*" element={<SignUp />}></Route>
-        
+        <Route path="/users/*" element={<Users />}></Route>
+        <Route path="/reception/*" element={<Reception />}></Route>
+
       </Routes>   
     </BrowserRouter>
   </div>

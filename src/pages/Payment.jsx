@@ -2,12 +2,44 @@ import './Payment.css'
 import LeftNav from "../components/LeftNav/LeftNav"
 import TopBar from "../components/TopBar/TopBar"
 import PatientList from "../components/PatientList/PatientList"
-
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 
 function Content() {
+
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+    const [results, setResults] = useState(null);
     const [show, setShow] = useState(true)
+    
+    useEffect(() => {
+        const fetchUsers = async () => {
+        try {
+            // 요청이 시작 할 때에는 error 와 users 를 초기화하고
+            setError(null);
+            // setResults(null);
+            setResults(null);
+            // loading 상태를 true 로 바꿉니다.
+            setLoading(true);
+            const response = await axios.get(
+            'http://3.35.231.145:8080/api/md/list'
+            );
+            setResults(response.data);  // 데이터는 response.data 안에 들어있습니다.
+            console.log(response.data);
+        } catch (e) {
+            setError(e);
+        }
+      setLoading(false);
+    };
+
+    fetchUsers();
+    }, []);
+
+    if (loading) return <div>로딩중..</div>;
+    if (error) return <div>에러가 발생했습니다</div>;
+    if (!results) return null;
+
     return (
         <div className="content">
             <div className="patientSummary">
@@ -128,21 +160,11 @@ function Content() {
                     </form>
                     <div className="mdHistory">
                         <ul className='visitList'>
-                            <li className='MDListItem'>
-                                아토베리어 크림 MD
-                            </li>
-                            <li className='MDListItem'>
-                                아토베리어 로션 MD
-                            </li>
-                            <li className='MDListItem'>
-                                    제로이드 인텐시브 크림 MD 80ml
-                            </li>
-                            <li className='MDListItem'>
-                                    에피세람
-                            </li>
-                            <li className='MDListItem'>
-                                    뮤테라실
-                            </li>
+                            {results.result.map(item =>(
+                                <li className='MDListItem' key={item.id}>
+                                    {item.name} {item.volume}{item.unit}
+                                </li>
+                            ))}
                         </ul>
                     </div>
                 </div>
