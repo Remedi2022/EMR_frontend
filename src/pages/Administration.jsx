@@ -24,7 +24,7 @@ function Content() {
                     <span className="homeMenuItemDetail">이메디 남 17개월 #VIP<br></br>(텍스트별 크기 조정하기)건강보험 일반진료 1진료실</span>
                     <div className="homeMenuButton">
                         <Link to = "/Payment">
-                            <button>수납 진행하기</button>
+                            <button className="homeMenuItemButton">수납 진행하기</button>
                         </Link>
                     </div>
                 </div>
@@ -40,7 +40,7 @@ function Content() {
                     <span className="homeMenuItemTitle">접수 신청</span>
                     <span>우성주 여 23세 #단골 #실손보험</span>
                     <div className="homeMenuButton">
-                        <button>접수하기</button>
+                        <button className="homeMenuItemButton">접수하기</button>
                     </div>
                 </div>
             </div>

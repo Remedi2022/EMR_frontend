@@ -13,7 +13,7 @@ function Content() {
                     {/* <div className="buttonWrapper"> */}
                     <div className="homeMenuButton">
                         <Link to = "/Administration">
-                            <button>원무 바로가기</button>
+                            <button className="homeMenuItemButton">원무 바로가기</button>
                         </Link>
                     </div>
                     {/* </div> */}
@@ -24,7 +24,7 @@ function Content() {
                     {/* <div className="buttonWrapper"> */}
                     <div className="homeMenuButton">
                         <Link to = "/Examination">
-                            <button>진료 바로가기</button>
+                            <button className="homeMenuItemButton">진료 바로가기</button>
                         </Link>
                     </div>
                     {/* </div> */}

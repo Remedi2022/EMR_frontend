@@ -16,15 +16,14 @@
   .modal > section {
     width: 700px;
     height: 540px;
-    /* max-width: 850px; */
     margin: 0 auto;
     border-radius: 10px;
     background-color: #fff;
     /* 팝업 열릴 때 효과 */
     animation: modal-show 0.3s;
-    overflow: hidden;
+    /* overflow: hidden; */
     font-size: 0.9rem;
-    position: relative;
+    /* position: relative; 취소 완료 접수 버튼 absolute */
   }
   .modal > section > header {
     position: relative;
@@ -47,30 +46,30 @@
     /* border-top: 1px solid #dee2e6; */
     /* border-bottom: 1px solid #dee2e6; */
   }
-  .modal > section > footer {
+  /* .modal > section > footer {
     padding: 0 30px 30px 30px;
-    /* text-align: right; */
     position: absolute;
     bottom: 0px;
     width: 640px;
     height: 40px;
     display: flex;
     justify-content: space-between;
-  }
+  } */
 
   /* .buttonWrapperRegister{
     display: flex;
     justify-content: space-between;
     height: 40px;
   } */
-  .modal > section > footer button {
+  /* .modal > section > footer button { */
+  /* .footer button {
     padding: 8px 17px;
     color: #fff;
     background-color: #6c757d;
     border-radius: 10px;
     font-size: 0.8rem;
     margin: 0 5px;
-  }
+  } */
   
   .modal.openModal {
     display: flex;
