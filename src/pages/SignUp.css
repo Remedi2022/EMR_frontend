@@ -15,7 +15,7 @@
 }
 
 .signUpContent{
-    padding: 90px 20px 50px 40px;
+    padding: 50px 20px 50px 40px;
 }
 
 /* .inputBox{ */
@@ -47,6 +47,26 @@
         outline: none;  
     }
 
+.inputBoxName input{
+    border-style: solid;
+    border-radius: 5px;
+    border-color:  #e6e6e6;
+    border-width: 1px;
+    width: 310px;
+    height:33px;
+    margin:0px;
+    padding: 0px;
+    text-indent: 2em;
+    font-size: 14px;
+    background-image: url('/public/icons/stethoscope.png');
+    background-repeat: no-repeat;
+    background-size: 16px;
+    background-position: 5px;
+}
+    .inputBoxName input:focus {
+        border-color:#BDBDBD;
+        outline: none;  
+    }
 
 .inputBoxLicense input{
     border-style: solid;
@@ -70,7 +90,7 @@
         outline: none;  
     }
 
-.inputBoxEmail input{
+.inputBoxE input{
     border-style: solid;
     border-radius: 5px;
     border-color:  #e6e6e6;
@@ -86,7 +106,7 @@
     background-size: 16px;
     background-position: 5px;
 }
-    .inputBoxEmail input:focus {
+    .inputBoxE input:focus {
         border-color:#BDBDBD;
         outline: none;  
     }
@@ -122,12 +142,17 @@
     margin: 0px;
 }
 
+.inputBoxName{
+    padding-top: 9px;
+    margin: 0px;
+}
+
 .inputBoxLicense{
     padding-top: 9px;
     margin: 0px;
 }
 
-.inputBoxEmail{
+.inputBoxE{
     padding-top: 9px;
     margin: 0px;
 }

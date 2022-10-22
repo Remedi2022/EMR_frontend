@@ -44,7 +44,7 @@ function Content() {
         <div className="content">
             <div className="patientSummary">
                 <div>
-                    <span style={{fontWeight:"bold"}}>김메디&nbsp;&nbsp;</span>
+                    <span style={{fontWeight:"bold"}}>우성주&nbsp;&nbsp;</span>
                     <span>여, 25세</span>
                 </div>
                 <span>체온 37&nbsp;&nbsp;체중 55&nbsp;&nbsp;신장 160&nbsp;&nbsp;혈압 129/87&nbsp;&nbsp;혈당 86</span>
