@@ -1,6 +1,7 @@
 import {
     LOGIN_USER,
-    SIGNUP_USER
+    SIGNUP_USER,
+    REGISTER_PATIENT
 } from '../_actions/types';
 
 export default function(state={}, action) {
@@ -11,6 +12,9 @@ export default function(state={}, action) {
         case SIGNUP_USER:
             return { ...state, Signup: action.payload }
             break;
+        case REGISTER_PATIENT:
+            return { ...state, Register: action.payload }
+            break;  
         default:
             return state;
     }

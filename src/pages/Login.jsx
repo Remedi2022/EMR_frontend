@@ -58,7 +58,7 @@ export default function Login() {
                                 <input id="emailContent"
                                     type="email"
                                     name="emailContent"
-                                    placeholder="email"
+                                    placeholder="이메일"
                                     value={ email }
                                     onChange={ onEmailHandler }
                                 />
@@ -68,7 +68,7 @@ export default function Login() {
                                 <input id="pwContent"
                                     type="password"
                                     name="pwContent"
-                                    placeholder="password"
+                                    placeholder="비밀번호"
                                     value={ password }
                                     onChange={ onPasswordHandler }
                                 />
@@ -82,12 +82,13 @@ export default function Login() {
                         </div>
 
                         <div className="buttonWrapper">
-                            <button className="Button">로그인</button>
+                            <button className="loginButton">로그인</button>
                         </div>
                     </form>
-                    <button className="Button">회원가입</button>
+                    <button className="loginButton"
+                        onClick={ () => navigate('/signup') }
+                        >회원가입</button>
                 
-
                 </div>
             </div>
         {/* </div> */}

@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import UseModal from '../hooks/UseModal';
 
 
-
 function Content() {
     return (
         <div className="content">
@@ -21,10 +20,10 @@ function Content() {
                 </div>
                 <div className="homeMenuItem" id="long">
                     <span className="homeMenuItemTitle">수납실</span>
-                    <span className="homeMenuItemDetail">김우주 여 31세 #VIP<br></br>(텍스트별 크기 조정하기)건강보험 일반진료 박원장</span>
+                    <span className="homeMenuItemDetail">우성주 여 24세 #VIP<br></br>(텍스트별 크기 조정하기)건강보험 일반진료 박원장</span>
                     <div className="homeMenuButton">
                         <Link to = "/Chart">
-                            <button>진료 진행하기</button>
+                            <button className="homeMenuItemButton">진료 진행하기</button>
                         </Link>
                     </div>
                 </div>
@@ -41,7 +40,7 @@ function Content() {
                     <span>MD 제품들을 라이브러리에</span>
                     <span>미리 등록하고 관리할 수 있습니다.</span>
                     <div className="homeMenuButton">
-                        <button>MD 관리하기</button>
+                        <button className="homeMenuItemButton">MD 관리하기</button>
                     </div>
                 </div>
             </div>

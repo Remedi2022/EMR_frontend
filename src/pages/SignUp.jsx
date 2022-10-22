@@ -10,12 +10,16 @@ export default function SignUp(){
     const navigate = useNavigate();
 
     const [hospital, setHospital] = useState("")
+    const [name, setName] = useState("")
     const [license, setLicense] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
     const onHospitalHandler = (e) => {
         setHospital(e.currentTarget.value)
+    }
+    const onNameHandler = (e) => {
+        setName(e.currentTarget.value)
     }
     const onLicenseHandler = (e) => {
         setLicense(e.currentTarget.value)
@@ -29,6 +33,7 @@ export default function SignUp(){
     const onSubmitHandler = (e) => {
         e.preventDefault();
         console.log('HOSPITAL', hospital)
+        console.log('NAME:', name)
         console.log('LICENSE', license)
         console.log('EMAIL:', email)
         console.log('PW:', password)
@@ -37,6 +42,9 @@ export default function SignUp(){
         // }
         if (!hospital) {
             return alert("요양기관번호를 입력하세요.");
+        }
+        else if (!name) {
+            return alert("이름을 입력하세요.");
         }
         else if (!license) {
             return alert("면허번호를 입력하세요.");
@@ -50,6 +58,7 @@ export default function SignUp(){
 
         let body = {
             hospital: hospital,
+            name: name,
             license: license,
             email: email,
             password: password
@@ -75,7 +84,7 @@ export default function SignUp(){
             <div className="signUpContentBox">
                 <div className="signUpContent">
                     <span className="remedi"> REMEDi </span>
-                    <form onSubmit={onSubmitHandler}>
+                    <form onSubmit={ onSubmitHandler }>
                         <div className="inputWrapper">
                             <div className="inputBoxHospital">
                                 <input id="hospitalContent"
@@ -87,6 +96,15 @@ export default function SignUp(){
                                     onChange={ onHospitalHandler }
                                 />
                             </div>
+                            <div className="inputBoxName">
+                                <input id="nameContent"
+                                    type="text"
+                                    name="nameContent"
+                                    placeholder="이름"
+                                    value={ name }
+                                    onChange={ onNameHandler }
+                                />
+                            </div>
                             <div className="inputBoxLicense">
                                 <input id="licenseContent"
                                     type="text"
@@ -96,11 +114,11 @@ export default function SignUp(){
                                     onChange={ onLicenseHandler }
                                 />
                             </div>
-                            <div className="inputBoxEmail">
+                            <div className="inputBoxE">
                                 <input id="emailContent"
                                     type="email"
                                     name="emailContent"
-                                    placeholder="email"
+                                    placeholder="이메일"
                                     value={ email }
                                     onChange={ onEmailHandler }
                                 />
@@ -109,7 +127,7 @@ export default function SignUp(){
                                 <input id="passwordContent"
                                     type="password"
                                     name="passwordContent"
-                                    placeholder="password"
+                                    placeholder="비밀번호"
                                     value={ password }
                                     onChange={ onPasswordHandler }
                                 />
