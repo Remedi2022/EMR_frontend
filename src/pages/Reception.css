@@ -45,13 +45,10 @@
     padding-bottom: 5px;
 }
 
-.qualificationDate{
-    /* padding-top: 10px; */
-}
-
 .receptionInfoTitle{
-    /* padding-bottom: 15px; */
     width:20%;
+    display:flex;
+    flex-direction: column;
 }
 
 .receptionInfoWrapper{
@@ -76,14 +73,28 @@
 }
 
 .qualificationWrapper{
+    display: flex;
+    justify-content: space-between;
+}
+
+.qualified{
     display:flex;
     padding-top: 10px;
 }
+
 .CheckIcon{
     width: 13px;
     height: 13px;
     padding-left: 5px;
     padding-top: 2px;
+}
+
+.RefreshIcon{
+    width: 13px;
+    height: 13px;
+    padding-right: 5px;
+    padding-top: 7px;
+    cursor: pointer;
 }
 
 .receptionBtnWrapper{
@@ -182,4 +193,53 @@
     color: gray;
     font-weight: bold;
     cursor: pointer; 
+}
+
+.detailPurpose{
+    background-color: white;
+    border-style: solid;
+    border-radius: 5px;
+    border-color:  #e6e6e6;
+    border-width: 1px;
+    width: 110px;
+    height: 23px;
+    padding-bottom: 0;
+    font-size: 15px;
+    text-align:left;
+    padding-left:8px;
+    font-size: 11px;
+}
+
+.vitalContentWrapper{
+    /* padding-left:5px; */
+}
+
+.vitalInput{
+    background-color: white;
+    border-style: solid;
+    border-radius: 5px;
+    border-color:  #e6e6e6;
+    border-width: 1px;
+    width: 55px;
+    height: 23px;
+    padding-bottom: 0;
+    font-size: 15px;
+    text-align:left;
+    padding-left:8px;
+    font-size: 11px;
+}
+
+.bloodsugarInput{
+    background-color: white;
+    border-style: solid;
+    border-radius: 5px;
+    border-color:  #e6e6e6;
+    border-width: 1px;
+    margin-right: 10px;
+    width: 38px;
+    height: 22px;
+    font-size: 15px;
+    text-align: center;
+    padding-left:8px;
+    font-size: 11px;
 }

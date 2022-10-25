@@ -1,16 +1,17 @@
 import './Reception.css';
-
+import Moment from 'moment';
+import "moment/locale/ko";
+import { Link } from 'react-router-dom';
+import Clock from '../Clock/Clock.jsx';
 
 function Content(){
+
+    function refreshPage(){
+        window.location.reload(false);
+    }
+    
     return(
         <div className="display">
-            {/* <div className="patientSummary">
-                <div>
-                    <span style={{fontWeight:"bold"}}>김메디&nbsp;&nbsp;</span>
-                    <span>여, 25세</span>
-                </div>
-                <span>체온 37&nbsp;&nbsp;체중 55&nbsp;&nbsp;신장 160&nbsp;&nbsp;혈압 129/87&nbsp;&nbsp;혈당 86</span>
-            </div> */}
             <div className="receptionContainer">
                 <div className="visitHistory">
                     <span className="title"> 최근방문기록</span>
@@ -27,13 +28,15 @@ function Content(){
                 <div className="receptionWrapper">
                     <div className="titleWrapper">
                         <span className="title" style={{fontSize:"1.3em"}}>외래접수</span>
-                        <span>2022-10-05 10:55 🖊</span>
+                        <span><Clock />🖊</span>
                     </div>
                     <div className="receptionContentWrapper">
                         <div className="receptionInfoTitle">
                             <span className="patientInfoTitle">no. 132</span>
-                            <span className="patientName" style={{fontSize:"1.3em"}}>김메디</span>
-                            <span className="patientInfo">여, 30세</span>
+                            <div className="patientInfoName">
+                                <span className="patientName" style={{fontSize:"1.3em"}}>김메디</span>
+                                <span className="patientInfo">여, 30세</span>
+                            </div>
                         </div>
                         <div className="receptionInfoWrapper">
                             <div className="receptionInfoTitle">
@@ -54,19 +57,16 @@ function Content(){
                             </div>
                         </div>
                     </div>
-                    {/* 자격상세 토글로 구현 */}
                     <div className="receptionContentWrapper">
                         <div className="insuranceTitle">
                             <span className="title">보험 정보</span>
-                            <span style={{color:"#779FFF"}}>자격상세</span>
                         </div> 
-                        <div className="claimButtonWrapper">
-                            <button className="claimButton">공단청구</button> 
-                            <button className="claimButton">비청구</button>
-                        </div>
                         <div className="qualificationWrapper">
-                            <span className="qualificationDate">자격일자(2022-10-05) 조회됨</span>
-                            <img className='CheckIcon' src={ process.env.PUBLIC_URL + '/icons/Check.png' } />
+                            <div className="qualified">
+                                <span className="qualificationDate">자격일자(<Clock />) 조회됨</span>
+                                <img className='CheckIcon' src={ process.env.PUBLIC_URL + '/icons/Check.png' } />
+                            </div>
+                            <img className='RefreshIcon' onClick={refreshPage} src={ process.env.PUBLIC_URL + '/icons/159061.png' } />
                         </div>
                         <div className="receptionInfoWrapper">
                             <div className="receptionInfoTitle">
@@ -78,6 +78,7 @@ function Content(){
                         
                     <div className="receptionContentWrapper">
                         <span className="title">접수 정보</span>
+                        {/* <form onSubmit={ onSubmitHandler }> */}
                         <div className="receptionInfoWrapper">
                             <div className="receptionInfoTitle">
                                 <span className="patientInfoTitle">방문목적*</span>
@@ -85,20 +86,31 @@ function Content(){
                             </div>
                             <div className="receptionInfoTitle">
                                 <span className="patientInfoTitle">세부목적</span>
-                                <button className="infoButton">아토피</button>
+                                    <input id="purposeContent"
+                                        className="detailPurpose"
+                                        type="string"
+                                        name="purposeContent"
+                                        // value={purprose}
+                                        // onChage={onPurposeHandler}
+                                        />
                             </div>
                             <div className="receptionInfoTitle">
                                 <span className="patientInfoTitle">담당의 선택*</span>
-                                <button className="infoButton">김의사</button>
+                                <select className="infoButton" name="doctor">
+                                    <option value="park">박의사</option>
+                                    <option value="kim">김의사</option>
+                                    <option value="lee">이의사</option>
+                                </select>
                             </div>
                             <div className="receptionInfoTitle">
-                                <span className="patientInfoTitle">임신여부</span>
-                                {/* <div className="option"> */}
+                                <div className="prergnantWrapperr">
+                                    <span className="patientInfoTitle">임신여부</span>
                                     <input type="checkbox" id="id"/>
                                     <label htmlFor="id"></label>
                                     <label htmlFor="id" className="pregnant" style={{fontSize:"0.9em", color:"black"}} >임산부</label>  
-                                {/* </div> */}
+                                </div>
                         </div>
+                        {/* </form> */}
                     </div>
                     </div>
                     <div className="receptionContentWrapper">
@@ -106,33 +118,84 @@ function Content(){
                         <div className="receptionInfoWrapper">
                             <div className="receptionInfoTitle">
                                 <span className="patientInfoTitle">체온</span>
-                                <hr className="divider"></hr>
-                                <span>37</span>
+                                <div className="vitalContentWrapper">
+                                    <input id="temperatureContent"
+                                        className="vitalInput"
+                                        type="number"
+                                        name="temperatureContent"
+                                        // value={purprose}
+                                        // onChage={onPurposeHandler}
+                                    />
+                                    <hr className="divider"></hr>
+                                </div> 
                             </div>
                             <div className="receptionInfoTitle">
                                 <span className="patientInfoTitle">체중</span>
-                                <hr className="divider"></hr>
-                                <span>55</span>
+                                <div className="vitalContentWrapper">
+                                    <input id="weightContent"
+                                            className="vitalInput"
+                                            type="number"
+                                            name="weighteContent"
+                                            // value={purprose}
+                                            // onChage={onPurposeHandler}
+                                    /> 
+                                    <hr className="divider"></hr>    
+                                </div>               
                             </div>
                             <div className="receptionInfoTitle">
                                 <span className="patientInfoTitle">신장</span>
-                                <hr className="divider"></hr>
-                                <span>167</span>
+                                <div className="vitalContentWrapper">
+                                    <input id="heightContent"
+                                            className="vitalInput"
+                                            type="number"
+                                            name="heightContent"
+                                            // value={purprose}
+                                            // onChage={onPurposeHandler}
+                                    />   
+                                    <hr className="divider"></hr>     
+                                </div>                  
                             </div>
                             <div className="receptionInfoTitle">
                                 <span className="patientInfoTitle">혈압</span>
-                                <hr className="divider"></hr>
-                                <span>129/87</span>
+                                <div className="vitalContentWrapper">
+                                    <input id="bloodPressrueContent"
+                                            className="vitalInput"
+                                            type="number"
+                                            name="bloodPressureContent"
+                                            // value={purprose}
+                                            // onChage={onPurposeHandler}
+                                    />
+                                    <hr className="divider"></hr>
+                                </div>
                             </div>
                             <div className="receptionInfoTitle">
                                 <span className="patientInfoTitle">혈당</span>
-                                <hr className="divider"></hr>
-                                <span>86</span>
+                                <div className="vitalContentWrapper">
+                                    <input id="bloodsugarContent"
+                                            className="bloodsugarInput"
+                                            type="number"
+                                            name="bloodsugarContent"
+                                            placeholder="최고"
+                                            // value={purprose}
+                                            // onChage={onPurposeHandler}
+                                    />
+                                    <input id="bloodsugarContent"
+                                            className="bloodsugarInput"
+                                            type="number"
+                                            name="bloodsugarContent"
+                                            placeholder="최저"
+                                            // value={purprose}
+                                            // onChage={onPurposeHandler}
+                                    />
+                                    <hr className="divider"></hr>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div className="receptionBtnWrapper">
-                        <button className="receptionBtn">취소</button>
+                        <Link to = "/administration">
+                            <button className="receptionBtn">취소</button>
+                        </Link>
                         <button className="receptionBtn">접수</button>
                     </div>
                 </div>

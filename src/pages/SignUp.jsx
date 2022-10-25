@@ -134,7 +134,7 @@ export default function SignUp(){
                             </div>
                         </div>
                     <div className="buttonWrapperSignUp">
-                        <button className="Button">회원가입</button>
+                        <button className="loginButton">회원가입</button>
                     </div>
                     </form> 
                 

@@ -4,8 +4,8 @@ import useAsync from './useAsync';
 
 async function getUser(id) {
     const response = await axios.get(
-        // `https://jsonplaceholder.typicode.com/users/${id}`
-        `http://3.35.231.145:8080/api/md/list'/${id}`
+        `https://jsonplaceholder.typicode.com/users/${id}`
+        // `http://3.35.231.145:8080/api/md/list'/${id}`
         
     );
     return response.data;

@@ -126,19 +126,6 @@ function Content() {
                                     {item.name} {item.volume}{item.unit}
                                 </li>
                             ))}
-
-                            {/* <li className='MDListItem'>
-                                아토베리어 로션 MD
-                            </li>
-                            <li className='MDListItem'>
-                                    제로이드 인텐시브 크림 MD 80ml
-                            </li>
-                            <li className='MDListItem'>
-                                    에피세람
-                            </li>
-                            <li className='MDListItem'>
-                                    뮤테라실
-                            </li> */}
                         </ul>
                     </div>
                 </div>
