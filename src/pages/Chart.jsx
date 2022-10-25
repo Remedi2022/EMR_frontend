@@ -71,25 +71,28 @@ function Content() {
                     <div className="chartContentWrapper">
                         <span className="title">진료 기록</span>
                         <hr className="divider"></hr>
+                        <textarea></textarea>
                     </div>
                     <div className="chartContentWrapper">
                         <span className="title">진단 및 처방</span>
-                        <form className="form" action="/" method="GET">
+                        {/* <form className="form" action="/" method="GET">
                             <input className="order-search-field" type="search" placeholder="오더 검색"/>
                             <button className="search-button" type="submit">
                                 <img className='searchIcon' src={ process.env.PUBLIC_URL + '/icons/search50_999.png' } />
                             </button>
-                        </form>
+                        </form> */}
                         <hr className="divider"></hr>
-
+                        <textarea></textarea>
+                        <select className="infoButton" name="doctor">
+                                <option value="park">초진진찰료</option>
+                                <option value="kim">재진진찰료</option>
+                        </select>
                         <div className="MDPrescription">
                             <li className='MDItem'>
                                 아토베리어 크림 MD
                             </li>
                             <div className="amountList">
-                                <span className="amount">1</span>
-                                <span className="amount">1</span>
-                                <span className="amount">1</span>
+                                {/* <input className="amount">1</input> */}
                                 <span className="amount">용법</span>
                             </div>
                         </div>

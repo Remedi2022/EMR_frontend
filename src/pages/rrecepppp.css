@@ -101,7 +101,7 @@
 }
 
 .qualificationWrapper{
-    display:flex;
+    display: flex;
     justify-content: space-between;
 }
 
@@ -129,7 +129,7 @@
     display:flex;
     justify-content: space-between;
     padding-top: 18px;
-    bottom: 0px;
+    /* text-align: center; */
 }
 
 .receptionBtn{
@@ -231,23 +231,15 @@
     border-width: 1px;
     width: 110px;
     height: 23px;
-    padding-bottom: 0px;
+    padding-bottom: 0;
     font-size: 15px;
     text-align:left;
     padding-left:8px;
     font-size: 11px;
 }
 
-.vitalSign{
-    padding-left: 25px;
-    padding-top: 10px;
-}
-
-.getVitalSign{
-    display:flex;
-    padding-left:30px;
-    padding-right:20px;
-    justify-content: space-between;
+.vitalContentWrapper{
+    /* padding-left:5px; */
 }
 
 .vitalInput{

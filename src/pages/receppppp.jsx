@@ -7,15 +7,14 @@ import "moment/locale/ko";
 import { Link } from 'react-router-dom';
 import Clock from '../Clock/Clock.jsx';
 
-
 function Content(){
 
     function refreshPage(){
         window.location.reload(false);
     }
-
+    
     return(
-        <div className="content">
+        <div className="display">
             <div className="receptionContainer">
                 <div className="visitHistory">
                     <span className="title"> 최근 방문 기록</span>
@@ -31,7 +30,7 @@ function Content(){
 
                 <div className="receptionWrapper">
                     <div className="titleWrapper">
-                        <span className="title" style={{fontSize:"1.3em"}}>외래 접수</span>
+                        <span className="title" style={{fontSize:"1.3em"}}>외래접수</span>
                         <span><Clock />🖊</span>
                     </div>
                     <div className="receptionContentWrapper">
@@ -61,7 +60,6 @@ function Content(){
                             </div>
                         </div>
                     </div>
-                    {/* 자격상세 토글로 구현 */}
                     <div className="receptionContentWrapper">
                         <div className="insuranceTitle">
                             <span className="title">보험 정보</span>
@@ -132,7 +130,6 @@ function Content(){
                                         // onChage={onPurposeHandler}
                                     />
                                     <hr className="divider"></hr>
-                                    <span className="vitalSign">37</span>
                                 </div> 
                             </div>
                             <div className="receptionInfoTitle">
@@ -145,8 +142,7 @@ function Content(){
                                             // value={purprose}
                                             // onChage={onPurposeHandler}
                                     /> 
-                                    <hr className="divider"></hr> 
-                                    <span className="vitalSign">68</span>   
+                                    <hr className="divider"></hr>    
                                 </div>               
                             </div>
                             <div className="receptionInfoTitle">
@@ -159,8 +155,7 @@ function Content(){
                                             // value={purprose}
                                             // onChage={onPurposeHandler}
                                     />   
-                                    <hr className="divider"></hr>   
-                                    <span className="vitalSign">159</span>  
+                                    <hr className="divider"></hr>     
                                 </div>                  
                             </div>
                             <div className="receptionInfoTitle">
@@ -174,7 +169,6 @@ function Content(){
                                             // onChage={onPurposeHandler}
                                     />
                                     <hr className="divider"></hr>
-                                    <span className="vitalSign">86</span>
                                 </div>
                             </div>
                             <div className="receptionInfoTitle">
@@ -197,12 +191,11 @@ function Content(){
                                             // onChage={onPurposeHandler}
                                     />
                                     <hr className="divider"></hr>
-                                    <span className="vitalSign">129ㅤ/ㅤ87</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-
+                    
                     <div className="receptionBtnWrapper">
                         <Link to = "/administration">
                             <button className="receptionBtn">취소</button>
