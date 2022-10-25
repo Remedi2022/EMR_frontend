@@ -1,11 +1,39 @@
-.display{
+.container {
+    display: flex;
+    /* display: inline-flex;
+     flex-direction: row;
+     justify-content: flex-start;
+     align-items: stretch; */
+ }
+ 
+ .topbarContainer {
+     flex: 12;
+ }
+ 
+ .patientlistContainer {
+     display: flex;
+ }
+ 
+ .content {
+     flex: 8; 
+     background-color: #d9e6d3;
+     /* position: relative; */
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: calc(100vh - 47px);
+     position: sticky;
+     top: 50px;
+ }
+
+/* .display{
     display:flex;
     background-color: #d9e6d3;
     width: 100vw;
     height: 100vh;
     flex-direction: row;
     justify-content: center;
-}
+} */
 
 .receptionContainer {
     display: flex;

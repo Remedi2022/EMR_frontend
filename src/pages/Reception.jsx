@@ -1,4 +1,7 @@
 import './Reception.css';
+import LeftNav from "../components/LeftNav/LeftNav"
+import TopBar from "../components/TopBar/TopBar"
+import PatientList from "../components/PatientList/PatientList"
 import Moment from 'moment';
 import "moment/locale/ko";
 import { Link } from 'react-router-dom';
@@ -14,7 +17,7 @@ function Content(){
         <div className="display">
             <div className="receptionContainer">
                 <div className="visitHistory">
-                    <span className="title"> 최근방문기록</span>
+                    <span className="title"> 최근 방문 기록</span>
                     <ul className='visitList'>
                         <li className='patientlistItem'>
                             2022-06-19 김의사
@@ -44,11 +47,11 @@ function Content(){
                                 <span>111111-1111111</span>
                             </div>
                             <div className="receptionInfoTitle">
-                               <span className="patientInfoTitle">대표연락처</span>
+                               <span className="patientInfoTitle">대표 연락처</span>
                                <span>010-1234-5678</span>
                             </div>
                             <div className="receptionInfoTitle">
-                               <span className="patientInfoTitle">비상연락처</span>
+                               <span className="patientInfoTitle">비상 연락처</span>
                                <span>010-9876-5432</span>
                             </div>
                             <div className="receptionInfoTitle">
@@ -70,7 +73,7 @@ function Content(){
                         </div>
                         <div className="receptionInfoWrapper">
                             <div className="receptionInfoTitle">
-                            <span className="patientInfoTitle">자격구분</span>
+                            <span className="patientInfoTitle">자격 구분</span>
                             <span>건강보험</span>
                             </div>
                         </div>
@@ -81,7 +84,7 @@ function Content(){
                         {/* <form onSubmit={ onSubmitHandler }> */}
                         <div className="receptionInfoWrapper">
                             <div className="receptionInfoTitle">
-                                <span className="patientInfoTitle">방문목적*</span>
+                                <span className="patientInfoTitle">방문 목적*</span>
                                 <button className="infoButton">일반진료</button>
                             </div>
                             <div className="receptionInfoTitle">
@@ -209,8 +212,21 @@ function Content(){
 
 export default function Reception(){
     return(
-        <div className="receptionContainer">
-            <Content />
+        <div className="reception">
+            <div className="container">
+                <LeftNav />
+                <div className='topbarContainer'>
+                    <TopBar />
+                    <div className='patientlistContainer'>
+                        <PatientList/>
+                        <Content />
+                    </div>
+                </div>
+                {/* <div className=""> page </div> */}
+            </div>
         </div>
+        // <div className="receptionContainer">
+        //     <Content />
+        // </div>
     )
 }

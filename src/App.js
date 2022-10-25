@@ -12,7 +12,8 @@ import Chart from './pages/Chart'
 import SignUp from './pages/SignUp';
 import Users from './_api/TestMD';
 import Reception from './pages/Reception';
-import MD from './_api/Users'
+import Test from './pages/_testapp'
+import PatientList from './components/PatientList/PatientList';
 import Clock from './Clock/Clock';
 
 function App() {
