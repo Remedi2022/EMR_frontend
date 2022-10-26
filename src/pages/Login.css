@@ -182,7 +182,7 @@ input[id="id"] {
 }
 
 
-.Button:active {
+.loginButton:active {
     background-color: #4B99FF;
     outline: none;
     color:white;

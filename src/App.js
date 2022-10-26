@@ -12,25 +12,25 @@ import Chart from './pages/Chart'
 import SignUp from './pages/SignUp';
 import Users from './_api/TestMD';
 import Reception from './pages/Reception';
-
+import Clock from './Clock/Clock';
 
 function App() {
   return (
     <div className='App'>
     <BrowserRouter>
-      <Routes>
+        <Routes>
 
-        <Route path="/" element={<Home/>}></Route>
-        <Route path="/administration/*" element={<Administration />}></Route>
-        <Route path="/examination/*" element={<Examination />}></Route>
-        <Route path="/payment/*" element={<Payment />}></Route>
-        <Route path="/chart/*" element={<Chart />}></Route>
-        <Route path="/login/*" element={<Login />}></Route>
-        <Route path="/signup/*" element={<SignUp />}></Route>
-        <Route path="/users/*" element={<Users />}></Route>
-        <Route path="/reception/*" element={<Reception />}></Route>
+            <Route path="/" element={<Home/>}></Route>
+            <Route path="/administration/*" element={<Administration />}></Route>
+            <Route path="/examination/*" element={<Examination />}></Route>
+            <Route path="/payment/*" element={<Payment />}></Route>
+            <Route path="/chart/*" element={<Chart />}></Route>
+            <Route path="/login/*" element={<Login />}></Route>
+            <Route path="/signup/*" element={<SignUp />}></Route>
+            <Route path="/users/*" element={<Users />}></Route>
+            <Route path="/reception/*" element={<Reception />}></Route>
 
-      </Routes>   
+        </Routes>   
     </BrowserRouter>
   </div>
   
