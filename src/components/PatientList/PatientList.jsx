@@ -1,5 +1,5 @@
 import './PatientList.css'
-import Visitor from "../../pages/Visitor";
+import Visitor from "../Axios/Visitor";
 import { useEffect, useState } from "react";
 import axios from "axios";
 

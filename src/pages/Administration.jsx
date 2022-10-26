@@ -13,7 +13,7 @@ function Content() {
             <div className="homeMenu">
                 <div class="Searchbar">
                     <form className="Form" action="/" method="GET">
-                        <input className="Search-field" type="search" placeholder="이름 / 전화번호 / 생년월일(6자리) / 환자번호로 검색"/>
+                        <input className="Search-field" type="search" placeholder="이름으로 환자 검색"/>
                         <button className="Search-button" type="submit">
                             <img className='SearchIcon' src={ process.env.PUBLIC_URL + '/icons/search50_999.png' } />
                         </button>

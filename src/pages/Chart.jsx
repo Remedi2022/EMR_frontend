@@ -61,8 +61,11 @@ function Content() {
                         </li>
                     </ul>
                     <span className="addChart">
-                        🖊 새 차트 생성
+                        진료 완료
                     </span>
+                    {/* <span className="addChart">
+                        🖊 새 차트 생성
+                    </span> */}
                 </div>
 
                 <div className="chartWrapper">
