@@ -15,7 +15,7 @@ export default function TopBar() {
                         </form>
                     </div>
                     <div className="addPatient">
-                        <span>신규환자</span>
+                        <span>접수하기</span>
                         <img className='userIcon' src={ process.env.PUBLIC_URL + '/icons/user50_9AACCF.png' } />
                     </div>
                 </div>
