@@ -27,47 +27,67 @@ function Content(){
     // var pid = patient.pid
     const [loading, setLoading] = useState(true);
     const [visitors, setVisitors] = useState([]);
+    const doctorList = ["박의사", "김의사", "최의사"];
+    const [selected, setSelected] = useState("");
 
+    
     // const getVisitors = async() => {
-    //     const response = await axios.get(
-    //         `http://3.35.231.145:8080/api/visitor/info?pid=${patient.pid}`
-    //     );
-    //     setVisitors(response.data.result);
-    //     setLoading(false);
-    // };
-    // useEffect(() => {
-    //     getVisitors();
+        //     const response = await axios.get(
+            //         `http://3.35.231.145:8080/api/visitor/info?pid=${patient.pid}`
+            //     );
+            //     setVisitors(response.data.result);
+            //     setLoading(false);
+            // };
+            // useEffect(() => {
+                //     getVisitors();
     // }, []); //한 번만 동작함
     // console.log(visitors)
 
     const [inputValue, setInputValue] = useState({
         // 사용할 문자열들을 저장하는 객체 형채로 관리
-        benefit_type: "일반진료",
-        purpose: "일반진료",
-        purpose_detail : "감기", // 세부목적
-        doctor_name : "박정민", // 담당의 선택
-        pregnant : 1, // 임신여부(임신이면 1, 아니면 0)
-        temperature : 36,
-        weight : 55,
-        height : 165,
-        blood_pressure_high : 128,   
-        blood_pressure_low : 80,
-        blood_sugar : 95
+        benefitType: "건강 보험",
+        purpose: "일반 진료",
+        purposeDetail : "", // 세부목적
+        // doctorName : "", // 담당의 선택
+        // pregnant : "", // 임신여부(임신이면 1, 아니면 0)
+        temperature : "",
+        weight : "",
+        height : "",
+        bloodPressureHigh : "",   
+        bloodPressureLow : "",
+        bloodSugar : "",
     });
     
+    const {
+        benefitType,
+        purpose,
+        purposeDetail,
+        // doctorName,
+        // pregnant,
+        temperature,
+        weight,
+        height,
+        bloodPressureHigh,
+        bloodPressureLow,
+        bloodSugar
+    } = inputValue;
+        
     const handleInput = (e) => {
         const { name, value } = e.target;
         setInputValue({ ...inputValue, [name]: value }); 
         // name 키에 맞는 키값(value)를 가져온다. => 계산된 속성명 
     };
+    
+    const handleSelect = (e) => {
+        setSelected(e.target.value);
+      };    
 
     const onSubmitHandler = (e) => {
-        // e.preventDefault();
-        // console.log('PNAME', pName)
-        // console.log('RRN:', RRN)
-        // console.log('PHONE', phone)
-        // console.log('EPHONE:', ePhone)
-        // console.log('ADDRESS:', fulladdress)
+        e.preventDefault();
+        console.log(inputValue)
+        console.log(selected)
+        // console.log('자격구분:', benefitType)
+        // console.log('방문목적:', purpose)
         
         // if (!pName) {
         //     return alert("이름를 입력하세요.");
@@ -75,24 +95,20 @@ function Content(){
         // else if (!RRN1 || !RRN2) {
         //     return alert("주민등록번호를 입력하세요.");
         // }
-        // else if (!phone1 || !phone2 || !phone3) {
-        //     return alert("연락처를 입력하세요.");
-        // }
-        // else if (!ePhone1 || !ePhone2 || !ePhone3) {
-        //     return alert("비상 연락처를 입력하세요.");
-        // }
-        // else if (!address) {
-        //     return alert("주소를 검색하세요.");
-        // }
 
-        // let body = {
-        //     name : pName,
-        //     // gender : ,
-        //     rrn : RRN,
-        //     phone : phone,
-        //     first_responder : ePhone,
-        //     address : fulladdress
-        // }
+        let body = {
+            benefit_type: benefitType,
+            purpose: purpose,
+            purpose_detail : purposeDetail, // 세부목적
+            doctor_name : selected, // 담당의 선택
+            // pregnant : 1, // 임신여부(임신이면 1, 아니면 0)
+            temperature : temperature,
+            weight : weight,
+            height : height,
+            blood_pressure_high : bloodPressureHigh,   
+            blood_pressure_low : bloodPressureLow,
+            blood_sugar : bloodSugar
+        }
 
         // dispatch(registerPatient(body))
         //     .then(response => {
@@ -162,7 +178,7 @@ function Content(){
                         </div>
                     </div>
 
-                    <form>
+                    <form id="reception">
                         <div className="receptionContentWrapper">
                             <div className="insuranceTitle">
                                 <span className="title">보험 정보</span>
@@ -190,39 +206,50 @@ function Content(){
                             <div className="receptionInfoWrapper">
                                 <div className="receptionInfoTitle">
                                     <span className="patientInfoTitle">방문 목적*</span>
-                                    <select className="infoButton" name="purspose" onChange={handleInput}>
-                                        <option value="NHI">일반 진료</option>
-                                    </select>
+                                    <button className="infoButton" type="button">
+                                        일반 진료
+                                    </button>
+                                    {/* <select className="infoButton" name="purpose" value={} onChange={handleInput}>
+                                        <option value="default">선택하세요</option>
+                                        <option value="general">일반 진료</option>
+                                    </select> */}
                                 </div>
                                 <div className="receptionInfoTitle">
-                                    <span className="patientInfoTitle">세부목적</span>
+                                    <span className="patientInfoTitle">세부 목적</span>
                                         <input id="purposeContent"
                                             className="detailPurpose"
                                             type="string"
-                                            name="purposeContent"
-                                            // value={purpose}
+                                            name="purposeDetail"
+                                            value={purposeDetail}
                                             onChange={handleInput}
-                                            />
+                                        />
                                 </div>
                                 <div className="receptionInfoTitle">
                                     <span className="patientInfoTitle">담당의 선택*</span>
-                                    <select className="infoButton" name="doctor" onChange={handleInput}>
-                                        <option value="park">박의사</option>
+                                    <select className="infoButton" name="doctorName" value={selected} onChange={handleSelect}>
+                                        <option value="default">
+                                            선택하세요
+                                        </option>
+                                        {doctorList.map(item => (
+                                            <option value={item} key={item}>
+                                                {item}
+                                            </option>
+                                        ))}
+                                        {/* <option value="park">박의사</option>
                                         <option value="kim">김의사</option>
-                                        <option value="lee">이의사</option>
+                                        <option value="lee">이의사</option> */}
                                     </select>
                                 </div>
-                                <div className="receptionInfoTitle">
+                                {/* <div className="receptionInfoTitle">
                                     <div className="prergnantWrapperr">
-                                        <span className="patientInfoTitle">임신여부</span>
-                                        <input type="checkbox" id="id" onChange={handleInput}/>
-                                        <label htmlFor="id"></label>
-                                        <label htmlFor="id" className="pregnant" style={{fontSize:"0.9em", color:"black"}} >임산부</label>  
+                                        <span className="patientInfoTitle">임신 여부</span>
+                                        <input type="checkbox" id="pregnant" value={1} onChange={handleInput}/>
+                                        <label htmlFor="pregnant" className="pregnant" style={{fontSize:"0.9em", color:"black"}} >임산부</label>  
                                     </div>
+                                </div> */}
                             </div>
                         </div>
 
-                        </div>
                         <div className="receptionContentWrapper">
                             <span className="title">바이탈 싸인</span>
                             <div className="receptionInfoWrapper">
@@ -232,8 +259,8 @@ function Content(){
                                         <input id="temperatureContent"
                                             className="vitalInput"
                                             type="number"
-                                            name="temperatureContent"
-                                            // value={purpose}
+                                            name="temperature"
+                                            value={temperature}
                                             onChange={handleInput}
                                         />
                                         <hr className="divider"></hr>
@@ -246,8 +273,8 @@ function Content(){
                                         <input id="weightContent"
                                                 className="vitalInput"
                                                 type="number"
-                                                name="weighteContent"
-                                                // value={purpose}
+                                                name="weight"
+                                                value={weight}
                                                 onChange={handleInput}
                                         /> 
                                         <hr className="divider"></hr> 
@@ -260,8 +287,8 @@ function Content(){
                                         <input id="heightContent"
                                                 className="vitalInput"
                                                 type="number"
-                                                name="heightContent"
-                                                // value={purpose}
+                                                name="height"
+                                                value={height}
                                                 onChange={handleInput}
                                         />   
                                         <hr className="divider"></hr>   
@@ -274,21 +301,21 @@ function Content(){
                                         <input id="bloodPressureHighContent"
                                                 className="bloodPressureHighInput"
                                                 type="number"
-                                                name="bloodPressureHighContent"
+                                                name="bloodPressureHigh"
                                                 placeholder="최고"
-                                                // value={purpose}
+                                                value={bloodPressureHigh}
                                                 onChange={handleInput}
                                         />
                                         <input id="bloodPressureLowContent"
                                                 className="bloodPressureLowInput"
                                                 type="number"
-                                                name="bloodPressureLowContent"
+                                                name="bloodPressureLow"
                                                 placeholder="최저"
-                                                // value={purpose}
+                                                value={bloodPressureLow}
                                                 onChange={handleInput}
                                         />
                                         <hr className="divider"></hr>
-                                        <span className="vitalSign">129ㅤ/ㅤ87</span>
+                                        <span className="vitalSign">129&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;87</span>
                                     </div>
                                 </div>
                                 <div className="receptionInfoTitle">
@@ -297,8 +324,8 @@ function Content(){
                                         <input id="bloodSugarContent"
                                                 className="vitalInput"
                                                 type="number"
-                                                name="bloodSugarContent"
-                                                // value={purpose}
+                                                name="bloodSugar"
+                                                value={bloodSugar}
                                                 onChange={handleInput}
                                         />
                                         <hr className="divider"></hr>
@@ -313,7 +340,7 @@ function Content(){
                         <Link to = "/administration">
                             <button className="receptionBtn">취소</button>
                         </Link>
-                        <button className="receptionBtn">접수</button>
+                        <button className="receptionBtn" onClick={ onSubmitHandler } form="reception" >접수</button>
                     </div>
                 </div>
             </div>
