@@ -44,8 +44,11 @@ function useAsync(callback, deps = []) {
 
   useEffect(() => {
     fetchData();
+    // eslint 설정을 다음 줄에서만 비활성화
+    // eslint-disable-next-line
   }, deps);
 
   return [state, fetchData];
 }
+
 export default useAsync;

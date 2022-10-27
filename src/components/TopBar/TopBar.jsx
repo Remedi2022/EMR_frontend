@@ -1,4 +1,5 @@
-import './TopBar.css'
+import './TopBar.css';
+import Clock from '../../Clock/nowTime.jsx';
 
 export default function TopBar() {
     return (
@@ -19,6 +20,7 @@ export default function TopBar() {
                         <img className='userIcon' src={ process.env.PUBLIC_URL + '/icons/user50_9AACCF.png' } />
                     </div>
                 </div>
+                <div className="nowTime"><Clock /></div>
                 <div className="topRight">noti. & profile</div>
             </div>
         </div>

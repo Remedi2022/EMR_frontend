@@ -6,13 +6,14 @@ import Home from './pages/Home';
 import Administration from './pages/Administration'
 import Examination from './pages/Examination'
 import Login from './pages/Login';
-// import SignUp from './pages/SignUp';
 import Payment from './pages/Payment';
 import Chart from './pages/Chart'
 import SignUp from './pages/SignUp';
-import Users from './_api/TestMD';
+import MDs from './_api/TestMD';
 import Reception from './pages/Reception';
-import Clock from './Clock/Clock';
+import PatientList from './components/PatientList/PatientList';
+import Users from './_api/Users';
+import TestMDs from './_api/TestMDs';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Routes>
 
             <Route path="/" element={<Home/>}></Route>
+            <Route path="/test" element={<TestMDs/>}></Route>
             <Route path="/administration/*" element={<Administration />}></Route>
             <Route path="/examination/*" element={<Examination />}></Route>
             <Route path="/payment/*" element={<Payment />}></Route>
