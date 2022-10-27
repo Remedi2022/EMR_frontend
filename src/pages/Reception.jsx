@@ -7,7 +7,7 @@ import "moment/locale/ko";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from 'react-router-dom';
-import Clock from '../Clock/Clock.jsx';
+import Clock from '../Clock/checkedTime.jsx';
 
 // search 후 선택한 patient 넘겨받음
 let patient = {
@@ -19,9 +19,7 @@ let patient = {
     "address" : "와우산로 94"
 }
 
-function refreshPage(){
-    window.location.reload(false);
-}
+
 
 function Content(){
     // var pid = patient.pid
@@ -188,7 +186,7 @@ function Content(){
                                     <span className="qualificationDate">자격일자(<Clock />) 조회됨</span>
                                     <img className='CheckIcon' src={ process.env.PUBLIC_URL + '/icons/Check.png' } />
                                 </div>
-                                <img className='RefreshIcon' onClick={refreshPage} src={ process.env.PUBLIC_URL + '/icons/159061.png' } />
+                                <img className='RefreshIcon' src={ process.env.PUBLIC_URL + '/icons/159061.png' } />
                             </div>
                             <div className="receptionInfoWrapper">
                                 <div className="receptionInfoTitle">
