@@ -92,19 +92,20 @@ function Content() {
                                 아토베리어 크림 MD
                             </li>
                             <div className="amountList">
-                                {/* <input className="amount">1</input> */}
+                                <input className="amountInput" value="1" min="0"></input>
+                                <input className="amountInput" value="1" min="0"></input>
+                                <input className="amountInput" value="1" min="0"></input>
                                 <span className="amount">용법</span>
                             </div>
                         </div>
-                        
                         <div className="MDPrescription">
                             <li className='MDItem'>
                                 아토베리어 로션 MD
                             </li>
                             <div className="amountList">
-                                <span className="amount">1</span>
-                                <span className="amount">1</span>
-                                <span className="amount">1</span>
+                                <input className="amountInput" value="1" min="0"></input>
+                                <input className="amountInput" value="1" min="0"></input>
+                                <input className="amountInput" value="1" min="0"></input>
                                 <span className="amount">용법</span>
                             </div>
                         </div>

@@ -5,14 +5,14 @@ import PatientList from "../components/PatientList/PatientList"
 import Moment from 'moment';
 import "moment/locale/ko";
 import { Link } from 'react-router-dom';
-import Clock from '../Clock/Clock.jsx';
+import Clock from '../Clock/checkedTime.jsx';
 
 
 function Content(){
 
-    function refreshPage(){
-        window.location.reload(false);
-    }
+    // function refreshPage(){
+    //     window.location.reload(false);
+    // }
 
     return(
         <div className="content">
@@ -71,7 +71,7 @@ function Content(){
                                 <span className="qualificationDate">자격일자(<Clock />) 조회됨</span>
                                 <img className='CheckIcon' src={ process.env.PUBLIC_URL + '/icons/Check.png' } />
                             </div>
-                            <img className='RefreshIcon' onClick={refreshPage} src={ process.env.PUBLIC_URL + '/icons/159061.png' } />
+                            <img className='RefreshIcon' src={ process.env.PUBLIC_URL + '/icons/159061.png' } />
                         </div>
                         <div className="receptionInfoWrapper">
                             <div className="receptionInfoTitle">
@@ -111,7 +111,7 @@ function Content(){
                                 <div className="prergnantWrapperr">
                                     <span className="patientInfoTitle">임신여부</span>
                                     <input type="checkbox" id="id"/>
-                                    <label htmlFor="id"></label>
+                                    <label htmlFor="id" ></label>
                                     <label htmlFor="id" className="pregnant" style={{fontSize:"0.9em", color:"black"}} >임산부</label>  
                                 </div>
                         </div>
@@ -127,6 +127,7 @@ function Content(){
                                     <input id="temperatureContent"
                                         className="vitalInput"
                                         type="number"
+                                        min="35" max="45"
                                         name="temperatureContent"
                                         // value={purprose}
                                         // onChage={onPurposeHandler}
@@ -141,6 +142,7 @@ function Content(){
                                     <input id="weightContent"
                                             className="vitalInput"
                                             type="number"
+                                            min="1" max="150"
                                             name="weighteContent"
                                             // value={purprose}
                                             // onChage={onPurposeHandler}
@@ -155,6 +157,7 @@ function Content(){
                                     <input id="heightContent"
                                             className="vitalInput"
                                             type="number"
+                                            min="1" max="200"
                                             name="heightContent"
                                             // value={purprose}
                                             // onChage={onPurposeHandler}
@@ -166,23 +169,10 @@ function Content(){
                             <div className="receptionInfoTitle">
                                 <span className="patientInfoTitle">혈압</span>
                                 <div className="vitalContentWrapper">
-                                    <input id="bloodPressrueContent"
-                                            className="vitalInput"
-                                            type="number"
-                                            name="bloodPressureContent"
-                                            // value={purprose}
-                                            // onChage={onPurposeHandler}
-                                    />
-                                    <hr className="divider"></hr>
-                                    <span className="vitalSign">86</span>
-                                </div>
-                            </div>
-                            <div className="receptionInfoTitle">
-                                <span className="patientInfoTitle">혈당</span>
-                                <div className="vitalContentWrapper">
                                     <input id="bloodsugarContent"
                                             className="bloodsugarInput"
                                             type="number"
+                                            max="220"
                                             name="bloodsugarContent"
                                             placeholder="최고"
                                             // value={purprose}
@@ -191,6 +181,7 @@ function Content(){
                                     <input id="bloodsugarContent"
                                             className="bloodsugarInput"
                                             type="number"
+                                            min="60"
                                             name="bloodsugarContent"
                                             placeholder="최저"
                                             // value={purprose}
@@ -198,6 +189,21 @@ function Content(){
                                     />
                                     <hr className="divider"></hr>
                                     <span className="vitalSign">129ㅤ/ㅤ87</span>
+                                </div>
+                            </div>
+                            <div className="receptionInfoTitle">
+                                <span className="patientInfoTitle">혈당</span>
+                                <div className="vitalContentWrapper">
+                                    <input id="bloodPressrueContent"
+                                            className="vitalInput"
+                                            type="number"
+                                            min="10" max="300"
+                                            name="bloodPressureContent"
+                                            // value={purprose}
+                                            // onChage={onPurposeHandler}
+                                    />
+                                    <hr className="divider"></hr>
+                                    <span className="vitalSign">86</span>
                                 </div>
                             </div>
                         </div>
