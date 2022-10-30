@@ -177,12 +177,14 @@ function Content() {
 }
 
 export default function Payment() {
+    const title = "원무"
+
     return (
         <div className="Payment">
             <div className="container">
                 <LeftNav />
                 <div className='topbarContainer'>
-                    <TopBar />
+                    <TopBar title={title}/>
                     <div className='patientlistContainer'>
                         <PatientList/>
                         <Content />
