@@ -4,6 +4,7 @@ import TopBar from "../components/TopBar/TopBar"
 import PatientList from "../components/PatientList/PatientList"
 import { Link } from 'react-router-dom';
 import UseModal from '../hooks/UseModal';
+import SearchBar from '../components/SearchBar/SearchBar';
 
 
 
@@ -12,12 +13,15 @@ function Content() {
         <div className="content">
             <div className="homeMenu">
                 <div class="Searchbar">
+                    <SearchBar placeholder="이름으로 검색" />
+                    {/*
                     <form className="Form" action="/" method="GET">
                         <input className="Search-field" type="search" placeholder="이름으로 환자 검색"/>
                         <button className="Search-button" type="submit">
                             <img className='SearchIcon' src={ process.env.PUBLIC_URL + '/icons/search50_999.png' } />
                         </button>
                     </form>
+                    */}           
                 </div>
                 <div className="homeMenuItem" id="long">
                     <span className="homeMenuItemTitle">수납실</span>
