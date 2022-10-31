@@ -11,7 +11,7 @@
     background-color:white;
     border-radius: 5%;
     width: 390px;
-    height: 500px;
+    height: 600px;
 }
 
 .signUpContent{
@@ -24,6 +24,28 @@
     /* padding-bottom: 1.5px; */
     /* align-items: flex-start; */
 /* } */
+
+.inputBoxHospitalName input{
+    border-style: solid;
+    border-radius: 5px;
+    border-color:  #e6e6e6;
+    border-width: 1px;
+    width: 310px;
+    height:33px;
+    margin:0px;
+    padding: 0px;
+    text-indent: 2em;
+    font-size: 14px;
+    background-image: url('/public/icons/hospital-building.png');
+    background-repeat: no-repeat;
+    background-size: 17px;
+    background-position: 5px;
+}
+    .inputBoxHospitalName input:focus {
+        /* border-style: bold; */
+        border-color:#BDBDBD;
+        outline: none;  
+    }
 
 .inputBoxHospital input{
     border-style: solid;
@@ -134,7 +156,12 @@
 
 
 .buttonWrapperSignUp{
-    padding-top: 48px;
+    padding-top: 40px;
+}
+
+.inputBoxHospitalName{
+    padding-top: 9px;
+    margin: 0px;
 }
 
 .inputBoxHospital{

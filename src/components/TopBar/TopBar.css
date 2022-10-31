@@ -85,6 +85,8 @@
 }
 
 .nowTime{
-    padding-left: 550px;
+    /* padding-left: 550px; */
     font-size: 0.8rem;
+    margin-left: 600px;
+    
 }
