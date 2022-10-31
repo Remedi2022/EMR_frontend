@@ -158,7 +158,7 @@ function Content() {
                     <form className="form" action="/" method="GET">
                         <input className="md-search-field" type="search" placeholder="오더세트 검색"/>
                         <button className="search-button" type="submit">
-                            <img className='searchIcon' src={ process.env.PUBLIC_URL + '/icons/search50_999.png' } />
+                            <img className='md-searchIcon' src={ process.env.PUBLIC_URL + '/icons/search50_999.png' } />
                         </button>
                     </form>
                     <div className="mdHistory">

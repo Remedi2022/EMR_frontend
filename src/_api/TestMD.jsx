@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import useAsync from './useMDAsync';
+import useMDAsync from './useMDAsync';
 
 async function getUser(id) {
   const response = await axios.get(
@@ -9,10 +9,10 @@ async function getUser(id) {
   return response.data;
 }
 
-function User({ id }) {
-  const [state] = useAsync(() => getUser(id), [id]);
+function TestMD({ id }) {
+  const [state] = useMDAsync(() => getUser(id), [id]);
   const { loading, data: user, error } = state;
-
+  console.log("state는 :",state);
   if (loading) return <div>로딩중..</div>;
   if (error) return <div>에러가 발생했습니다</div>;
   if (!user) return null;
@@ -27,4 +27,4 @@ function User({ id }) {
   );
 }
 
-export default User;
+export default TestMD;

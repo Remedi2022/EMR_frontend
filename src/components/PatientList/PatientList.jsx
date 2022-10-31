@@ -17,7 +17,7 @@ export default function PatientList() {
     useEffect(() => {
         getVisits();
     }, []); //한 번만 동작함
-    console.log(visits)
+    // console.log(visits)
 
     return (
         <div className='patientlist'>

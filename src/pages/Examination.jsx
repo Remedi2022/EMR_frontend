@@ -39,14 +39,14 @@ function Content() {
     return (
         <div className="content">
             <div className="homeMenu">
-                <div class="Searchbar">
+                {/* <div class="Searchbar">
                     <form className="Form" action="/" method="GET">
                         <input className="Search-field" type="search" placeholder="이름으로 환자 검색"/>
                         <button className="Search-button" type="submit">
                             <img className='SearchIcon' src={ process.env.PUBLIC_URL + '/icons/search50_999.png' } />
                         </button>
                     </form>
-                </div>
+                </div> */}
                 
                 <div className="homeMenuItem" id="long" >
                     <span className="homeMenuItemTitle">진료실</span>

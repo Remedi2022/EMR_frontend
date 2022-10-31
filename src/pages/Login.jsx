@@ -20,8 +20,8 @@ export default function Login() {
     }
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        console.log('EMAIL:', email)
-        console.log('PW:', password)
+        // console.log('EMAIL:', email)
+        // console.log('PW:', password)
         if (!email) {
             return alert("email을 입력하세요.");
         }
@@ -37,7 +37,7 @@ export default function Login() {
         // dispatch(loginUser(body))
         dispatch(loginUser(body))
             .then(response => {
-                console.log('DISPATCH:', response)
+                // console.log('DISPATCH:', response)
                 if(response.payload.success) {
                     navigate('/');
             }   else {
