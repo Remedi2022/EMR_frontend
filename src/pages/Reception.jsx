@@ -6,6 +6,8 @@ import Moment from 'moment';
 import "moment/locale/ko";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useDispatch } from 'react-redux';
+import { registerPatient } from '../_actions/user_action';
 import { Link } from 'react-router-dom';
 import Clock from '../Clock/checkedTime.jsx';
 import { useParams } from 'react-router-dom';
@@ -22,12 +24,19 @@ import { useParams } from 'react-router-dom';
 
 // props로 환자 기본 정보(이름, 주민등록번호, 대표연락처, 비상연락처, 주소) 받아옴
 function Content(props) {
+    const dispatch = useDispatch();
     const patientInfo = props.patientInfo
     const [loading, setLoading] = useState(true);
     // 환자 Vital Sign
     const [patientVS, setPatientVS] = useState([]);
     const doctorList = ["박의사", "김의사", "최의사"];
-    const [selected, setSelected] = useState("");
+    const [selected, setSelected] = useState(""); //의사
+
+    const convertDoctorID = {
+        박의사: "45316968-2c70-4e9a-99bd-eda5da1607ba",
+        김의사: "4a529095-ae33-49aa-97bc-6a5998df8c1e",
+        최의사: "5870c689-eaff-4595-bc5d-3d9a227464e8",
+    };
 
     // console.log('patientInfo ', patientInfo)
     const getPatientVS = async() => {
@@ -49,17 +58,17 @@ function Content(props) {
 
     const [inputValue, setInputValue] = useState({
         // 사용할 문자열들을 저장하는 객체 형채로 관리
-        benefitType: "건강 보험",
-        purpose: "일반 진료",
+        benefitType: "건강보험",
+        purpose: "일반진료",
         purposeDetail : "", // 세부목적
         // doctorName : "", // 담당의 선택
         // pregnant : "", // 임신여부(임신이면 1, 아니면 0)
-        temperature : "",
-        weight : "",
-        height : "",
-        bloodPressureHigh : "",   
-        bloodPressureLow : "",
-        bloodSugar : "",
+        temperature : null,
+        weight : null,
+        height : null,
+        bloodPressureHigh : null,   
+        bloodPressureLow : null,
+        bloodSugar : null,
     });
     
     const {
@@ -93,18 +102,19 @@ function Content(props) {
         // console.log('자격구분:', benefitType)
         // console.log('방문목적:', purpose)
         
-        // if (!pName) {
-        //     return alert("이름를 입력하세요.");
-        // }
-        // else if (!RRN1 || !RRN2) {
-        //     return alert("주민등록번호를 입력하세요.");
-        // }
+        if (!selected) {
+            return alert("의사를 선택하세요.");
+        }
+        else if (!temperature || !weight || !height || !bloodPressureHigh || !bloodPressureLow || !bloodSugar) {
+            return alert("바이탈싸인을 입력하세요.");
+        }
 
         let body = {
-            benefit_type: benefitType,
-            purpose: purpose,
+            patient_id : patientInfo.pid,
+            benefit_type : benefitType,
+            purpose : purpose,
             purpose_detail : purposeDetail, // 세부목적
-            doctor_name : selected, // 담당의 선택
+            doctor_id : convertDoctorID[selected], // 담당의 선택
             // pregnant : 1, // 임신여부(임신이면 1, 아니면 0)
             temperature : temperature,
             weight : weight,
@@ -114,18 +124,17 @@ function Content(props) {
             blood_sugar : bloodSugar
         }
 
-        // dispatch(registerPatient(body))
-        //     .then(response => {
-        //         console.log('DISPATCH:', response)
-        //         if(response.payload.success) {
-        //             console.log(response.payload.message);
-        //             alert('환자가 접수되었습니다.');
-        //             resetModal();
-        //             //환자 접수 성공 메세지
-        //     }   else {
-        //             alert('환자 접수에 실패하였습니다.')
-        //     }
-        // })
+        dispatch(registerPatient(body))
+            .then(response => {
+                // console.log('DISPATCH:', response)
+                if(response.payload.success) {
+                    console.log(response.payload.message);
+                    alert('환자가 접수되었습니다.');
+                    //환자 접수 성공 메세지
+            }   else {
+                    alert('환자 접수에 실패하였습니다.')
+            }
+        })
     }
 
     const convertGender = () => {
@@ -203,7 +212,6 @@ function Content(props) {
                                 <span className="patientName" style={{fontSize:"1.1rem"}}>{patientInfo.name}</span>
                                 <sapn className="patientInfo">{convertGender()},&nbsp;</sapn>
                                 <span className="patientInfo">만 {calcAge()}세</span>
-                                {/* <span className="patientInfo">여, 30세</span> */}
                             </div>
                         </div>
                         <div>
@@ -369,7 +377,7 @@ function Content(props) {
                                                 onChange={handleInput}
                                         />
                                         <hr className="divider"></hr>
-                                        <span className="vitalSign">{patientVS ? patientVS.bloodPressureHigh : null}&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;{patientVS ? patientVS.bloodPressureLow : null}</span>
+                                        <span className="vitalSign">{patientVS ? patientVS.blood_pressure_high : null}&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;{patientVS ? patientVS.blood_pressure_low : null}</span>
                                     </div>
                                 </div>
                                 <div className="receptionInfoTitle">
@@ -383,7 +391,7 @@ function Content(props) {
                                                 onChange={handleInput}
                                         />
                                         <hr className="divider"></hr>
-                                        <span className="vitalSign">{patientVS ? patientVS.bloodSugar : null}</span>
+                                        <span className="vitalSign">{patientVS ? patientVS.blood_sugar : null}</span>
                                     </div>
                                 </div>
                             </div>

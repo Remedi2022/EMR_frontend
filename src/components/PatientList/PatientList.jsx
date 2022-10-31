@@ -32,7 +32,7 @@ export default function PatientList() {
                             <ul className='patientlistList'>
                                 {visits.map((visit) => (
                                     <Visit
-                                        key={visit.pid}
+                                        key={visit.id}
                                         type={1}
                                         status={visit.status}
                                         name={visit.name}
@@ -51,7 +51,7 @@ export default function PatientList() {
                             <ul className='patientlistList'>
                                 {visits.map((visit) => (
                                     <Visit
-                                        key={visit.pid}
+                                        key={visit.id}
                                         type={2}
                                         status={visit.status}
                                         name={visit.name}
@@ -69,7 +69,7 @@ export default function PatientList() {
                             ) : (
                                 <ul className='patientlistList' id="todaylistlist">
                                     {visits.map((visit) => (
-                                        <li className='patientlistItem' key={visit.pid}>
+                                        <li className='patientlistItem' key={visit.id}>
                                             {visit.name}
                                         </li>
                                     ))}
