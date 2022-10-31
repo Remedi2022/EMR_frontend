@@ -22,7 +22,8 @@ function Content() {
     };
     useEffect(() => {
         getVisits();
-    }, []); //한 번만 동작
+    }, []); //한 번만 동작함
+    // console.log(visits)
 
     //환자 리스트 중 status가 2인 사람 중 checkup_time이 가장 빠른 사람만 구하기
     useEffect(() => {
@@ -31,6 +32,7 @@ function Content() {
           (a, b) => Date.parse(a.checkup_time) - Date.parse(b.checkup_time)
         );
         setFirstVisit(tmpFirstVisit)
+        // console.log(firstVisit);
     }, [visits])
     
     return (

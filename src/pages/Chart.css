@@ -148,7 +148,41 @@
  .divider {
      border: 1px solid #d9e6d3;
  }
+
+
+
+ .diagnoisRecord{
+    display: flex;
+    justify-content: center;
+ }
+ .record{
+    margin-top: 5px;
+    margin-bottom: 7px;
+    width: 100%;
+    height: 15vh;
+    display: block;
+    resize: none;
+    border-radius: 8px;
+    border: 1px solid #e6e6e6;
+    outline-color: #e3e3e3;
+}
+
+.chartRecord{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 100%;
+    height: 10vh;
+    display: block;
+    resize: none;
+    border-radius: 8px;
+    border: 1px solid #e6e6e6;
+    outline-color: #e3e3e3;
+ }
  
+.MDPrescriptionWrapper{
+    margin-top: 10px;
+}
+
  .MDPrescription{
      display: flex;
      align-items: center;    
@@ -175,13 +209,13 @@
  }
  
  .amountInput{
-    width: 20px;
+    width: 35px;
     height: 10px;
     margin-left: 10px;
     border-top: none;
     border-left: none;
     border-right: none;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid #d9e6d3;
 
  }
 

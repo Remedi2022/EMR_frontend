@@ -186,3 +186,12 @@
     /* align-items: center; */
     justify-content: space-between;
 }
+
+.md-searchIcon{
+    background: transparent;
+    border: none;
+    outline: none;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
