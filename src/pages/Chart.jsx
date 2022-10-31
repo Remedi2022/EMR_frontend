@@ -6,7 +6,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import VitalSign from '../components/Axios/VitalSign';
 import useAsync from '../_api/useAsync';
-
+import { Link } from 'react-router-dom';
 
 
 async function getMD(id) {
@@ -35,7 +35,7 @@ function Content() {
 
     const inputItems = (md) => {
         const tmpItems = [...items]
-        console.log(tmpItems.length)
+        // console.log(tmpItems.length)
         for (let i = 0; i < tmpItems.length; i++) {
             if (tmpItems[i].id === md.id) {
                 return
@@ -49,6 +49,9 @@ function Content() {
     if (error) return <div> MDList에서 에러가 발생했습니다</div>;
     if (!mdlist) return null;
     
+    
+
+
     function MDList(){
         // const [mdId, setMDId] = useState(null);
         // const [state, refetch] = useAsync(getMDList, [], true);
@@ -151,7 +154,7 @@ function Content() {
                     </span>
                 </div>
 
-                <div className="chartWrapper">
+                <form id="chart" className="chartWrapper">
                     <span className="title">🖊 2022-08-03&nbsp;</span>
                     <span>김의사</span>
                     <div className="chartContentWrapper">
@@ -163,19 +166,16 @@ function Content() {
                     </div>
                     <div className="chartContentWrapper">
                         <span className="title">진단 및 처방</span>
-                        {/* <form className="form" action="/" method="GET">
-                            <input className="order-search-field" type="search" placeholder="오더 검색"/>
-                            <button className="search-button" type="submit">
-                                <img className='searchIcon' src={ process.env.PUBLIC_URL + '/icons/search50_999.png' } />
-                            </button>
-                        </form> */}
                         <hr className="divider"></hr>
+                        <div className="diagnoisRecord">
+                            <textarea className="chartRecord"></textarea>
+                        </div>
                         <div className="diagnoisRecord">
                             <textarea className="record"></textarea>
                         </div>
                         <select className="infoButton" name="fee">
-                                <option value="park">초진진찰료</option>
-                                <option value="kim">재진진찰료</option>
+                                <option value="first">초진진찰료</option>
+                                <option value="notfirst">재진진찰료</option>
                         </select>
                         <div className="MDPrescriptionWrapper">
                         {/* {l?l.map((item) =>{
@@ -234,8 +234,6 @@ function Content() {
                         }
                             
                         </div>
-
-
                         {/* {l?l.map((item) =>{
                             return(
                                 <div className="MDPrescription">
@@ -254,7 +252,7 @@ function Content() {
                         } */}
                             
                     </div>
-                </div>
+                </form>
 
                 <div className="MDList">
                     <div className="MDTitle">
@@ -264,7 +262,7 @@ function Content() {
                     <form className="form" action="/" method="GET">
                         <input className="md-search-field" type="search" placeholder="오더세트 검색"/>
                         <button className="search-button" type="submit">
-                            <img className='searchIcon' src={ process.env.PUBLIC_URL + '/icons/search50_999.png' } />
+                            <img className='md-searchIcon' src={ process.env.PUBLIC_URL + '/icons/search50_999.png' } />
                         </button>
                     </form>
                     

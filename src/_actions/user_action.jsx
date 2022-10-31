@@ -21,7 +21,7 @@ export async function signupUser(dataToSubmit) {
     const request = await axios.post('http://3.35.231.145:8080/api/auth/signup', dataToSubmit)
         // .then( response => console.log('AXIOS:', response) )
         // .then( response => response.data )
-    console.log(request)
+    // console.log(request)
     //request를 reducer에 넘겨줌
     return {
         type: SIGNUP_USER,

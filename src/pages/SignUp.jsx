@@ -40,13 +40,13 @@ export default function SignUp(){
     }
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        console.log('NAME:', name)
-        console.log('LICENSE', license)
-        console.log('HOSPITALNAME', hospitalName)
-        console.log('HOSPITALCODE', hospitalCode)
-        console.log('BUSINNESSREGISTRATIONNUM',businessRegistrationNum)
-        console.log('EMAIL:', email)
-        console.log('PW:', password)
+        // console.log('NAME:', name)
+        // console.log('LICENSE', license)
+        // console.log('HOSPITALNAME', hospitalName)
+        // console.log('HOSPITALCODE', hospitalCode)
+        // console.log('BUSINNESSREGISTRATIONNUM',businessRegistrationNum)
+        // console.log('EMAIL:', email)
+        // console.log('PW:', password)
         // if(password !== confirmPassword) {
         //     return alert('비밀번호와 비밀번호 확인은 같아야 합니다.');
         // }
@@ -87,7 +87,7 @@ export default function SignUp(){
         // dispatch(loginUser(body))
         dispatch(signupUser(body))
             .then(response => {
-                console.log('DISPATCH:', response)
+                // console.log('DISPATCH:', response)
                 if(response.payload.data.success) {
                     navigate('/login');
             }   else {
