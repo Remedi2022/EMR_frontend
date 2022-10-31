@@ -4,9 +4,9 @@ import TopBar from "../components/TopBar/TopBar"
 import PatientList from "../components/PatientList/PatientList"
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import VitalSign from '../components/Axios/VitalSign';
+// import VitalSign from '../components/Axios/VitalSign';
 import useAsync from '../_api/useAsync';
-import { Link } from 'react-router-dom';
+import { isRouteErrorResponse, Link } from 'react-router-dom';
 
 
 async function getMD(id) {
@@ -21,8 +21,15 @@ async function getMDList() {
       'http://3.35.231.145:8080/api/md/list'
     );
     return response.data.result;
-  }
+}
 
+async function registerChart({ chartInfo }) {
+    const response = await axios.post(
+        'http://3.35.231.145:8080/api/chart/register',
+        chartInfo
+    );
+    return response.status
+}
 
 function Content() {
     const [mdId, setMDId] = useState(null);
@@ -31,6 +38,44 @@ function Content() {
     
     // const [loading, setLoading] = useState(false);
     // const [error, setError] = useState(null);
+    const [examination, setExamination] = useState('')
+    const [diagnosis, setDiagnosis] = useState('')
+    const [prescription, setPrescription] = useState('')
+    const [feeOption, setFeeOption] = useState(1)
+    const [prescribedMDList, setPrescribedMDList] = useState([])
+
+    const changeRecord = (e) => {
+        setExamination(e.target.value)
+    }
+
+    const changeDiagnosis = (e) => {
+        setDiagnosis(e.target.value)
+    }
+
+    const changePrescription = (e) => {
+        setPrescription(e.target.value)
+    }
+
+    const changeFeeOption = (e) => {
+        setFeeOption(e.target.value)
+    }
+
+    const submitChart = () => {
+        const chartInfo = {
+            // 변수명 같으면 옆에 따로 안써도 알아서 받아와짐
+            vid: '',
+            pid: '',
+            doctor: '',
+            examination,
+            diagnosis,
+            prescription,
+            consultation_fee: feeOption
+        }
+        
+        registerChart(chartInfo)
+    }
+
+
     const [items, setItems] = useState([]);
 
     const inputItems = (md) => {
@@ -161,19 +206,23 @@ function Content() {
                         <span className="title">진료 기록</span>
                         <hr className="divider"></hr>
                         <div className="diagnoisRecord">
-                            <textarea className="record"></textarea>
+                            <textarea className="record" 
+                                    name="recordContent" onChange={(e) => changeRecord(e)} >
+                                    
+
+                            </textarea>
                         </div>
                     </div>
                     <div className="chartContentWrapper">
                         <span className="title">진단 및 처방</span>
                         <hr className="divider"></hr>
                         <div className="diagnoisRecord">
-                            <textarea className="chartRecord"></textarea>
+                            <textarea className="chartRecord" onChange={(e) => changeDiagnosis(e)}></textarea>
                         </div>
                         <div className="diagnoisRecord">
-                            <textarea className="record"></textarea>
+                            <textarea className="record" onChange={(e) => changePrescription(e)}></textarea>
                         </div>
-                        <select className="infoButton" name="fee">
+                        <select className="infoButton" name="fee" onChange={(e) => changeFeeOption(e)} >
                                 <option value="first">초진진찰료</option>
                                 <option value="notfirst">재진진찰료</option>
                         </select>
