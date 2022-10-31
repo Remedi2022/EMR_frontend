@@ -43,9 +43,9 @@ function Content(props) {
     }, []); //한 번만 동작함
     // console.log(patientVS)
 
-    // useEffect(() => {
-    //     console.log('VS : ', patientVS)
-    // }, [patientVS])
+    useEffect(() => {
+        console.log('VS : ', patientVS)
+    }, [patientVS])
 
     const [inputValue, setInputValue] = useState({
         // 사용할 문자열들을 저장하는 객체 형채로 관리
@@ -420,11 +420,12 @@ export default function Reception() {
     }
 
     useEffect(() => {
+        // console.log('get patient info')
         getPatientInfo()
     }, [])
 
     // useEffect(() => {
-    //     console.log(patientInfo)
+    //     console.log('patientInfo : ', patientInfo)
     // }, [patientInfo])
 
     // const patientInfo = {
@@ -450,7 +451,7 @@ export default function Reception() {
                     <div className='patientlistContainer'>
                         <PatientList/>
                         {
-                            patientInfo ? <Content patientInfo={patientInfo}/> : <Content />
+                            patientInfo ? <Content patientInfo={patientInfo}/> : null
                         }
                     </div>
                 </div>
