@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./SearchBar.css";
 import axios from 'axios';
-import SearchIcon from "@material-ui/icons/Search";
-import CloseIcon from "@material-ui/icons/Close";
+import { useNavigate } from "react-router-dom";
+// import SearchIcon from "@material-ui/icons/Search";
+// import CloseIcon from "@material-ui/icons/Close";
 import Reception from "../../pages/Reception"
 
 function SearchBar({ placeholder}) {
@@ -26,6 +27,7 @@ function SearchBar({ placeholder}) {
         );
         setUsers(response.data); // 데이터는 response.data 안에 들어있습니다.
       } catch (e) {
+
         setError(e);
       }
       setLoading(false);
@@ -57,6 +59,13 @@ function SearchBar({ placeholder}) {
     setWordEntered("");
   };
 
+  // const navigate = useNavigate();
+
+  // const receivePatient = () => {
+  //   navigate('/reception');
+  //   // 클릭한 환자 정보를 <Reception/>에 props로 넘겨야 함
+  // }
+
   return (
     <div className="search">
       <div className="searchInputs">
@@ -69,9 +78,17 @@ function SearchBar({ placeholder}) {
         />
         <div className="searchIcon">
           {filteredData.length === 0 ? (
-            <SearchIcon />
+            // <SearchIcon />
+            <div>
+              <button className="Search-button" type="submit">
+                <img className='SearchIcon' src={ process.env.PUBLIC_URL + '/icons/search50_999.png' } />
+              </button>
+            </div>
           ) : (
-            <CloseIcon id="clearBtn" onClick={clearInput} />
+            <button className="clearBtn" onClick={ clearInput }>
+              &times;
+            </button>
+            // <CloseIcon id="clearBtn" onClick={clearInput} />
           )}
         </div>
       </div>
@@ -84,12 +101,12 @@ function SearchBar({ placeholder}) {
                 target="_blank">
                 <button
                   className="dataItemButton"
-                  onClick={() => {setPatientInfo(value);}}>
+                  onClick={() => {setPatientInfo(value); }}>
                   <p>{value.name} </p>
                   <p>({value.phone}) </p>
                 </button>
-                <Reception patientInfo={patientInfo}>
-                </Reception>
+                {/* <Reception patientInfo={patientInfo}>
+                </Reception> */}
               </a>
             );
           })}

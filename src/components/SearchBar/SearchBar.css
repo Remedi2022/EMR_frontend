@@ -68,8 +68,12 @@ a {
   background-color: lightgrey;
 }
 
-#clearBtn {
+.clearBtn {
+  border: 0;
   cursor: pointer;
+  background-color: white;
+  font-size: 1.5rem;
+  color: gray;
 }
 
 .dataItemButton {
