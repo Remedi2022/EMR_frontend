@@ -4,9 +4,8 @@ import TopBar from "../components/TopBar/TopBar"
 import PatientList from "../components/PatientList/PatientList"
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-// import VitalSign from '../components/Axios/VitalSign';
 import useAsync from '../_api/useAsync';
-import { isRouteErrorResponse, Link } from 'react-router-dom';
+import { isRouteErrorResponse, Link, useParams } from 'react-router-dom';
 
 
 async function getMD(id) {
@@ -31,8 +30,13 @@ async function registerChart({ chartInfo }) {
     return response.status
 }
 
-function Content() {
-    const [mdId, setMDId] = useState(null);
+function Content(props) {
+    const patientInfo = props.patientInfo
+    const [patientloading, setPatientLoading] = useState(true);
+    const [patientVisitListloading, setPatientVisitListloading] = useState(true);
+    const [patientVS, setPatientVS] = useState([]);
+    const [patientVisitList, setPatientVisitList] = useState([]);
+    // const [mdId, setMDId] = useState(null);
     const [state, refetch] = useAsync(getMDList, [], true);
     const { loading, data: mdlist, error } = state; // state.data 를 users 키워드로 조회
     
@@ -43,6 +47,46 @@ function Content() {
     const [prescription, setPrescription] = useState('')
     const [feeOption, setFeeOption] = useState(1)
     const [prescribedMDList, setPrescribedMDList] = useState([])
+
+    const convertDoctorName = {
+        "45316968-2c70-4e9a-99bd-eda5da1607ba" : "박의사",
+        "4a529095-ae33-49aa-97bc-6a5998df8c1e" : "김의사",
+        "5870c689-eaff-4595-bc5d-3d9a227464e8" : "최의사"
+      };
+
+    const getPatientVS = async() => {
+        const response = await axios.get(
+            `http://3.35.231.145:8080/api/visit/vital?pid=${patientInfo.pid}`
+        );
+        setPatientVS(response.data.result);
+        setPatientLoading(false);
+    };
+
+    useEffect(() => {
+        getPatientVS();
+    }, []); //한 번만 동작함
+    // console.log(patientVS)
+
+    useEffect(() => {
+        console.log('VS : ', patientVS)
+    }, [patientVS])
+
+    const getPatientVisitList = async() => {
+        const response = await axios.get(
+            `http://3.35.231.145:8080/api/visit/record?pid=${patientInfo.pid}`
+        );
+        setPatientVisitList(response.data.result);
+        setPatientVisitListloading(false);
+    };
+
+    useEffect(() => {
+        getPatientVisitList();
+    }, []); //한 번만 동작함
+    // console.log(getPatientVisitList)
+
+    useEffect(() => {
+        console.log('VL : ', patientVisitList)
+    }, [patientVisitList])
 
     const changeRecord = (e) => {
         setExamination(e.target.value)
@@ -77,7 +121,6 @@ function Content() {
 
 
     const [items, setItems] = useState([]);
-
     const inputItems = (md) => {
         const tmpItems = [...items]
         // console.log(tmpItems.length)
@@ -94,8 +137,6 @@ function Content() {
     if (error) return <div> MDList에서 에러가 발생했습니다</div>;
     if (!mdlist) return null;
     
-    
-
 
     function MDList(){
         // const [mdId, setMDId] = useState(null);
@@ -114,7 +155,7 @@ function Content() {
                         key={md.id} 
                         onClick={() => inputItems(md)}
                     >
-                        {md.name}
+                        {md.name} {md.volume}{md.unit}
                     </li>
                 ))}
                 </ul>
@@ -173,26 +214,84 @@ function Content() {
 //   if (error) return <div>에러가 발생했습니다</div>;
 //   if (!items) return null;
 
+const convertGender = () => {
+    if (patientInfo.gender === 'F') {
+     return '여'
+    } else if (patientInfo.gender === 'M') {
+     return '남'
+    } else {
+     return ''
+    }
+ }
+
+ const calcAge = () => {
+     const newDate = new Date()
+     const YYYY = newDate.getFullYear()
+     const MM = newDate.getMonth()+1
+     const DD = newDate.getDate()
+
+     const rrnFront = patientInfo.rrn.split('-')[0]
+     const rrnFrontYY = parseInt(rrnFront.slice(0, 2))
+     const rrnFrontMM = parseInt(rrnFront.slice(2, 4))
+     const rrnFrontDD = parseInt(rrnFront.slice(4, 6))
+
+     const rrnBack = patientInfo.rrn.split('-')[1]
+     const rrnBackFirst = rrnBack.slice(0, 1)
+
+     let birthYY = rrnFrontYY
+
+     if (rrnBackFirst === '1' || rrnBackFirst === '2') {
+         birthYY = birthYY + 1900
+     } else if (rrnBackFirst === '3' || rrnBackFirst === '4') {
+         birthYY = birthYY + 2000
+     }
+
+     let age = YYYY - birthYY
+
+     if (MM > rrnFrontMM) {
+         age = age - 1
+     } else if (MM === rrnFrontMM) {
+         if (DD > rrnFrontDD) {
+             age = age - 1 
+         } else {
+             return age
+         }
+     } else {
+         return age
+     }
+     return age
+ }
+
     return (
         <div className="content">
             <div className="patientSummary">
-                <div>
-                    <span style={{fontWeight:"bold"}}>우성주&nbsp;&nbsp;</span>
-                    <span>여, 25세</span>
+                <div className="patientInfoName">
+                    <span style={{fontWeight:"bold"}}>{patientInfo.name}&nbsp;&nbsp;</span>
+                    <sapn>{convertGender()},&nbsp;</sapn>
+                    <span>만 {calcAge()}세</span>
                 </div>
-                {/* <span><VitalSign /></span> */}
-                {/* <span>체온 37&nbsp;&nbsp;체중 55&nbsp;&nbsp;신장 160&nbsp;&nbsp;혈압 129/87&nbsp;&nbsp;혈당 86</span> */}
+                <span className="MDListItem">
+                    체온 {patientVS ? patientVS.temperature : ''}&nbsp;
+                    체중 {patientVS ? patientVS.weight : ''}&nbsp;
+                    신장 {patientVS ? patientVS.height : ''}&nbsp;
+                    혈압 {patientVS ? patientVS.blood_pressure_high : ''}/{patientVS ? patientVS.blood_pressure_low : ''}&nbsp;
+                    혈당 {patientVS ? patientVS.blood_sugar : ''}
+                </span>
             </div>
             <div className="chartContainer">
                 <div className="visitHistory">
                     <span className="title">내원 이력</span>
                     <ul className='visitList'>
-                        <li className='patientlistItem'>
-                            2022-06-19 김의사
-                        </li>
-                        <li className='patientlistItem'>
-                            2022-08-03 김의사
-                        </li>
+                        {
+                            patientVisitList ? 
+                                patientVisitList.map((p) => {
+                                    
+                                    return (<li className='patientlistItem'>
+                                        {p.date.split('T')[0]} {convertDoctorName[p.doctor]}
+                                    </li>)
+                                }) : null
+                        }
+                      
                     </ul>
                     <span className="addChart">
                         진료 완료
@@ -349,6 +448,22 @@ function Content() {
 
 export default function Chart() {
     const title = "진료"
+    const { pid } = useParams()
+
+    const [patientInfo, setPatientInfo] = useState()
+    const getPatientInfo = async () => {
+        const numPid = parseInt(pid)
+        const body = {
+            pid: numPid
+        }
+        const response = await axios.post('http://3.35.231.145:8080/api/patient', body)
+        setPatientInfo(response.data.result)
+    }
+
+    useEffect(() => {
+        // console.log('get patient info')
+        getPatientInfo()
+    }, [])
 
     return (
         <div className="Chart">
@@ -358,7 +473,9 @@ export default function Chart() {
                     <TopBar title={title}/>
                     <div className='patientlistContainer'>
                         <PatientList/>
-                        <Content />
+                        {
+                            patientInfo ? <Content patientInfo={patientInfo}/> : null
+                        }
                     </div>
                 </div>
             </div>

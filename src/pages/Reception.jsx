@@ -164,7 +164,7 @@ function Content(props) {
 
         if (MM > rrnFrontMM) {
             age = age - 1
-        } else if (MM == rrnFrontMM) {
+        } else if (MM === rrnFrontMM) {
             if (DD > rrnFrontDD) {
                 age = age - 1 
             } else {

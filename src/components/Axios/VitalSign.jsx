@@ -50,3 +50,5 @@ if(!vitalSigns) return null;
         </div>
     )
 }
+
+// <span className="vitalSign">{patientVS ? patientVS.temperature : ''}</span>
