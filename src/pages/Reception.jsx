@@ -10,62 +10,82 @@ import { Link } from 'react-router-dom';
 import Clock from '../Clock/checkedTime.jsx';
 
 // search 후 선택한 patient 넘겨받음
-let patient = {
-    "pid" : "000007",
-    "name" : "우성주",
-    "rrn" : "999999-2222222", // 주민번호 약자, xxxxxx-xxxxxxx
-    "phone" : "010-9999-2222", //01011111111
-    "first_responder" : "010-1111-1111", // 비상 연락처
-    "address" : "와우산로 94"
-}
+// const patientInfo = {
+//     "pid" : "000007",
+//     "name" : "우성주",
+//     "rrn" : "999999-2222222",
+//     "phone" : "010-9999-2222",
+//     "first_responder" : "010-1111-1111",
+//     "address" : "와우산로 94"
+// }
 
-
-
-function Content(){
-    // var pid = patient.pid
+// props로 환자 기본 정보(이름, 주민등록번호, 대표연락처, 비상연락처, 주소) 받아옴
+function Content(props) {
+    const patientInfo = props.patientInfo
     const [loading, setLoading] = useState(true);
-    const [visitors, setVisitors] = useState([]);
+    // 환자 Vital Sign
+    const [patientVS, setPatientVS] = useState([]);
+    const doctorList = ["박의사", "김의사", "최의사"];
+    const [selected, setSelected] = useState("");
 
-    // const getVisitors = async() => {
-    //     const response = await axios.get(
-    //         `http://3.35.231.145:8080/api/visitor/info?pid=${patient.pid}`
-    //     );
-    //     setVisitors(response.data.result);
-    //     setLoading(false);
-    // };
-    // useEffect(() => {
-    //     getVisitors();
-    // }, []); //한 번만 동작함
-    // console.log(visitors)
+    // console.log('patientInfo ', patientInfo)
+    const getPatientVS = async() => {
+            const response = await axios.get(
+                    `http://3.35.231.145:8080/api/visit/info?pid=${patientInfo.pid}`
+                );
+                setPatientVS(response.data.result);
+                setLoading(false);
+            };
+            useEffect(() => {
+                getPatientVS();
+    }, []); //한 번만 동작함
+    // console.log(patientVS)
 
     const [inputValue, setInputValue] = useState({
         // 사용할 문자열들을 저장하는 객체 형채로 관리
-        benefit_type: "일반진료",
-        purpose: "일반진료",
-        purpose_detail : "감기", // 세부목적
-        doctor_name : "박정민", // 담당의 선택
-        pregnant : 1, // 임신여부(임신이면 1, 아니면 0)
-        temperature : 36,
-        weight : 55,
-        height : 165,
-        blood_pressure_high : 128,   
-        blood_pressure_low : 80,
-        blood_sugar : 95
+        benefitType: "건강 보험",
+        purpose: "일반 진료",
+        purposeDetail : "", // 세부목적
+        // doctorName : "", // 담당의 선택
+        // pregnant : "", // 임신여부(임신이면 1, 아니면 0)
+        temperature : "",
+        weight : "",
+        height : "",
+        bloodPressureHigh : "",   
+        bloodPressureLow : "",
+        bloodSugar : "",
     });
     
+    const {
+        benefitType,
+        purpose,
+        purposeDetail,
+        // doctorName,
+        // pregnant,
+        temperature,
+        weight,
+        height,
+        bloodPressureHigh,
+        bloodPressureLow,
+        bloodSugar
+    } = inputValue;
+        
     const handleInput = (e) => {
         const { name, value } = e.target;
         setInputValue({ ...inputValue, [name]: value }); 
         // name 키에 맞는 키값(value)를 가져온다. => 계산된 속성명 
     };
+    
+    const handleSelect = (e) => {
+        setSelected(e.target.value);
+      };    
 
     const onSubmitHandler = (e) => {
-        // e.preventDefault();
-        // console.log('PNAME', pName)
-        // console.log('RRN:', RRN)
-        // console.log('PHONE', phone)
-        // console.log('EPHONE:', ePhone)
-        // console.log('ADDRESS:', fulladdress)
+        e.preventDefault();
+        console.log(inputValue)
+        console.log(selected)
+        // console.log('자격구분:', benefitType)
+        // console.log('방문목적:', purpose)
         
         // if (!pName) {
         //     return alert("이름를 입력하세요.");
@@ -73,37 +93,81 @@ function Content(){
         // else if (!RRN1 || !RRN2) {
         //     return alert("주민등록번호를 입력하세요.");
         // }
-        // else if (!phone1 || !phone2 || !phone3) {
-        //     return alert("연락처를 입력하세요.");
-        // }
-        // else if (!ePhone1 || !ePhone2 || !ePhone3) {
-        //     return alert("비상 연락처를 입력하세요.");
-        // }
-        // else if (!address) {
-        //     return alert("주소를 검색하세요.");
-        // }
 
-        // let body = {
-        //     name : pName,
-        //     // gender : ,
-        //     rrn : RRN,
-        //     phone : phone,
-        //     first_responder : ePhone,
-        //     address : fulladdress
-        // }
+        let body = {
+            benefit_type: benefitType,
+            purpose: purpose,
+            purpose_detail : purposeDetail, // 세부목적
+            doctor_name : selected, // 담당의 선택
+            // pregnant : 1, // 임신여부(임신이면 1, 아니면 0)
+            temperature : temperature,
+            weight : weight,
+            height : height,
+            blood_pressure_high : bloodPressureHigh,   
+            blood_pressure_low : bloodPressureLow,
+            blood_sugar : bloodSugar
+        }
 
         // dispatch(registerPatient(body))
         //     .then(response => {
         //         console.log('DISPATCH:', response)
         //         if(response.payload.success) {
         //             console.log(response.payload.message);
-        //             alert('환자가 등록되었습니다.');
+        //             alert('환자가 접수되었습니다.');
         //             resetModal();
-        //             //환자 등록 성공 메세지
+        //             //환자 접수 성공 메세지
         //     }   else {
-        //             alert('환자 등록에 실패하였습니다.')
+        //             alert('환자 접수에 실패하였습니다.')
         //     }
         // })
+    }
+
+    const convertGender = () => {
+       if (patientInfo.gender === 'F') {
+        return '여'
+       } else if (patientInfo.gender === 'M') {
+        return '남'
+       } else {
+        return ''
+       }
+    }
+
+    const calcAge = () => {
+        const newDate = new Date()
+        const YYYY = newDate.getFullYear()
+        const MM = newDate.getMonth()+1
+        const DD = newDate.getDate()
+
+        const rrnFront = patientInfo.rrn.split('-')[0]
+        const rrnFrontYY = parseInt(rrnFront.slice(0, 2))
+        const rrnFrontMM = parseInt(rrnFront.slice(2, 4))
+        const rrnFrontDD = parseInt(rrnFront.slice(4, 6))
+
+        const rrnBack = patientInfo.rrn.split('-')[1]
+        const rrnBackFirst = rrnBack.slice(0, 1)
+
+        let birthYY = rrnFrontYY
+
+        if (rrnBackFirst === '1' || rrnBackFirst === '2') {
+            birthYY = birthYY + 1900
+        } else if (rrnBackFirst === '3' || rrnBackFirst === '4') {
+            birthYY = birthYY + 2000
+        }
+
+        let age = YYYY - birthYY
+
+        if (MM > rrnFrontMM) {
+            age = age - 1
+        } else if (MM == rrnFrontMM) {
+            if (DD > rrnFrontDD) {
+                age = age - 1 
+            } else {
+                return age
+            }
+        } else {
+            return age
+        }
+        return age
     }
 
     return(
@@ -128,9 +192,11 @@ function Content(){
                     </div>
                     <div className="receptionContentWrapper">
                         <div className="receptionInfoTitle">
-                            <span className="patientInfoTitle">no. {patient.pid}</span>
+                            <span className="patientInfoTitle">no. {patientInfo.pid}</span>
                             <div className="patientInfoName">
-                                <span className="patientName" style={{fontSize:"1.1rem"}}>{patient.name}</span>
+                                <span className="patientName" style={{fontSize:"1.1rem"}}>{patientInfo.name}</span>
+                                <sapn className="patientInfo">{convertGender()},&nbsp;</sapn>
+                                <span className="patientInfo">만 {calcAge()}세</span>
                                 {/* <span className="patientInfo">여, 30세</span> */}
                             </div>
                         </div>
@@ -141,26 +207,26 @@ function Content(){
                                 <div className="receptionInfoWrapper">
                                     <div className="receptionInfoTitle">
                                         <span className="patientInfoTitle">주민등록번호</span>
-                                        <span>{patient.rrn}</span>
+                                        <span>{patientInfo.rrn}</span>
                                     </div>
                                     <div className="receptionInfoTitle">
                                         <span className="patientInfoTitle">대표 연락처</span>
-                                        <span>{patient.phone}</span>
+                                        <span>{patientInfo.phone}</span>
                                     </div>
                                     <div className="receptionInfoTitle">
                                         <span className="patientInfoTitle">비상 연락처</span>
-                                        <span>{patient.first_responder}</span>
+                                        <span>{patientInfo.first_responder}</span>
                                     </div>
                                     <div className="receptionInfoTitle">
                                         <span className="patientInfoTitle">주소</span>
-                                        <span>{patient.address}</span>
+                                        <span>{patientInfo.address}</span>
                                     </div>
                                 </div>
                             {/* )} */}
                         </div>
                     </div>
 
-                    <form>
+                    <form id="reception">
                         <div className="receptionContentWrapper">
                             <div className="insuranceTitle">
                                 <span className="title">보험 정보</span>
@@ -188,39 +254,50 @@ function Content(){
                             <div className="receptionInfoWrapper">
                                 <div className="receptionInfoTitle">
                                     <span className="patientInfoTitle">방문 목적*</span>
-                                    <select className="infoButton" name="purspose" onChange={handleInput}>
-                                        <option value="NHI">일반 진료</option>
-                                    </select>
+                                    <button className="infoButton" type="button">
+                                        일반 진료
+                                    </button>
+                                    {/* <select className="infoButton" name="purpose" value={} onChange={handleInput}>
+                                        <option value="default">선택하세요</option>
+                                        <option value="general">일반 진료</option>
+                                    </select> */}
                                 </div>
                                 <div className="receptionInfoTitle">
-                                    <span className="patientInfoTitle">세부목적</span>
+                                    <span className="patientInfoTitle">세부 목적</span>
                                         <input id="purposeContent"
                                             className="detailPurpose"
                                             type="string"
-                                            name="purposeContent"
-                                            // value={purpose}
+                                            name="purposeDetail"
+                                            value={purposeDetail}
                                             onChange={handleInput}
-                                            />
+                                        />
                                 </div>
                                 <div className="receptionInfoTitle">
                                     <span className="patientInfoTitle">담당의 선택*</span>
-                                    <select className="infoButton" name="doctor" onChange={handleInput}>
-                                        <option value="park">박의사</option>
+                                    <select className="infoButton" name="doctorName" value={selected} onChange={handleSelect}>
+                                        <option value="default">
+                                            선택하세요
+                                        </option>
+                                        {doctorList.map(item => (
+                                            <option value={item} key={item}>
+                                                {item}
+                                            </option>
+                                        ))}
+                                        {/* <option value="park">박의사</option>
                                         <option value="kim">김의사</option>
-                                        <option value="lee">이의사</option>
+                                        <option value="lee">이의사</option> */}
                                     </select>
                                 </div>
-                                <div className="receptionInfoTitle">
+                                {/* <div className="receptionInfoTitle">
                                     <div className="prergnantWrapperr">
-                                        <span className="patientInfoTitle">임신여부</span>
-                                        <input type="checkbox" id="id" onChange={handleInput}/>
-                                        <label htmlFor="id"></label>
-                                        <label htmlFor="id" className="pregnant" style={{fontSize:"0.9em", color:"black"}} >임산부</label>  
+                                        <span className="patientInfoTitle">임신 여부</span>
+                                        <input type="checkbox" id="pregnant" value={1} onChange={handleInput}/>
+                                        <label htmlFor="pregnant" className="pregnant" style={{fontSize:"0.9em", color:"black"}} >임산부</label>  
                                     </div>
+                                </div> */}
                             </div>
                         </div>
 
-                        </div>
                         <div className="receptionContentWrapper">
                             <span className="title">바이탈 싸인</span>
                             <div className="receptionInfoWrapper">
@@ -230,8 +307,8 @@ function Content(){
                                         <input id="temperatureContent"
                                             className="vitalInput"
                                             type="number"
-                                            name="temperatureContent"
-                                            // value={purpose}
+                                            name="temperature"
+                                            value={temperature}
                                             onChange={handleInput}
                                         />
                                         <hr className="divider"></hr>
@@ -244,8 +321,8 @@ function Content(){
                                         <input id="weightContent"
                                                 className="vitalInput"
                                                 type="number"
-                                                name="weighteContent"
-                                                // value={purpose}
+                                                name="weight"
+                                                value={weight}
                                                 onChange={handleInput}
                                         /> 
                                         <hr className="divider"></hr> 
@@ -258,8 +335,8 @@ function Content(){
                                         <input id="heightContent"
                                                 className="vitalInput"
                                                 type="number"
-                                                name="heightContent"
-                                                // value={purpose}
+                                                name="height"
+                                                value={height}
                                                 onChange={handleInput}
                                         />   
                                         <hr className="divider"></hr>   
@@ -272,21 +349,21 @@ function Content(){
                                         <input id="bloodPressureHighContent"
                                                 className="bloodPressureHighInput"
                                                 type="number"
-                                                name="bloodPressureHighContent"
+                                                name="bloodPressureHigh"
                                                 placeholder="최고"
-                                                // value={purpose}
+                                                value={bloodPressureHigh}
                                                 onChange={handleInput}
                                         />
                                         <input id="bloodPressureLowContent"
                                                 className="bloodPressureLowInput"
                                                 type="number"
-                                                name="bloodPressureLowContent"
+                                                name="bloodPressureLow"
                                                 placeholder="최저"
-                                                // value={purpose}
+                                                value={bloodPressureLow}
                                                 onChange={handleInput}
                                         />
                                         <hr className="divider"></hr>
-                                        <span className="vitalSign">129ㅤ/ㅤ87</span>
+                                        <span className="vitalSign">129&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;87</span>
                                     </div>
                                 </div>
                                 <div className="receptionInfoTitle">
@@ -295,8 +372,8 @@ function Content(){
                                         <input id="bloodSugarContent"
                                                 className="vitalInput"
                                                 type="number"
-                                                name="bloodSugarContent"
-                                                // value={purpose}
+                                                name="bloodSugar"
+                                                value={bloodSugar}
                                                 onChange={handleInput}
                                         />
                                         <hr className="divider"></hr>
@@ -311,7 +388,7 @@ function Content(){
                         <Link to = "/administration">
                             <button className="receptionBtn">취소</button>
                         </Link>
-                        <button className="receptionBtn">접수</button>
+                        <button className="receptionBtn" onClick={ onSubmitHandler } form="reception" >접수</button>
                     </div>
                 </div>
             </div>
@@ -320,24 +397,37 @@ function Content(){
 }
 
 
+// 환자 검색하여
+// props로 환자 기본 정보(이름, 주민등록번호, 대표연락처, 비상연락처, 주소) 받아옴
+export default function Reception() {
+    const title = "원무"
+    // const patientInfo = props.patientInfo
+    const patientInfo = {
+        "pid" : "000006",
+        "name" : "우성주",
+        "gender" : "F",
+        "rrn" : "971005-2222222",
+        "phone" : "010-9999-2222",
+        "first_responder" : "010-1111-1111",
+        "address" : "와우산로 94"
+    }
+    
+    // 검색 결과로 환자 pid 받아서 접수 진행
+    // props로 받아서 <Content />에 바로 넘겨줄 수 있는지?
+    // 아니면 쿼리 파라미터 이용? 그러려면 영교가 적어놓은 api 주소에 추가?
 
-export default function Reception(){
     return(
         <div className="reception">
             <div className="container">
                 <LeftNav />
                 <div className='topbarContainer'>
-                    <TopBar />
+                    <TopBar title={title}/>
                     <div className='patientlistContainer'>
                         <PatientList/>
-                        <Content />
+                        <Content patientInfo={patientInfo}/>
                     </div>
                 </div>
-                {/* <div className=""> page </div> */}
             </div>
         </div>
-        // <div className="receptionContainer">
-        //     <Content />
-        // </div>
     )
 }

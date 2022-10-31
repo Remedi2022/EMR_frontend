@@ -7,6 +7,8 @@ import axios from 'axios';
 import VitalSign from '../components/Axios/VitalSign';
 import useAsync from '../_api/useAsync';
 
+
+
 async function getMD(id) {
     const response = await axios.get(
         `http://3.35.231.145:8080/api/md/${id}`
@@ -77,21 +79,21 @@ function Content() {
 
     }
 
-    function MD({ id }) {
-        const [state] = useAsync(() => getMD(id), [id]);
-        const { loading, data: md, error } = state;
-        // console.log("MD에서 state는 ",state);
-        // console.log("id: ",id)
-        if (loading) return <div>MD 로딩중..</div>;
-        if (error) return <div>MD 에러가 발생했습니다</div>;  
-        if (!md) return null;
+    // function MD({ id }) {
+    //     const [state] = useAsync(() => getMD(id), [id]);
+    //     const { loading, data: md, error } = state;
+    //     // console.log("MD에서 state는 ",state);
+    //     // console.log("id: ",id)
+    //     if (loading) return <div>MD 로딩중..</div>;
+    //     if (error) return <div>MD 에러가 발생했습니다</div>;  
+    //     if (!md) return null;
 
-        return(
-            <li className="MDItem">
-                {md.itemName}
-            </li>
-        )
-    }
+    //     return(
+    //         <li className="MDItem">
+    //             {md.itemName}
+    //         </li>
+    //     )
+    // }
 
     
 
@@ -299,12 +301,14 @@ function Content() {
 }
 
 export default function Chart() {
+    const title = "진료"
+
     return (
         <div className="Chart">
             <div className="container">
                 <LeftNav />
                 <div className='topbarContainer'>
-                    <TopBar />
+                    <TopBar title={title}/>
                     <div className='patientlistContainer'>
                         <PatientList/>
                         <Content />

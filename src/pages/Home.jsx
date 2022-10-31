@@ -1,6 +1,7 @@
 // import React from "react"
 import './Home.css'
 import LeftNav from "../components/LeftNav/LeftNav"
+import HomeTopBar from '../components/TopBar/HomeTopBar';
 import { Link } from 'react-router-dom';
 
 function Content() {
@@ -35,19 +36,17 @@ function Content() {
 }
 
 export default function Home() {
+    const title = "홈"
+
     return (
         <div className="Home">
             <div className="container">
                 <LeftNav />
-                <Content />
-                {/* <div className=""> page </div> */}
+                <div className='topbarContainer'>
+                    <HomeTopBar title={title}/>
+                    <Content />
+                </div>
             </div>
         </div>
-
-    // <div class="container">
-	//     <div class="item">LEFT_NAV</div>
-	//     <div class="item">MAIN</div>
-	//     <div class="item">helloflex</div>
-    // </div>
     )
 }
