@@ -450,7 +450,7 @@ export default function Reception() {
                     <div className='patientlistContainer'>
                         <PatientList/>
                         {
-                            patientInfo ? <Content patientInfo={patientInfo}/> : null
+                            patientInfo ? <Content patientInfo={patientInfo}/> : <Content />
                         }
                     </div>
                 </div>

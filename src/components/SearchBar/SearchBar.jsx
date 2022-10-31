@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 // import CloseIcon from "@material-ui/icons/Close";
 import Reception from "../../pages/Reception"
 
-function SearchBar({ placeholder}) {
+function SearchBar({ placeholder, focus }) {
   const [users, setUsers] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);

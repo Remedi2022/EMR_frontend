@@ -8,8 +8,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import SearchBar from '../components/SearchBar/SearchBar';
 
-
-
 function Content() {
     const [loading, setLoading] = useState(true);
     const [visits, setVisits] = useState([]);
@@ -24,8 +22,7 @@ function Content() {
     };
     useEffect(() => {
         getVisits();
-    }, []); //한 번만 동작함
-    console.log(visits)
+    }, []); //한 번만 동작
 
     //환자 리스트 중 status가 2인 사람 중 checkup_time이 가장 빠른 사람만 구하기
     useEffect(() => {
@@ -34,22 +31,13 @@ function Content() {
           (a, b) => Date.parse(a.checkup_time) - Date.parse(b.checkup_time)
         );
         setFirstVisit(tmpFirstVisit)
-        console.log(firstVisit);
     }, [visits])
     
     return (
         <div className="content">
             <div className="homeMenu">
                 <div class="Searchbar">
-                    <SearchBar placeholder="이름으로 검색" />
-                    {/*
-                    <form className="Form" action="/" method="GET">
-                        <input className="Search-field" type="search" placeholder="이름으로 환자 검색"/>
-                        <button className="Search-button" type="submit">
-                            <img className='SearchIcon' src={ process.env.PUBLIC_URL + '/icons/search50_999.png' } />
-                        </button>
-                    </form>
-                    */}           
+                    <SearchBar placeholder="이름으로 검색" />          
                 </div>
 
                 <div className="homeMenuItem" id="long" >
@@ -79,10 +67,7 @@ function Content() {
                     <span className="homeMenuItemTitle">접수 신청</span>
                     <span>등록한 환자를 접수하시겠습니까?</span>
                     <div className="homeMenuButton">
-                        <Link to="/reception">
-                            <button className="homeMenuItemButton">접수하기</button>
-                        </Link>
-                        
+                        <button className="homeMenuItemButton">접수하기</button>
                     </div>
                 </div>
             </div>
@@ -104,7 +89,6 @@ export default function Administration() {
                         <Content />
                     </div>
                 </div>
-                {/* <div className=""> page </div> */}
             </div>
         </div>
     )
