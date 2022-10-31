@@ -10,9 +10,10 @@ function SearchBar({ placeholder}) {
   const [users, setUsers] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [patientInfo, setPatientInfo] = useState(null);
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -23,9 +24,10 @@ function SearchBar({ placeholder}) {
         // loading 상태를 true 로 바꿉니다.
         setLoading(true);
         const response = await axios.get(
-          'https://jsonplaceholder.typicode.com/users'
+          //'https://jsonplaceholder.typicode.com/users'
+          'http://3.35.231.145:8080/api/patient/search/?name'
         );
-        setUsers(response.data); // 데이터는 response.data 안에 들어있습니다.
+        setUsers(response.data.result); // 데이터는 response.data 안에 들어있습니다.
       } catch (e) {
 
         setError(e);
@@ -101,7 +103,7 @@ function SearchBar({ placeholder}) {
                 target="_blank">
                 <button
                   className="dataItemButton"
-                  onClick={() => {setPatientInfo(value); }}>
+                  onClick={() => {navigate(`/reception/${value.pid}`)}}>
                   <p>{value.name} </p>
                   <p>({value.phone}) </p>
                 </button>

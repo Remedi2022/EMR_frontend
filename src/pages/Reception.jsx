@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from 'react-router-dom';
 import Clock from '../Clock/checkedTime.jsx';
+import { useParams } from 'react-router-dom';
 
 // search 후 선택한 patient 넘겨받음
 // const patientInfo = {
@@ -30,16 +31,21 @@ function Content(props) {
 
     // console.log('patientInfo ', patientInfo)
     const getPatientVS = async() => {
-            const response = await axios.get(
-                    `http://3.35.231.145:8080/api/visit/info?pid=${patientInfo.pid}`
-                );
-                setPatientVS(response.data.result);
-                setLoading(false);
-            };
-            useEffect(() => {
-                getPatientVS();
+        const response = await axios.get(
+            `http://3.35.231.145:8080/api/visit/vital?pid=${patientInfo.pid}`
+        );
+        setPatientVS(response.data.result);
+        setLoading(false);
+    };
+
+    useEffect(() => {
+        getPatientVS();
     }, []); //한 번만 동작함
     // console.log(patientVS)
+
+    // useEffect(() => {
+    //     console.log('VS : ', patientVS)
+    // }, [patientVS])
 
     const [inputValue, setInputValue] = useState({
         // 사용할 문자열들을 저장하는 객체 형채로 관리
@@ -312,7 +318,7 @@ function Content(props) {
                                             onChange={handleInput}
                                         />
                                         <hr className="divider"></hr>
-                                        <span className="vitalSign">37</span>
+                                        <span className="vitalSign">{patientVS ? patientVS.temperature : ''}</span>
                                     </div> 
                                 </div>
                                 <div className="receptionInfoTitle">
@@ -326,7 +332,7 @@ function Content(props) {
                                                 onChange={handleInput}
                                         /> 
                                         <hr className="divider"></hr> 
-                                        <span className="vitalSign">68</span>   
+                                        <span className="vitalSign">{patientVS ? patientVS.weight : ''}</span>   
                                     </div>               
                                 </div>
                                 <div className="receptionInfoTitle">
@@ -340,7 +346,7 @@ function Content(props) {
                                                 onChange={handleInput}
                                         />   
                                         <hr className="divider"></hr>   
-                                        <span className="vitalSign">159</span>  
+                                        <span className="vitalSign">{patientVS ? patientVS.height : ''}</span>  
                                     </div>                  
                                 </div>
                                 <div className="receptionInfoTitle">
@@ -363,7 +369,7 @@ function Content(props) {
                                                 onChange={handleInput}
                                         />
                                         <hr className="divider"></hr>
-                                        <span className="vitalSign">129&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;87</span>
+                                        <span className="vitalSign">{patientVS ? patientVS.bloodPressureHigh : null}&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;{patientVS ? patientVS.bloodPressureLow : null}</span>
                                     </div>
                                 </div>
                                 <div className="receptionInfoTitle">
@@ -377,7 +383,7 @@ function Content(props) {
                                                 onChange={handleInput}
                                         />
                                         <hr className="divider"></hr>
-                                        <span className="vitalSign">86</span>
+                                        <span className="vitalSign">{patientVS ? patientVS.bloodSugar : null}</span>
                                     </div>
                                 </div>
                             </div>
@@ -401,16 +407,35 @@ function Content(props) {
 // props로 환자 기본 정보(이름, 주민등록번호, 대표연락처, 비상연락처, 주소) 받아옴
 export default function Reception() {
     const title = "원무"
-    // const patientInfo = props.patientInfo
-    const patientInfo = {
-        "pid" : "000006",
-        "name" : "우성주",
-        "gender" : "F",
-        "rrn" : "971005-2222222",
-        "phone" : "010-9999-2222",
-        "first_responder" : "010-1111-1111",
-        "address" : "와우산로 94"
+    const { pid } = useParams()
+
+    const [patientInfo, setPatientInfo] = useState()
+    const getPatientInfo = async () => {
+        const numPid = parseInt(pid)
+        const body = {
+            pid: numPid
+        }
+        const response = await axios.post('http://3.35.231.145:8080/api/patient', body)
+        setPatientInfo(response.data.result)
     }
+
+    useEffect(() => {
+        getPatientInfo()
+    }, [])
+
+    // useEffect(() => {
+    //     console.log(patientInfo)
+    // }, [patientInfo])
+
+    // const patientInfo = {
+    //     "pid" : "000006",
+    //     "name" : "우성주",
+    //     "gender" : "F",
+    //     "rrn" : "971005-2222222",
+    //     "phone" : "010-9999-2222",
+    //     "first_responder" : "010-1111-1111",
+    //     "address" : "와우산로 94"
+    // }
     
     // 검색 결과로 환자 pid 받아서 접수 진행
     // props로 받아서 <Content />에 바로 넘겨줄 수 있는지?
@@ -424,7 +449,9 @@ export default function Reception() {
                     <TopBar title={title}/>
                     <div className='patientlistContainer'>
                         <PatientList/>
-                        <Content patientInfo={patientInfo}/>
+                        {
+                            patientInfo ? <Content patientInfo={patientInfo}/> : null
+                        }
                     </div>
                 </div>
             </div>
