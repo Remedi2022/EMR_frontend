@@ -1,23 +1,23 @@
 import './PatientList.css'
-import Visitor from "../Axios/Visitor";
+import Visit from "../Axios/Visit";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function PatientList() {
     const [loading, setLoading] = useState(true);
-    const [visitors, setVisitors] = useState([]);
+    const [visits, setVisits] = useState([]);
 
-    const getVisitors = async() => {
+    const getVisits = async() => {
         const response = await axios.get(
-            "http://3.35.231.145:8080/api/visitor/list"
+            "http://3.35.231.145:8080/api/visit/list"
         );
-        setVisitors(response.data.result);
+        setVisits(response.data.result);
         setLoading(false);
     };
     useEffect(() => {
-        getVisitors();
+        getVisits();
     }, []); //한 번만 동작함
-    console.log(visitors)
+    console.log(visits)
 
     return (
         <div className='patientlist'>
@@ -30,12 +30,12 @@ export default function PatientList() {
                             <div>Loading...</div>
                         ) : (
                             <ul className='patientlistList'>
-                                {visitors.map((visitor) => (
-                                    <Visitor
-                                        key={visitor.pid}
+                                {visits.map((visit) => (
+                                    <Visit
+                                        key={visit.pid}
                                         type={1}
-                                        status={visitor.status}
-                                        name={visitor.name}
+                                        status={visit.status}
+                                        name={visit.name}
                                     />
                                 ))}
                             </ul>
@@ -49,12 +49,12 @@ export default function PatientList() {
                             <div>Loading...</div>
                         ) : (
                             <ul className='patientlistList'>
-                                {visitors.map((visitor) => (
-                                    <Visitor
-                                        key={visitor.pid}
+                                {visits.map((visit) => (
+                                    <Visit
+                                        key={visit.pid}
                                         type={2}
-                                        status={visitor.status}
-                                        name={visitor.name}
+                                        status={visit.status}
+                                        name={visit.name}
                                     />
                                 ))}
                             </ul>
@@ -68,9 +68,9 @@ export default function PatientList() {
                                 <div>Loading...</div>
                             ) : (
                                 <ul className='patientlistList' id="todaylistlist">
-                                    {visitors.map((visitor) => (
-                                        <li className='patientlistItem' key={visitor.pid}>
-                                            {visitor.name}
+                                    {visits.map((visit) => (
+                                        <li className='patientlistItem' key={visit.pid}>
+                                            {visit.name}
                                         </li>
                                     ))}
                                 </ul>

@@ -142,12 +142,14 @@ function Content() {
 }
 
 export default function Chart() {
+    const title = "진료"
+
     return (
         <div className="Chart">
             <div className="container">
                 <LeftNav />
                 <div className='topbarContainer'>
-                    <TopBar />
+                    <TopBar title={title}/>
                     <div className='patientlistContainer'>
                         <PatientList/>
                         <Content />

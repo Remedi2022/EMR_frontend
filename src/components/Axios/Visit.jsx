@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-function Visitor({type, status, name}) {
+function Visit({type, status, name}) {
     const t = type;
     const s = status;
 
@@ -14,8 +14,8 @@ function Visitor({type, status, name}) {
     return null;
 }
 
-Visitor.propTypes = {
+Visit.propTypes = {
     name: PropTypes.string.isRequired,
 } 
 
-export default Visitor
+export default Visit
