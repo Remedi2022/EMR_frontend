@@ -29,8 +29,8 @@ export function signupUser(dataToSubmit) {
     }
 }
 
-export function registerPatient(dataToSubmit) {
-    const request = axios.post('http://3.35.231.145:8080/api/patient/register', dataToSubmit)
+export async function registerPatient(dataToSubmit) {
+    const request = await axios.post('http://3.35.231.145:8080/api/visit/register', dataToSubmit)
         // .then( response => console.log('AXIOS:', response) )
         .then( response => response.data )
 

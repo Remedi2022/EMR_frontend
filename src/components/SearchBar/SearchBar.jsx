@@ -18,13 +18,12 @@ function SearchBar({ placeholder, focus }) {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        // 요청이 시작 할 때에는 error 와 users 를 초기화하고
+        // 요청이 시작 할 때에는 error와 users를 초기화하고
         setError(null);
         setUsers(null);
-        // loading 상태를 true 로 바꿉니다.
+        // loading 상태를 true로 바꿉니다.
         setLoading(true);
         const response = await axios.get(
-          //'https://jsonplaceholder.typicode.com/users'
           'http://3.35.231.145:8080/api/patient/search/?name'
         );
         setUsers(response.data.result); // 데이터는 response.data 안에 들어있습니다.
@@ -105,7 +104,7 @@ function SearchBar({ placeholder, focus }) {
                   className="dataItemButton"
                   onClick={() => {navigate(`/reception/${value.pid}`)}}>
                   <p>{value.name} </p>
-                  <p>({value.phone}) </p>
+                  <p>({value.rrn}) </p>
                 </button>
                 {/* <Reception patientInfo={patientInfo}>
                 </Reception> */}
