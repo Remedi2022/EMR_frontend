@@ -26,18 +26,19 @@
     top: 50px;
 }
 
-.homeMenu {
+.administrationHomeMenu {
     /* position: absolute; */
     /* top: 300px; */
     width: 720px;
     display: flex;
     flex-wrap: wrap;
+    margin-top: -185px;
 }
 
 /* SEARCH BAR */
 .Searchbar {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: row;
     margin: 10px;
     width: 500px;
 }
