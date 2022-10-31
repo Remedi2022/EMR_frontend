@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import UseModal from '../hooks/UseModal';
 import { useEffect, useState } from "react";
 import axios from "axios";
+import SearchBar from '../components/SearchBar/SearchBar';
+
 
 
 function Content() {
@@ -34,17 +36,20 @@ function Content() {
         setFirstVisit(tmpFirstVisit)
         console.log(firstVisit);
     }, [visits])
-
+    
     return (
         <div className="content">
             <div className="homeMenu">
                 <div class="Searchbar">
+                    <SearchBar placeholder="이름으로 검색" />
+                    {/*
                     <form className="Form" action="/" method="GET">
                         <input className="Search-field" type="search" placeholder="이름으로 환자 검색"/>
                         <button className="Search-button" type="submit">
                             <img className='SearchIcon' src={ process.env.PUBLIC_URL + '/icons/search50_999.png' } />
                         </button>
                     </form>
+                    */}           
                 </div>
 
                 <div className="homeMenuItem" id="long" >
