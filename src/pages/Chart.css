@@ -159,11 +159,11 @@
 
 
 
- .diagnoisRecord{
+.diagnoisRecord{
     display: flex;
     justify-content: center;
- }
- .record{
+}
+.record{
     margin-top: 5px;
     margin-bottom: 7px;
     width: 100%;
@@ -185,8 +185,12 @@
     border-radius: 8px;
     border: 1px solid #e6e6e6;
     outline-color: #e3e3e3;
- }
- 
+}
+
+.infoButton{
+margin-top: 5px;
+}
+
 .MDPrescriptionWrapper{
     margin-top: 10px;
 }
@@ -226,79 +230,78 @@
     border-bottom: 1px solid #d9e6d3;
  }
 
- .MDList {
-     flex: 7;
-     background-color: #fff;
-     font-size: 0.8rem;
-     display: flex;
-     padding: 10px 20px;
-     border-radius: 10px;
-     margin: 10px 10px 10px 0;
-     /* justify-content: space-between; */
-     flex-direction: column;
- }
- 
- .md-search-field{
-     width: 100%;
-     height: 30px;
-     margin: 10px;
-     margin-left: 0px;
-     margin-bottom: 0px;
-     padding: 5px 55px 3px 7px;
-     border: none;
-     border-radius: 9px;
-     outline-style: none;
-     background-color: rgb(251, 251, 251);;
-     font-size: 0.85rem;
- }
- 
- .mdHistory{
-     flex: 7;
-     background-color: #fff;
-     font-size: 0.8rem;
-     /* display: flex; */
-     /* padding: 10px 20px; */
-     border-radius: 10px;
-     align-items: center;
-     justify-content: space-between;
-     position: relative;
- }   
- 
- .MDListToggle{
-     /* margin-left: 10px; */
-     color:rgb(50, 50, 50);
-     cursor: pointer;
- }
- 
- .MDListWrapper{
-     display: flex;
-     position:absolute;
- }
- 
- 
- .MDListItem{
-         padding: 5.5px;
-         /* padding-left: 0px; */
-         cursor: pointer;
-         display: flex;
-         align-items: center;
-         border-radius: 7px;
- }
- 
- .MDListItem.active,
- .MDListItem:hover{
-     background-color: rgb(241, 241, 241);
- }
- 
- .shortDivider{
-     /* display: flex; */
-     /* flex-direction: row; */
-     border: 0.5px solid #d9e6d3;
-     width:90%;
- }
- 
- .MDTitle{
-     display:flex;
-     justify-content: space-between;
- }
- 
+.MDList {
+    flex: 7;
+    background-color: #fff;
+    font-size: 0.8rem;
+    display: flex;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 10px 10px 10px 0;
+    /* justify-content: space-between; */
+    flex-direction: column;
+}
+
+.md-search-field{
+    width: 100%;
+    height: 30px;
+    margin: 10px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+    padding: 5px 55px 3px 7px;
+    border: none;
+    border-radius: 9px;
+    outline-style: none;
+    background-color: rgb(251, 251, 251);;
+    font-size: 0.85rem;
+}
+
+.mdHistory{
+    flex: 7;
+    background-color: #fff;
+    font-size: 0.8rem;
+    /* display: flex; */
+    /* padding: 10px 20px; */
+    border-radius: 10px;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}   
+
+.MDListToggle{
+    /* margin-left: 10px; */
+    color:rgb(50, 50, 50);
+    cursor: pointer;
+}
+
+.MDListWrapper{
+    display: flex;
+    position:absolute;
+}
+
+
+.MDListItem{
+    padding: 5.5px;
+    /* padding-left: 0px; */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-radius: 7px;
+}
+
+.MDListItem.active,
+.MDListItem:hover{
+    background-color: rgb(241, 241, 241);
+}
+
+.shortDivider{
+    /* display: flex; */
+    /* flex-direction: row; */
+    border: 0.5px solid #d9e6d3;
+    width:90%;
+}
+
+.MDTitle{
+    display:flex;
+    justify-content: space-between;
+}
