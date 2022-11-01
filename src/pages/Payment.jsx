@@ -4,6 +4,7 @@ import TopBar from "../components/TopBar/TopBar"
 import PatientList from "../components/PatientList/PatientList"
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 
 function Content() {
@@ -178,6 +179,7 @@ function Content() {
 
 export default function Payment() {
     const title = "원무"
+    const { pid } = useParams()
 
     return (
         <div className="Payment">

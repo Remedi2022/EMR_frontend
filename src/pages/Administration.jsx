@@ -2,7 +2,7 @@ import './Administration.css'
 import LeftNav from "../components/LeftNav/LeftNav"
 import TopBar from "../components/TopBar/TopBar"
 import PatientList from "../components/PatientList/PatientList"
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import UseModal from '../hooks/UseModal';
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -13,6 +13,7 @@ function Content() {
     const [visits, setVisits] = useState([]);
     const [firstVisit, setFirstVisit] = useState();
 
+    const navigate = useNavigate();
     const getVisits = async() => {
         const response = await axios.get(
             "http://3.35.231.145:8080/api/visit/list"
@@ -49,9 +50,14 @@ function Content() {
                             : <span className="homeMenuItemDetail" key={firstVisit[0].pid}>{firstVisit[0].name}<br></br>건강보험 일반진료 1진료실</span>
                     )}
                     <div className="homeMenuButton">
-                        <Link to = "/payment">
+                        {/* <Link to = "/payment">
                             <button className="homeMenuItemButton">수납 진행하기</button>
-                        </Link>
+                        </Link> */}
+                        
+                        <button className="homeMenuItemButton"
+                            onClick={() => {navigate(`/payment/${firstVisit[0].id}`)}}>
+                            수납 진행하기
+                        </button>
                     </div>
                 </div>
                 
