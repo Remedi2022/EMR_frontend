@@ -48,6 +48,14 @@
     justify-content: space-between;
 }
 
+.vitalSignSummary{
+    padding: 5.5px;
+    /* padding-left: 0px; */
+    display: flex;
+    align-items: center;
+    border-radius: 7px;
+}
+
 /* visitHistory, paymentWrapper, MDList의 컨테이너 */
 .paymentContainer {
     display: flex;

@@ -39,6 +39,7 @@ function Content(props) {
     };
 
     // console.log('patientInfo ', patientInfo)
+    // 바이탈싸인 get
     const getPatientVS = async() => {
         const response = await axios.get(
             `http://3.35.231.145:8080/api/visit/vital?pid=${patientInfo.pid}`
@@ -52,9 +53,9 @@ function Content(props) {
     }, []); //한 번만 동작함
     // console.log(patientVS)
 
-    useEffect(() => {
-        console.log('VS : ', patientVS)
-    }, [patientVS])
+    // useEffect(() => {
+    //     console.log('VS : ', patientVS)
+    // }, [patientVS])
 
     const [inputValue, setInputValue] = useState({
         // 사용할 문자열들을 저장하는 객체 형채로 관리
@@ -105,9 +106,9 @@ function Content(props) {
         if (!selected) {
             return alert("의사를 선택하세요.");
         }
-        else if (!temperature || !weight || !height || !bloodPressureHigh || !bloodPressureLow || !bloodSugar) {
-            return alert("바이탈싸인을 입력하세요.");
-        }
+        // else if (!temperature || !weight || !height || !bloodPressureHigh || !bloodPressureLow || !bloodSugar) {
+        //     return alert("바이탈싸인을 입력하세요.");
+        // }
 
         let body = {
             patient_id : patientInfo.pid,
@@ -402,7 +403,7 @@ function Content(props) {
                         <Link to = "/administration">
                             <button className="receptionBtn">취소</button>
                         </Link>
-                        <button className="receptionBtn" onClick={ onSubmitHandler } form="reception" >접수</button>
+                        <button className="receptionBtn" onClick={ onSubmitHandler } form="reception">접수</button>
                     </div>
                 </div>
             </div>

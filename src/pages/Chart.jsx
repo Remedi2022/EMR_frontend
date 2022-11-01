@@ -270,7 +270,7 @@ const convertGender = () => {
                     <sapn>{convertGender()},&nbsp;</sapn>
                     <span>만 {calcAge()}세</span>
                 </div>
-                <span className="MDListItem">
+                <span className="vitalSignSummary">
                     체온 {patientVS ? patientVS.temperature : ''}&nbsp;
                     체중 {patientVS ? patientVS.weight : ''}&nbsp;
                     신장 {patientVS ? patientVS.height : ''}&nbsp;

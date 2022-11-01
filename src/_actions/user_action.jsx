@@ -3,7 +3,8 @@ import axios from "axios";
 import {
     LOGIN_USER,
     SIGNUP_USER,
-    REGISTER_PATIENT
+    REGISTER_PATIENT,
+    PAYMENT,
 } from './types';
 
 export function loginUser(dataToSubmit) {
@@ -37,6 +38,19 @@ export async function registerPatient(dataToSubmit) {
     //request를 reducer에 넘겨줌
     return {
         type: REGISTER_PATIENT,
+        payload: request
+    }
+}
+
+export async function payment(dataToSubmit) {
+    console.log('dataToSubmit', dataToSubmit)
+    const request = await axios.post('http://3.35.231.145:8080/api/payment/register', dataToSubmit)
+        // .then( response => console.log('AXIOS:', response) )
+        .then( response => response.data )
+
+    //request를 reducer에 넘겨줌
+    return {
+        type: PAYMENT,
         payload: request
     }
 }
