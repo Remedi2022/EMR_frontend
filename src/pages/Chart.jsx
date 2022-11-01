@@ -5,8 +5,8 @@ import PatientList from "../components/PatientList/PatientList"
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import useAsync from '../_api/useAsync';
-import { isRouteErrorResponse, Link, useParams } from 'react-router-dom';
-
+import { isRouteErrorResponse, Link, useNavigate, useParams } from 'react-router-dom';
+// import {Link}
 
 async function getMD(id) {
     const response = await axios.get(
@@ -22,15 +22,9 @@ async function getMDList() {
     return response.data.result;
 }
 
-async function registerChart({ chartInfo }) {
-    const response = await axios.post(
-        'http://3.35.231.145:8080/api/chart/register',
-        chartInfo
-    );
-    return response.status
-}
-
 function Content(props) {
+    const navigate = useNavigate()
+
     const patientInfo = props.patientInfo
     const [patientloading, setPatientLoading] = useState(true);
     const [patientVisitListloading, setPatientVisitListloading] = useState(true);
@@ -47,12 +41,15 @@ function Content(props) {
     const [prescription, setPrescription] = useState('')
     const [feeOption, setFeeOption] = useState(1)
     const [prescribedMDList, setPrescribedMDList] = useState([])
+    // const [MDCount, setMDCount] = useState([])
+    // const [MDAdministrationDay, setMDAdministrationDay] = useState([])
+    // const [MDAmount, setMDAmount] = useState([])
 
     const convertDoctorName = {
         "45316968-2c70-4e9a-99bd-eda5da1607ba" : "박의사",
         "4a529095-ae33-49aa-97bc-6a5998df8c1e" : "김의사",
         "5870c689-eaff-4595-bc5d-3d9a227464e8" : "최의사"
-      };
+    };
 
     const getPatientVS = async() => {
         const response = await axios.get(
@@ -62,14 +59,27 @@ function Content(props) {
         setPatientLoading(false);
     };
 
+    const [items, setItems] = useState([]);
+    const inputItems = (md) => {
+        const tmpItems = [...items]
+        // console.log(tmpItems.length)
+        for (let i = 0; i < tmpItems.length; i++) {
+            if (tmpItems[i].id === md.id) {
+                return
+            }
+        }
+        tmpItems.push(md)
+        setItems(tmpItems)
+    }
+
     useEffect(() => {
         getPatientVS();
     }, []); //한 번만 동작함
     // console.log(patientVS)
 
-    useEffect(() => {
-        console.log('VS : ', patientVS)
-    }, [patientVS])
+    // useEffect(() => {
+    //     // console.log('VS : ', patientVS)
+    // }, [patientVS])
 
     const getPatientVisitList = async() => {
         const response = await axios.get(
@@ -85,8 +95,8 @@ function Content(props) {
     // console.log(getPatientVisitList)
 
     useEffect(() => {
-        console.log('VL : ', patientVisitList)
-    }, [patientVisitList])
+        // console.log('VL : ', patientInfo)
+    }, [patientInfo])
 
     const changeRecord = (e) => {
         setExamination(e.target.value)
@@ -104,34 +114,75 @@ function Content(props) {
         setFeeOption(e.target.value)
     }
 
-    const submitChart = () => {
+    const changePrescribedMDList = () => {
+        const tmpPrerscribedMDList = []
+        items.map((md) => {
+            const tmpPrescribedMD = {
+                "md_id" : md.id,
+                "md_amount_per_unit" : 1,
+                "md_count_per_day" : 1,
+                "md_administration_day" : 1
+            }
+            tmpPrerscribedMDList.push(tmpPrescribedMD)
+        })
+        setPrescribedMDList(tmpPrerscribedMDList)
+    }
+
+    // const changeMDAdministrationDay = (e) => {
+    //     setMDAdministrationDay(e.target.value)
+    // }
+   
+    // const changeMDCount = (e) => {
+    //     setMDCount()
+    // }
+
+    useEffect(() => {
+        changePrescribedMDList()
+    }, [items])
+
+    useEffect(() => {
+        // console.log(prescribedMDList)
+    }, [prescribedMDList])
+
+    const submitChart = async (e) => {
+        e.preventDefault()
         const chartInfo = {
             // 변수명 같으면 옆에 따로 안써도 알아서 받아와짐
-            vid: '',
-            pid: '',
-            doctor: '',
-            examination,
-            diagnosis,
-            prescription,
-            consultation_fee: feeOption
+            visit_id: patientVisitList[0].vid,
+            patient_id: patientInfo.pid,
+            doctor_id: patientVisitList[0].doctor,
+            examination: examination,
+            diagnosis: diagnosis,
+            prescription: prescription,
+            consultation_fee: feeOption,
+            prescribed_md: prescribedMDList
         }
-        
-        registerChart(chartInfo)
+        // console.log('진료 완료')
+        // console.log('chartinfoddd', chartInfo)
+
+        const response = await axios.post(
+            'http://3.35.231.145:8080/api/chart/register',
+            chartInfo
+        );
+        // console.log('result', response)
+        if (response.status === 201) {
+            alert("진료가 완료되었습니다.")
+            setDiagnosis('')
+            setExamination('')
+            setFeeOption()
+            setItems([])
+            setPrescription('')
+            setPrescribedMDList([])
+            navigate('/examination')
+        } else {
+            alert('진료 작성에 실패했습니다.')
+        }
     }
 
-
-    const [items, setItems] = useState([]);
-    const inputItems = (md) => {
-        const tmpItems = [...items]
-        // console.log(tmpItems.length)
-        for (let i = 0; i < tmpItems.length; i++) {
-            if (tmpItems[i].id === md.id) {
-                return
-            }
-        }
-        tmpItems.push(md)
-        setItems(tmpItems)
-    }
+    // async function registerChart({ chartInfo }) {
+    //     console.log('chartInfo', chartInfo)
+    //     return response.status
+    // }
     
     if (loading) return <div> MDList 로딩중..</div>;
     if (error) return <div> MDList에서 에러가 발생했습니다</div>;
@@ -159,7 +210,6 @@ function Content(props) {
                     </li>
                 ))}
                 </ul>
-                
             </div>
             // <div className="MDPrescription">
             //     {mdId && <MD id={mdId} />}
@@ -167,6 +217,9 @@ function Content(props) {
         ); 
 
     }
+
+    
+
 
     // function MD({ id }) {
     //     const [state] = useAsync(() => getMD(id), [id]);
@@ -285,7 +338,6 @@ const convertGender = () => {
                         {
                             patientVisitList ? 
                                 patientVisitList.map((p) => {
-                                    
                                     return (<li className='patientlistItem'>
                                         {p.date.split('T')[0]} {convertDoctorName[p.doctor]}
                                     </li>)
@@ -293,22 +345,30 @@ const convertGender = () => {
                         }
                       
                     </ul>
-                    <span className="addChart">
+                    <span className="addChart" onClick={(e) => submitChart(e)}>
                         진료 완료
                     </span>
                 </div>
 
                 <form id="chart" className="chartWrapper">
-                    <span className="title">🖊 2022-08-03&nbsp;</span>
-                    <span>김의사</span>
+                    <span className='title'>
+                        {
+                            patientVisitList ? 
+                                patientVisitList.map((p) => {
+                                    
+                                    return (<li className='patientlistItem'>
+                                        🖊&nbsp;{p.date.split('T')[0]} {convertDoctorName[p.doctor]}
+                                    </li>)
+                                }) : null
+                        }
+                      
+                    </span>
                     <div className="chartContentWrapper">
                         <span className="title">진료 기록</span>
                         <hr className="divider"></hr>
                         <div className="diagnoisRecord">
-                            <textarea className="record" 
+                            <textarea className="chartRecord" 
                                     name="recordContent" onChange={(e) => changeRecord(e)} >
-                                    
-
                             </textarea>
                         </div>
                     </div>
@@ -319,7 +379,7 @@ const convertGender = () => {
                             <textarea className="chartRecord" onChange={(e) => changeDiagnosis(e)}></textarea>
                         </div>
                         <div className="diagnoisRecord">
-                            <textarea className="record" onChange={(e) => changePrescription(e)}></textarea>
+                            <textarea className="chartRecord" onChange={(e) => changePrescription(e)}></textarea>
                         </div>
                         <select className="infoButton" name="fee" onChange={(e) => changeFeeOption(e)} >
                                 <option value="first">초진진찰료</option>
@@ -346,31 +406,31 @@ const convertGender = () => {
                                 return (
                                     <div key={item.id} className="MDPrescription">
                                         <div className='MDItem'>
-                                            {item.name}
+                                            {item.name} {item.volume}{item.unit}
                                         </div>
                                         <div className="amountList">
                                             <input className="amountInput" 
                                                     type="number" 
-                                                    
                                                     placeholder="1" 
                                                     min="0"
                                                     style={{color:"black"}}
+                                                    // onChange={(e) => changeMDAmount(e)}
                                                     >
                                             </input>
                                             <input className="amountInput" 
                                                     type="number" 
-                                                    
                                                     placeholder="1" 
                                                     min="0"
                                                     style={{color:"black"}}
+                                                    // onChange={(e) => changeMDCount(e)}
                                                     >
                                             </input>
                                             <input className="amountInput" 
                                                     type="number" 
-                                                    
                                                     placeholder="1" 
                                                     min="0"
                                                     style={{color:"black"}}
+                                                    // onChange={(e) => changeMDAdministrationDay(e)}
                                                     >
                                             </input>
                                             <span className="amount">용법</span>
