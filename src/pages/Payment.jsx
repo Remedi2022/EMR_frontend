@@ -5,8 +5,12 @@ import PatientList from "../components/PatientList/PatientList"
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { isRouteErrorResponse, Link, useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { payment } from '../_actions/user_action'
+
 
 function Content(props) {
+    const dispatch = useDispatch();
     const patientInfo = props.patientInfo
     const [patientloading, setPatientLoading] = useState(true);
     const [patientVisitListloading, setPatientVisitListloading] = useState(true);
@@ -21,7 +25,7 @@ function Content(props) {
         "45316968-2c70-4e9a-99bd-eda5da1607ba" : "박의사",
         "4a529095-ae33-49aa-97bc-6a5998df8c1e" : "김의사",
         "5870c689-eaff-4595-bc5d-3d9a227464e8" : "최의사"
-      };
+    };
 
     const getPatientVS = async() => {
         const response = await axios.get(
@@ -36,11 +40,12 @@ function Content(props) {
     }, []); //한 번만 동작함
     // console.log(patientVS)
 
-    useEffect(() => {
-        console.log('VS : ', patientVS)
-    }, [patientVS])
+    // useEffect(() => {
+    //     console.log('VS : ', patientVS)
+    // }, [patientVS])
 
 
+    // 좌측 내원이력
     const getPatientVisitList = async() => {
         const response = await axios.get(
             `http://3.35.231.145:8080/api/visit/record?pid=${patientInfo.pid}`
@@ -54,12 +59,12 @@ function Content(props) {
     }, []); //한 번만 동작함
     // console.log(getPatientVisitList)
 
-    useEffect(() => {
-        console.log('VL : ', patientVisitList)
-    }, [patientVisitList])
+    // useEffect(() => {
+    //     console.log('VL : ', patientVisitList)
+    // }, [patientVisitList])
 
 
-
+    // 우측 MD리스트
     useEffect(() => {
         const fetchUsers = async () => {
         try {
@@ -83,6 +88,79 @@ function Content(props) {
     fetchUsers();
     }, []);
 
+    
+    ///////////////////////////////// 수납내역 post 코드 시작
+    const [inputValue, setInputValue] = useState({
+        // 사용할 문자열들을 저장하는 객체 형채로 관리
+        individualCopayment: 5091,
+        nhisCopayment: 3639,
+        uninsuredPayment: 118000,
+        paidAmount: 134970,
+        paymentType: "card",
+        visitId: null
+    });
+    
+    // paidAmount = individualCopayment + nhisCopayment + uninsuredPayment
+
+    // const {
+    //     individualCopayment,
+    //     uninsuredPayment,
+    //     nhisCopayment,
+    //     paidAmount,
+    //     paymentType,
+    //     visitId
+    // } = inputValue;
+        
+    // const handleInput = (e) => {
+    //     const { name, value } = e.target;
+    //     setInputValue({ ...inputValue, [name]: value }); 
+    //     // name 키에 맞는 키값(value)를 가져온다. => 계산된 속성명 
+    // };
+
+    // const [visitId, setVisitId] = useState(0)
+
+    // useEffect(() => {
+    //     setVisitId(patientVisitList[0].vid)
+    //     console.log(patientVisitList)
+    // }, [patientVisitList])
+   
+
+    const onSubmitHandler = (e) => {
+        e.preventDefault();
+        console.log(inputValue)
+        
+        // if (!selected) {
+        //     return alert("의사를 선택하세요.");
+        // }
+        // else if (!temperature || !weight || !height || !bloodPressureHigh || !bloodPressureLow || !bloodSugar) {
+        //     return alert("바이탈싸인을 입력하세요.");
+        // }
+
+        let body = {
+            individual_copayment : inputValue.individualCopayment,   // 본인 부담금 (우리는 진찰료만 해당)
+            uninsured_payment : inputValue.uninsuredPayment,   // 비급여 (우리는 MD 가격 총합만 해당)
+            nhis_copayment : inputValue.nhisCopayment,   // 공단 부담금 (우리는 진찰료만 해당)
+            paid_amount : inputValue.paidAmount, // 수납 완료한 금액
+            payment_type : inputValue.paymentType,   // 결제 수단을 여러 개로 나눠서 결제할 수 있음 // 카드
+            visit_id : patientVisitList[0].vid
+        }
+        console.log('body', body)
+
+        dispatch(payment(body))
+            .then(response => {
+                console.log('DISPATCH:', response)
+                if(response.payload.success) {
+                    console.log(response.payload.message);
+                    alert('수납이 완료되었습니다.');
+                    //수납 성공 메세지
+            }   else {
+                    alert('수납에 실패하였습니다.')
+            }
+        })
+    }
+    ///////////////////////////////// 수납내역 post 코드 끝
+
+    
     const convertGender = () => {
         if (patientInfo.gender === 'F') {
          return '여'
@@ -91,45 +169,45 @@ function Content(props) {
         } else {
          return ''
         }
-     }
-    
-     const calcAge = () => {
-         const newDate = new Date()
-         const YYYY = newDate.getFullYear()
-         const MM = newDate.getMonth()+1
-         const DD = newDate.getDate()
-    
-         const rrnFront = patientInfo.rrn.split('-')[0]
-         const rrnFrontYY = parseInt(rrnFront.slice(0, 2))
-         const rrnFrontMM = parseInt(rrnFront.slice(2, 4))
-         const rrnFrontDD = parseInt(rrnFront.slice(4, 6))
-    
-         const rrnBack = patientInfo.rrn.split('-')[1]
-         const rrnBackFirst = rrnBack.slice(0, 1)
-    
-         let birthYY = rrnFrontYY
-    
-         if (rrnBackFirst === '1' || rrnBackFirst === '2') {
-             birthYY = birthYY + 1900
-         } else if (rrnBackFirst === '3' || rrnBackFirst === '4') {
-             birthYY = birthYY + 2000
-         }
-    
-         let age = YYYY - birthYY
-    
-         if (MM > rrnFrontMM) {
-             age = age - 1
-         } else if (MM === rrnFrontMM) {
-             if (DD > rrnFrontDD) {
-                 age = age - 1 
-             } else {
-                 return age
-             }
-         } else {
-             return age
-         }
-         return age
-     }
+    }
+
+    const calcAge = () => {
+        const newDate = new Date()
+        const YYYY = newDate.getFullYear()
+        const MM = newDate.getMonth()+1
+        const DD = newDate.getDate()
+
+        const rrnFront = patientInfo.rrn.split('-')[0]
+        const rrnFrontYY = parseInt(rrnFront.slice(0, 2))
+        const rrnFrontMM = parseInt(rrnFront.slice(2, 4))
+        const rrnFrontDD = parseInt(rrnFront.slice(4, 6))
+
+        const rrnBack = patientInfo.rrn.split('-')[1]
+        const rrnBackFirst = rrnBack.slice(0, 1)
+
+        let birthYY = rrnFrontYY
+
+        if (rrnBackFirst === '1' || rrnBackFirst === '2') {
+            birthYY = birthYY + 1900
+        } else if (rrnBackFirst === '3' || rrnBackFirst === '4') {
+            birthYY = birthYY + 2000
+        }
+
+        let age = YYYY - birthYY
+
+        if (MM > rrnFrontMM) {
+            age = age - 1
+        } else if (MM === rrnFrontMM) {
+            if (DD > rrnFrontDD) {
+                age = age - 1 
+            } else {
+                return age
+            }
+        } else {
+            return age
+        }
+        return age
+    }
 
 
     if (loading) return <div>로딩중..</div>;
@@ -145,7 +223,7 @@ function Content(props) {
                     <sapn>{convertGender()},&nbsp;</sapn>
                     <span>만 {calcAge()}세</span>
                 </div>
-                <span className="MDListItem">
+                <span className="vitalSignSummary">
                     체온 {patientVS ? patientVS.temperature : ''}&nbsp;
                     체중 {patientVS ? patientVS.weight : ''}&nbsp;
                     신장 {patientVS ? patientVS.height : ''}&nbsp;
@@ -176,65 +254,72 @@ function Content(props) {
                     </div>
 
                     <div className="paymentContentWrapper">
-                        <div className="paymentContentItem" id="itemPay">
-                            <span className="title">수납 내역</span>
-                            <div className="toBeReceived">
-                                <div className="itemAmount">
-                                    <span className="title">받을 금액</span>
-                                    <span>45,000원</span>
-                                </div>
-                                <hr className="divider"></hr>
-                                <div className="itemAmount" id="patientTotalToggle" onClick={()=>setShow(!show)}>
-                                    <span>환자부담 총액 ▼</span>
-                                    <span>45,000원</span>
-                                </div>
-                                { show ?
-                                <div className="calcToggleContent">
-                                    <div className="patientTotal">
-                                        <span className="itemAmount">환자 부담 총액</span>
-                                        <div className="patientCalcDetail">
-                                            <div className="itemAmountDetail" id="calcDetailItem">
-                                                <span>- 본인 부담금</span>
-                                                <span>40,000원</span>
-                                            </div>
-                                            <div className="itemAmountDetail" id="calcDetailItem">
-                                                <span>- 비급여</span>
-                                                <span>5,000원</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="itemAmount" id="NHIS">
-                                        <span>공단 부담금</span>
-                                        <span>80,000원</span>
+                        <form>
+                            <div className="paymentContentItem" id="itemPay">
+                                <span className="title">수납 내역</span>
+                                <div className="toBeReceived">
+                                    <div className="itemAmount">
+                                        <span className="title">받을 금액</span>
+                                        <span>45,000원</span>
                                     </div>
                                     <hr className="divider"></hr>
-                                    <div className="itemAmount" id="totalExpense">
-                                        <span>진료비 총액</span>
-                                        <span>125,000원</span>
+                                    <div className="itemAmount" id="patientTotalToggle" onClick={()=>setShow(!show)}>
+                                        <span>환자부담 총액 ▼</span>
+                                        <span>45,000원</span>
                                     </div>
-                                </div> : null }
+                                    { show ?
+                                    <div className="calcToggleContent">
+                                        <div className="patientTotal">
+                                            <span className="itemAmount">환자 부담 총액</span>
+                                            <div className="patientCalcDetail">
+                                                <div className="itemAmountDetail" id="calcDetailItem">
+                                                    <span>- 본인 부담금</span>
+                                                    <span>40,000원</span>
+                                                </div>
+                                                <div className="itemAmountDetail" id="calcDetailItem">
+                                                    <span>- 비급여</span>
+                                                    <span>5,000원</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="itemAmount" id="NHIS">
+                                            <span>공단 부담금</span>
+                                            <span>80,000원</span>
+                                        </div>
+                                        <hr className="divider"></hr>
+                                        <div className="itemAmount" id="totalExpense">
+                                            <span>진료비 총액</span>
+                                            <span>125,000원</span>
+                                        </div>
+                                    </div> : null }
+                                </div>
+                                <div className="received">
+                                    <div className="itemAmount">
+                                        <span className="title">수납 금액</span>
+                                        <span>45,000원</span>
+                                    </div>
+                                    <hr className="divider"></hr>
+                                    <div className="itemAmount" id="paidBy">
+                                        <span>10.30&nbsp;&nbsp;&nbsp;&nbsp;카드</span>
+                                        <span>45,000원</span>
+                                    </div>
+                                    <div className="addPayment">
+                                        <span>+ 수납 추가</span>
+                                    </div>
+                                </div>
+                                <div className="remaining">
+                                    <div className="itemAmount">
+                                        <span className="title">남은 금액</span>
+                                        <span>0원</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="received">
-                                <div className="itemAmount">
-                                    <span className="title">수납 금액</span>
-                                    <span>45,000원</span>
-                                </div>
-                                <hr className="divider"></hr>
-                                <div className="itemAmount" id="paidBy">
-                                    <span>10.30&nbsp;&nbsp;&nbsp;&nbsp;카드</span>
-                                    <span>45,000원</span>
-                                </div>
-                                <div className="addPayment">
-                                    <span>+ 수납 추가</span>
-                                </div>
+
+                            <div className="paymentButtonWrapper">
+                                <button className="paymentButton" onClick={ onSubmitHandler } form="payment">수납 완료</button>
                             </div>
-                            <div className="remaining">
-                                <div className="itemAmount">
-                                    <span className="title">남은 금액</span>
-                                    <span>0원</span>
-                                </div>
-                            </div>
-                        </div>
+                        </form>
+
                         <div className="paymentContentItem" id="itemDoc">
                             <span className="title">문서 발급</span>
                             <div className="documentListWrapper">

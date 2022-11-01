@@ -1,19 +1,19 @@
 .container {
     display: flex;
-/* display: inline-flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: stretch; */
+    /* display: inline-flex;
+     flex-direction: row;
+     justify-content: flex-start;
+     align-items: stretch; */
 }
-
+ 
 .topbarContainer {
     flex: 12;
 }
-
+ 
 .patientlistContainer {
     display: flex;
 }
-
+ 
 .content {
     flex: 8; 
     background-color: #d9e6d3;
@@ -48,6 +48,14 @@
     justify-content: space-between;
 }
 
+.vitalSignSummary{
+    padding: 5.5px;
+    /* padding-left: 0px; */
+    display: flex;
+    align-items: center;
+    border-radius: 7px;
+}
+ 
 /* visitHistory, paymentWrapper, MDList의 컨테이너 */
 .chartContainer {
     display: flex;
@@ -187,42 +195,40 @@ margin-top: 5px;
     margin-top: 10px;
 }
 
-.MDPrescription{
-    display: flex;
-    align-items: center;    
-    justify-content: space-between;
-    margin-right: 5px;
-    margin-top: 2px;
-}
-
-.MDItem{
-    padding: 3px;
-    display: flex;
-    align-items: center;
-    border-radius: 10px;
-}
-
-.amountList{
-    display: flex;
-    padding-right: -10px;
-    align-items: center;
-    /* margin-left: 90px; */
-}
-
-.amount{
-    padding-left: 20px;
-}
-
-.amountInput{
-width: 35px;
-height: 10px;
-margin-left: 10px;
-border-top: none;
-border-left: none;
-border-right: none;
-border-bottom: 1px solid #d9e6d3;
-
-}
+ .MDPrescription{
+     display: flex;
+     align-items: center;    
+     justify-content: space-between;
+     margin-right: 5px;
+ }
+ 
+ .MDItem{
+     padding: 3px;
+     display: flex;
+     align-items: center;
+     border-radius: 10px;
+ }
+ 
+ .amountList{
+     display: flex;
+     padding-right: -10px;
+     align-items: center;
+     /* margin-left: 90px; */
+ }
+ 
+ .amount{
+     padding-left: 20px;
+ }
+ 
+ .amountInput{
+    width: 35px;
+    height: 10px;
+    margin-left: 10px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #d9e6d3;
+ }
 
 .MDList {
     flex: 7;

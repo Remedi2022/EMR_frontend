@@ -78,19 +78,19 @@ function SearchBar({ placeholder, focus }) {
           onChange={handleFilter}
         />
         <div className="searchIcon">
-          {filteredData.length === 0 ? (
-            // <SearchIcon />
+          {/* closeIcon 위치 이상해서 일단 없앰 */}
+          {/* {filteredData.length === 0 ? ( */}
             <div>
               <button className="Search-button" type="submit">
                 <img className='SearchIcon' src={ process.env.PUBLIC_URL + '/icons/search50_999.png' } />
               </button>
             </div>
-          ) : (
+          {/* ) : (
             <button className="clearBtn" onClick={ clearInput }>
               &times;
             </button>
             // <CloseIcon id="clearBtn" onClick={clearInput} />
-          )}
+          )} */}
         </div>
       </div>
       {filteredData.length != 0 && (
