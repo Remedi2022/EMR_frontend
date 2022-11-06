@@ -1,181 +1,201 @@
 .container {
-	display: flex;
-	/* display: inline-flex;
+  display: flex;
+  /* display: inline-flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: stretch; */
 }
 
 .topbarContainer {
-    flex: 12;
+  flex: 12;
 }
 
 .patientlistContainer {
-    display: flex;
+  display: flex;
 }
 
 .content {
-    flex: 8; 
-    background-color: #d9e6d3;
-    /* position: relative; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: calc(100vh - 47px);
-    position: sticky;
-    top: 50px;
+  flex: 8;
+  background-color: #d9e6d3;
+  /* position: relative; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 47px);
+  position: sticky;
+  top: 50px;
 }
 
 .title {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .patientSummary {
-    position: absolute;
-    top: 0px;
-    width: 95%;
-    /* flex-basis: 1000px; */
-    /* flex-grow: 1; */
-    background-color: #fff;
-    height: 15px;
-    font-size: 0.8rem;
-    /* display: flex; */
-    padding: 10px 20px;
-    border-radius: 10px;
-    margin: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  position: absolute;
+  top: 0px;
+  width: 95%;
+  /* flex-basis: 1000px; */
+  /* flex-grow: 1; */
+  background-color: #fff;
+  height: 15px;
+  font-size: 0.8rem;
+  /* display: flex; */
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.vitalSignSummary{
-    padding: 5.5px;
-    /* padding-left: 0px; */
-    display: flex;
-    align-items: center;
-    border-radius: 7px;
+.vitalSignSummary {
+  padding: 5.5px;
+  /* padding-left: 0px; */
+  display: flex;
+  align-items: center;
+  border-radius: 7px;
 }
 
 /* visitHistory, paymentWrapper, MDList의 컨테이너 */
 .paymentContainer {
-    display: flex;
-    width: 100%;
-    /* height: calc(100vh - 90px); */
-    height: calc(100% - 44px);
-    position: sticky;
-    top: 100px;
+  display: flex;
+  width: 100%;
+  /* height: calc(100vh - 90px); */
+  height: calc(100% - 44px);
+  position: sticky;
+  top: 100px;
 }
 
 .visitHistory {
-    flex: 7;
-    background-color: #fff;
-    font-size: 0.8rem;
-    /* display: flex; */
-    padding: 10px 20px;
-    border-radius: 10px;
-    margin: 10px 0 10px 10px;
-    /* display: flex; */
-    /* align-items: center; */
-    justify-content: space-between;
+  flex: 7;
+  background-color: #fff;
+  font-size: 0.8rem;
+  /* display: flex; */
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin: 10px 0 10px 10px;
+  /* display: flex; */
+  /* align-items: center; */
+  justify-content: space-between;
 }
 
 .visitList {
-    padding-left: 0;
+  padding-left: 0;
 }
 
 .paymentWrapper {
-    flex: 20;
-    background-color: #fff;
-    font-size: 0.8rem;
-    /* display: flex; */
-    padding: 10px 20px;
-    border-radius: 10px;
-    margin: 10px;
-    /* align-items: center; */
-    justify-content: space-between;
+  flex: 20;
+  background-color: #fff;
+  font-size: 0.8rem;
+  /* display: flex; */
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin: 10px;
+  /* align-items: center; */
+  justify-content: space-between;
 }
 
 .paymentDate {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .paymentContentWrapper {
-    /* height: calc(100vh - 190px); */
-    height: 95%; /**paymentWrapper 기준*/
-    overflow-y: scroll;
-    /* overflow: auto; */
+  /* height: calc(100vh - 190px); */
+  height: 95%; /**paymentWrapper 기준*/
+  overflow-y: scroll;
+  /* overflow: auto; */
 }
 
 .paymentContentItem {
-    font-size: 0.85rem;
-    padding: 10px 15px;
-    border-radius: 10px;
-    border: 1px solid #d9e6d3;
-    /* margin-top: 10px; */
+  font-size: 0.85rem;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 1px solid #d9e6d3;
+  /* margin-top: 10px; */
 }
 #itemPay {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .toBeReceived {
-    /* font-size: 0.85rem; */
-    padding: 0px 15px 10px 15px;
-    border-radius: 10px;
-    border: 1px solid #d9e6d3;
-    margin-top: 10px;
+  /* font-size: 0.85rem; */
+  padding: 0px 15px 10px 15px;
+  border-radius: 10px;
+  border: 1px solid #d9e6d3;
+  margin-top: 10px;
 }
 
 .received {
-    /* font-size: 0.85rem;  */
-    padding: 0px 15px 10px 15px;
-    border-radius: 10px;
-    border: 1px solid #d9e6d3;
-    margin-top: 10px;
+  /* font-size: 0.85rem;  */
+  padding: 0px 15px 10px 15px;
+  border-radius: 10px;
+  border: 1px solid #d9e6d3;
+  margin-top: 10px;
 }
 
 .remaining {
-    /* font-size: 0.85rem; */
-    padding: 0px 15px;
-    border-radius: 10px;
-    border: 1px solid #d9e6d3;
-    margin-top: 10px;
+  /* font-size: 0.85rem; */
+  padding: 0px 15px;
+  border-radius: 10px;
+  border: 1px solid #d9e6d3;
+  margin-top: 10px;
 }
 
 .itemAmount {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.85rem;
-    margin: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  margin: 10px;
 }
 
 #patientTotalToggle {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .itemAmountDetail {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.75rem;
-    color: gray;
-    margin: 15px 10px 15px 15px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: gray;
+  margin: 15px 10px 15px 15px;
 }
 
 .addPayment {
-    font-size: 0.85rem;
-    margin: 10px;
-    color: #94AA95;
+  font-size: 0.85rem;
+  margin: 10px;
+  color: #94aa95;
 }
 
 .divider {
-    border: 1px solid #d9e6d3;
-    /* background-color: #d6dcea; */
+  border: 1px solid #d9e6d3;
+  /* background-color: #d6dcea; */
 }
 
 .calcToggleContent {
-    /* font-size: 0.85rem; */
-    padding: 10px 15px;
-    background-color: rgba(200, 200, 200, 0.15);
-    margin-top: 10px;
+  /* font-size: 0.85rem; */
+  padding: 10px 15px;
+  background-color: rgba(200, 200, 200, 0.15);
+  margin-top: 10px;
+}
+
+.paymentButtonWrapper {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 34px;
+  margin-bottom: 10px;
+}
+
+.paymentButton {
+  display: flex;
+  align-items: center;
+  /* color: #d9e6d3; */
+  background-color: #d9e6d3;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border: 1px solid #d9e6d3;
+  border-radius: 10px;
+  padding: 4px 8px;
+  cursor: pointer;
 }
 
 /* .documentListWrapper {
@@ -183,23 +203,23 @@
 } */
 
 .MDList {
-    flex: 7;
-    background-color: #fff;
-    font-size: 0.8rem;
-    /* display: flex; */
-    padding: 10px 20px;
-    border-radius: 10px;
-    margin: 10px 10px 10px 0;
-    display: flex;
-    /* align-items: center; */
-    justify-content: space-between;
+  flex: 7;
+  background-color: #fff;
+  font-size: 0.8rem;
+  /* display: flex; */
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin: 10px 10px 10px 0;
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-between;
 }
 
-.md-searchIcon{
-    background: transparent;
-    border: none;
-    outline: none;
-    margin-top: 10px;
-    display: flex;
-    align-items: center;
+.md-searchIcon {
+  background: transparent;
+  border: none;
+  outline: none;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
 }
