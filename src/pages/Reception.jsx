@@ -1,16 +1,16 @@
-import './Reception.css';
-import LeftNav from "../components/LeftNav/LeftNav"
-import TopBar from "../components/TopBar/TopBar"
-import PatientList from "../components/PatientList/PatientList"
-import Moment from 'moment';
+import "./Reception.css";
+import LeftNav from "../components/LeftNav/LeftNav";
+import TopBar from "../components/TopBar/TopBar";
+import PatientList from "../components/PatientList/PatientList";
+import Moment from "moment";
 import "moment/locale/ko";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useDispatch } from 'react-redux';
-import { registerPatient } from '../_actions/user_action';
-import { Link } from 'react-router-dom';
-import Clock from '../Clock/checkedTime.jsx';
-import { useParams } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import { reception } from "../_actions/user_action";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import Clock from "../Clock/checkedTime.jsx";
+import { useParams } from "react-router-dom";
 import Chart from './Chart';
 
 
@@ -119,7 +119,7 @@ function Content(props) {
 
   const handleSelect = (e) => {
     setSelected(e.target.value);
-  };
+      };    
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
@@ -130,6 +130,8 @@ function Content(props) {
 
     if (!selected) {
       return alert("의사를 선택하세요.");
+    } else if (!revisit) {
+      return alert("재진 여부를 선택하세요.");
     }
     // else if (!temperature || !weight || !height || !bloodPressureHigh || !bloodPressureLow || !bloodSugar) {
     //     return alert("바이탈싸인을 입력하세요.");
@@ -141,6 +143,7 @@ function Content(props) {
       purpose: purpose,
       purpose_detail: purposeDetail, // 세부목적
       doctor_id: convertDoctorID[selected], // 담당의 선택
+      revisit: revisit,
       // pregnant : 1, // 임신여부(임신이면 1, 아니면 0)
       temperature: temperature,
       weight: weight,
@@ -150,11 +153,12 @@ function Content(props) {
       blood_sugar: bloodSugar,
     };
 
-    dispatch(registerPatient(body)).then((response) => {
+    dispatch(reception(body)).then((response) => {
       // console.log('DISPATCH:', response)
       if (response.payload.success) {
         console.log(response.payload.message);
         alert("환자가 접수되었습니다.");
+        navigate('/administration', {replace: true})
         //환자 접수 성공 메세지
       } else {
         alert("환자 접수에 실패하였습니다.");
@@ -363,6 +367,19 @@ function Content(props) {
                                         <option value="lee">이의사</option> */}
                   </select>
                 </div>
+                <div className="receptionInfoTitle">
+                  <span className="patientInfoTitle">재진 여부*</span>
+                  <select
+                    className="infoButton"
+                    name="revisit"
+                    value={revisit}
+                    onChange={handleRevisit}
+                  >
+                    <option value="default">선택하세요</option>
+                    <option value="1">초진</option>
+                    <option value="2">재진</option>
+                  </select>
+                </div>
                 {/* <div className="receptionInfoTitle">
                                     <div className="prergnantWrapperr">
                                         <span className="patientInfoTitle">임신 여부</span>
@@ -372,6 +389,7 @@ function Content(props) {
                                 </div> */}
               </div>
             </div>
+<<<<<<< HEAD
 
             <div className="receptionContentWrapper">
               <span className="title">바이탈 싸인</span>
@@ -494,13 +512,118 @@ function Content(props) {
     </div>
   );
 }
+=======
+>>>>>>> main
 
+            <div className="receptionContentWrapper">
+              <span className="title">바이탈 싸인</span>
+              <div className="receptionInfoWrapper">
+                <div className="receptionInfoTitle">
+                  <span className="patientInfoTitle">체온</span>
+                  <div className="vitalContentWrapper">
+                    <input
+                      id="temperatureContent"
+                      className="vitalInput"
+                      type="number"
+                      name="temperature"
+                      value={temperature}
+                      onChange={handleInput}
+                    />
+                    <hr className="divider"></hr>
+                    <span className="vitalSign">
+                      {patientVS ? patientVS.temperature : ""}
+                    </span>
+                  </div>
+                </div>
+                <div className="receptionInfoTitle">
+                  <span className="patientInfoTitle">체중</span>
+                  <div className="vitalContentWrapper">
+                    <input
+                      id="weightContent"
+                      className="vitalInput"
+                      type="number"
+                      name="weight"
+                      value={weight}
+                      onChange={handleInput}
+                    />
+                    <hr className="divider"></hr>
+                    <span className="vitalSign">
+                      {patientVS ? patientVS.weight : ""}
+                    </span>
+                  </div>
+                </div>
+                <div className="receptionInfoTitle">
+                  <span className="patientInfoTitle">신장</span>
+                  <div className="vitalContentWrapper">
+                    <input
+                      id="heightContent"
+                      className="vitalInput"
+                      type="number"
+                      name="height"
+                      value={height}
+                      onChange={handleInput}
+                    />
+                    <hr className="divider"></hr>
+                    <span className="vitalSign">
+                      {patientVS ? patientVS.height : ""}
+                    </span>
+                  </div>
+                </div>
+                <div className="receptionInfoTitle">
+                  <span className="patientInfoTitle">혈압</span>
+                  <div className="vitalContentWrapper">
+                    <input
+                      id="bloodPressureHighContent"
+                      className="bloodPressureHighInput"
+                      type="number"
+                      name="bloodPressureHigh"
+                      placeholder="최고"
+                      value={bloodPressureHigh}
+                      onChange={handleInput}
+                    />
+                    <input
+                      id="bloodPressureLowContent"
+                      className="bloodPressureLowInput"
+                      type="number"
+                      name="bloodPressureLow"
+                      placeholder="최저"
+                      value={bloodPressureLow}
+                      onChange={handleInput}
+                    />
+                    <hr className="divider"></hr>
+                    <span className="vitalSign">
+                      {patientVS ? patientVS.blood_pressure_high : null}
+                      &nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;
+                      {patientVS ? patientVS.blood_pressure_low : null}
+                    </span>
+                  </div>
+                </div>
+                <div className="receptionInfoTitle">
+                  <span className="patientInfoTitle">혈당</span>
+                  <div className="vitalContentWrapper">
+                    <input
+                      id="bloodSugarContent"
+                      className="vitalInput"
+                      type="number"
+                      name="bloodSugar"
+                      value={bloodSugar}
+                      onChange={handleInput}
+                    />
+                    <hr className="divider"></hr>
+                    <span className="vitalSign">
+                      {patientVS ? patientVS.blood_sugar : null}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
 
 // 환자 검색하여
 // props로 환자 기본 정보(이름, 주민등록번호, 대표연락처, 비상연락처, 주소) 받아옴
 export default function Reception() {
-    const title = "원무"
-    const { pid } = useParams()
+  const title = "원무";
+  const { pid } = useParams();
 
     const [patientInfo, setPatientInfo] = useState()
     const getPatientInfo = async () => {
@@ -512,43 +635,41 @@ export default function Reception() {
         setPatientInfo(response.data.result)
     }
 
-    useEffect(() => {
-        // console.log('get patient info')
-        getPatientInfo()
-    }, [])
+  useEffect(() => {
+    // console.log('get patient info')
+    getPatientInfo();
+  }, []);
 
-    // useEffect(() => {
-    //     console.log('patientInfo : ', patientInfo)
-    // }, [patientInfo])
+  // useEffect(() => {
+  //     console.log('patientInfo : ', patientInfo)
+  // }, [patientInfo])
 
-    // const patientInfo = {
-    //     "pid" : "000006",
-    //     "name" : "우성주",
-    //     "gender" : "F",
-    //     "rrn" : "971005-2222222",
-    //     "phone" : "010-9999-2222",
-    //     "first_responder" : "010-1111-1111",
-    //     "address" : "와우산로 94"
-    // }
-    
-    // 검색 결과로 환자 pid 받아서 접수 진행
-    // props로 받아서 <Content />에 바로 넘겨줄 수 있는지?
-    // 아니면 쿼리 파라미터 이용? 그러려면 영교가 적어놓은 api 주소에 추가?
+  // const patientInfo = {
+  //     "pid" : "000006",
+  //     "name" : "우성주",
+  //     "gender" : "F",
+  //     "rrn" : "971005-2222222",
+  //     "phone" : "010-9999-2222",
+  //     "first_responder" : "010-1111-1111",
+  //     "address" : "와우산로 94"
+  // }
 
-    return(
-        <div className="reception">
-            <div className="container">
-                <LeftNav />
-                <div className='topbarContainer'>
-                    <TopBar title={title}/>
-                    <div className='patientlistContainer'>
-                        <PatientList/>
-                        {
-                            patientInfo ? <Content patientInfo={patientInfo}/> : null
-                        }
-                    </div>
-                </div>
-            </div>
+  // 검색 결과로 환자 pid 받아서 접수 진행
+  // props로 받아서 <Content />에 바로 넘겨줄 수 있는지?
+  // 아니면 쿼리 파라미터 이용? 그러려면 영교가 적어놓은 api 주소에 추가?
+
+  return (
+    <div className="reception">
+      <div className="container">
+        <LeftNav />
+        <div className="topbarContainer">
+          <TopBar title={title} />
+          <div className="patientlistContainer">
+            <PatientList />
+            {patientInfo ? <Content patientInfo={patientInfo} /> : null}
+          </div>
         </div>
-    )
+      </div>
+    </div>
+  );
 }
