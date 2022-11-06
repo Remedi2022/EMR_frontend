@@ -20,7 +20,7 @@ function Content(props) {
     const [error, setError] = useState(null);
     const [results, setResults] = useState(null);
     const [show, setShow] = useState(true)
-    
+    let last = patientVisitList[patientVisitList.length - 1];
     const convertDoctorName = {
         "45316968-2c70-4e9a-99bd-eda5da1607ba" : "박의사",
         "4a529095-ae33-49aa-97bc-6a5998df8c1e" : "김의사",
@@ -216,156 +216,182 @@ function Content(props) {
 
 
     return (
-        <div className="content">
-            <div className="patientSummary">
-                <div className="patientInfoName">
-                    <span style={{fontWeight:"bold"}}>{patientInfo.name}&nbsp;&nbsp;</span>
-                    <sapn>{convertGender()},&nbsp;</sapn>
-                    <span>만 {calcAge()}세</span>
-                </div>
-                <span className="vitalSignSummary">
-                    체온 {patientVS ? patientVS.temperature : ''}&nbsp;
-                    체중 {patientVS ? patientVS.weight : ''}&nbsp;
-                    신장 {patientVS ? patientVS.height : ''}&nbsp;
-                    혈압 {patientVS ? patientVS.blood_pressure_high : ''}/{patientVS ? patientVS.blood_pressure_low : ''}&nbsp;
-                    혈당 {patientVS ? patientVS.blood_sugar : ''}
-                </span>
-            </div>
-            <div className="paymentContainer">
-                <div className="visitHistory">
-                    <span className="title">내원 이력</span>
-                    <ul className='visitList'>
-                        {
-                            patientVisitList ? 
-                                patientVisitList.map((p) => {
-                                    
-                                    return (<li className='patientlistItem'>
-                                        {p.date.split('T')[0]} {convertDoctorName[p.doctor]}
-                                    </li>)
-                                }) : null
-                        }
-                    </ul>
-                </div>
-
-                <div className="paymentWrapper">
-                    <div className="paymentDate">
-                        <span className="title">🖊 2022-08-03&nbsp;</span>
-                        <span>김의사</span>
-                    </div>
-
-                    <div className="paymentContentWrapper">
-                        <form>
-                            <div className="paymentContentItem" id="itemPay">
-                                <span className="title">수납 내역</span>
-                                <div className="toBeReceived">
-                                    <div className="itemAmount">
-                                        <span className="title">받을 금액</span>
-                                        <span>45,000원</span>
-                                    </div>
-                                    <hr className="divider"></hr>
-                                    <div className="itemAmount" id="patientTotalToggle" onClick={()=>setShow(!show)}>
-                                        <span>환자부담 총액 ▼</span>
-                                        <span>45,000원</span>
-                                    </div>
-                                    { show ?
-                                    <div className="calcToggleContent">
-                                        <div className="patientTotal">
-                                            <span className="itemAmount">환자 부담 총액</span>
-                                            <div className="patientCalcDetail">
-                                                <div className="itemAmountDetail" id="calcDetailItem">
-                                                    <span>- 본인 부담금</span>
-                                                    <span>40,000원</span>
-                                                </div>
-                                                <div className="itemAmountDetail" id="calcDetailItem">
-                                                    <span>- 비급여</span>
-                                                    <span>5,000원</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="itemAmount" id="NHIS">
-                                            <span>공단 부담금</span>
-                                            <span>80,000원</span>
-                                        </div>
-                                        <hr className="divider"></hr>
-                                        <div className="itemAmount" id="totalExpense">
-                                            <span>진료비 총액</span>
-                                            <span>125,000원</span>
-                                        </div>
-                                    </div> : null }
-                                </div>
-                                <div className="received">
-                                    <div className="itemAmount">
-                                        <span className="title">수납 금액</span>
-                                        <span>45,000원</span>
-                                    </div>
-                                    <hr className="divider"></hr>
-                                    <div className="itemAmount" id="paidBy">
-                                        <span>10.30&nbsp;&nbsp;&nbsp;&nbsp;카드</span>
-                                        <span>45,000원</span>
-                                    </div>
-                                    <div className="addPayment">
-                                        <span>+ 수납 추가</span>
-                                    </div>
-                                </div>
-                                <div className="remaining">
-                                    <div className="itemAmount">
-                                        <span className="title">남은 금액</span>
-                                        <span>0원</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="paymentButtonWrapper">
-                                <button className="paymentButton" onClick={ onSubmitHandler } form="payment">수납 완료</button>
-                            </div>
-                        </form>
-
-                        <div className="paymentContentItem" id="itemDoc">
-                            <span className="title">문서 발급</span>
-                            <div className="documentListWrapper">
-                                <ul className='documentList'>
-                                    <li className='documentListItem'>
-                                        건강검진증명서
-                                    </li>
-                                    <li className='documentListItem'>
-                                        진료확인서
-                                    </li>
-                                    <li className='documentListItem'>
-                                        진단서
-                                    </li>
-                                    <li className='documentListItem'>
-                                        처방전(약국보관용)
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                   <div className="MDList">
-                        <div className="MDTitle">
-                            <span className="title">MD 리스트</span>
-                            <span>▼</span>
-                    </div>
-                    <form className="form" action="/" method="GET">
-                        <input className="md-search-field" type="search" placeholder="오더세트 검색"/>
-                        <button className="search-button" type="submit">
-                            <img className='md-searchIcon' src={ process.env.PUBLIC_URL + '/icons/search50_999.png' } />
-                        </button>
-                    </form>
-                    <div className="mdHistory">
-                        <ul className='visitList'>
-                            {results.result.map(item =>(
-                                <li className='MDListItem' key={item.id}>
-                                    {item.name} {item.volume}{item.unit}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                </div>
-            </div>
+      <div className="content">
+        <div className="patientSummary">
+          <div className="patientInfoName">
+            <span style={{ fontWeight: "bold" }}>
+              {patientInfo.name}&nbsp;&nbsp;
+            </span>
+            <sapn>{convertGender()},&nbsp;</sapn>
+            <span>만 {calcAge()}세</span>
+          </div>
+          <span className="vitalSignSummary">
+            체온 {patientVS ? patientVS.temperature : ""}&nbsp; 체중{" "}
+            {patientVS ? patientVS.weight : ""}&nbsp; 신장{" "}
+            {patientVS ? patientVS.height : ""}&nbsp; 혈압{" "}
+            {patientVS ? patientVS.blood_pressure_high : ""}/
+            {patientVS ? patientVS.blood_pressure_low : ""}&nbsp; 혈당{" "}
+            {patientVS ? patientVS.blood_sugar : ""}
+          </span>
         </div>
-    )
+        <div className="paymentContainer">
+          <div className="visitHistory">
+            <span className="title">내원 이력</span>
+            <ul className="visitList">
+              {patientVisitList
+                ? patientVisitList.map((p) => {
+                    return (
+                      <li className="patientlistItem">
+                        {p.date.split("T")[0]} {convertDoctorName[p.doctor]}
+                      </li>
+                    );
+                  })
+                : null}
+            </ul>
+          </div>
+
+          <div className="paymentWrapper">
+            <div className="title">
+              {last ? (
+                <li className="patientlistItem">
+                  🖊&nbsp;{last.date.split("T")[0]}{" "}
+                  {convertDoctorName[last.doctor]}
+                </li>
+              ) : null}
+              {/* <span className="title">🖊 2022-08-03&nbsp;</span>
+                        <span>김의사</span> */}
+            </div>
+
+            <div className="paymentContentWrapper">
+              <form>
+                <div className="paymentContentItem" id="itemPay">
+                  <span className="title">수납 내역</span>
+                  <div className="toBeReceived">
+                    <div className="itemAmount">
+                      <span className="title">받을 금액</span>
+                      <span>45,000원</span>
+                    </div>
+                    <hr className="divider"></hr>
+                    <div
+                      className="itemAmount"
+                      id="patientTotalToggle"
+                      onClick={() => setShow(!show)}
+                    >
+                      <span>환자부담 총액 ▼</span>
+                      <span>45,000원</span>
+                    </div>
+                    {show ? (
+                      <div className="calcToggleContent">
+                        <div className="patientTotal">
+                          <span className="itemAmount">환자 부담 총액</span>
+                          <div className="patientCalcDetail">
+                            <div
+                              className="itemAmountDetail"
+                              id="calcDetailItem"
+                            >
+                              <span>- 본인 부담금</span>
+                              <span>40,000원</span>
+                            </div>
+                            <div
+                              className="itemAmountDetail"
+                              id="calcDetailItem"
+                            >
+                              <span>- 비급여</span>
+                              <span>5,000원</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="itemAmount" id="NHIS">
+                          <span>공단 부담금</span>
+                          <span>80,000원</span>
+                        </div>
+                        <hr className="divider"></hr>
+                        <div className="itemAmount" id="totalExpense">
+                          <span>진료비 총액</span>
+                          <span>125,000원</span>
+                        </div>
+                      </div>
+                    ) : null}
+                  </div>
+                  <div className="received">
+                    <div className="itemAmount">
+                      <span className="title">수납 금액</span>
+                      <span>45,000원</span>
+                    </div>
+                    <hr className="divider"></hr>
+                    <div className="itemAmount" id="paidBy">
+                      <span>10.30&nbsp;&nbsp;&nbsp;&nbsp;카드</span>
+                      <span>45,000원</span>
+                    </div>
+                    <div className="addPayment">
+                      <span>+ 수납 추가</span>
+                    </div>
+                  </div>
+                  <div className="remaining">
+                    <div className="itemAmount">
+                      <span className="title">남은 금액</span>
+                      <span>0원</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="paymentButtonWrapper">
+                  <button
+                    className="paymentButton"
+                    onClick={onSubmitHandler}
+                    form="payment"
+                  >
+                    수납 완료
+                  </button>
+                </div>
+              </form>
+
+              <div className="paymentContentItem" id="itemDoc">
+                <span className="title">문서 발급</span>
+                <div className="documentListWrapper">
+                  <ul className="documentList">
+                    <li className="documentListItem">건강검진증명서</li>
+                    <li className="documentListItem">진료확인서</li>
+                    <li className="documentListItem">진단서</li>
+                    <li className="documentListItem">처방전(약국보관용)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="MDList">
+            <div className="MDTitle">
+              <span className="title">MD 리스트</span>
+              <span>▼</span>
+            </div>
+            {/* <form className="form" action="/" method="GET">
+              <input
+                className="md-search-field"
+                type="search"
+                placeholder="오더세트 검색"
+              />
+              <button className="search-button" type="submit">
+                <img
+                  className="md-searchIcon"
+                  src={process.env.PUBLIC_URL + "/icons/search50_999.png"}
+                />
+              </button>
+            </form> */}
+            <div className="mdHistory">
+              <ul className="visitList">
+                {results.result.map((item) => (
+                  <li className="MDListItem" key={item.id}>
+                    {item.name} {item.volume}
+                    {item.unit}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
 }
 
 export default function Payment() {
@@ -378,7 +404,7 @@ export default function Payment() {
         const body = {
             pid: numPid
         }
-        const response = await axios.post('http://3.35.231.145:8080/api/patient', body)
+        const response = await axios.post('http://3.35.231.145:8080/api/patient/search', body)
         setPatientInfo(response.data.result)
     }
 

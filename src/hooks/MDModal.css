@@ -1,0 +1,142 @@
+.inputBoxMDName input{
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    width: 280px;
+    height: 30px;
+    margin: 0px;
+    margin-bottom: 5px;
+    padding: 0px;
+    text-indent: 0.4rem;
+    /* font-size: 14px; */
+}
+    .inputBoxMDName input:focus {
+        /* border-style: bold; */
+        border-color: #bababa;
+        outline: none;  
+    }
+
+.inputBoxVolume input {
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    width: 70px;
+    height: 30px;
+    margin: 0px;
+    margin-bottom: 5px;
+    padding: 0px;
+    text-indent: 0.4rem;
+    /* font-size: 14px; */
+}
+    .inputBoxVolume input:focus {
+        border-color: #bababa;
+        outline: none;  
+    }
+
+.inputBoxPrice input {
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    width: 90px;
+    height: 30px;
+    margin: 0px;
+    margin-bottom: 5px;
+    padding: 0px;
+    text-indent: 0.4rem;
+    /* font-size: 14px; */
+}
+    .inputBoxPrice input:focus {
+        border-color: #bababa;
+        outline: none;  
+    }
+
+.inputBoxCompany input {
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    width: 180px;
+    height: 30px;
+    margin: 0px;
+    margin-bottom: 5px;
+    padding: 0px;
+    text-indent: 0.4rem;
+    /* font-size: 14px; */
+}
+    .inputBoxCompany input:focus {
+        border-color: #bababa;
+        outline: none;  
+    }
+
+    /* .inputBoxAddress { */
+        /* display: flex;
+        flex-direction: column; */
+        /* position: relative; */
+    /* } */
+    /* .inputBoxAddress button { */
+   
+    
+.inputBoxAddress input{
+        border: 1px solid #e6e6e6;
+        border-radius: 10px;
+        width: 215px;
+        height: 30px;
+        margin: 0px;
+        margin-bottom: 5px;
+        padding: 0px;
+        text-indent: 0.4rem;
+    }
+    /* #addressContent {
+        position: absolute;
+        top: 55px;
+    }
+    #addressDetailContent {
+        position: absolute;
+        top: 90px;
+    } */
+    .inputBoxAddress input:focus {
+        border-color: #bababa;
+        outline: none;  
+    }
+
+    /* .inputBoxAddress button{
+
+    } */
+    
+.termsWrapper {
+    width: 300px;
+}
+    
+.postcodeWrapper {
+    position: absolute;
+    right: -17px;
+    top: 0px;
+    /* z-index: 99; */
+}
+#postcodeButton {
+    border: 1px solid #e6e6e6;
+    border-radius: 25px;
+    width: 80px;
+    height: 30px;
+    margin-bottom: 5px;
+    padding: 0px;
+    font-weight: normal;
+    font-size: 0.8rem;
+    /* position: absolute;
+    top: 20px;
+    left: 0; */
+}
+    
+
+.registerButtonWrapper {
+    display: flex;
+    justify-content: space-between;
+    /* height: 40px; */
+    margin-top: 30px;
+}
+
+.registerButtonWrapper button{
+    padding: 8px 17px;
+    color: #fff;
+    background-color: #6c757d;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    margin: 0 5px;
+}
+
+

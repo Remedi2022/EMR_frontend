@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import UseModal from '../hooks/UseModal';
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import MDModal from '../hooks/MDModal';
 
 function Content() {
     const navigate = useNavigate();
@@ -90,7 +90,8 @@ function Content() {
                     <span>MD 제품들을 라이브러리에</span>
                     <span>미리 등록하고 관리할 수 있습니다.</span>
                     <div className="homeMenuButton">
-                        <button className="homeMenuItemButton">MD 관리하기</button>
+                        {/* <button className="homeMenuItemButton">MD 관리하기</button> */}
+                        <MDModal></MDModal>
                     </div>
                 </div>
             </div>
