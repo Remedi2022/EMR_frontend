@@ -4,16 +4,62 @@ import TopBar from "../components/TopBar/TopBar"
 import PatientList from "../components/PatientList/PatientList"
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { isRouteErrorResponse, Link, useParams } from 'react-router-dom';
 
-
-function Content() {
-
+function Content(props) {
+    const patientInfo = props.patientInfo
+    const [patientloading, setPatientLoading] = useState(true);
+    const [patientVisitListloading, setPatientVisitListloading] = useState(true);
+    const [patientVS, setPatientVS] = useState([]);
+    const [patientVisitList, setPatientVisitList] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [results, setResults] = useState(null);
     const [show, setShow] = useState(true)
     
+    const convertDoctorName = {
+        "45316968-2c70-4e9a-99bd-eda5da1607ba" : "박의사",
+        "4a529095-ae33-49aa-97bc-6a5998df8c1e" : "김의사",
+        "5870c689-eaff-4595-bc5d-3d9a227464e8" : "최의사"
+      };
+
+    const getPatientVS = async() => {
+        const response = await axios.get(
+            `http://3.35.231.145:8080/api/visit/vital?pid=${patientInfo.pid}`
+        );
+        setPatientVS(response.data.result);
+        setPatientLoading(false);
+    };
+
+    useEffect(() => {
+        getPatientVS();
+    }, []); //한 번만 동작함
+    // console.log(patientVS)
+
+    useEffect(() => {
+        console.log('VS : ', patientVS)
+    }, [patientVS])
+
+
+    const getPatientVisitList = async() => {
+        const response = await axios.get(
+            `http://3.35.231.145:8080/api/visit/record?pid=${patientInfo.pid}`
+        );
+        setPatientVisitList(response.data.result);
+        setPatientVisitListloading(false);
+    };
+
+    useEffect(() => {
+        getPatientVisitList();
+    }, []); //한 번만 동작함
+    // console.log(getPatientVisitList)
+
+    useEffect(() => {
+        console.log('VL : ', patientVisitList)
+    }, [patientVisitList])
+
+
+
     useEffect(() => {
         const fetchUsers = async () => {
         try {
@@ -37,29 +83,89 @@ function Content() {
     fetchUsers();
     }, []);
 
+    const convertGender = () => {
+        if (patientInfo.gender === 'F') {
+         return '여'
+        } else if (patientInfo.gender === 'M') {
+         return '남'
+        } else {
+         return ''
+        }
+     }
+    
+     const calcAge = () => {
+         const newDate = new Date()
+         const YYYY = newDate.getFullYear()
+         const MM = newDate.getMonth()+1
+         const DD = newDate.getDate()
+    
+         const rrnFront = patientInfo.rrn.split('-')[0]
+         const rrnFrontYY = parseInt(rrnFront.slice(0, 2))
+         const rrnFrontMM = parseInt(rrnFront.slice(2, 4))
+         const rrnFrontDD = parseInt(rrnFront.slice(4, 6))
+    
+         const rrnBack = patientInfo.rrn.split('-')[1]
+         const rrnBackFirst = rrnBack.slice(0, 1)
+    
+         let birthYY = rrnFrontYY
+    
+         if (rrnBackFirst === '1' || rrnBackFirst === '2') {
+             birthYY = birthYY + 1900
+         } else if (rrnBackFirst === '3' || rrnBackFirst === '4') {
+             birthYY = birthYY + 2000
+         }
+    
+         let age = YYYY - birthYY
+    
+         if (MM > rrnFrontMM) {
+             age = age - 1
+         } else if (MM === rrnFrontMM) {
+             if (DD > rrnFrontDD) {
+                 age = age - 1 
+             } else {
+                 return age
+             }
+         } else {
+             return age
+         }
+         return age
+     }
+
+
     if (loading) return <div>로딩중..</div>;
     if (error) return <div>에러가 발생했습니다</div>;
     if (!results) return null;
 
+
     return (
         <div className="content">
             <div className="patientSummary">
-                <div>
-                    <span style={{fontWeight:"bold"}}>김메디&nbsp;&nbsp;</span>
-                    <span>여, 25세</span>
+                <div className="patientInfoName">
+                    <span style={{fontWeight:"bold"}}>{patientInfo.name}&nbsp;&nbsp;</span>
+                    <sapn>{convertGender()},&nbsp;</sapn>
+                    <span>만 {calcAge()}세</span>
                 </div>
-                <span>체온 37&nbsp;&nbsp;체중 55&nbsp;&nbsp;신장 160&nbsp;&nbsp;혈압 129/87&nbsp;&nbsp;혈당 86</span>
+                <span className="MDListItem">
+                    체온 {patientVS ? patientVS.temperature : ''}&nbsp;
+                    체중 {patientVS ? patientVS.weight : ''}&nbsp;
+                    신장 {patientVS ? patientVS.height : ''}&nbsp;
+                    혈압 {patientVS ? patientVS.blood_pressure_high : ''}/{patientVS ? patientVS.blood_pressure_low : ''}&nbsp;
+                    혈당 {patientVS ? patientVS.blood_sugar : ''}
+                </span>
             </div>
             <div className="paymentContainer">
                 <div className="visitHistory">
                     <span className="title">내원 이력</span>
                     <ul className='visitList'>
-                        <li className='patientlistItem'>
-                            2022-06-19 김의사
-                        </li>
-                        <li className='patientlistItem'>
-                            2022-08-03 김의사
-                        </li>
+                        {
+                            patientVisitList ? 
+                                patientVisitList.map((p) => {
+                                    
+                                    return (<li className='patientlistItem'>
+                                        {p.date.split('T')[0]} {convertDoctorName[p.doctor]}
+                                    </li>)
+                                }) : null
+                        }
                     </ul>
                 </div>
 
@@ -159,7 +265,7 @@ function Content() {
                     <form className="form" action="/" method="GET">
                         <input className="md-search-field" type="search" placeholder="오더세트 검색"/>
                         <button className="search-button" type="submit">
-                            <img className='searchIcon' src={ process.env.PUBLIC_URL + '/icons/search50_999.png' } />
+                            <img className='md-searchIcon' src={ process.env.PUBLIC_URL + '/icons/search50_999.png' } />
                         </button>
                     </form>
                     <div className="mdHistory">
@@ -181,6 +287,21 @@ export default function Payment() {
     const title = "원무"
     const { pid } = useParams()
 
+    const [patientInfo, setPatientInfo] = useState()
+    const getPatientInfo = async () => {
+        const numPid = parseInt(pid)
+        const body = {
+            pid: numPid
+        }
+        const response = await axios.post('http://3.35.231.145:8080/api/patient', body)
+        setPatientInfo(response.data.result)
+    }
+
+    useEffect(() => {
+        // console.log('get patient info')
+        getPatientInfo()
+    }, [])
+
     return (
         <div className="Payment">
             <div className="container">
@@ -189,7 +310,9 @@ export default function Payment() {
                     <TopBar title={title}/>
                     <div className='patientlistContainer'>
                         <PatientList/>
-                        <Content />
+                        {
+                            patientInfo ? <Content patientInfo={patientInfo}/> : null
+                        }
                     </div>
                 </div>
             </div>

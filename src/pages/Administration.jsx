@@ -2,6 +2,7 @@ import './Administration.css'
 import LeftNav from "../components/LeftNav/LeftNav"
 import TopBar from "../components/TopBar/TopBar"
 import PatientList from "../components/PatientList/PatientList"
+// import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import UseModal from '../hooks/UseModal';
 import { useEffect, useState } from "react";
@@ -9,6 +10,7 @@ import axios from "axios";
 import SearchBar from '../components/SearchBar/SearchBar';
 
 function Content() {
+
     const [loading, setLoading] = useState(true);
     const [visits, setVisits] = useState([]);
     const [firstVisit, setFirstVisit] = useState();
@@ -23,7 +25,8 @@ function Content() {
     };
     useEffect(() => {
         getVisits();
-    }, []); //한 번만 동작
+    }, []); //한 번만 동작함
+    // console.log(visits)
 
     //환자 리스트 중 status가 2인 사람 중 checkup_time이 가장 빠른 사람만 구하기
     useEffect(() => {
@@ -32,15 +35,15 @@ function Content() {
           (a, b) => Date.parse(a.checkup_time) - Date.parse(b.checkup_time)
         );
         setFirstVisit(tmpFirstVisit)
+        // console.log(firstVisit);
     }, [visits])
     
     return (
         <div className="content">
-            <div className="homeMenu">
+            <div className="administrationHomeMenu">
                 <div class="Searchbar">
                     <SearchBar placeholder="이름으로 검색" />          
                 </div>
-
                 <div className="homeMenuItem" id="long" >
                     <span className="homeMenuItemTitle">수납실</span>
                     {loading
@@ -50,14 +53,14 @@ function Content() {
                             : <span className="homeMenuItemDetail" key={firstVisit[0].pid}>{firstVisit[0].name}<br></br>건강보험 일반진료 1진료실</span>
                     )}
                     <div className="homeMenuButton">
-                        {/* <Link to = "/payment">
-                            <button className="homeMenuItemButton">수납 진행하기</button>
-                        </Link> */}
-                        
-                        <button className="homeMenuItemButton"
-                            onClick={() => {navigate(`/payment/${firstVisit[0].id}`)}}>
-                            수납 진행하기
-                        </button>
+                        {/* <Link to = "/payment"> */}
+                            <button 
+                                className="homeMenuItemButton"
+                                onClick={() => {navigate(`/payment/${firstVisit[0].pid}`)}}
+                            >
+                                수납 진행하기
+                            </button>
+                        {/* </Link> */}
                     </div>
                 </div>
                 

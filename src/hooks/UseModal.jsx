@@ -32,6 +32,7 @@ function UseModal() {
     };
     const closeModal = () => {
         setModalOpen(false);
+        window.location.reload();
     };
 
     const onSetPName = (e) => {
@@ -93,7 +94,7 @@ function UseModal() {
     let RRN = RRN1 + "-" + RRN2
     let phone = phone1 + "-" + phone2 + "-" + phone3
     let ePhone = ePhone1 + "-" + ePhone2 + "-" + ePhone3
-    let fulladdress = address + addressDetail
+    let fulladdress = address + " " + addressDetail
     
     const onSubmitHandler = (e) => {
         e.preventDefault();
