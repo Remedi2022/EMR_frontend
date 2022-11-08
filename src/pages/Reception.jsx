@@ -11,8 +11,7 @@ import { reception } from "../_actions/user_action";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import Clock from "../Clock/checkedTime.jsx";
 import { useParams } from "react-router-dom";
-import Chart from './Chart';
-
+import Chart from "./Chart";
 
 // search 후 선택한 patient 넘겨받음
 // const patientInfo = {
@@ -26,6 +25,7 @@ import Chart from './Chart';
 
 // props로 환자 기본 정보(이름, 주민등록번호, 대표연락처, 비상연락처, 주소) 받아옴
 function Content(props) {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const patientInfo = props.patientInfo;
   const [loading, setLoading] = useState(true);
@@ -35,18 +35,19 @@ function Content(props) {
   const [selected, setSelected] = useState(""); //의사
   const [patientVisitListloading, setPatientVisitListloading] = useState(true);
   const [patientVisitList, setPatientVisitList] = useState([]);
+  const [revisit, setRevisit] = useState("");
 
   const convertDoctorID = {
     박의사: "45316968-2c70-4e9a-99bd-eda5da1607ba",
     김의사: "4a529095-ae33-49aa-97bc-6a5998df8c1e",
     최의사: "5870c689-eaff-4595-bc5d-3d9a227464e8",
   };
-    
-    const convertDoctorName = {
-      "45316968-2c70-4e9a-99bd-eda5da1607ba": "박의사",
-      "4a529095-ae33-49aa-97bc-6a5998df8c1e": "김의사",
-      "5870c689-eaff-4595-bc5d-3d9a227464e8": "최의사",
-    };
+
+  const convertDoctorName = {
+    "45316968-2c70-4e9a-99bd-eda5da1607ba": "박의사",
+    "4a529095-ae33-49aa-97bc-6a5998df8c1e": "김의사",
+    "5870c689-eaff-4595-bc5d-3d9a227464e8": "최의사",
+  };
 
   // console.log('patientInfo ', patientInfo)
   // 바이탈싸인 get
@@ -119,7 +120,11 @@ function Content(props) {
 
   const handleSelect = (e) => {
     setSelected(e.target.value);
-      };    
+  };
+
+  const handleRevisit = (e) => {
+    setRevisit(e.target.value);
+  };
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
@@ -158,7 +163,7 @@ function Content(props) {
       if (response.payload.success) {
         console.log(response.payload.message);
         alert("환자가 접수되었습니다.");
-        navigate('/administration', {replace: true})
+        navigate("/administration", { replace: true });
         //환자 접수 성공 메세지
       } else {
         alert("환자 접수에 실패하였습니다.");
@@ -190,14 +195,12 @@ function Content(props) {
     const rrnBack = patientInfo.rrn.split("-")[1];
     const rrnBackFirst = rrnBack.slice(0, 1);
 
-      
     const convertDoctorName = {
-    "45316968-2c70-4e9a-99bd-eda5da1607ba": "박의사",
-    "4a529095-ae33-49aa-97bc-6a5998df8c1e": "김의사",
-    "5870c689-eaff-4595-bc5d-3d9a227464e8": "최의사",
+      "45316968-2c70-4e9a-99bd-eda5da1607ba": "박의사",
+      "4a529095-ae33-49aa-97bc-6a5998df8c1e": "김의사",
+      "5870c689-eaff-4595-bc5d-3d9a227464e8": "최의사",
     };
-      
-      
+
     let birthYY = rrnFrontYY;
 
     if (rrnBackFirst === "1" || rrnBackFirst === "2") {
@@ -376,8 +379,8 @@ function Content(props) {
                     onChange={handleRevisit}
                   >
                     <option value="default">선택하세요</option>
-                    <option value="1">초진</option>
-                    <option value="2">재진</option>
+                    <option value={1}>초진</option>
+                    <option value={2}>재진</option>
                   </select>
                 </div>
                 {/* <div className="receptionInfoTitle">
@@ -389,7 +392,6 @@ function Content(props) {
                                 </div> */}
               </div>
             </div>
-<<<<<<< HEAD
 
             <div className="receptionContentWrapper">
               <span className="title">바이탈 싸인</span>
@@ -512,112 +514,6 @@ function Content(props) {
     </div>
   );
 }
-=======
->>>>>>> main
-
-            <div className="receptionContentWrapper">
-              <span className="title">바이탈 싸인</span>
-              <div className="receptionInfoWrapper">
-                <div className="receptionInfoTitle">
-                  <span className="patientInfoTitle">체온</span>
-                  <div className="vitalContentWrapper">
-                    <input
-                      id="temperatureContent"
-                      className="vitalInput"
-                      type="number"
-                      name="temperature"
-                      value={temperature}
-                      onChange={handleInput}
-                    />
-                    <hr className="divider"></hr>
-                    <span className="vitalSign">
-                      {patientVS ? patientVS.temperature : ""}
-                    </span>
-                  </div>
-                </div>
-                <div className="receptionInfoTitle">
-                  <span className="patientInfoTitle">체중</span>
-                  <div className="vitalContentWrapper">
-                    <input
-                      id="weightContent"
-                      className="vitalInput"
-                      type="number"
-                      name="weight"
-                      value={weight}
-                      onChange={handleInput}
-                    />
-                    <hr className="divider"></hr>
-                    <span className="vitalSign">
-                      {patientVS ? patientVS.weight : ""}
-                    </span>
-                  </div>
-                </div>
-                <div className="receptionInfoTitle">
-                  <span className="patientInfoTitle">신장</span>
-                  <div className="vitalContentWrapper">
-                    <input
-                      id="heightContent"
-                      className="vitalInput"
-                      type="number"
-                      name="height"
-                      value={height}
-                      onChange={handleInput}
-                    />
-                    <hr className="divider"></hr>
-                    <span className="vitalSign">
-                      {patientVS ? patientVS.height : ""}
-                    </span>
-                  </div>
-                </div>
-                <div className="receptionInfoTitle">
-                  <span className="patientInfoTitle">혈압</span>
-                  <div className="vitalContentWrapper">
-                    <input
-                      id="bloodPressureHighContent"
-                      className="bloodPressureHighInput"
-                      type="number"
-                      name="bloodPressureHigh"
-                      placeholder="최고"
-                      value={bloodPressureHigh}
-                      onChange={handleInput}
-                    />
-                    <input
-                      id="bloodPressureLowContent"
-                      className="bloodPressureLowInput"
-                      type="number"
-                      name="bloodPressureLow"
-                      placeholder="최저"
-                      value={bloodPressureLow}
-                      onChange={handleInput}
-                    />
-                    <hr className="divider"></hr>
-                    <span className="vitalSign">
-                      {patientVS ? patientVS.blood_pressure_high : null}
-                      &nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;
-                      {patientVS ? patientVS.blood_pressure_low : null}
-                    </span>
-                  </div>
-                </div>
-                <div className="receptionInfoTitle">
-                  <span className="patientInfoTitle">혈당</span>
-                  <div className="vitalContentWrapper">
-                    <input
-                      id="bloodSugarContent"
-                      className="vitalInput"
-                      type="number"
-                      name="bloodSugar"
-                      value={bloodSugar}
-                      onChange={handleInput}
-                    />
-                    <hr className="divider"></hr>
-                    <span className="vitalSign">
-                      {patientVS ? patientVS.blood_sugar : null}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </form>
 
 // 환자 검색하여
 // props로 환자 기본 정보(이름, 주민등록번호, 대표연락처, 비상연락처, 주소) 받아옴
@@ -625,15 +521,18 @@ export default function Reception() {
   const title = "원무";
   const { pid } = useParams();
 
-    const [patientInfo, setPatientInfo] = useState()
-    const getPatientInfo = async () => {
-        const numPid = parseInt(pid)
-        const body = {
-            pid: numPid
-        }
-        const response = await axios.post('http://3.35.231.145:8080/api/patient/search', body)
-        setPatientInfo(response.data.result)
-    }
+  const [patientInfo, setPatientInfo] = useState();
+  const getPatientInfo = async () => {
+    const numPid = parseInt(pid);
+    const body = {
+      pid: numPid,
+    };
+    const response = await axios.post(
+      "http://3.35.231.145:8080/api/patient/search",
+      body
+    );
+    setPatientInfo(response.data.result);
+  };
 
   useEffect(() => {
     // console.log('get patient info')

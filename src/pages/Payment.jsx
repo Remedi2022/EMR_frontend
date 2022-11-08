@@ -20,6 +20,7 @@ function Content(props) {
   const [error, setError] = useState(null);
   const [results, setResults] = useState(null);
   const [show, setShow] = useState(true);
+  //   let last = patientVisitList[patientVisitList.length - 1];
 
   const convertDoctorName = {
     "45316968-2c70-4e9a-99bd-eda5da1607ba": "박의사",
@@ -250,8 +251,14 @@ function Content(props) {
 
         <div className="paymentWrapper">
           <div className="paymentDate">
-            <span className="title">🖊 2022-11-01&nbsp;</span>
-            <span>박의사</span>
+            <span className="title">
+              {/* {last ? (
+                <li className="patientlistItem">
+                  🖊&nbsp;{last.date.split("T")[0]}{" "}
+                  {convertDoctorName[last.doctor]}
+                </li>
+              ) : null} */}
+            </span>
           </div>
 
           <div className="paymentContentWrapper">
@@ -386,7 +393,7 @@ function Content(props) {
             <span className="title">MD 리스트</span>
             <span>▼</span>
           </div>
-          <form className="form" action="/" method="GET">
+          {/* <form className="form" action="/" method="GET">
             <input
               className="md-search-field"
               type="search"
@@ -398,7 +405,7 @@ function Content(props) {
                 src={process.env.PUBLIC_URL + "/icons/search50_999.png"}
               />
             </button>
-          </form>
+          </form> */}
           <div className="mdHistory">
             <ul className="visitList">
               {results.result.map((item) => (

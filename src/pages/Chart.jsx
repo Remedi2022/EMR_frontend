@@ -11,12 +11,12 @@ import {
   useNavigate,
   useParams,
 } from "react-router-dom";
-// import {Link}
 
-async function getMD(id) {
-  const response = await axios.get(`http://3.35.231.145:8080/api/md/${id}`);
-  return response.data.result;
-}
+
+// async function getMD(id) {
+//   const response = await axios.get(`http://3.35.231.145:8080/api/md/${id}`);
+//   return response.data.result;
+// }
 
 async function getMDList() {
   const response = await axios.get("http://3.35.231.145:8080/api/md/list");
@@ -90,10 +90,10 @@ function Content(props) {
     setPatientVisitListloading(false);
   };
 
-  let last = patientVisitList[patientVisitList.length - 1];
+  const last = patientVisitList[patientVisitList.length - 1];
 
-  //   console.log("patientVisitList: ", patientVisitList[1]);
-  //   console.log("last: ", last);
+    // console.log("patientVisitList: ", patientVisitList);
+    console.log("last: ", last);
 
   useEffect(() => {
     getPatientVisitList();
@@ -362,8 +362,7 @@ function Content(props) {
         <div className="visitHistory">
           <span className="title">내원 이력</span>
           <ul className="visitList">
-            {patientVisitList
-              ? // <li className='patientlistItem'>patientVisitList[0]</li>:nul
+            {patientVisitList ?
                 patientVisitList.map((p) => {
                   return (
                     <li className="patientlistItem">
