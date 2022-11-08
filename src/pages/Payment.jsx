@@ -107,15 +107,6 @@ function Content(props) {
   }, [patientVisitList]);
 
   //* 수납내역 post
-  const [inputValue, setInputValue] = useState({
-    // 사용할 문자열들을 저장하는 객체 형채로 관리
-    individualCopayment: null,
-    nhisCopayment: null,
-    uninsuredPayment: null,
-    paidAmount: null,
-    paymentType: "",
-    visitId: null,
-  });
 
   //* paidAmount = individualCopayment + nhisCopayment + uninsuredPayment
 

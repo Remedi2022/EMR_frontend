@@ -28,7 +28,7 @@ function Content() {
 
   //환자 리스트 중 status가 2인 사람 중 checkup_time이 가장 빠른 사람만 구하기
   useEffect(() => {
-    const tmpStatus2Visits = visits.filter((p) => p.status === 2);
+    const tmpStatus2Visits = visits.filter((p) => p.status === 3);
     const tmpFirstVisit = tmpStatus2Visits.sort(
       (a, b) => Date.parse(a.checkup_time) - Date.parse(b.checkup_time)
     );

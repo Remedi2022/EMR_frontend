@@ -39,6 +39,20 @@ function Content() {
   //     console.log(firstVisit)
   // }, [firstVisit])
 
+  //* status 2 (진료 중)로 변경
+  const putStatus2 = () => {
+    axios.PUT('/visit/status', {
+      "visit_id": firstVisit[0].vid,
+	    "status" : 2
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
   return (
     <div className="content">
       <div className="homeMenu">
@@ -77,9 +91,10 @@ function Content() {
               className="homeMenuItemButton"
               onClick={() => {
                 navigate(`/chart/${firstVisit[0].pid}`);
+                putStatus2();
               }}
             >
-              진료 진행하기
+              진료 시작하기
             </button>
           </div>
         </div>
