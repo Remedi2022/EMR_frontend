@@ -11,12 +11,12 @@ import {
   useNavigate,
   useParams,
 } from "react-router-dom";
-// import {Link}
 
-async function getMD(id) {
-  const response = await axios.get(`http://3.35.231.145:8080/api/md/${id}`);
-  return response.data.result;
-}
+
+// async function getMD(id) {
+//   const response = await axios.get(`http://3.35.231.145:8080/api/md/${id}`);
+//   return response.data.result;
+// }
 
 async function getMDList() {
   const response = await axios.get("http://3.35.231.145:8080/api/md/list");
@@ -90,14 +90,19 @@ function Content(props) {
     setPatientVisitListloading(false);
   };
 
+  const last = patientVisitList[patientVisitList.length - 1];
+
+    // console.log("patientVisitList: ", patientVisitList);
+    console.log("last: ", last);
+
   useEffect(() => {
     getPatientVisitList();
   }, []); //한 번만 동작함
   // console.log(getPatientVisitList)
 
-  useEffect(() => {
-    // console.log('VL : ', patientInfo)
-  }, [patientInfo]);
+  //   useEffect(() => {
+  //     // console.log('VL : ', patientInfo)
+  //   }, [patientInfo]);
 
   const changeRecord = (e) => {
     setExamination(e.target.value);
@@ -116,17 +121,17 @@ function Content(props) {
   };
 
   const changePrescribedMDList = () => {
-    const tmpPrerscribedMDList = [];
-    items.map((md) => {
-      const tmpPrescribedMD = {
-        md_id: md.id,
+    const tmpPrerscribedMDList = [...prescribedMDList];
+    if (items[items.length - 1]) {
+      const newPrescribedMd = {
+        md_id: items[items.length - 1].id,
         md_amount_per_unit: 1,
         md_count_per_day: 1,
         md_administration_day: 1,
       };
-      tmpPrerscribedMDList.push(tmpPrescribedMD);
-    });
-    setPrescribedMDList(tmpPrerscribedMDList);
+      tmpPrerscribedMDList.push(newPrescribedMd);
+      setPrescribedMDList(tmpPrerscribedMDList);
+    }
   };
 
   // const changeMDAdministrationDay = (e) => {
@@ -137,13 +142,37 @@ function Content(props) {
   //     setMDCount()
   // }
 
+  const onChangePrescribedMDItemAmount = (e, id) => {
+    const tmpPrescribedMDList = [...prescribedMDList];
+    const tmpPrescribedMD = tmpPrescribedMDList.filter((md) => md.md_id === id);
+    tmpPrescribedMD[0].md_amount_per_unit = Number(e.target.value);
+
+    setPrescribedMDList(tmpPrescribedMDList);
+  };
+
+  const onChangePrescribedMDItemCount = (e, id) => {
+    const tmpPrescribedMDList = [...prescribedMDList];
+    const tmpPrescribedMD = tmpPrescribedMDList.filter((md) => md.md_id === id);
+    tmpPrescribedMD[0].md_count_per_day = Number(e.target.value);
+
+    setPrescribedMDList(tmpPrescribedMDList);
+  };
+
+  const onChangePrescribedMDItemAdministration = (e, id) => {
+    const tmpPrescribedMDList = [...prescribedMDList];
+    const tmpPrescribedMD = tmpPrescribedMDList.filter((md) => md.md_id === id);
+    tmpPrescribedMD[0].md_administration_day = Number(e.target.value);
+
+    setPrescribedMDList(tmpPrescribedMDList);
+  };
+
   useEffect(() => {
     changePrescribedMDList();
   }, [items]);
 
-  useEffect(() => {
-    // console.log(prescribedMDList)
-  }, [prescribedMDList]);
+  // useEffect(() => {
+  //   console.log(prescribedMDList);
+  // }, [prescribedMDList]);
 
   const submitChart = async (e) => {
     e.preventDefault();
@@ -158,14 +187,14 @@ function Content(props) {
       consultation_fee: feeOption,
       prescribed_md: prescribedMDList,
     };
-    // console.log('진료 완료')
-    // console.log('chartinfoddd', chartInfo)
+    console.log("진료 완료");
+    console.log("chartinfo", chartInfo);
 
     const response = await axios.post(
       "http://3.35.231.145:8080/api/chart/register",
       chartInfo
     );
-    // console.log('result', response)
+    console.log("result", response);
     if (response.status === 201) {
       alert("진료가 완료되었습니다.");
       setDiagnosis("");
@@ -226,7 +255,6 @@ function Content(props) {
   //     // console.log("id: ",id)
   //     if (loading) return <div>MD 로딩중..</div>;
   //     if (error) return <div>MD 에러가 발생했습니다</div>;
-  //     if (!md) return null;
 
   //     return(
   //         <li className="MDItem">
@@ -334,8 +362,8 @@ function Content(props) {
         <div className="visitHistory">
           <span className="title">내원 이력</span>
           <ul className="visitList">
-            {patientVisitList
-              ? patientVisitList.map((p) => {
+            {patientVisitList ?
+                patientVisitList.map((p) => {
                   return (
                     <li className="patientlistItem">
                       {p.date.split("T")[0]} {convertDoctorName[p.doctor]}
@@ -349,18 +377,15 @@ function Content(props) {
           </span>
         </div>
 
-        <form id="chart" className="chartWrapper">
+        <div className="chartWrapper">
+          {/* <form id="chart" className="chartWrapper"> */}
           <span className="title">
-            {patientVisitList
-              ? patientVisitList.map((p) => {
-                  return (
-                    <li className="patientlistItem">
-                      🖊&nbsp;{p.date.split("T")[0]}{" "}
-                      {convertDoctorName[p.doctor]}
-                    </li>
-                  );
-                })
-              : null}
+            {last ? (
+              <li className="patientlistItem">
+                🖊&nbsp;{last.date.split("T")[0]}{" "}
+                {convertDoctorName[last.doctor]}
+              </li>
+            ) : null}
           </span>
           <div className="chartContentWrapper">
             <span className="title">진료 기록</span>
@@ -393,8 +418,8 @@ function Content(props) {
               name="fee"
               onChange={(e) => changeFeeOption(e)}
             >
-              <option value="first">초진진찰료</option>
-              <option value="notfirst">재진진찰료</option>
+              <option value={1}>초진진찰료</option>
+              <option value={2}>재진진찰료</option>
             </select>
             <div className="MDPrescriptionWrapper">
               {/* {l?l.map((item) =>{
@@ -424,25 +449,31 @@ function Content(props) {
                         className="amountInput"
                         type="number"
                         placeholder="1"
-                        min="0"
+                        min="1"
                         style={{ color: "black" }}
-                        // onChange={(e) => changeMDAmount(e)}
+                        onChange={(e) =>
+                          onChangePrescribedMDItemAmount(e, item.id)
+                        }
                       ></input>
                       <input
                         className="amountInput"
                         type="number"
                         placeholder="1"
-                        min="0"
+                        min="1"
                         style={{ color: "black" }}
-                        // onChange={(e) => changeMDCount(e)}
+                        onChange={(e) =>
+                          onChangePrescribedMDItemCount(e, item.id)
+                        }
                       ></input>
                       <input
                         className="amountInput"
                         type="number"
                         placeholder="1"
-                        min="0"
+                        min="1"
                         style={{ color: "black" }}
-                        // onChange={(e) => changeMDAdministrationDay(e)}
+                        onChange={(e) =>
+                          onChangePrescribedMDItemAdministration(e, item.id)
+                        }
                       ></input>
                       <span className="amount">용법</span>
                     </div>
@@ -467,14 +498,15 @@ function Content(props) {
                             ):<></>
                         } */}
           </div>
-        </form>
+          {/* </form> */}
+        </div>
 
         <div className="MDList">
           <div className="MDTitle">
             <span className="title">MD 리스트</span>
             <span>▼</span>
           </div>
-          <form className="form" action="/" method="GET">
+          {/* <form className="form" action="/" method="GET">
             <input
               className="md-search-field"
               type="search"
@@ -486,7 +518,7 @@ function Content(props) {
                 src={process.env.PUBLIC_URL + "/icons/search50_999.png"}
               />
             </button>
-          </form>
+          </form> */}
 
           <div className="mdHistory">
             <ul className="visitList">

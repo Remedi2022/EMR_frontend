@@ -11,6 +11,7 @@ import { reception } from "../_actions/user_action";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import Clock from "../Clock/checkedTime.jsx";
 import { useParams } from "react-router-dom";
+import Chart from "./Chart";
 
 // search 후 선택한 patient 넘겨받음
 // const patientInfo = {
@@ -25,7 +26,6 @@ import { useParams } from "react-router-dom";
 // props로 환자 기본 정보(이름, 주민등록번호, 대표연락처, 비상연락처, 주소) 받아옴
 function Content(props) {
   const navigate = useNavigate();
-
   const dispatch = useDispatch();
   const patientInfo = props.patientInfo;
   const [loading, setLoading] = useState(true);
@@ -33,12 +33,20 @@ function Content(props) {
   const [patientVS, setPatientVS] = useState([]);
   const doctorList = ["박의사", "김의사", "최의사"];
   const [selected, setSelected] = useState(""); //의사
+  const [patientVisitListloading, setPatientVisitListloading] = useState(true);
+  const [patientVisitList, setPatientVisitList] = useState([]);
   const [revisit, setRevisit] = useState("");
 
   const convertDoctorID = {
     박의사: "45316968-2c70-4e9a-99bd-eda5da1607ba",
     김의사: "4a529095-ae33-49aa-97bc-6a5998df8c1e",
     최의사: "5870c689-eaff-4595-bc5d-3d9a227464e8",
+  };
+
+  const convertDoctorName = {
+    "45316968-2c70-4e9a-99bd-eda5da1607ba": "박의사",
+    "4a529095-ae33-49aa-97bc-6a5998df8c1e": "김의사",
+    "5870c689-eaff-4595-bc5d-3d9a227464e8": "최의사",
   };
 
   // console.log('patientInfo ', patientInfo)
@@ -59,6 +67,21 @@ function Content(props) {
   // useEffect(() => {
   //     console.log('VS : ', patientVS)
   // }, [patientVS])
+
+  const getPatientVisitList = async () => {
+    const response = await axios.get(
+      `http://3.35.231.145:8080/api/visit/record?pid=${patientInfo.pid}`
+    );
+    setPatientVisitList(response.data.result);
+    setPatientVisitListloading(false);
+  };
+
+  console.log("patientVisitList: ", patientVisitList[0]);
+
+  useEffect(() => {
+    getPatientVisitList();
+  }, []); //한 번만 동작함
+  // console.log(getPatientVisitList)
 
   const [inputValue, setInputValue] = useState({
     // 사용할 문자열들을 저장하는 객체 형채로 관리
@@ -98,6 +121,7 @@ function Content(props) {
   const handleSelect = (e) => {
     setSelected(e.target.value);
   };
+
   const handleRevisit = (e) => {
     setRevisit(e.target.value);
   };
@@ -139,7 +163,7 @@ function Content(props) {
       if (response.payload.success) {
         console.log(response.payload.message);
         alert("환자가 접수되었습니다.");
-        navigate('/administration', {replace: true})
+        navigate("/administration", { replace: true });
         //환자 접수 성공 메세지
       } else {
         alert("환자 접수에 실패하였습니다.");
@@ -171,6 +195,12 @@ function Content(props) {
     const rrnBack = patientInfo.rrn.split("-")[1];
     const rrnBackFirst = rrnBack.slice(0, 1);
 
+    const convertDoctorName = {
+      "45316968-2c70-4e9a-99bd-eda5da1607ba": "박의사",
+      "4a529095-ae33-49aa-97bc-6a5998df8c1e": "김의사",
+      "5870c689-eaff-4595-bc5d-3d9a227464e8": "최의사",
+    };
+
     let birthYY = rrnFrontYY;
 
     if (rrnBackFirst === "1" || rrnBackFirst === "2") {
@@ -201,8 +231,16 @@ function Content(props) {
         <div className="visitHistory">
           <span className="title"> 최근 방문 기록</span>
           <ul className="visitList">
-            <li className="patientlistItem">2022-06-19 김의사</li>
-            <li className="patientlistItem">2022-08-03 김의사</li>
+            {patientVisitList
+              ? // <li className='patientlistItem'>patientVisitList[0]</li>:null
+                patientVisitList.map((p) => {
+                  return (
+                    <li className="patientlistItem">
+                      {p.date.split("T")[0]} {convertDoctorName[p.doctor]}
+                    </li>
+                  );
+                })
+              : null}
           </ul>
         </div>
 
@@ -341,8 +379,8 @@ function Content(props) {
                     onChange={handleRevisit}
                   >
                     <option value="default">선택하세요</option>
-                    <option value="1">초진</option>
-                    <option value="2">재진</option>
+                    <option value={1}>초진</option>
+                    <option value={2}>재진</option>
                   </select>
                 </div>
                 {/* <div className="receptionInfoTitle">

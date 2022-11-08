@@ -111,6 +111,8 @@
     margin: 10px;
     /* align-items: center; */
     justify-content: space-between;
+    overflow: scroll;
+    /* height: auto; */
 }
 
 .chartContentWrapper {
@@ -119,6 +121,8 @@
     border-radius: 10px;
     border: 1px solid #d9e6d3;
     margin-top: 10px;
+    /* overflow: auto; */
+    /* height: auto; */
 }
 
 .itemAmount {
@@ -305,3 +309,4 @@ margin-top: 5px;
     display:flex;
     justify-content: space-between;
 }
+
