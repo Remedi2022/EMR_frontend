@@ -1,13 +1,13 @@
 import "./Administration.css";
-import LeftNav from "../components/LeftNav/LeftNav";
-import TopBar from "../components/TopBar/TopBar";
-import PatientList from "../components/PatientList/PatientList";
+import LeftNav from "../../components/LeftNav/LeftNav";
+import TopBar from "../../components/TopBar/TopBar";
+import PatientList from "../../components/PatientList/PatientList";
 // import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
-import RegistrationModal from "../modals/Registration";
+import RegistrationModal from "../PatientRegistration/Registration";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import SearchBar from "../components/SearchBar/SearchBar";
+import SearchBar from "../../components/SearchBar/SearchBar";
 
 function Content() {
   const navigate = useNavigate();

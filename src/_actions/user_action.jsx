@@ -1,21 +1,21 @@
 import axios from "axios";
 
 import {
-  LOGIN_USER,
+  SIGNIN_USER,
   SIGNUP_USER,
   REGISTER_PATIENT,
   RECEPTION,
   PAYMENT,
 } from "./types";
 
-export function loginUser(dataToSubmit) {
+export function signinUser(dataToSubmit) {
   const request = axios
     .post("http://3.35.231.145:8080/api/auth/signin", dataToSubmit)
     // .then( response => console.log('AXIOS:', response) ) // 아래 .then과 둘 다 하면 에러 남
     .then((response) => response.data);
 
   return {
-    type: LOGIN_USER,
+    type: SIGNIN_USER,
     payload: request,
   };
 }

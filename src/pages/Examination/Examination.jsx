@@ -1,9 +1,9 @@
 import "./Examination.css";
-import LeftNav from "../components/LeftNav/LeftNav";
-import TopBar from "../components/TopBar/TopBar";
-import PatientList from "../components/PatientList/PatientList";
+import LeftNav from "../../components/LeftNav/LeftNav";
+import TopBar from "../../components/TopBar/TopBar";
+import PatientList from "../../components/PatientList/PatientList";
 import { useNavigate } from "react-router-dom";
-import RegistrationModal from "../modals/Registration";
+import RegistrationModal from "../PatientRegistration/Registration";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -35,13 +35,13 @@ function Content() {
     // console.log(firstVisit);
   }, [visits]);
 
-  // useEffect(() => {
-  //     console.log(firstVisit)
-  // }, [firstVisit])
+  useEffect(() => {
+      console.log(firstVisit)
+  }, [firstVisit])
 
   //* status 2 (진료 중)로 변경
-  const putStatus2 = () => {
-    axios.PUT('/visit/status', {
+  const putStatus2 = async () => {
+    await axios.put('http://3.35.231.145:8080/api/visit/status', {
       "visit_id": firstVisit[0].vid,
 	    "status" : 2
     })
@@ -80,12 +80,7 @@ function Content() {
               <br></br>건강보험 일반진료 1진료실
             </span>
           )}
-          {/* {loading ? (
-                        <div>Loading...</div>
-                        ) : (
-                        // <span className="homeMenuItemDetail" style={{color:'gray'}}> 진료대기 환자가 없습니다.</span>
-                        <span className="homeMenuItemDetail" key={firstVisit[0].pid}>{firstVisit[0].name}<br></br>건강보험 일반진료 1진료실</span>
-                    )} */}
+
           <div className="homeMenuButton">
             <button
               className="homeMenuItemButton"

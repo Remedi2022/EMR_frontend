@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 // import SearchIcon from "@material-ui/icons/Search";
 // import CloseIcon from "@material-ui/icons/Close";
-import Reception from "../../pages/Reception"
+import Reception from "../../pages/Reception/Reception"
 
 function SearchBar({ placeholder, focus }) {
     const [users, setUsers] = useState(null);

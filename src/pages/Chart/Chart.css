@@ -111,7 +111,7 @@
     margin: 10px;
     /* align-items: center; */
     justify-content: space-between;
-    overflow: scroll;
+    overflow-y: scroll;
     /* height: auto; */
 }
 
