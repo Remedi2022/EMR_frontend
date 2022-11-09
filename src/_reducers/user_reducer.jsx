@@ -1,5 +1,5 @@
 import {
-  LOGIN_USER,
+  SIGNIN_USER,
   SIGNUP_USER,
   REGISTER_PATIENT,
   PAYMENT,
@@ -8,7 +8,7 @@ import {
 
 export default function (state = {}, action) {
   switch (action.type) {
-    case LOGIN_USER:
+    case SIGNIN_USER:
       return { ...state, Login: action.payload };
       break;
     case SIGNUP_USER:

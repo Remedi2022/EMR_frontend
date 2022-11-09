@@ -1,14 +1,16 @@
 import "./Payment.css";
-import LeftNav from "../components/LeftNav/LeftNav";
-import TopBar from "../components/TopBar/TopBar";
-import PatientList from "../components/PatientList/PatientList";
+import LeftNav from "../../components/LeftNav/LeftNav";
+import TopBar from "../../components/TopBar/TopBar";
+import PatientList from "../../components/PatientList/PatientList";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { isRouteErrorResponse, Link, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { payment } from "../_actions/user_action";
+import { payment } from "../../_actions/user_action";
 
 function Content(props) {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const patientInfo = props.patientInfo;
   const [patientloading, setPatientLoading] = useState(true);
@@ -108,15 +110,6 @@ function Content(props) {
   }, [patientVisitList]);
 
   //* 수납내역 post
-  const [inputValue, setInputValue] = useState({
-    // 사용할 문자열들을 저장하는 객체 형채로 관리
-    individualCopayment: null,
-    nhisCopayment: null,
-    uninsuredPayment: null,
-    paidAmount: null,
-    paymentType: "",
-    visitId: null,
-  });
 
   //* paidAmount = individualCopayment + nhisCopayment + uninsuredPayment
 
@@ -154,6 +147,7 @@ function Content(props) {
       if (response.payload.success) {
         // console.log(response.payload.message);
         alert("수납이 완료되었습니다.");
+        navigate("/administration", { replace: true });
         //수납 성공 메세지
       } else {
         alert("수납에 실패하였습니다.");

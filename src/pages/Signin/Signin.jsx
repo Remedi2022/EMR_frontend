@@ -1,11 +1,11 @@
-import './Login.css'
+import './Signin.css'
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { loginUser } from '../_actions/user_action'
+import { signinUser } from '../../_actions/user_action'
 import { useNavigate } from 'react-router-dom'
 
 
-export default function Login() {
+export default function Signin() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -34,8 +34,7 @@ export default function Login() {
             password: password
         }
 
-        // dispatch(loginUser(body))
-        dispatch(loginUser(body))
+        dispatch(signinUser(body))
             .then(response => {
                 // console.log('DISPATCH:', response)
                 if(response.payload.success) {
@@ -88,7 +87,6 @@ export default function Login() {
                     <button className="loginButton"
                         onClick={ () => navigate('/signup') }
                         >회원가입</button>
-                
                 </div>
             </div>
         {/* </div> */}

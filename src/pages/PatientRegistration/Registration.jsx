@@ -1,8 +1,8 @@
 import "./Registration.css";
 import React, { useEffect, useState } from "react";
-import Modal from "../components/Modal/Modal";
-import Postcode from "../components/Modal/Postcode";
-import { registerPatient } from "../_actions/user_action";
+import Modal from "../../components/Modal/Modal";
+import Postcode from "../../components/Modal/Postcode";
+import { registerPatient } from "../../_actions/user_action";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -98,11 +98,11 @@ function RegistrationModal() {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    console.log("PNAME", pName);
-    console.log("RRN:", RRN);
-    console.log("PHONE", phone);
-    console.log("EPHONE:", ePhone);
-    console.log("ADDRESS:", fulladdress);
+    // console.log("PNAME", pName);
+    // console.log("RRN:", RRN);
+    // console.log("PHONE", phone);
+    // console.log("EPHONE:", ePhone);
+    // console.log("ADDRESS:", fulladdress);
 
     if (!pName) {
       return alert("이름를 입력하세요.");
@@ -126,11 +126,12 @@ function RegistrationModal() {
     };
 
     dispatch(registerPatient(body)).then((response) => {
-      console.log("DISPATCH:", response);
+      // console.log("DISPATCH:", response);
       if (response.payload.success) {
-        console.log(response.payload.message);
+        // console.log(response.payload.message);
         alert("환자가 등록되었습니다.");
         resetModal();
+        navigate("/administration", { replace: true });
         //환자 등록 성공 메세지
       } else {
         alert("환자 등록에 실패하였습니다.");

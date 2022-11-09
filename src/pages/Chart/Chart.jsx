@@ -1,10 +1,10 @@
 import "./Chart.css";
-import LeftNav from "../components/LeftNav/LeftNav";
-import TopBar from "../components/TopBar/TopBar";
-import PatientList from "../components/PatientList/PatientList";
+import LeftNav from "../../components/LeftNav/LeftNav";
+import TopBar from "../../components/TopBar/TopBar";
+import PatientList from "../../components/PatientList/PatientList";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import useAsync from "../_api/useAsync";
+import useAsync from "../../_api/useAsync";
 import {
   isRouteErrorResponse,
   Link,
@@ -93,7 +93,7 @@ function Content(props) {
   const last = patientVisitList[patientVisitList.length - 1];
 
     // console.log("patientVisitList: ", patientVisitList);
-    console.log("last: ", last);
+    // console.log("last: ", last);
 
   useEffect(() => {
     getPatientVisitList();
@@ -186,15 +186,16 @@ function Content(props) {
       prescription: prescription,
       consultation_fee: feeOption,
       prescribed_md: prescribedMDList,
+      status: 3,
     };
-    console.log("진료 완료");
-    console.log("chartinfo", chartInfo);
+    // console.log("진료 완료");
+    // console.log("chartinfo", chartInfo);
 
     const response = await axios.post(
       "http://3.35.231.145:8080/api/chart/register",
       chartInfo
     );
-    console.log("result", response);
+    // console.log("result", response);
     if (response.status === 201) {
       alert("진료가 완료되었습니다.");
       setDiagnosis("");
@@ -205,7 +206,7 @@ function Content(props) {
       setPrescribedMDList([]);
       navigate("/examination");
     } else {
-      alert("진료 작성에 실패했습니다.");
+      alert("차트 작성에 실패했습니다.");
     }
   };
 
@@ -346,7 +347,7 @@ function Content(props) {
           <span style={{ fontWeight: "bold" }}>
             {patientInfo.name}&nbsp;&nbsp;
           </span>
-          <sapn>{convertGender()},&nbsp;</sapn>
+          <span>{convertGender()},&nbsp;</span>
           <span>만 {calcAge()}세</span>
         </div>
         <span className="vitalSignSummary">
@@ -418,8 +419,8 @@ function Content(props) {
               name="fee"
               onChange={(e) => changeFeeOption(e)}
             >
-              <option value={1}>초진진찰료</option>
-              <option value={2}>재진진찰료</option>
+              <option value={16970}>초진진찰료</option>
+              <option value={12130}>재진진찰료</option>
             </select>
             <div className="MDPrescriptionWrapper">
               {/* {l?l.map((item) =>{
