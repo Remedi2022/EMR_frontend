@@ -6,7 +6,7 @@ import { registerPatient } from "../../_actions/user_action";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-function RegistrationModal() {
+function Registration() {
   // useState를 사용하여 open상태를 변경한다. (open일 때 true로 만들어 열리는 방식)
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -333,4 +333,4 @@ function RegistrationModal() {
   );
 }
 
-export default RegistrationModal;
+export default Registration;

@@ -6,10 +6,11 @@ import {
   REGISTER_PATIENT,
   RECEPTION,
   PAYMENT,
+  REGISTER_MD,
 } from "./types";
 
-export function signinUser(dataToSubmit) {
-  const request = axios
+export async function signinUser(dataToSubmit) {
+  const request = await axios
     .post("http://3.35.231.145:8080/api/auth/signin", dataToSubmit)
     // .then( response => console.log('AXIOS:', response) ) // 아래 .then과 둘 다 하면 에러 남
     .then((response) => response.data);
@@ -71,6 +72,20 @@ export async function payment(dataToSubmit) {
   //request를 reducer에 넘겨줌
   return {
     type: PAYMENT,
+    payload: request,
+  };
+}
+
+export async function registerMD(dataToSubmit) {
+  // console.log("dataToSubmit", dataToSubmit);
+  const request = await axios
+    .post("http://3.35.231.145:8080/api/md/register", dataToSubmit)
+    // .then( response => console.log('AXIOS:', response) )
+    .then((response) => response.data);
+
+  //request를 reducer에 넘겨줌
+  return {
+    type: REGISTER_MD,
     payload: request,
   };
 }

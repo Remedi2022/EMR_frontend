@@ -13,9 +13,8 @@
     cursor: pointer;
     border: 0;
   }
-  /* .modal > section { */
-    .section {
-    width: 700px;
+  .smallsection {
+    width: 540px;
     height: 540px;
     margin: 0 auto;
     border-radius: 10px;

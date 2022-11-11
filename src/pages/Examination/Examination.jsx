@@ -3,7 +3,8 @@ import LeftNav from "../../components/LeftNav/LeftNav";
 import TopBar from "../../components/TopBar/TopBar";
 import PatientList from "../../components/PatientList/PatientList";
 import { useNavigate } from "react-router-dom";
-import RegistrationModal from "../PatientRegistration/Registration";
+import Registration from "../PatientRegistration/Registration";
+import MDRegistration from "../MDRegistration/MDRegistration";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -99,7 +100,7 @@ function Content() {
           <span>신규환자를 등록하시겠습니까?</span>
           <div className="homeMenuButton">
             {/* <button>신환 등록하기</button> */}
-            <RegistrationModal></RegistrationModal>
+            <Registration></Registration>
           </div>
         </div>
         <div className="homeMenuItem">
@@ -107,7 +108,8 @@ function Content() {
           <span>MD 제품들을 라이브러리에</span>
           <span>미리 등록하고 관리할 수 있습니다.</span>
           <div className="homeMenuButton">
-            <button className="homeMenuItemButton">MD 관리하기</button>
+            <MDRegistration></MDRegistration>
+            {/* <button className="homeMenuItemButton">MD 관리하기</button> */}
           </div>
         </div>
       </div>
