@@ -4,6 +4,7 @@ import {
   REGISTER_PATIENT,
   PAYMENT,
   RECEPTION,
+  REGISTER_MD,
 } from "../_actions/types";
 
 export default function (state = {}, action) {
@@ -21,6 +22,9 @@ export default function (state = {}, action) {
       return { ...state, Register: action.payload };
       break;
     case PAYMENT:
+      return { ...state, Payment: action.payload };
+      break;
+    case REGISTER_MD:
       return { ...state, Payment: action.payload };
       break;
     default:
