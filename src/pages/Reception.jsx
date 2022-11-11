@@ -379,8 +379,8 @@ function Content(props) {
                     onChange={handleRevisit}
                   >
                     <option value="default">선택하세요</option>
-                    <option value={1}>초진</option>
-                    <option value={2}>재진</option>
+                    <option value={0}>초진</option>
+                    <option value={1}>재진</option>
                   </select>
                 </div>
                 {/* <div className="receptionInfoTitle">
@@ -471,7 +471,7 @@ function Content(props) {
                     <hr className="divider"></hr>
                     <span className="vitalSign">
                       {patientVS ? patientVS.blood_pressure_high : null}
-                      &nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;
                       {patientVS ? patientVS.blood_pressure_low : null}
                     </span>
                   </div>

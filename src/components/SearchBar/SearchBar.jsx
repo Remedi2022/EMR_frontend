@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from "react";
 import "./SearchBar.css";
-import axios from 'axios';
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 // import SearchIcon from "@material-ui/icons/Search";
 // import CloseIcon from "@material-ui/icons/Close";
-import Reception from "../../pages/Reception"
+import Reception from "../../pages/Reception";
+import { useRef } from "react";
 
-function SearchBar({ placeholder, focus }) {
-    const [users, setUsers] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
-    const [filteredData, setFilteredData] = useState([]);
-    const [wordEntered, setWordEntered] = useState("");
-    const navigate = useNavigate();
+function SearchBar({ placeholder, focus }, props) {
+  const ref = useRef(null);
+  const [users, setUsers] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [filteredData, setFilteredData] = useState([]);
+  const [wordEntered, setWordEntered] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -23,11 +25,10 @@ function SearchBar({ placeholder, focus }) {
         // loading 상태를 true로 바꿉니다.
         setLoading(true);
         const response = await axios.get(
-          'http://3.35.231.145:8080/api/patient/list'
+          "http://3.35.231.145:8080/api/patient/list"
         );
         setUsers(response.data.result); // 데이터는 response.data 안에 들어있습니다.
       } catch (e) {
-
         setError(e);
       }
       setLoading(false);
@@ -70,6 +71,7 @@ function SearchBar({ placeholder, focus }) {
     <div className="search">
       <div className="searchInputs">
         <input
+          ref={ref}
           className="searchField"
           type="text"
           placeholder={placeholder}
@@ -79,11 +81,14 @@ function SearchBar({ placeholder, focus }) {
         <div className="searchIcon">
           {/* closeIcon 위치 이상해서 일단 없앰 */}
           {/* {filteredData.length === 0 ? ( */}
-            <div>
-              <button className="Search-button" type="submit">
-                <img className='SearchIcon' src={ process.env.PUBLIC_URL + '/icons/search50_999.png' } />
-              </button>
-            </div>
+          <div>
+            <button className="Search-button" type="submit">
+              <img
+                className="SearchIcon"
+                src={process.env.PUBLIC_URL + "/icons/search50_999.png"}
+              />
+            </button>
+          </div>
           {/* ) : (
             <button className="clearBtn" onClick={ clearInput }>
               &times;
@@ -96,12 +101,13 @@ function SearchBar({ placeholder, focus }) {
         <div className="dataResult">
           {filteredData.slice(0, 15).map((value, key) => {
             return (
-              <a
-                className="dataItem"
-                target="_blank">
+              <a className="dataItem" target="_blank">
                 <button
                   className="dataItemButton"
-                  onClick={() => {navigate(`/reception/${value.pid}`)}}>
+                  onClick={() => {
+                    navigate(`/reception/${value.pid}`);
+                  }}
+                >
                   <p>{value.name} </p>
                   <p>({value.rrn}) </p>
                 </button>

@@ -39,6 +39,21 @@ function Content() {
   //     console.log(firstVisit)
   // }, [firstVisit])
 
+  //* status 2 (진료 중)로 변경
+  const putStatus2 = async () => {
+    await axios
+      .put("http://3.35.231.145:8080/api/visit/status", {
+        visit_id: firstVisit[0].vid,
+        status: 2,
+      })
+        // console.log("hello")
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
   return (
     <div className="content">
       <div className="homeMenu">
@@ -76,7 +91,8 @@ function Content() {
             <button
               className="homeMenuItemButton"
               onClick={() => {
-                navigate(`/chart/${firstVisit[0].pid}`);
+                  navigate(`/chart/${firstVisit[0].pid}`);
+                  putStatus2();
               }}
             >
               진료 진행하기

@@ -8,6 +8,7 @@ import RegistrationModal from "../modals/Registration";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import SearchBar from "../components/SearchBar/SearchBar";
+import { useRef } from "react";
 
 function Content() {
   const navigate = useNavigate();
@@ -16,6 +17,9 @@ function Content() {
   const [visits, setVisits] = useState([]);
   const [firstVisit, setFirstVisit] = useState();
 
+  const handleClick = (props) => {
+    props.ref.current.focus();
+  };
   const getVisits = async () => {
     const response = await axios.get("http://3.35.231.145:8080/api/visit/list");
     setVisits(response.data.result);
@@ -83,7 +87,9 @@ function Content() {
           <span className="homeMenuItemTitle">접수 신청</span>
           <span>등록한 환자를 접수하시겠습니까?</span>
           <div className="homeMenuButton">
-            <button className="homeMenuItemButton">접수하기</button>
+            <button className="homeMenuItemButton" onClick={handleClick}>
+              접수하기
+            </button>
           </div>
         </div>
       </div>

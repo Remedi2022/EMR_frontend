@@ -20,7 +20,7 @@ function Content(props) {
   const [error, setError] = useState(null);
   const [results, setResults] = useState(null);
   const [show, setShow] = useState(true);
-  //   let last = patientVisitList[patientVisitList.length - 1];
+  const last = patientVisitList[0];
 
   const convertDoctorName = {
     "45316968-2c70-4e9a-99bd-eda5da1607ba": "박의사",
@@ -55,10 +55,11 @@ function Content(props) {
       // console.log("patient visit list ", response.data.result);
       setPatientVisitList(response.data.result);
       setPatientVisitListloading(false);
+      //   console.log("visitList: ", patientVisitList);
     };
     getPatientVisitList();
   }, []); //한 번만 동작함
-  // console.log(getPatientVisitList)
+  //   console.log(patientVisitList);
 
   // useEffect(() => {
   //   console.log("VL : ", patientVisitList[0]);
@@ -93,10 +94,11 @@ function Content(props) {
     const getPayInfo = async () => {
       try {
         if (patientVisitList) {
+          console.log(patientVisitList);
           const result = await axios.get(
             `http://3.35.231.145:8080/api/payment/price?vid=${patientVisitList[0].vid}`
           );
-          // console.log("result", result);
+          console.log("result", result);
           setPayInfo(result.data.result);
         }
       } catch (err) {
@@ -147,10 +149,10 @@ function Content(props) {
       visit_id: patientVisitList[0].vid,
       status: 4,
     };
-    // console.log("body", body);
+    console.log("body", body);
 
     dispatch(payment(body)).then((response) => {
-      // console.log("DISPATCH:", response);
+      console.log("DISPATCH:", response);
       if (response.payload.success) {
         // console.log(response.payload.message);
         alert("수납이 완료되었습니다.");
@@ -159,6 +161,7 @@ function Content(props) {
         alert("수납에 실패하였습니다.");
       }
     });
+    //   .catch(response.error)
   };
   ///////////////////////////////// 수납내역 post 코드 끝
 
@@ -221,7 +224,7 @@ function Content(props) {
           <span style={{ fontWeight: "bold" }}>
             {patientInfo.name}&nbsp;&nbsp;
           </span>
-          <sapn>{convertGender()},&nbsp;</sapn>
+          <span>{convertGender()},&nbsp;</span>
           <span>만 {calcAge()}세</span>
         </div>
         <span className="vitalSignSummary">
@@ -252,12 +255,12 @@ function Content(props) {
         <div className="paymentWrapper">
           <div className="paymentDate">
             <span className="title">
-              {/* {last ? (
-                <li className="patientlistItem">
+              {last ? (
+                <li className="chartTitle">
                   🖊&nbsp;{last.date.split("T")[0]}{" "}
                   {convertDoctorName[last.doctor]}
                 </li>
-              ) : null} */}
+              ) : null}
             </span>
           </div>
 
@@ -389,7 +392,11 @@ function Content(props) {
         </div>
 
         <div className="MDList">
-          <div className="MDTitle">
+          <div
+            className="MDTitle"
+            onClick={() => setShow(!show)}
+            style={{ cursor: "pointer" }}
+          >
             <span className="title">MD 리스트</span>
             <span>▼</span>
           </div>
@@ -406,16 +413,18 @@ function Content(props) {
               />
             </button>
           </form> */}
-          <div className="mdHistory">
-            <ul className="visitList">
-              {results.result.map((item) => (
-                <li className="MDListItem" key={item.id}>
-                  {item.name} {item.volume}
-                  {item.unit}
-                </li>
-              ))}
-            </ul>
-          </div>
+          {show ? (
+            <div className="mdHistory">
+              <ul className="visitList">
+                {results.result.map((item) => (
+                  <li className="MDListItem" key={item.id}>
+                    {item.name} {item.volume}
+                    {item.unit}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
         </div>
       </div>
     </div>
@@ -435,8 +444,12 @@ export default function Payment() {
     const response = await axios.post(
       "http://3.35.231.145:8080/api/patient/search",
       body
+      //   .then(response => { console.log(response) })
+      //     .catch(error => { console.log(error.response) })
     );
+
     setPatientInfo(response.data.result);
+    //   console.log("response:", response);
   };
 
   useEffect(() => {

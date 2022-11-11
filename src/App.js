@@ -11,27 +11,29 @@ import Chart from './pages/Chart'
 import SignUp from './pages/SignUp';
 import Reception from './pages/Reception';
 import PatientList from './components/PatientList/PatientList';
-
+import Users from './VisitListtest.jsx/Users';
+import Chartlists
+    from './VisitListtest.jsx/Chartlists';
 function App() {
   return (
-    <div className='App'>
-    <BrowserRouter>
+    <div className="App">
+      <BrowserRouter>
         <Routes>
+          <Route path="/chartlists" element={<Chartlists />}></Route>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/users" element={<Users />}></Route>
+          <Route path="/administration/*" element={<Administration />}></Route>
+          <Route path="/examination/*" element={<Examination />}></Route>
+          <Route path="/payment/:pid" element={<Payment />}></Route>
+          <Route path="/chart/:pid" element={<Chart />}></Route>
+          <Route path="/login/*" element={<Login />}></Route>
+          <Route path="/signup/*" element={<SignUp />}></Route>
+          <Route path="/reception/:pid" element={<Reception />}></Route>
+        </Routes>
+      </BrowserRouter>
+    </div>
 
-            <Route path="/" element={<Home/>}></Route>
-            <Route path="/administration/*" element={<Administration />}></Route>
-            <Route path="/examination/*" element={<Examination />}></Route>
-            <Route path="/payment/:pid" element={<Payment />}></Route>
-            <Route path="/chart/:pid" element={<Chart />}></Route>
-            <Route path="/login/*" element={<Login />}></Route>
-            <Route path="/signup/*" element={<SignUp />}></Route>
-            <Route path="/reception/:pid" element={<Reception />}></Route>
-
-        </Routes>   
-    </BrowserRouter>
-  </div>
-  
-  // <Examination />
+    // <Examination />
 
     ///////////////////////////////////////////////////////////////////
 
@@ -47,7 +49,7 @@ function App() {
     //     <Route path="/"> <Main/> </Route>
     //   </Switch>
     // </Router>
-  )
+  );
 }
 
 
