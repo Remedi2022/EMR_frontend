@@ -32,7 +32,7 @@ export default function TopBar(props) {
             {/* <span>2022-11-01 15:11</span> */}
             <Clock />
           </div>
-          <div>noti. & profile</div>
+          {/* <div>noti. & profile</div> */}
         </div>
       </div>
     </div>

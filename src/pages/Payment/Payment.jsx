@@ -22,7 +22,7 @@ function Content(props) {
   const [error, setError] = useState(null);
   const [results, setResults] = useState(null);
   const [show, setShow] = useState(true);
-  //   let last = patientVisitList[patientVisitList.length - 1];
+//   const last = patientVisitList[0];
 
   const convertDoctorName = {
     "45316968-2c70-4e9a-99bd-eda5da1607ba": "박의사",
@@ -98,13 +98,14 @@ function Content(props) {
           const result = await axios.get(
             `http://3.35.231.145:8080/api/payment/price?vid=${patientVisitList[0].vid}`
           );
-          // console.log("result", result);
+        //   console.log("result", result);
           setPayInfo(result.data.result);
         }
       } catch (err) {
         console.error(err);
       }
     };
+      
 
     getPayInfo();
   }, [patientVisitList]);
@@ -208,6 +209,7 @@ function Content(props) {
   if (error) return <div>에러가 발생했습니다</div>;
   if (!results) return null;
 
+    // console.log("patientvisitlist: ",patientVisitList)
   return (
     <div className="content">
       <div className="patientSummary">
@@ -215,7 +217,7 @@ function Content(props) {
           <span style={{ fontWeight: "bold" }}>
             {patientInfo.name}&nbsp;&nbsp;
           </span>
-          <sapn>{convertGender()},&nbsp;</sapn>
+          <span>{convertGender()},&nbsp;</span>
           <span>만 {calcAge()}세</span>
         </div>
         <span className="vitalSignSummary">
@@ -246,16 +248,15 @@ function Content(props) {
         <div className="paymentWrapper">
           <div className="paymentDate">
             <span className="title">
-              {/* {last ? (
-                <li className="patientlistItem">
-                  🖊&nbsp;{last.date.split("T")[0]}{" "}
-                  {convertDoctorName[last.doctor]}
-                </li>
-              ) : null} */}
+              {/* <li className="patientlistItem">
+                🖊&nbsp;{patientVisitList[0].date.split("T")[0]}{" "}
+                {convertDoctorName[patientVisitList[0].doctor]}
+              </li> */}
             </span>
           </div>
 
           <div className="paymentContentWrapper">
+            <span className="title"></span>
             <form>
               <div className="paymentContentItem" id="itemPay">
                 <span className="title">수납 내역</span>

@@ -45,7 +45,7 @@ function App() {
     //     <Route path="/"> <Main/> </Route>
     //   </Switch>
     // </Router>
-  )
+  );
 }
 
 export default App;

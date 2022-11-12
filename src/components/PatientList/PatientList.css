@@ -1,84 +1,89 @@
 .patientlist {
-    flex: 1;
-    border-right: 2.4px solid #f0f0f0;
+  flex: 1;
+  border-right: 2.4px solid #f0f0f0;
 }
 
 .patientlistWrapper {
-    padding: 8px;
-    /* color: #444; */
+  padding: 8px;
+  /* color: #444; */
 }
 
 #listTitle {
-    font-weight: bold;
-    font-size: 0.8rem;
-    margin-left: 6px;
+  font-weight: bold;
+  font-size: 0.8rem;
+  margin-left: 6px;
 }
 
 .patientlistMenu {
-    margin-top: 10px;
-    padding: 3px 7px 7px 7px;
-    border-radius: 8px;
+  margin-top: 10px;
+  padding: 3px 7px 7px 7px;
+  border-radius: 8px;
 }
-    #waiting.patientlistMenu {
-        background-color: #e8cfda;
-    }
-    #reservation.patientlistMenu {
-        background-color: #efe3e8;
-    }
+#waiting.patientlistMenu {
+  background-color: #e8cfda;
+}
+#reservation.patientlistMenu {
+  background-color: #efe3e8;
+}
 
 .patientlistListWrapper {
-        height: 100px;
-        /* min-height: 50px;
+  height: 100px;
+  /* min-height: 50px;
         max-height: 100px; */
-        overflow: auto;
+  overflow: auto;
 }
-    #todayWrapper.patientlistListWrapper {
-        min-height: calc(100vh - 410px);
-        /* max-height: calc(100vh - 430px); */
-    }
+#todayWrapper.patientlistListWrapper {
+  min-height: calc(100vh - 410px);
+  /* max-height: calc(100vh - 430px); */
+}
 
 #today.patientlistMenu {
-    background-color: #eeeeee;
+  background-color: #eeeeee;
 }
 
 .patientlistTitle {
-    font-size: 0.8rem;
-    margin-left: 5px;
+  font-size: 0.8rem;
+  margin-left: 5px;
 }
 
 .patientlistList {
-    font-size: 0.8rem;
-    /* color: #777; */
-    font-weight: bold;
-    /* list-style: none; */
-    padding: 4px;
-    background-color: white;
-    border-radius: 8px;
-    margin: 6px 0 0 0;
-    min-height: 86px;
-    /* max-height: fit-content; */
+  font-size: 0.8rem;
+  /* color: #777; */
+  font-weight: bold;
+  /* list-style: none; */
+  padding: 4px;
+  background-color: white;
+  border-radius: 8px;
+  margin: 6px 0 0 0;
+  min-height: 86px;
+  /* max-height: fit-content; */
 }
-    #todaylistlist{
-        min-height: calc(100% - 14px);
-    }
+#todaylistlist {
+  min-height: calc(100% - 14px);
+}
 
+.chartTitle {
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  border-radius: 7px;
+  list-style: none;
+}
 .patientlistItem {
-    padding: 3px;
-    /* cursor: pointer; */
-    display: flex;
-    align-items: center;
-    border-radius: 10px;
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  border-radius: 7px;
 }
 
 /* .patientlistItem.active,
 .patientlistItem:hover {
-    background-color: rgb(231, 231, 231);
+  background-color: rgb(241, 241, 241);
 } */
 
 .patientlistItem img {
-    width: 1rem;
-    height: 1rem;
-    /* object-fit: contain; */
-    margin-right: 0.7rem;
+  width: 1rem;
+  height: 1rem;
+  /* object-fit: contain; */
+  margin-right: 0.7rem;
 }
-

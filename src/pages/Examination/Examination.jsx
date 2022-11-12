@@ -86,8 +86,8 @@ function Content() {
             <button
               className="homeMenuItemButton"
               onClick={() => {
-                navigate(`/chart/${firstVisit[0].pid}`);
-                putStatus2();
+                  navigate(`/chart/${firstVisit[0].pid}`);
+                  putStatus2();
               }}
             >
               진료 시작하기
