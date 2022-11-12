@@ -41,6 +41,7 @@ function Content(props) {
   const [diagnosis, setDiagnosis] = useState("");
   const [prescription, setPrescription] = useState("");
   const [feeOption, setFeeOption] = useState(1);
+  const [feeInfo, setFeeInfo] = useState("");
   const [prescribedMDList, setPrescribedMDList] = useState([]);
   const last = patientVisitList[0];
 
@@ -90,15 +91,11 @@ function Content(props) {
   //   console.log("setPatientChart: ", patientChart);
 
   // GET 내원이력별 차트(안됨)
-  const getChartInfo = async ({ vid }) => {
-    const response = await axios
-      .get(`http://3.35.231.145:8080/api/chart/list?vid=${vid}`)
-      .then((data) => {
-        console.log("data:", data);
-      })
-      .catch((error) => {
-        console.log(error.response);
-      });
+  const getChartInfo = async (vid) => {
+    const response = await axios.get(
+      `http://3.35.231.145:8080/api/chart/list?vid=${vid}`
+    );
+    // console.log(response);
 
     setExamination(response.data.result.examination);
     setDiagnosis(response.data.result.diagnosis);
@@ -115,12 +112,14 @@ function Content(props) {
   };
 
   useEffect(() => {
-    getPatientVS();
-  }, []); //한 번만 동작함
+    if (patientVisitList.length > 0) {
+      getPatientVS();
+    }
+  }, patientVisitList); // 한 번만 동작함. patientVisitList가 생성되고 나면 그다음에 getPatientVS() 실행
   // console.log(patientInfo)
   //   useEffect(() => {
-    console.log("VS : ", patientVS);
-    console.log("VL: ",patientVisitList)
+  //   console.log("VL: ",patientVisitList)
+  //   console.log("VS : ", patientVS);
   //   }, [patientVS]);
 
   // 우측 엠디리스트에서 항목 클릭하면 처방에 md 추가됨
@@ -237,11 +236,19 @@ function Content(props) {
     // console.log("진료 완료");
     // console.log("chartinfo", chartInfo);
 
+    if (!examination) {
+      return alert("진료 기록을 입력하세요");
+    } else if (!diagnosis) {
+      return alert("진단을 입력하세요");
+    } else if (feeOption.value === "") {
+      return alert("진찰료를 선택하세요.");
+    }
+
     const response = await axios.post(
       "http://3.35.231.145:8080/api/chart/register",
       chartInfo
     );
-    console.log("result", response);
+    // console.log("result", response);
     if (response.status === 201) {
       alert("진료가 완료되었습니다.");
       setDiagnosis("");
@@ -422,10 +429,15 @@ function Content(props) {
               ></textarea>
             </div>
             <select
-              className="infoButton"
+              className="feeInfoButton"
               name="fee"
+              id="feeInfo"
               onChange={(e) => changeFeeOption(e)}
+              // value={feeOption}
             >
+              <option selected value="">
+                진찰료를 선택하세요
+              </option>
               <option value={0}>초진진찰료</option>
               <option value={1}>재진진찰료</option>
             </select>

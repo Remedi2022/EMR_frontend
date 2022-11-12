@@ -192,8 +192,26 @@
   outline-color: #e3e3e3;
 }
 
-.infoButton {
+.feeInfoButton {
   margin-top: 5px;
+  font-size: 0.8rem;
+  background-color: white;
+  border-style: solid;
+  border-radius: 5px;
+  border-color: #e6e6e6;
+  border-width: 1px;
+  width: 150px;
+  height: 27px;
+  padding-bottom: 0;
+  text-align: left;
+  padding-left: 8px;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.feeInfoButton:focus{
+    border-color: #94aa95;
 }
 
 .MDPrescriptionWrapper {
@@ -319,7 +337,6 @@
   width: 80px;
   height: 25px;
   margin-bottom: 9px;
-  font-size: 15px;
   text-align: center;
   justify-content: center;
   font-size: 13px;
