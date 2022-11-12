@@ -125,39 +125,39 @@
   cursor: pointer;
 }
 
-.receptionBtnWrapper {
-  display: flex;
-  justify-content: space-between;
-  padding-top: 18px;
-  bottom: 10%;
+.receptionBtnWrapper{
+    display:flex;
+    justify-content: space-between;
+    padding-top: 18px;
+    bottom: 10%;
 }
 
-.receptionBtn {
-  background-color: white;
-  border-style: solid;
-  border-radius: 5px;
-  border-color: #e6e6e6;
-  border-width: 1px;
-  width: 60px;
-  height: 30px;
-  margin-bottom: 9px;
-  font-size: 15px;
-  text-align: center;
-  font-size: 11px;
-  color: gray;
-  font-weight: bold;
-  cursor: pointer;
+/* .receptionBtn{
+    background-color: white;
+    border-style: solid;
+    border-radius: 5px;
+    border-color:  #e6e6e6;
+    border-width: 1px;
+    width: 60px;
+    height: 30px;
+    margin-bottom: 9px;
+    font-size: 15px;
+    text-align: center;
+    font-size: 11px;
+    color: gray;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .receptionBtn:active {
-  background-color: #d9e6d3;
-  outline: none;
-  color: white;
-}
+    background-color: #d9e6d3;
+    outline: none;
+    color:white;
+} */
 
-.insuranceTitle {
-  display: flex;
-  justify-content: space-between;
+.insuranceTitle{
+    display:flex;
+    justify-content: space-between;
 }
 
 .checkPregnant {
@@ -281,17 +281,48 @@
   font-size: 11px;
 }
 
-.bloodPressureLowInput {
-  background-color: white;
-  border-style: solid;
-  border-radius: 5px;
-  border-color: #e6e6e6;
-  border-width: 1px;
-  margin-right: 10px;
-  width: 38px;
-  height: 22px;
-  font-size: 15px;
-  text-align: center;
-  padding-left: 8px;
-  font-size: 11px;
+.bloodPressureLowInput{
+    background-color: white;
+    border-style: solid;
+    border-radius: 5px;
+    border-color:  #e6e6e6;
+    border-width: 1px;
+    margin-right: 10px;
+    width: 38px;
+    height: 22px;
+    font-size: 15px;
+    text-align: center;
+    padding-left:8px;
+    font-size: 11px;
+}
+
+.receptionBtnWrapper{
+    display:flex;
+    justify-content: space-between;
+    padding-top: 18px;
+    bottom: 10%;
+}
+
+.receptionBtn{
+    background-color: #d9e6d3;
+    border-radius: 10px;
+    border-width: 2px;
+    border-style: solid;
+    border-color:  #d9e6d3;
+    width: 60px;
+    height: 30px;
+    font-size: 15px;
+    text-align: center;
+    justify-content: center;
+    font-size: 13px;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 0px;
+}
+
+.receptionBtn:active {
+    background-color: white;
+    outline: none;
+    color:black;
 }

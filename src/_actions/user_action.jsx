@@ -1,21 +1,22 @@
 import axios from "axios";
 
 import {
-  LOGIN_USER,
+  SIGNIN_USER,
   SIGNUP_USER,
   REGISTER_PATIENT,
   RECEPTION,
   PAYMENT,
+  REGISTER_MD,
 } from "./types";
 
-export function loginUser(dataToSubmit) {
-  const request = axios
+export async function signinUser(dataToSubmit) {
+  const request = await axios
     .post("http://3.35.231.145:8080/api/auth/signin", dataToSubmit)
     // .then( response => console.log('AXIOS:', response) ) // 아래 .then과 둘 다 하면 에러 남
     .then((response) => response.data);
 
   return {
-    type: LOGIN_USER,
+    type: SIGNIN_USER,
     payload: request,
   };
 }
@@ -71,6 +72,20 @@ export async function payment(dataToSubmit) {
   //request를 reducer에 넘겨줌
   return {
     type: PAYMENT,
+    payload: request,
+  };
+}
+
+export async function registerMD(dataToSubmit) {
+  // console.log("dataToSubmit", dataToSubmit);
+  const request = await axios
+    .post("http://3.35.231.145:8080/api/md/register", dataToSubmit)
+    // .then( response => console.log('AXIOS:', response) )
+    .then((response) => response.data);
+
+  //request를 reducer에 넘겨줌
+  return {
+    type: REGISTER_MD,
     payload: request,
   };
 }

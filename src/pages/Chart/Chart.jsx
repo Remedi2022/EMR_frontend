@@ -1,10 +1,10 @@
 import "./Chart.css";
-import LeftNav from "../components/LeftNav/LeftNav";
-import TopBar from "../components/TopBar/TopBar";
-import PatientList from "../components/PatientList/PatientList";
+import LeftNav from "../../components/LeftNav/LeftNav";
+import TopBar from "../../components/TopBar/TopBar";
+import PatientList from "../../components/PatientList/PatientList";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import useAsync from "../_api/useAsync";
+import useAsync from "../../_api/useAsync";
 import {
   isRouteErrorResponse,
   Link,
@@ -43,10 +43,6 @@ function Content(props) {
   const [feeOption, setFeeOption] = useState(1);
   const [prescribedMDList, setPrescribedMDList] = useState([]);
   const last = patientVisitList[0];
-  // const [MDCount, setMDCount] = useState([])
-  // const [MDAdministrationDay, setMDAdministrationDay] = useState([])
-  // const [MDAmount, setMDAmount] = useState([])
-  // const [chartInfo, setChartInfo] = useState();
 
   const convertDoctorName = {
     "45316968-2c70-4e9a-99bd-eda5da1607ba": "박의사",
@@ -72,40 +68,62 @@ function Content(props) {
 
   //   getChartInfo();
   // }, [patientVisitList]);
+  // console.log("patientVL: ",patientVisitList)
 
-  const getPatientChart = async () => {
-    const response = await axios.get(
-      `http://3.35.231.145:8080/api/chart/list?pid=${patientInfo.pid}`
-        .then((err) => {
-          console.log("response:",err);
-        })
-        // .catch((error) => {
-        //   console.log(error.response);
-        // })
-    );
-    setPatientChart(response.data.result);
-    setPatientChartloading(false);
+  // GET 차트
+  //   const getPatientChart = async () => {
+  //     const response = await axios
+  //       .get(`http://3.35.231.145:8080/api/chart/list?pid=${patientInfo.pid}`)
+  //       .then((data) => {
+  //         console.log("data:", data);
+  //       });
+  //     //   .catch((error) => {
+  //     //     console.log(error.response);
+  //     //   });
+  //     setPatientChart(response.data.result);
+  //     setPatientChartloading(false);
+  //   };
+
+  //   useEffect(() => {
+  //     getPatientChart();
+  //   }, []);
+  //   console.log("setPatientChart: ", patientChart);
+
+  // GET 내원이력별 차트(안됨)
+  const getChartInfo = async ({ vid }) => {
+    const response = await axios
+      .get(`http://3.35.231.145:8080/api/chart/list?vid=${vid}`)
+      .then((data) => {
+        console.log("data:", data);
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+
+    setExamination(response.data.result.examination);
+    setDiagnosis(response.data.result.diagnosis);
+    setPrescription(response.data.result.prescription);
   };
-  useEffect(() => {
-    getPatientChart();
-  }, []);
-  // console.log("setPatientChart: ", patientChart);
 
-  // GET 환자의 바이탈싸인
+  //   GET 환자의 바이탈싸인(안됨)
   const getPatientVS = async () => {
     const response = await axios.get(
-      `http://3.35.231.145:8080/api/visit/vital?pid=${patientInfo.pid}`
+      `http://3.35.231.145:8080/api/visit/vital?vid=${patientVisitList[0].vid}`
     );
     setPatientVS(response.data.result);
     setPatientLoading(false);
   };
 
-  // 우측 엠디리스트에서 항목 클릭하면 처방에 md 추가됨
-
   useEffect(() => {
     getPatientVS();
   }, []); //한 번만 동작함
-  // console.log(patientVS)
+  // console.log(patientInfo)
+  //   useEffect(() => {
+    console.log("VS : ", patientVS);
+    console.log("VL: ",patientVisitList)
+  //   }, [patientVS]);
+
+  // 우측 엠디리스트에서 항목 클릭하면 처방에 md 추가됨
   const [items, setItems] = useState([]);
   const inputItems = (md) => {
     const tmpItems = [...items];
@@ -118,10 +136,6 @@ function Content(props) {
     tmpItems.push(md);
     setItems(tmpItems);
   };
-
-  // useEffect(() => {
-  //     // console.log('VS : ', patientVS)
-  // }, [patientVS])
 
   // GET 좌측 내원이력
   const getPatientVisitList = async () => {
@@ -141,7 +155,7 @@ function Content(props) {
   }, []); //한 번만 동작함
 
   //   useEffect(() => {
-  //     // console.log('VL : ', patientInfo)
+  //   console.log('patientInfo : ', patientInfo)
   //   }, [patientInfo]);
 
   const changeRecord = (e) => {
@@ -173,14 +187,6 @@ function Content(props) {
       setPrescribedMDList(tmpPrerscribedMDList);
     }
   };
-
-  // const changeMDAdministrationDay = (e) => {
-  //     setMDAdministrationDay(e.target.value)
-  // }
-
-  // const changeMDCount = (e) => {
-  //     setMDCount()
-  // }
 
   const onChangePrescribedMDItemAmount = (e, id) => {
     const tmpPrescribedMDList = [...prescribedMDList];
@@ -235,7 +241,7 @@ function Content(props) {
       "http://3.35.231.145:8080/api/chart/register",
       chartInfo
     );
-
+    console.log("result", response);
     if (response.status === 201) {
       alert("진료가 완료되었습니다.");
       setDiagnosis("");
@@ -246,7 +252,7 @@ function Content(props) {
       setPrescribedMDList([]);
       navigate("/examination");
     } else {
-      alert("진료 작성에 실패했습니다.");
+      alert("차트 작성에 실패했습니다.");
     }
   };
 
@@ -260,10 +266,6 @@ function Content(props) {
   if (!mdlist) return null;
 
   function MDList() {
-    // const [mdId, setMDId] = useState(null);
-    // const [state, refetch] = useAsync(getMDList, [], true);
-    // const { loading, data: mdlist, error } = state; // state.data 를 users 키워드로 조회
-    // console.log("MDList에서 state는 ",state);
     if (loading) return <div> MDList 로딩중..</div>;
     if (error) return <div> MDList에서 에러가 발생했습니다</div>;
     if (!mdlist) return null;
@@ -283,54 +285,8 @@ function Content(props) {
           ))}
         </ul>
       </div>
-      // <div className="MDPrescription">
-      //     {mdId && <MD id={mdId} />}
-      //  </div>
     );
   }
-
-  // function MD({ id }) {
-  //     const [state] = useAsync(() => getMD(id), [id]);
-  //     const { loading, data: md, error } = state;
-  //     // console.log("MD에서 state는 ",state);
-  //     // console.log("id: ",id)
-  //     if (loading) return <div>MD 로딩중..</div>;
-  //     if (error) return <div>MD 에러가 발생했습니다</div>;
-
-  //     return(
-  //         <li className="MDItem">
-  //             {md.itemName}
-  //         </li>
-  //     )
-  // }
-
-  //     useEffect(() => {
-  //         const fetchUsers = async () => {
-  //         try {
-  //             // 요청이 시작 할 때에는 error 와 users 를 초기화하고
-  //             setError(null);
-  //             // setItems(null);
-  //             setItems(null);
-  //             // loading 상태를 true 로 바꿉니다.
-  //             setLoading(true);
-  //             const response = await axios.get(
-  //             'http://3.35.231.145:8080/api/md/list'
-  //             );
-
-  //             setItems(response.data.result);  // 데이터는 response.data 안에 들어있습니다.
-  //             console.log(response.data);
-  //         } catch (e) {
-  //             setError(e);
-  //         }
-  //       setLoading(false);
-  //     };
-
-  //     fetchUsers();
-  //     }, []);
-
-  //   if (loading) return <div>로딩중..</div>;
-  //   if (error) return <div>에러가 발생했습니다</div>;
-  //   if (!items) return null;
 
   const convertGender = () => {
     if (patientInfo.gender === "F") {
@@ -407,8 +363,11 @@ function Content(props) {
               ? patientVisitList.map((p) => {
                   return (
                     <li
-                      className="patientlistItem"
+                      className="chartPatientListItem"
                       style={{ cursor: "pointer" }}
+                      onClick={() => {
+                        getChartInfo(p.vid);
+                      }}
                     >
                       {p.date.split("T")[0]} {convertDoctorName[p.doctor]}
                     </li>
@@ -416,21 +375,23 @@ function Content(props) {
                 })
               : null}
           </ul>
-          <span className="addChart" onClick={(e) => submitChart(e)}>
-            진료 완료
-          </span>
         </div>
 
         <div className="chartWrapper">
           {/* <form id="chart" className="chartWrapper"> */}
-          <span className="title">
-            {last ? (
-              <li className="chartTitle">
-                🖊&nbsp;{last.date.split("T")[0]}{" "}
-                {convertDoctorName[last.doctor]}
-              </li>
-            ) : null}
-          </span>
+          <div className="chartTitleWrapper">
+            <span className="title">
+              {last ? (
+                <li className="chartTitle">
+                  🖊&nbsp;{last.date.split("T")[0]}{" "}
+                  {convertDoctorName[last.doctor]}
+                </li>
+              ) : null}
+            </span>
+            <span className="chartBtn" onClick={(e) => submitChart(e)}>
+              진료 완료
+            </span>
+          </div>
           <div className="chartContentWrapper">
             <span className="title">진료 기록</span>
             <hr className="divider"></hr>
@@ -439,6 +400,7 @@ function Content(props) {
                 className="chartRecord"
                 name="recordContent"
                 onChange={(e) => changeRecord(e)}
+                value={examination}
               ></textarea>
             </div>
           </div>
@@ -449,12 +411,14 @@ function Content(props) {
               <textarea
                 className="chartRecord"
                 onChange={(e) => changeDiagnosis(e)}
+                value={diagnosis}
               ></textarea>
             </div>
             <div className="diagnoisRecord">
               <textarea
                 className="chartRecord"
                 onChange={(e) => changePrescription(e)}
+                value={prescription}
               ></textarea>
             </div>
             <select

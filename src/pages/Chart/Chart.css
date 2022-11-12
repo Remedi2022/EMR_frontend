@@ -85,7 +85,7 @@
 }
 
 .addChart {
-  border: 1px solid #779fff;
+  border: 1px solid #72a06d;
   border-radius: 10px;
   width: 83%;
   font-size: 0.9rem;
@@ -110,10 +110,14 @@
   margin: 10px;
   /* align-items: center; */
   justify-content: space-between;
-  overflow: scroll;
+  overflow-y: scroll;
   /* height: auto; */
 }
 
+.chartTitleWrapper {
+  display: flex;
+  justify-content: space-between;
+}
 .chartContentWrapper {
   font-size: 0.85rem;
   padding: 10px 15px;
@@ -304,4 +308,43 @@
 .MDTitle {
   display: flex;
   justify-content: space-between;
+}
+
+.chartBtn {
+  background-color: #d9e6d3;
+  border-radius: 10px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #d9e6d3;
+  width: 80px;
+  height: 25px;
+  margin-bottom: 9px;
+  font-size: 15px;
+  text-align: center;
+  justify-content: center;
+  font-size: 13px;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 0px;
+  line-height: 25px;
+}
+
+.chartBtn:active {
+  background-color: white;
+  outline: none;
+  color: black;
+}
+
+.chartPatientListItem {
+  padding: 3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-radius: 7px;
+}
+
+.chartPatientListItem.active,
+.chartPatientListItem:hover {
+  background-color: rgb(241, 241, 241);
 }

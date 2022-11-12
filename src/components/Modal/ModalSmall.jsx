@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Modal.css';
+import './ModalSmall.css';
 
-const Modal = (props) => {
+const ModalSmall = (props) => {
     // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
     const { open, close, reset, header } = props;
 
@@ -10,7 +10,7 @@ const Modal = (props) => {
     // 모달이 열릴 때 openModal 클래스가 생성된다.
         <div className={open ? 'openModal modal' : 'modal'}>
             {open ? (
-                <section className="section">
+                <section className="smallsection">
                     <header>
                         {header}
                         <button className="close" onClick={ ()=>{close(); reset()} }>
@@ -36,4 +36,4 @@ const Modal = (props) => {
     );
 };
 
-export default Modal;
+export default ModalSmall;

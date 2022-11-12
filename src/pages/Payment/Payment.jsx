@@ -1,14 +1,16 @@
 import "./Payment.css";
-import LeftNav from "../components/LeftNav/LeftNav";
-import TopBar from "../components/TopBar/TopBar";
-import PatientList from "../components/PatientList/PatientList";
+import LeftNav from "../../components/LeftNav/LeftNav";
+import TopBar from "../../components/TopBar/TopBar";
+import PatientList from "../../components/PatientList/PatientList";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { isRouteErrorResponse, Link, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { payment } from "../_actions/user_action";
+import { payment } from "../../_actions/user_action";
 
 function Content(props) {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const patientInfo = props.patientInfo;
   const [patientloading, setPatientLoading] = useState(true);
@@ -20,7 +22,7 @@ function Content(props) {
   const [error, setError] = useState(null);
   const [results, setResults] = useState(null);
   const [show, setShow] = useState(true);
-  const last = patientVisitList[0];
+//   const last = patientVisitList[0];
 
   const convertDoctorName = {
     "45316968-2c70-4e9a-99bd-eda5da1607ba": "박의사",
@@ -55,11 +57,10 @@ function Content(props) {
       // console.log("patient visit list ", response.data.result);
       setPatientVisitList(response.data.result);
       setPatientVisitListloading(false);
-      //   console.log("visitList: ", patientVisitList);
     };
     getPatientVisitList();
   }, []); //한 번만 동작함
-  //   console.log(patientVisitList);
+  // console.log(getPatientVisitList)
 
   // useEffect(() => {
   //   console.log("VL : ", patientVisitList[0]);
@@ -94,31 +95,22 @@ function Content(props) {
     const getPayInfo = async () => {
       try {
         if (patientVisitList) {
-          console.log(patientVisitList);
           const result = await axios.get(
             `http://3.35.231.145:8080/api/payment/price?vid=${patientVisitList[0].vid}`
           );
-          console.log("result", result);
+        //   console.log("result", result);
           setPayInfo(result.data.result);
         }
       } catch (err) {
         console.error(err);
       }
     };
+      
 
     getPayInfo();
   }, [patientVisitList]);
 
   //* 수납내역 post
-  const [inputValue, setInputValue] = useState({
-    // 사용할 문자열들을 저장하는 객체 형채로 관리
-    individualCopayment: null,
-    nhisCopayment: null,
-    uninsuredPayment: null,
-    paidAmount: null,
-    paymentType: "",
-    visitId: null,
-  });
 
   //* paidAmount = individualCopayment + nhisCopayment + uninsuredPayment
 
@@ -149,19 +141,19 @@ function Content(props) {
       visit_id: patientVisitList[0].vid,
       status: 4,
     };
-    console.log("body", body);
+    // console.log("body", body);
 
     dispatch(payment(body)).then((response) => {
-      console.log("DISPATCH:", response);
+      // console.log("DISPATCH:", response);
       if (response.payload.success) {
         // console.log(response.payload.message);
         alert("수납이 완료되었습니다.");
+        navigate("/administration", { replace: true });
         //수납 성공 메세지
       } else {
         alert("수납에 실패하였습니다.");
       }
     });
-    //   .catch(response.error)
   };
   ///////////////////////////////// 수납내역 post 코드 끝
 
@@ -217,6 +209,7 @@ function Content(props) {
   if (error) return <div>에러가 발생했습니다</div>;
   if (!results) return null;
 
+    // console.log("patientvisitlist: ",patientVisitList)
   return (
     <div className="content">
       <div className="patientSummary">
@@ -255,16 +248,15 @@ function Content(props) {
         <div className="paymentWrapper">
           <div className="paymentDate">
             <span className="title">
-              {last ? (
-                <li className="chartTitle">
-                  🖊&nbsp;{last.date.split("T")[0]}{" "}
-                  {convertDoctorName[last.doctor]}
-                </li>
-              ) : null}
+              {/* <li className="patientlistItem">
+                🖊&nbsp;{patientVisitList[0].date.split("T")[0]}{" "}
+                {convertDoctorName[patientVisitList[0].doctor]}
+              </li> */}
             </span>
           </div>
 
           <div className="paymentContentWrapper">
+            <span className="title"></span>
             <form>
               <div className="paymentContentItem" id="itemPay">
                 <span className="title">수납 내역</span>
@@ -392,11 +384,7 @@ function Content(props) {
         </div>
 
         <div className="MDList">
-          <div
-            className="MDTitle"
-            onClick={() => setShow(!show)}
-            style={{ cursor: "pointer" }}
-          >
+          <div className="MDTitle">
             <span className="title">MD 리스트</span>
             <span>▼</span>
           </div>
@@ -413,18 +401,16 @@ function Content(props) {
               />
             </button>
           </form> */}
-          {show ? (
-            <div className="mdHistory">
-              <ul className="visitList">
-                {results.result.map((item) => (
-                  <li className="MDListItem" key={item.id}>
-                    {item.name} {item.volume}
-                    {item.unit}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ) : null}
+          <div className="mdHistory">
+            <ul className="visitList">
+              {results.result.map((item) => (
+                <li className="MDListItem" key={item.id}>
+                  {item.name} {item.volume}
+                  {item.unit}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -444,12 +430,8 @@ export default function Payment() {
     const response = await axios.post(
       "http://3.35.231.145:8080/api/patient/search",
       body
-      //   .then(response => { console.log(response) })
-      //     .catch(error => { console.log(error.response) })
     );
-
     setPatientInfo(response.data.result);
-    //   console.log("response:", response);
   };
 
   useEffect(() => {

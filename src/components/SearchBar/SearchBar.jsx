@@ -4,11 +4,10 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 // import SearchIcon from "@material-ui/icons/Search";
 // import CloseIcon from "@material-ui/icons/Close";
-import Reception from "../../pages/Reception";
-import { useRef } from "react";
+import Reception from "../../pages/Reception/Reception"
 
 function SearchBar({ placeholder, focus }, props) {
-  const ref = useRef(null);
+//   const ref = useRef(null);
   const [users, setUsers] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -71,7 +70,6 @@ function SearchBar({ placeholder, focus }, props) {
     <div className="search">
       <div className="searchInputs">
         <input
-          ref={ref}
           className="searchField"
           type="text"
           placeholder={placeholder}

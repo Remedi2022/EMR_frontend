@@ -1,7 +1,7 @@
 import './SignUp.css';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { signupUser } from '../_actions/user_action';
+import { signupUser } from '../../_actions/user_action';
 import { useNavigate } from 'react-router-dom';
 
 

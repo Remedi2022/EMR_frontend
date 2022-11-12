@@ -1,17 +1,16 @@
 import "./Reception.css";
-import LeftNav from "../components/LeftNav/LeftNav";
-import TopBar from "../components/TopBar/TopBar";
-import PatientList from "../components/PatientList/PatientList";
+import LeftNav from "../../components/LeftNav/LeftNav";
+import TopBar from "../../components/TopBar/TopBar";
+import PatientList from "../../components/PatientList/PatientList";
 import Moment from "moment";
 import "moment/locale/ko";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { reception } from "../_actions/user_action";
-import { Link, Navigate, useNavigate } from "react-router-dom";
-import Clock from "../Clock/checkedTime.jsx";
+import { reception } from "../../_actions/user_action";
+import { Link, useNavigate } from "react-router-dom";
+import Clock from "../../Clock/checkedTime.jsx";
 import { useParams } from "react-router-dom";
-import Chart from "./Chart";
 
 // search 후 선택한 patient 넘겨받음
 // const patientInfo = {
@@ -23,7 +22,6 @@ import Chart from "./Chart";
 //     "address" : "와우산로 94"
 // }
 
-// props로 환자 기본 정보(이름, 주민등록번호, 대표연락처, 비상연락처, 주소) 받아옴
 function Content(props) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -76,7 +74,7 @@ function Content(props) {
     setPatientVisitListloading(false);
   };
 
-  console.log("patientVisitList: ", patientVisitList[0]);
+  // console.log("patientVisitList: ", patientVisitList[0]);
 
   useEffect(() => {
     getPatientVisitList();
@@ -128,8 +126,8 @@ function Content(props) {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    console.log(inputValue);
-    console.log(selected);
+    // console.log(inputValue);
+    // console.log(selected);
     // console.log('자격구분:', benefitType)
     // console.log('방문목적:', purpose)
 
@@ -161,7 +159,7 @@ function Content(props) {
     dispatch(reception(body)).then((response) => {
       // console.log('DISPATCH:', response)
       if (response.payload.success) {
-        console.log(response.payload.message);
+        // console.log(response.payload.message);
         alert("환자가 접수되었습니다.");
         navigate("/administration", { replace: true });
         //환자 접수 성공 메세지
@@ -261,7 +259,7 @@ function Content(props) {
                 <span className="patientName" style={{ fontSize: "1.1rem" }}>
                   {patientInfo.name}
                 </span>
-                <sapn className="patientInfo">{convertGender()},&nbsp;</sapn>
+                <span className="patientInfo">{convertGender()},&nbsp;</span>
                 <span className="patientInfo">만 {calcAge()}세</span>
               </div>
             </div>
@@ -471,7 +469,7 @@ function Content(props) {
                     <hr className="divider"></hr>
                     <span className="vitalSign">
                       {patientVS ? patientVS.blood_pressure_high : null}
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;
                       {patientVS ? patientVS.blood_pressure_low : null}
                     </span>
                   </div>

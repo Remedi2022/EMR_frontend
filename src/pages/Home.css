@@ -53,7 +53,7 @@
     padding: 10px 20px;
     border-radius: 10px;
     border: none;
-    background-color: rgb(231, 231, 231);
+    background-color: #e7e7e7;
     font-weight: bold;
     cursor: pointer;
 }
@@ -65,7 +65,7 @@
 /* .homeMenuItem button:active, */
 .homeMenuItem button:hover{ 
     /*  // 버튼 색 바꾸는 것 background-color: ; */
-    color:#94aa95;
+    color:#72a06d;
 }
 
 
@@ -85,5 +85,5 @@
 
 .homeMenu a:hover{
     text-decoration:none;
-    color:#94aa95;
+    color:#76b97e;
 }

@@ -3,38 +3,34 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import Main from "./pages/Main"
 import Home from './pages/Home';
-import Administration from './pages/Administration'
-import Examination from './pages/Examination'
-import Login from './pages/Login';
-import Payment from './pages/Payment';
-import Chart from './pages/Chart'
-import SignUp from './pages/SignUp';
-import Reception from './pages/Reception';
-import PatientList from './components/PatientList/PatientList';
-import Users from './VisitListtest.jsx/Users';
-import Chartlists
-    from './VisitListtest.jsx/Chartlists';
+import Administration from './pages/Administration/Administration';
+import Examination from './pages/Examination/Examination'
+import Login from './pages/Signin/Signin';
+import Payment from './pages/Payment/Payment';
+import Chart from './pages/Chart/Chart';
+import SignUp from './pages/Signup/SignUp';
+import Reception from './pages/Reception/Reception';
+
+
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/chartlists" element={<Chartlists />}></Route>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/users" element={<Users />}></Route>
-          <Route path="/administration/*" element={<Administration />}></Route>
-          <Route path="/examination/*" element={<Examination />}></Route>
-          <Route path="/payment/:pid" element={<Payment />}></Route>
-          <Route path="/chart/:pid" element={<Chart />}></Route>
-          <Route path="/login/*" element={<Login />}></Route>
-          <Route path="/signup/*" element={<SignUp />}></Route>
-          <Route path="/reception/:pid" element={<Reception />}></Route>
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <div className='App'>
+    <BrowserRouter>
+      <Routes>
 
-    // <Examination />
-
+        <Route path="/" element={<Home/>}></Route>
+        <Route path="/administration/*" element={<Administration />}></Route>
+        <Route path="/examination/*" element={<Examination />}></Route>
+        <Route path="/payment/:pid" element={<Payment />}></Route>
+        <Route path="/chart/:pid" element={<Chart />}></Route>
+        <Route path="/login/*" element={<Login />}></Route>
+        <Route path="/signup/*" element={<SignUp />}></Route>
+        <Route path="/reception/:pid" element={<Reception />}></Route>
+        
+      </Routes>   
+    </BrowserRouter>
+  </div>
+  
     ///////////////////////////////////////////////////////////////////
 
     // <div className='App'>
@@ -51,27 +47,5 @@ function App() {
     // </Router>
   );
 }
-
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
 
 export default App;

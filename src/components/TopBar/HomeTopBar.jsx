@@ -10,7 +10,7 @@ export default function HomeTopBar(props) {
                 </div>
                 <div className="topRight">
                     <div className="nowTime"><Clock /></div>
-                    <div>noti. & profile</div>
+                    {/* <div>noti. & profile</div> */}
                 </div>
             </div>
         </div>

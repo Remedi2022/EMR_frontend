@@ -1,14 +1,13 @@
 import "./Administration.css";
-import LeftNav from "../components/LeftNav/LeftNav";
-import TopBar from "../components/TopBar/TopBar";
-import PatientList from "../components/PatientList/PatientList";
+import LeftNav from "../../components/LeftNav/LeftNav";
+import TopBar from "../../components/TopBar/TopBar";
+import PatientList from "../../components/PatientList/PatientList";
 // import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
-import RegistrationModal from "../modals/Registration";
+import Registration from "../PatientRegistration/Registration";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import SearchBar from "../components/SearchBar/SearchBar";
-import { useRef } from "react";
+import SearchBar from "../../components/SearchBar/SearchBar";
 
 function Content() {
   const navigate = useNavigate();
@@ -80,7 +79,7 @@ function Content() {
           <span>신규환자를 등록하시겠습니까?</span>
           <div className="homeMenuButton">
             {/* <button>신환 등록하기</button> */}
-            <RegistrationModal></RegistrationModal>
+            <Registration></Registration>
           </div>
         </div>
         <div className="homeMenuItem">

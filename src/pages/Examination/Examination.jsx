@@ -1,9 +1,10 @@
 import "./Examination.css";
-import LeftNav from "../components/LeftNav/LeftNav";
-import TopBar from "../components/TopBar/TopBar";
-import PatientList from "../components/PatientList/PatientList";
+import LeftNav from "../../components/LeftNav/LeftNav";
+import TopBar from "../../components/TopBar/TopBar";
+import PatientList from "../../components/PatientList/PatientList";
 import { useNavigate } from "react-router-dom";
-import RegistrationModal from "../modals/Registration";
+import Registration from "../PatientRegistration/Registration";
+import MDRegistration from "../MDRegistration/MDRegistration";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -35,25 +36,24 @@ function Content() {
     // console.log(firstVisit);
   }, [visits]);
 
-  // useEffect(() => {
-  //     console.log(firstVisit)
-  // }, [firstVisit])
+  useEffect(() => {
+      console.log(firstVisit)
+  }, [firstVisit])
 
   //* status 2 (진료 중)로 변경
   const putStatus2 = async () => {
-    await axios
-      .put("http://3.35.231.145:8080/api/visit/status", {
-        visit_id: firstVisit[0].vid,
-        status: 2,
-      })
-        // console.log("hello")
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
+    await axios.put('http://3.35.231.145:8080/api/visit/status', {
+      "visit_id": firstVisit[0].vid,
+	    "status" : 2
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
   return (
     <div className="content">
       <div className="homeMenu">
@@ -81,12 +81,7 @@ function Content() {
               <br></br>건강보험 일반진료 1진료실
             </span>
           )}
-          {/* {loading ? (
-                        <div>Loading...</div>
-                        ) : (
-                        // <span className="homeMenuItemDetail" style={{color:'gray'}}> 진료대기 환자가 없습니다.</span>
-                        <span className="homeMenuItemDetail" key={firstVisit[0].pid}>{firstVisit[0].name}<br></br>건강보험 일반진료 1진료실</span>
-                    )} */}
+
           <div className="homeMenuButton">
             <button
               className="homeMenuItemButton"
@@ -95,7 +90,7 @@ function Content() {
                   putStatus2();
               }}
             >
-              진료 진행하기
+              진료 시작하기
             </button>
           </div>
         </div>
@@ -105,7 +100,7 @@ function Content() {
           <span>신규환자를 등록하시겠습니까?</span>
           <div className="homeMenuButton">
             {/* <button>신환 등록하기</button> */}
-            <RegistrationModal></RegistrationModal>
+            <Registration></Registration>
           </div>
         </div>
         <div className="homeMenuItem">
@@ -113,7 +108,8 @@ function Content() {
           <span>MD 제품들을 라이브러리에</span>
           <span>미리 등록하고 관리할 수 있습니다.</span>
           <div className="homeMenuButton">
-            <button className="homeMenuItemButton">MD 관리하기</button>
+            <MDRegistration></MDRegistration>
+            {/* <button className="homeMenuItemButton">MD 관리하기</button> */}
           </div>
         </div>
       </div>
