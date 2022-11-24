@@ -13,12 +13,12 @@ import {
 } from "react-router-dom";
 
 // async function getMD(id) {
-//   const response = await axios.get(`http://3.35.231.145:8080/api/md/${id}`);
+//   const response = await axios.get(`http://54.180.106.181:8080/api/md/${id}`);
 //   return response.data.result;
 // }
 
 async function getMDList() {
-  const response = await axios.get("http://3.35.231.145:8080/api/md/list");
+  const response = await axios.get("http://54.180.106.181:8080/api/md/list");
   return response.data.result;
 }
 
@@ -43,21 +43,22 @@ function Content(props) {
   const [feeOption, setFeeOption] = useState(1);
   const [feeInfo, setFeeInfo] = useState("");
   const [prescribedMDList, setPrescribedMDList] = useState([]);
+  const [chartInfoShow, setChartInfoShow] = useState(true);
   const last = patientVisitList[0];
-
+  const [chartName, setChartName] = useState([]);
   const convertDoctorName = {
     "45316968-2c70-4e9a-99bd-eda5da1607ba": "박의사",
     "4a529095-ae33-49aa-97bc-6a5998df8c1e": "김의사",
     "5870c689-eaff-4595-bc5d-3d9a227464e8": "최의사",
   };
-
+  //   console.log("ChartName:", chartName);
   // useEffect(() => {
   //   const getChartInfo = async () => {
   //     try {
   //       if (patientVisitList) {
   //         console.log(patientVisitList);
   //         const result = await axios.get(
-  //           `http://3.35.231.145:8080/api/chart/list?pid=${patientVisitList[0].pid}`
+  //           `http://54.180.106.181:8080/api/chart/list?pid=${patientVisitList[0].pid}`
   //         );
   //         console.log("result", result);
   //         setChartInfo(result.data.result);
@@ -69,12 +70,12 @@ function Content(props) {
 
   //   getChartInfo();
   // }, [patientVisitList]);
-  // console.log("patientVL: ",patientVisitList)
+  //   console.log("patientVL: ", patientVisitList);
 
   // GET 차트
   //   const getPatientChart = async () => {
   //     const response = await axios
-  //       .get(`http://3.35.231.145:8080/api/chart/list?pid=${patientInfo.pid}`)
+  //       .get(`http://54.180.106.181:8080/api/chart/list?pid=${patientInfo.pid}`)
   //       .then((data) => {
   //         console.log("data:", data);
   //       });
@@ -93,7 +94,7 @@ function Content(props) {
   // GET 내원이력별 차트(안됨)
   const getChartInfo = async (vid) => {
     const response = await axios.get(
-      `http://3.35.231.145:8080/api/chart/list?vid=${vid}`
+      `http://54.180.106.181:8080/api/chart/list?vid=${vid}`
     );
     // console.log(response);
 
@@ -105,7 +106,7 @@ function Content(props) {
   //   GET 환자의 바이탈싸인(안됨)
   const getPatientVS = async () => {
     const response = await axios.get(
-      `http://3.35.231.145:8080/api/visit/vital?vid=${patientVisitList[0].vid}`
+      `http://54.180.106.181:8080/api/visit/vital?vid=${patientVisitList[0].vid}`
     );
     setPatientVS(response.data.result);
     setPatientLoading(false);
@@ -139,7 +140,7 @@ function Content(props) {
   // GET 좌측 내원이력
   const getPatientVisitList = async () => {
     const response = await axios.get(
-      `http://3.35.231.145:8080/api/visit/record?pid=${patientInfo.pid}`
+      `http://54.180.106.181:8080/api/visit/record?pid=${patientInfo.pid}`
     );
     setPatientVisitList(response.data.result);
     setPatientVisitListloading(false);
@@ -245,7 +246,7 @@ function Content(props) {
     }
 
     const response = await axios.post(
-      "http://3.35.231.145:8080/api/chart/register",
+      "http://54.180.106.181:8080/api/chart/register",
       chartInfo
     );
     // console.log("result", response);
@@ -374,6 +375,8 @@ function Content(props) {
                       style={{ cursor: "pointer" }}
                       onClick={() => {
                         getChartInfo(p.vid);
+                        setChartName(p);
+                        setChartInfoShow(!chartInfoShow);
                       }}
                     >
                       {p.date.split("T")[0]} {convertDoctorName[p.doctor]}
@@ -385,15 +388,38 @@ function Content(props) {
         </div>
 
         <div className="chartWrapper">
-          {/* <form id="chart" className="chartWrapper"> */}
           <div className="chartTitleWrapper">
             <span className="title">
+              {/* {chartName && (
+                <li className="chartTitle">
+                  🖊&nbsp;{chartName.date.split("T")[0]}{" "}
+                  {convertDoctorName[chartName.doctor]}
+                </li>
+              )} */}
+
+              {/* {chartInfoShow ? (
+                <li className="chartTitle">
+                  🖊&nbsp;{last.date.split("T")[0]}{" "}
+                  {convertDoctorName[last.doctor]}
+                </li>
+              ) : (
+                <li className="chartTitle">
+                  🖊&nbsp;{chartName.date.split("T")[0]}{" "}
+                  {convertDoctorName[chartName.doctor]}
+                </li>
+              )} */}
+
               {last ? (
                 <li className="chartTitle">
                   🖊&nbsp;{last.date.split("T")[0]}{" "}
                   {convertDoctorName[last.doctor]}
                 </li>
-              ) : null}
+              ) : (
+                <li className="chartTitle">
+                  🖊&nbsp;{chartName.date.split("T")[0]}{" "}
+                  {convertDoctorName[chartName.doctor]}
+                </li>
+              )}
             </span>
             <span className="chartBtn" onClick={(e) => submitChart(e)}>
               진료 완료
@@ -433,7 +459,6 @@ function Content(props) {
               name="fee"
               id="feeInfo"
               onChange={(e) => changeFeeOption(e)}
-              // value={feeOption}
             >
               <option selected value="">
                 진찰료를 선택하세요
@@ -442,21 +467,6 @@ function Content(props) {
               <option value={1}>재진진찰료</option>
             </select>
             <div className="MDPrescriptionWrapper">
-              {/* {l?l.map((item) =>{
-                            return(
-                                <div className="MDPrescription">
-                                    <li className='MDItem'>
-                                        {mdId && <MD id={mdId} />}
-                                    </li>
-                                    <div className="amountList">
-                                        <input className="amountInput" type="number" placeholder="1" min="1"></input>
-                                        <input className="amountInput" type="number" placeholder="1" min="1"></input>
-                                        <input className="amountInput" type="number" placeholder="1" min="1"></input>
-                                        <span className="amount">용법</span>
-                                    </div>
-                            </div>)}
-                            ):<></>
-                        } */}
               {items.map((item) => {
                 return (
                   <div key={item.id} className="MDPrescription">
@@ -501,22 +511,6 @@ function Content(props) {
                 );
               })}
             </div>
-            {/* {l?l.map((item) =>{
-                            return(
-                                <div className="MDPrescription">
-                                    <MD />
-                                <li key={item.id}  className='MDItem'>
-                                    {item.itemName}
-                                </li>
-                                    <div className="amountList">
-                                        <input className="amountInput" type="number" placeholder="1" min="1"></input>
-                                        <input className="amountInput" type="number" placeholder="1" min="1"></input>
-                                        <input className="amountInput" type="number" placeholder="1" min="1"></input>
-                                        <span className="amount">용법</span>
-                                    </div>
-                            </div>)}
-                            ):<></>
-                        } */}
           </div>
           {/* </form> */}
         </div>
@@ -530,41 +524,11 @@ function Content(props) {
             <span className="title">MD 리스트</span>
             <span>▼</span>
           </div>
-          {/* <form className="form" action="/" method="GET">
-            <input
-              className="md-search-field"
-              type="search"
-              placeholder="오더세트 검색"
-            />
-            <button className="search-button" type="submit">
-              <img
-                className="md-searchIcon"
-                src={process.env.PUBLIC_URL + "/icons/search50_999.png"}
-              />
-            </button>
-          </form> */}
+
           {show ? (
             <div className="mdHistory">
               <ul className="visitList">
                 <MDList />
-
-                {/* {mdlist.map(item =>(
-                                <li className="MDListItem" key={item.id} onClick={() => setMDId(item.id)}>
-                                    {item.name}
-                                </li>
-                                onClick={(item)=>{handleClick(item)}}
-                            ) )} */}
-
-                {/* {items.map(item =>(
-                                <li 
-                                    className='MDListItem' 
-                                    key={item.id} 
-                                    onClick={(item)=>{handleClick(item)}}
-                                >
-                                    {item.name} {item.volume}{item.unit}
-                                </li>
-                                // onClick={()=>{item=>handleClick(item);setItemId(item.id)}}
-                            ))} */}
               </ul>
             </div>
           ) : null}
@@ -585,7 +549,7 @@ export default function Chart() {
       pid: numPid,
     };
     const response = await axios.post(
-      "http://3.35.231.145:8080/api/patient/search",
+      "http://54.180.106.181:8080/api/patient/search",
       body
     );
     setPatientInfo(response.data.result);

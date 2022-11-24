@@ -11,7 +11,7 @@ import {
 
 export async function signinUser(dataToSubmit) {
   const request = await axios
-    .post("http://3.35.231.145:8080/api/auth/signin", dataToSubmit)
+    .post("http://54.180.106.181:8080/api/auth/signin", dataToSubmit)
     // .then( response => console.log('AXIOS:', response) ) // 아래 .then과 둘 다 하면 에러 남
     .then((response) => response.data);
 
@@ -23,7 +23,7 @@ export async function signinUser(dataToSubmit) {
 
 export async function signupUser(dataToSubmit) {
   const request = await axios
-    .post("http://3.35.231.145:8080/api/auth/signup", dataToSubmit)
+    .post("http://54.180.106.181:8080/api/auth/signup", dataToSubmit)
     // .then( response => console.log('AXIOS:', response) )
     .then((response) => response.data);
   // console.log(request)
@@ -37,7 +37,7 @@ export async function signupUser(dataToSubmit) {
 // 신환 등록
 export async function registerPatient(dataToSubmit) {
   const request = await axios
-    .post("http://3.35.231.145:8080/api/patient/register", dataToSubmit)
+    .post("http://54.180.106.181:8080/api/patient/register", dataToSubmit)
     // .then((response) => console.log("AXIOS:", response));
     .then((response) => response.data);
 
@@ -51,7 +51,7 @@ export async function registerPatient(dataToSubmit) {
 // 환자 접수
 export async function reception(dataToSubmit) {
   const request = await axios
-    .post("http://3.35.231.145:8080/api/visit/register", dataToSubmit)
+    .post("http://54.180.106.181:8080/api/visit/register", dataToSubmit)
     // .then((response) => console.log("AXIOS:", response));
     .then((response) => response.data);
 
@@ -65,7 +65,7 @@ export async function reception(dataToSubmit) {
 export async function payment(dataToSubmit) {
   // console.log("dataToSubmit", dataToSubmit);
   const request = await axios
-    .post("http://3.35.231.145:8080/api/payment/register", dataToSubmit)
+    .post("http://54.180.106.181:8080/api/payment/register", dataToSubmit)
     // .then( response => console.log('AXIOS:', response) )
     .then((response) => response.data);
 
@@ -79,7 +79,7 @@ export async function payment(dataToSubmit) {
 export async function registerMD(dataToSubmit) {
   // console.log("dataToSubmit", dataToSubmit);
   const request = await axios
-    .post("http://3.35.231.145:8080/api/md/register", dataToSubmit)
+    .post("http://54.180.106.181:8080/api/md/register", dataToSubmit)
     // .then( response => console.log('AXIOS:', response) )
     .then((response) => response.data);
 

@@ -118,6 +118,7 @@ function MDRegistration() {
                 // placeholder="이름"
                 value={MDName}
                 onChange={onSetMDName}
+                autoComplete="off"
               />
             </div>
             <div className="inputBoxVolumeUnit">
@@ -129,6 +130,7 @@ function MDRegistration() {
                 placeholder="ex) 120"
                 value={volume}
                 onChange={onSetVolume}
+                autoComplete="off"
               />
               <span>&nbsp;&nbsp;&nbsp;</span>
               <input
@@ -138,6 +140,7 @@ function MDRegistration() {
                 placeholder="ex) g"
                 value={unit}
                 onChange={onSetUnit}
+                autoComplete="off"
               />
             </div>
             <div className="inputBoxCompany">
@@ -149,6 +152,7 @@ function MDRegistration() {
                 // placeholder="대표 연락처"
                 value={company}
                 onChange={onSetCompany}
+                autoComplete="off"
               />
             </div>
             <div className="inputBoxPrice">
@@ -160,6 +164,7 @@ function MDRegistration() {
                 // placeholder="비상 연락처"
                 value={price}
                 onChange={onSetPrice}
+                autoComplete="off"
               />
               <span>&nbsp;원</span>
             </div>
@@ -172,6 +177,7 @@ function MDRegistration() {
                 placeholder="띄어쓰기로 구분"
                 value={KCD}
                 onChange={onSetKCD}
+                autoComplete="off"
               />
             </div>
           </div>
