@@ -82,7 +82,7 @@ export default function SignUp(){
             password: password
         }
 
-        // Axios.post('http://3.35.231.145:8080/api/auth/signup', body)
+        // Axios.post('http://54.180.106.181:8080/api/auth/signup', body)
         // 대신 dispatch 이용해서 signupUser라는 action 날리기
         // dispatch(loginUser(body))
         dispatch(signupUser(body))

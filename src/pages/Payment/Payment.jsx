@@ -32,7 +32,7 @@ function Content(props) {
 
   const getPatientVS = async () => {
     const response = await axios.get(
-      `http://3.35.231.145:8080/api/visit/vital?pid=${patientInfo.pid}`
+      `http://54.180.106.181:8080/api/visit/vital?pid=${patientInfo.pid}`
     );
     setPatientVS(response.data.result);
     setPatientLoading(false);
@@ -52,7 +52,7 @@ function Content(props) {
   useEffect(() => {
     const getPatientVisitList = async () => {
       const response = await axios.get(
-        `http://3.35.231.145:8080/api/visit/record?pid=${patientInfo.pid}`
+        `http://54.180.106.181:8080/api/visit/record?pid=${patientInfo.pid}`
       );
       // console.log("patient visit list ", response.data.result);
       setPatientVisitList(response.data.result);
@@ -77,7 +77,7 @@ function Content(props) {
         // loading 상태를 true 로 바꿉니다.
         setLoading(true);
         const response = await axios.get(
-          "http://3.35.231.145:8080/api/md/list"
+          "http://54.180.106.181:8080/api/md/list"
         );
         setResults(response.data); // 데이터는 response.data 안에 들어있습니다.
         // console.log(response.data);
@@ -96,7 +96,7 @@ function Content(props) {
       try {
         if (patientVisitList) {
           const result = await axios.get(
-            `http://3.35.231.145:8080/api/payment/price?vid=${patientVisitList[0].vid}`
+            `http://54.180.106.181:8080/api/payment/price?vid=${patientVisitList[0].vid}`
           );
           // console.log("result", result);
           setPayInfo(result.data.result);
@@ -427,7 +427,7 @@ export default function Payment() {
       pid: numPid,
     };
     const response = await axios.post(
-      "http://3.35.231.145:8080/api/patient/search",
+      "http://54.180.106.181:8080/api/patient/search",
       body
     );
     setPatientInfo(response.data.result);

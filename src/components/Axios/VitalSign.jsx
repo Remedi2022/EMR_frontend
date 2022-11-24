@@ -17,9 +17,9 @@ export default function VitalSign(){
             // loading 상태를 true 로 바꿉니다.
             setLoading(true);
             const response = await axios.get(
-                'http://3.35.231.145:8080/api/visit/info?pid=${pid}'
-                // `http://3.35.231.145:8080/api/visit/info?pid=${pid}`
-            // 'http://3.35.231.145:8080/api/md/list'
+                'http://54.180.106.181:8080/api/visit/info?pid=${pid}'
+                // `http://54.180.106.181:8080/api/visit/info?pid=${pid}`
+            // 'http://54.180.106.181:8080/api/md/list'
             );
             
             setVitalSigns(response.data);  // 데이터는 response.data 안에 들어있습니다.

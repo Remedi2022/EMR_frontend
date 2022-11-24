@@ -51,7 +51,7 @@ function Content(props) {
   // 바이탈싸인 get
   const getPatientVS = async () => {
     const response = await axios.get(
-      `http://3.35.231.145:8080/api/visit/vital?pid=${patientInfo.pid}`
+      `http://54.180.106.181:8080/api/visit/vital?pid=${patientInfo.pid}`
     );
     setPatientVS(response.data.result);
     setLoading(false);
@@ -68,7 +68,7 @@ function Content(props) {
 
   const getPatientVisitList = async () => {
     const response = await axios.get(
-      `http://3.35.231.145:8080/api/visit/record?pid=${patientInfo.pid}`
+      `http://54.180.106.181:8080/api/visit/record?pid=${patientInfo.pid}`
     );
     setPatientVisitList(response.data.result);
     setPatientVisitListloading(false);
@@ -377,8 +377,8 @@ function Content(props) {
                     onChange={handleRevisit}
                   >
                     <option value="default">선택하세요</option>
-                    <option value={1}>초진</option>
-                    <option value={2}>재진</option>
+                    <option value={0}>초진</option>
+                    <option value={1}>재진</option>
                   </select>
                 </div>
                 {/* <div className="receptionInfoTitle">
@@ -526,7 +526,7 @@ export default function Reception() {
       pid: numPid,
     };
     const response = await axios.post(
-      "http://3.35.231.145:8080/api/patient/search",
+      "http://54.180.106.181:8080/api/patient/search",
       body
     );
     setPatientInfo(response.data.result);

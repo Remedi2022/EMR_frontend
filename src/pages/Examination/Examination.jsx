@@ -16,7 +16,7 @@ function Content() {
   const [firstVisit, setFirstVisit] = useState();
 
   const getVisits = async () => {
-    const response = await axios.get("http://3.35.231.145:8080/api/visit/list");
+    const response = await axios.get("http://54.180.106.181:8080/api/visit/list");
     setVisits(response.data.result);
     setLoading(false);
   };
@@ -42,7 +42,7 @@ function Content() {
 
   //* status 2 (진료 중)로 변경
   const putStatus2 = async () => {
-    await axios.put('http://3.35.231.145:8080/api/visit/status', {
+    await axios.put('http://54.180.106.181:8080/api/visit/status', {
       "visit_id": firstVisit[0].vid,
 	    "status" : 2
     })

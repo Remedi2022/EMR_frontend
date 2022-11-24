@@ -8,7 +8,7 @@ export default function PatientList() {
   const [visits, setVisits] = useState([]);
 
   const getVisits = async () => {
-    const response = await axios.get("http://3.35.231.145:8080/api/visit/list");
+    const response = await axios.get("http://54.180.106.181:8080/api/visit/list");
     setVisits(response.data.result);
     setLoading(false);
   };

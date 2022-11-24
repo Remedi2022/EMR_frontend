@@ -14,12 +14,12 @@ import {
 
 
 // async function getMD(id) {
-//   const response = await axios.get(`http://3.35.231.145:8080/api/md/${id}`);
+//   const response = await axios.get(`http://54.180.106.181:8080/api/md/${id}`);
 //   return response.data.result;
 // }
 
 async function getMDList() {
-  const response = await axios.get("http://3.35.231.145:8080/api/md/list");
+  const response = await axios.get("http://54.180.106.181:8080/api/md/list");
   return response.data.result;
 }
 
@@ -54,7 +54,7 @@ function Content(props) {
 
   const getPatientVS = async () => {
     const response = await axios.get(
-      `http://3.35.231.145:8080/api/visit/vital?pid=${patientInfo.pid}`
+      `http://54.180.106.181:8080/api/visit/vital?pid=${patientInfo.pid}`
     );
     setPatientVS(response.data.result);
     setPatientLoading(false);
@@ -84,7 +84,7 @@ function Content(props) {
 
   const getPatientVisitList = async () => {
     const response = await axios.get(
-      `http://3.35.231.145:8080/api/visit/record?pid=${patientInfo.pid}`
+      `http://54.180.106.181:8080/api/visit/record?pid=${patientInfo.pid}`
     );
     setPatientVisitList(response.data.result);
     setPatientVisitListloading(false);
@@ -192,7 +192,7 @@ function Content(props) {
     // console.log("chartinfo", chartInfo);
 
     const response = await axios.post(
-      "http://3.35.231.145:8080/api/chart/register",
+      "http://54.180.106.181:8080/api/chart/register",
       chartInfo
     );
     // console.log("result", response);
@@ -274,7 +274,7 @@ function Content(props) {
   //             // loading 상태를 true 로 바꿉니다.
   //             setLoading(true);
   //             const response = await axios.get(
-  //             'http://3.35.231.145:8080/api/md/list'
+  //             'http://54.180.106.181:8080/api/md/list'
   //             );
 
   //             setItems(response.data.result);  // 데이터는 response.data 안에 들어있습니다.
@@ -561,7 +561,7 @@ export default function Chart() {
       pid: numPid,
     };
     const response = await axios.post(
-      "http://3.35.231.145:8080/api/patient/search",
+      "http://54.180.106.181:8080/api/patient/search",
       body
     );
     setPatientInfo(response.data.result);
