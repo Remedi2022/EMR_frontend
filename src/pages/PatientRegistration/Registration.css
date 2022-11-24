@@ -3,107 +3,106 @@
 } */
 
 .patientRegistration {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    /* height: 400px; */
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  /* height: 400px; */
 }
 
 .inputWrapper {
-    /* display: flex;
+  /* display: flex;
     flex-wrap: wrap; */
-    width: 300px;
-    font-size: 0.85rem;
+  width: 300px;
+  font-size: 0.85rem;
 }
-    .inputWrapper div {
-        margin-left: 5px;
-        margin-bottom: 4px;
-    }
+.inputWrapper div {
+  margin-left: 5px;
+  margin-bottom: 4px;
+}
 
-.inputBoxPName input{
-    border: 1px solid #e6e6e6;
-    border-radius: 10px;
-    /* width: 310px; */
-    height: 30px;
-    margin: 0px;
-    margin-bottom: 5px;
-    padding: 0px;
-    text-indent: 0.4rem;
-    /* font-size: 14px; */
+.inputBoxPName input {
+  border: 1px solid #e6e6e6;
+  border-radius: 10px;
+  /* width: 310px; */
+  height: 30px;
+  margin: 0px;
+  margin-bottom: 5px;
+  padding: 0px;
+  text-indent: 0.4rem;
+  /* font-size: 14px; */
 }
-    .inputBoxPName input:focus {
-        /* border-style: bold; */
-        border-color: #bababa;
-        outline: none;  
-    }
+.inputBoxPName input:focus {
+  /* border-style: bold; */
+  border-color: #bababa;
+  outline: none;
+}
 
 .inputBoxRRN input {
-    border: 1px solid #e6e6e6;
-    border-radius: 10px;
-    width: 100px;
-    height: 30px;
-    margin: 0px;
-    margin-bottom: 5px;
-    padding: 0px;
-    text-indent: 0.4rem;
-    /* font-size: 14px; */
+  border: 1px solid #e6e6e6;
+  border-radius: 10px;
+  width: 100px;
+  height: 30px;
+  margin: 0px;
+  margin-bottom: 5px;
+  padding: 0px;
+  text-indent: 0.4rem;
+  /* font-size: 14px; */
 }
-    .inputBoxRRN input:focus {
-        border-color: #bababa;
-        outline: none;  
-    }
+.inputBoxRRN input:focus {
+  border-color: #bababa;
+  outline: none;
+}
 
 .inputBoxPhone input {
-    border: 1px solid #e6e6e6;
-    border-radius: 10px;
-    width: 60px;
-    height: 30px;
-    margin: 0px;
-    margin-bottom: 5px;
-    padding: 0px;
-    text-indent: 0.4rem;
-    /* font-size: 14px; */
+  border: 1px solid #e6e6e6;
+  border-radius: 10px;
+  width: 60px;
+  height: 30px;
+  margin: 0px;
+  margin-bottom: 5px;
+  padding: 0px;
+  text-indent: 0.4rem;
+  /* font-size: 14px; */
 }
-    .inputBoxPhone input:focus {
-        border-color: #bababa;
-        outline: none;  
-    }
+.inputBoxPhone input:focus {
+  border-color: #bababa;
+  outline: none;
+}
 
 .inputBoxEmergencyPhone input {
-    border: 1px solid #e6e6e6;
-    border-radius: 10px;
-    width: 60px;
-    height: 30px;
-    margin: 0px;
-    margin-bottom: 5px;
-    padding: 0px;
-    text-indent: 0.4rem;
-    /* font-size: 14px; */
+  border: 1px solid #e6e6e6;
+  border-radius: 10px;
+  width: 60px;
+  height: 30px;
+  margin: 0px;
+  margin-bottom: 5px;
+  padding: 0px;
+  text-indent: 0.4rem;
+  /* font-size: 14px; */
 }
-    .inputBoxEmergencyPhone input:focus {
-        border-color: #bababa;
-        outline: none;  
-    }
+.inputBoxEmergencyPhone input:focus {
+  border-color: #bababa;
+  outline: none;
+}
 
-    /* .inputBoxAddress { */
-        /* display: flex;
+/* .inputBoxAddress { */
+/* display: flex;
         flex-direction: column; */
-        /* position: relative; */
-    /* } */
-    /* .inputBoxAddress button { */
-   
-    
-.inputBoxAddress input{
-        border: 1px solid #e6e6e6;
-        border-radius: 10px;
-        width: 215px;
-        height: 30px;
-        margin: 0px;
-        margin-bottom: 5px;
-        padding: 0px;
-        text-indent: 0.4rem;
-    }
-    /* #addressContent {
+/* position: relative; */
+/* } */
+/* .inputBoxAddress button { */
+
+.inputBoxAddress input {
+  border: 1px solid #e6e6e6;
+  border-radius: 10px;
+  width: 215px;
+  height: 30px;
+  margin: 0px;
+  margin-bottom: 5px;
+  padding: 0px;
+  text-indent: 0.4rem;
+}
+/* #addressContent {
         position: absolute;
         top: 55px;
     }
@@ -111,55 +110,56 @@
         position: absolute;
         top: 90px;
     } */
-    .inputBoxAddress input:focus {
-        border-color: #bababa;
-        outline: none;  
-    }
+.inputBoxAddress input:focus {
+  border-color: #bababa;
+  outline: none;
+}
 
-    /* .inputBoxAddress button{
+/* .inputBoxAddress button{
 
     } */
-    
+
 .termsWrapper {
-    width: 300px;
+  width: 300px;
 }
-    
+
+.terms {
+  color: gray;
+  margin-top: 5px;
+}
 .postcodeWrapper {
-    position: absolute;
-    right: -17px;
-    top: 0px;
-    /* z-index: 99; */
+  position: absolute;
+  right: -17px;
+  top: 0px;
+  /* z-index: 99; */
 }
 #postcodeButton {
-    border: 1px solid #e6e6e6;
-    border-radius: 25px;
-    width: 80px;
-    height: 30px;
-    margin-bottom: 5px;
-    padding: 0px;
-    font-weight: normal;
-    font-size: 0.8rem;
-    /* position: absolute;
+  border: 1px solid #e6e6e6;
+  border-radius: 25px;
+  width: 80px;
+  height: 30px;
+  margin-bottom: 5px;
+  padding: 0px;
+  font-weight: normal;
+  font-size: 0.8rem;
+  /* position: absolute;
     top: 20px;
     left: 0; */
 }
-    
 
 .registerButtonWrapper {
-    display: flex;
-    justify-content: space-between;
-    /* height: 40px; */
-    margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  /* height: 40px; */
+  margin-top: 30px;
 }
 
-.registerButtonWrapper button{
-    padding: 8px 17px;
-    color: #000000;
-    background-color: #e7e7e7;
-    border-radius: 10px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    margin: 0 5px;
+.registerButtonWrapper button {
+  padding: 8px 17px;
+  color: #000000;
+  background-color: #e7e7e7;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin: 0 5px;
 }
-
-

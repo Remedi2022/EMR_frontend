@@ -21,6 +21,7 @@
     "react-router-dom": "^6.4.1",
     "react-scripts": "5.0.1",
     "react-use": "^17.4.0",
+    "react-use-cookie": "^1.4.0",
     "redux": "^4.2.0",
     "redux-promise": "^0.6.0",
     "redux-thunk": "^2.4.1",

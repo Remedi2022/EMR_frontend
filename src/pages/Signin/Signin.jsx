@@ -59,7 +59,8 @@ export default function Signin() {
                                     name="emailContent"
                                     placeholder="이메일"
                                     value={ email }
-                                    onChange={ onEmailHandler }
+                                    onChange={onEmailHandler}
+                                    autoComplete="off"
                                 />
                                 {/* <img className='userLogin' src={ process.env.PUBLIC_URL + '/icons/userlogin.png' } /> */}
                             </div>

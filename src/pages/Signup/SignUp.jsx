@@ -96,87 +96,101 @@ export default function SignUp(){
         })
     }
 
-    return(
-        <div className="signUpHome">
+    return (
+      <div className="signUpHome">
         {/* <div className="signUpContainer"> */}
-            <div className="signUpContentBox">
-                <div className="signUpContent">
-                    <span className="remedi"> REMEDi </span>
-                    <form onSubmit={ onSubmitHandler }>
-                        <div className="inputWrapper">
-                            <div className="inputBoxName">
-                                <input id="nameContent"
-                                    type="text"
-                                    name="nameContent"
-                                    placeholder="의료진 이름"
-                                    value={ name }
-                                    onChange={ onNameHandler }
-                                />
-                            </div>
-                            <div className="inputBoxLicense">
-                                <input id="licenseContent"
-                                    type="text"
-                                    name="licenseContent"
-                                    placeholder="면허 번호"
-                                    value={ license }
-                                    onChange={ onLicenseHandler }
-                                />
-                            </div>
-                            <div className="inputBoxHospitalName">
-                                <input id="hospitalNameContent"
-                                    type="text"
-                                    name="hospitalNameContent"
-                                    placeholder="요양기관 이름"
-                                    value={ hospitalName }
-                                    onChange={ onHospitalNameHandler }
-                                />
-                            </div>
-                            <div className="inputBoxHospital">
-                                <input id="hospitalContent"
-                                    type="text"
-                                    name="hospitalContent"
-                                    placeholder="요양기관 번호"
-                                    maxLength="8"
-                                    value={ hospitalCode }
-                                    onChange={ onHospitalCodeHandler }
-                                />
-                            </div>
-                            <div className="inputBoxHospital">
-                                <input id="businesseRegistrationNumContent"
-                                    type="text"
-                                    name="businesseRegistrationNumContent"
-                                    placeholder="사업자 등록번호"
-                                    maxLength="10"
-                                    value={ businessRegistrationNum }
-                                    onChange={ onBusinessRegistrationNumlHandler }
-                                />
-                            </div>
-                           
-                            <div className="inputBoxE">
-                                <input id="emailContent"
-                                    type="email"
-                                    name="emailContent"
-                                    placeholder="이메일"
-                                    value={ email }
-                                    onChange={ onEmailHandler }
-                                />
-                            </div>                   
-                            <div className="inputBoxPassword">
-                                <input id="passwordContent"
-                                    type="password"
-                                    name="passwordContent"
-                                    placeholder="비밀번호"
-                                    value={ password }
-                                    onChange={ onPasswordHandler }
-                                />
-                            </div>
-                        </div>
-                    <div className="buttonWrapperSignUp">
-                        <button className="loginButton">회원가입</button>
-                    </div>
-                    </form> 
+        <div className="signUpContentBox">
+          <div className="signUpContent">
+            <span className="remedi"> REMEDi </span>
+            <form onSubmit={onSubmitHandler}>
+              <div className="inputWrapper">
+                <div className="inputBoxName">
+                  <input
+                    id="nameContent"
+                    type="text"
+                    name="nameContent"
+                    placeholder="의료진 이름"
+                    value={name}
+                    onChange={onNameHandler}
+                    autoComplete="off"
+                  />
                 </div>
-            </div>
+                <div className="inputBoxLicense">
+                  <input
+                    id="licenseContent"
+                    type="text"
+                    name="licenseContent"
+                    placeholder="면허 번호"
+                    value={license}
+                    onChange={onLicenseHandler}
+                    autoComplete="off"
+                  />
+                </div>
+                <div className="inputBoxHospitalName">
+                  <input
+                    id="hospitalNameContent"
+                    type="text"
+                    name="hospitalNameContent"
+                    placeholder="요양기관 이름"
+                    value={hospitalName}
+                    onChange={onHospitalNameHandler}
+                    autoComplete="off"
+                  />
+                </div>
+                <div className="inputBoxHospital">
+                  <input
+                    id="hospitalContent"
+                    type="text"
+                    name="hospitalContent"
+                    placeholder="요양기관 번호"
+                    maxLength="8"
+                    value={hospitalCode}
+                    onChange={onHospitalCodeHandler}
+                    autoComplete="off"
+                  />
+                </div>
+                <div className="inputBoxHospital">
+                  <input
+                    id="businesseRegistrationNumContent"
+                    type="text"
+                    name="businesseRegistrationNumContent"
+                    placeholder="사업자 등록번호"
+                    maxLength="10"
+                    value={businessRegistrationNum}
+                    onChange={onBusinessRegistrationNumlHandler}
+                    autoComplete="off"
+                  />
+                </div>
+
+                <div className="inputBoxE">
+                  <input
+                    id="emailContent"
+                    type="email"
+                    name="emailContent"
+                    placeholder="이메일"
+                    value={email}
+                    onChange={onEmailHandler}
+                    autoComplete="off"
+                  />
+                </div>
+                <div className="inputBoxPassword">
+                  <input
+                    id="passwordContent"
+                    type="password"
+                    name="passwordContent"
+                    placeholder="비밀번호"
+                    value={password}
+                    onChange={onPasswordHandler}
+                    autoComplete="off"
+                  />
+                </div>
+              </div>
+              <div className="buttonWrapperSignUp">
+                <button className="loginButton">회원가입</button>
+              </div>
+            </form>
+          </div>
         </div>
-    )
+      </div>
+    );
 }

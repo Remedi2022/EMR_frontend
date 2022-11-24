@@ -170,6 +170,7 @@ function Registration() {
                   // pattern="[0-9]+"
                   value={pName}
                   onChange={onSetPName}
+                  autoComplete="off"
                 />
               </div>
               <div className="inputBoxRRN">
@@ -182,6 +183,7 @@ function Registration() {
                   maxLength="6"
                   value={RRN1}
                   onChange={onSetRRN1}
+                  autoComplete="off"
                 />
                 <span>&nbsp;-&nbsp;</span>
                 <input
@@ -192,6 +194,7 @@ function Registration() {
                   maxLength="7"
                   value={RRN2}
                   onChange={onSetRRN2}
+                  autoComplete="off"
                 />
               </div>
               <div className="inputBoxPhone">
@@ -204,6 +207,7 @@ function Registration() {
                   maxLength="3"
                   value={phone1}
                   onChange={onSetPhone1}
+                  autoComplete="off"
                 />
                 <span>&nbsp;-&nbsp;</span>
                 <input
@@ -214,6 +218,7 @@ function Registration() {
                   maxLength="4"
                   value={phone2}
                   onChange={onSetPhone2}
+                  autoComplete="off"
                 />
                 <span>&nbsp;-&nbsp;</span>
                 <input
@@ -224,6 +229,7 @@ function Registration() {
                   maxLength="4"
                   value={phone3}
                   onChange={onSetPhone3}
+                  autoComplete="off"
                 />
               </div>
               <div className="inputBoxEmergencyPhone">
@@ -236,6 +242,7 @@ function Registration() {
                   maxLength="3"
                   value={ePhone1}
                   onChange={onSetEPhone1}
+                  autoComplete="off"
                 />
                 <span>&nbsp;-&nbsp;</span>
                 <input
@@ -246,6 +253,7 @@ function Registration() {
                   maxLength="4"
                   value={ePhone2}
                   onChange={onSetEPhone2}
+                  autoComplete="off"
                 />
                 <span>&nbsp;-&nbsp;</span>
                 <input
@@ -256,6 +264,7 @@ function Registration() {
                   maxLength="4"
                   value={ePhone3}
                   onChange={onSetEPhone3}
+                  autoComplete="off"
                 />
               </div>
               <div className="inputBoxAddress">
@@ -277,7 +286,7 @@ function Registration() {
                   required={true}
                   value={address}
                   placeholder="주소"
-                  readOnly
+                  autoComplete="off"
                 />
                 <input
                   id="addressDetailContent"
@@ -286,6 +295,7 @@ function Registration() {
                   placeholder="상세 주소"
                   value={addressDetail}
                   onChange={onSetAddressDetail}
+                  autoComplete="off"
                 />
               </div>
             </div>
@@ -297,9 +307,20 @@ function Registration() {
                         </div> */}
             <div className="termsWrapper">
               <div>약관</div>
-              <div>
-                terms of use terms and conditions terms of use terms and
-                conditions terms of use terms and conditions
+              <div className="terms">
+                <div>개인정보 수집 및 이용 동의 (일반회원용)</div>
+                {/* terms of use terms and conditions terms of use terms and
+                conditions terms of use terms and conditions */}
+                REMEDi(이하 “회사” 또는 서비스명인 “레메디”라 함)는 이용자의
+                개인정보보호를 매우 중요시하며, 『개인정보보호법』,
+                『정보통신망이용촉진 및 정보보호에 관한 법률』 등
+                개인정보보호규정 및 정보통신부가 제정한 『개인정보보호지침』을
+                준수하고 있습니다. 회사는 원활한 서비스 제공을 위해 이용자로부터
+                개인정보 수집 및 이용동의를 받고자합니다. 자세한 내용은 회사의
+                개인정보처리방침을 참조하여 주시기 바랍니다. ※ 동의를 거부할
+                권리 및 동의를 거부할 경우의 불이익 ‍위의 개인정보 수집 및
+                이용에 대한 동의를 거부할 권리가 있으나 동의를 거부할 경우
+                'REMEDi' 서비스 제공에 제한 등 불이익을 받을 수 있습니다.
               </div>
             </div>
             {/* <div className="buttonWrapperRegister">
