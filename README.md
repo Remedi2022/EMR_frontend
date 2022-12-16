@@ -37,11 +37,10 @@ npx serve -s build
 - **협업**: Github
 
 
+
 ### System design
 <div markdown="1">
-
-
-![sys design](https://user-images.githubusercontent.com/102170253/208051848-fe2f7e8c-9406-49d0-80a2-c731570f54ee.png)
+![sys design](https://user-images.githubusercontent.com/102170253/208055061-24d950bd-40b4-4b8a-bad3-e45299838d9b.png)
 
 </div>
 </details>
