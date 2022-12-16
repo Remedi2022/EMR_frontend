@@ -40,12 +40,14 @@ npx serve -s build
 <summary>System Design</summary>
 <div markdown="1">
 
+<br/>
 - Tools
+<br/>
 ![tools](https://user-images.githubusercontent.com/102170253/207873673-352e742a-cf4f-4080-a1ef-233ef40834b8.png)
-
+<br/>
 - System design
 ![sys design](https://user-images.githubusercontent.com/102170253/208051848-fe2f7e8c-9406-49d0-80a2-c731570f54ee.png)
-
+<br/>
 </div>
 </details>
 
@@ -86,8 +88,8 @@ npx serve -s build
 <summary>자세히</summary>
 <div markdown="1">
 
-  - 진료화면의 왼쪽 내원이력을 클릭하여 환자의 이전 내원이력을 확인할 수 있습니다.
   - 진료화면의 오른쪽 MD 리스트에서 항목을 클릭하여 MD를 처방할 수 있습니다.
+  - 진료화면의 왼쪽 내원이력을 클릭하여 환자의 이전 내원이력을 확인할 수 있습니다.
   - 진료홈에서 새로운 MD를 직접 등록할 수 있습니다.
 
 </div>
