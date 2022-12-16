@@ -112,7 +112,7 @@ npx serve -s build
 ## 5. 프로젝트 팀원
 
 | [박선민](https://github.com/miiiniii) | [우성주](https://github.com/seongjoow) | [이연수](https://github.com/yeonsu97) |
-| :----------------------------------------------------------: |
+| :-----------------------------------: | :-----------------------------------: | :-----------------------------------: |
 |              EMR Web Page             |              EMR Web Page             |      Insurance Company Web Page       |
 
 <br/>
