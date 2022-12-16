@@ -40,7 +40,7 @@ npx serve -s build
 
 ### System design
 <div markdown="1">
-![sys design](https://user-images.githubusercontent.com/102170253/208055061-24d950bd-40b4-4b8a-bad3-e45299838d9b.png)
+![sys design](https://user-images.githubusercontent.com/102170253/208055216-8f83e2f1-d42f-43d1-aa1b-d5abdf2e5357.png)
 
 </div>
 </details>
