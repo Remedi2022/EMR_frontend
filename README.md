@@ -77,8 +77,8 @@ npx serve -s build
 ### 4.2. 진료 (의료진)
 
 |                         진료                         |                         MD 등록                         |
-| :----------------------------------------------------------: | :----------------------------------------------------------: |
-|    진료 기록 작성 → 처방 및 진단 → 진료 완료     |              제품 정보 입력 → 등록              |
+| :--------------------------------------------------: | :-----------------------------------------------------: |
+|    진료 기록 작성 → 처방 및 진단 → 진료 완료  |     제품 정보 입력 → 등록     |
 | ![chart_start](https://user-images.githubusercontent.com/102170253/208050235-0a17d8f0-de4d-490e-9f1a-c5d0ff8eefb6.png)![examination](https://user-images.githubusercontent.com/102170253/207537277-d09d1ed9-137b-48fc-91d7-f12980ce5fe5.png) | ![md_register_1](https://user-images.githubusercontent.com/102170253/207537287-4a65b00f-e966-4409-a654-3bfe263c7fa0.png) ![md_register_2](https://user-images.githubusercontent.com/102170253/207537292-4beaae22-b26e-45a4-9c84-9ef5478be099.png) |
 
 <details>
