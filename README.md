@@ -40,10 +40,10 @@ npx serve -s build
 <br/>
 - Tools
 <br/>
-![tools](https://user-images.githubusercontent.com/102170253/207873673-352e742a-cf4f-4080-a1ef-233ef40834b8.png)
+![tools_2](https://user-images.githubusercontent.com/102170253/208053543-b2c2ba88-5a64-47f7-9335-3a7e25dee67f.png)
 <br/>
 - System design
-![sys design](https://user-images.githubusercontent.com/102170253/208051848-fe2f7e8c-9406-49d0-80a2-c731570f54ee.png)
+![sys design](https://user-images.githubusercontent.com/102170253/208053437-e316b2a6-75f9-4520-911c-c0d850f104b8.png)
 <br/>
 </div>
 </details>
