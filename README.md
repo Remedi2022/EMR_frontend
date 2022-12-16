@@ -6,7 +6,9 @@ REMEDi는 서류 발급과 보험금 청구 과정을 생략하여 환자에게 
 <summary>REMEDi 이름 알아보기</summary>
 <div markdown="1">
 REMEDi는 원격을 의미하는 remote와 의료를 의미하는 medical에서 따온 이름입니다.
-처리 방안, 해결책, 치료약이라는 뜻을 가진 단어 remedy와도 유사하여, 불편한 보험금 청구 과정을 해결해 줄 서비스라는 의미 또한 담았습니다.
+<br/>
+처리 방안, 해결책, 치료약이라는 뜻을 가진 단어 remedy와도 유사하여,
+<br/>불편한 보험금 청구 과정을 해결해 줄 서비스라는 의미 또한 담았습니다.
 </div>
 </details>
 
@@ -104,20 +106,7 @@ npx serve -s build
   - 진료가 완료된 환자의 수납정보를 확인하고 수납을 완료합니다.
 
 </div>
-<br/>
 
-## 4.4. 보험
-
-|                     수납                     |
-| :----------------------------------------------------------: |
-| 수납 진행하기 → 수납 완료  |
-| ![payment_1](https://user-images.githubusercontent.com/102170253/207537296-b6b6f870-a74a-4df9-864a-dc895037ee4b.png) ![payment_2](https://user-images.githubusercontent.com/102170253/207537255-3fd4c7df-089c-4da5-86cd-c4b12330fb32.png) |
-
-<div markdown="1">
-
-  - 진료가 완료된 환자의 수납정보를 확인하고 수납을 완료합니다.
-
-</div>
 <br/>
 
 # 5. 프로젝트 팀원
