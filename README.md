@@ -20,7 +20,9 @@ npm start
 
 ### 빌드
 npm run build
+<br/>
 npm install -g serve
+<br/>
 npx serve -s build
 
 <br/>
