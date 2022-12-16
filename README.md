@@ -50,6 +50,7 @@ npx serve -s build
 
 ## 4. EMR 주요 기능
 
+### 홈 화면
 ![emr_home](https://user-images.githubusercontent.com/102170253/207537231-498200df-b95a-4f9d-9679-7e08e5d2dde3.png)
 <br/>
 
