@@ -36,15 +36,11 @@ npx serve -s build
 - **분산 버전 관리**: Git with Github-flow
 - **협업**: Github
 
-<details>
-<summary>System Design</summary>
+
+### System design
 <div markdown="1">
 
 
-- Tools
-![tools_2](https://user-images.githubusercontent.com/102170253/208053543-b2c2ba88-5a64-47f7-9335-3a7e25dee67f.png)
-
-- System design
 ![sys design](https://user-images.githubusercontent.com/102170253/208051848-fe2f7e8c-9406-49d0-80a2-c731570f54ee.png)
 
 </div>
