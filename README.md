@@ -16,15 +16,16 @@ REMEDi는 원격을 의미하는 remote와 의료를 의미하는 medical에서 
 
 ## 2. 실행하는 방법
 ### 개발환경 실행
+```markdown
 npm start
+```
 
 ### 빌드
+```markdown
 npm run build
-<br/>
 npm install -g serve
-<br/>
 npx serve -s build
-
+```
 <br/>
 
 ## 3. 사용하는 기술
@@ -40,10 +41,10 @@ npx serve -s build
 <br/>
 - Tools
 <br/>
-![tools_2](https://user-images.githubusercontent.com/102170253/208053543-b2c2ba88-5a64-47f7-9335-3a7e25dee67f.png)
+![tools](https://user-images.githubusercontent.com/102170253/207873673-352e742a-cf4f-4080-a1ef-233ef40834b8.png)
 <br/>
 - System design
-![sys design](https://user-images.githubusercontent.com/102170253/208053437-e316b2a6-75f9-4520-911c-c0d850f104b8.png)
+![sys design](https://user-images.githubusercontent.com/102170253/208051848-fe2f7e8c-9406-49d0-80a2-c731570f54ee.png)
 <br/>
 </div>
 </details>
