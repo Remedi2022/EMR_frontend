@@ -50,7 +50,7 @@ npx serve -s build
 
 <br/>
 
-# 4. EMR 주요 기능
+## 4. EMR 주요 기능
 
 ![emr_home](https://user-images.githubusercontent.com/102170253/207537231-498200df-b95a-4f9d-9679-7e08e5d2dde3.png)
 <br/>
@@ -109,7 +109,7 @@ npx serve -s build
 
 <br/>
 
-# 5. 프로젝트 팀원
+## 5. 프로젝트 팀원
 
 | [박선민](https://github.com/miiiniii) | [우성주](https://github.com/seongjoow) | [이연수](https://github.com/yeonsu97) |
 |              EMR Web Page             |              EMR Web Page             |      Insurance Company Web Page       |
