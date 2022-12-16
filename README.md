@@ -1,4 +1,4 @@
-# 1. 서류 발급 필요 없는 보험금 청구 자동화, REMEDi
+## 1. 서류 발급 필요 없는 보험금 청구 자동화, REMEDi
 
 REMEDi는 서류 발급과 보험금 청구 과정을 생략하여 환자에게 편리함을 제공하고자 하는 프로젝트입니다.
 
@@ -14,7 +14,7 @@ REMEDi는 원격을 의미하는 remote와 의료를 의미하는 medical에서 
 
 <br/>
 
-# 2. 실행하는 방법
+## 2. 실행하는 방법
 ### 개발환경 실행
 npm start
 
@@ -27,7 +27,7 @@ npx serve -s build
 
 <br/>
 
-# 3. 사용하는 기술
+## 3. 사용하는 기술
 
 - **코어**: React
 - **분산 버전 관리**: Git with Github-flow
@@ -50,14 +50,12 @@ npx serve -s build
 
 <br/>
 
-# 4. 주요 기능 - EMR, 보험사
+# 4. EMR 주요 기능
 
 ![emr_home](https://user-images.githubusercontent.com/102170253/207537231-498200df-b95a-4f9d-9679-7e08e5d2dde3.png)
 <br/>
-![insurance_1](https://user-images.githubusercontent.com/102170253/207592298-acc0669d-39d7-4578-9a9c-de8236efe27e.png)
-<br/>
 
-## 4.1. 원무 (원무과)
+### 4.1. 원무 (원무과)
 
 |                       신환 등록                              |                     환자 접수                    |
 | :----------------------------------------------------------: | :----------------------------------------------: |
@@ -76,12 +74,12 @@ npx serve -s build
 
 <br/>
 
-## 4.2. 진료 (의료진)
+### 4.2. 진료 (의료진)
 
 |                         진료                         |                         MD 등록                         |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
 |    진료 기록 작성 → 처방 및 진단 → 진료 완료     |              제품 정보 입력 → 등록              |
-| ![examination](https://user-images.githubusercontent.com/102170253/207537277-d09d1ed9-137b-48fc-91d7-f12980ce5fe5.png) | ![md_register_1](https://user-images.githubusercontent.com/102170253/207537287-4a65b00f-e966-4409-a654-3bfe263c7fa0.png) ![md_register_2](https://user-images.githubusercontent.com/102170253/207537292-4beaae22-b26e-45a4-9c84-9ef5478be099.png) |
+| ![examination](https://user-images.githubusercontent.com/102170253/207537277-d09d1ed9-137b-48fc-91d7-f12980ce5fe5.png) || ![md_register_1](https://user-images.githubusercontent.com/102170253/207537287-4a65b00f-e966-4409-a654-3bfe263c7fa0.png) ![md_register_2](https://user-images.githubusercontent.com/102170253/207537292-4beaae22-b26e-45a4-9c84-9ef5478be099.png) |
 
 <details>
 <summary>자세히</summary>
@@ -96,7 +94,7 @@ npx serve -s build
 
 <br/>
 
-## 4.3. 원무 (원무과)
+### 4.3. 원무 (원무과)
 
 |                     수납                     |
 | :----------------------------------------------------------: |
