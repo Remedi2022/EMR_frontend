@@ -1,70 +1,134 @@
-# Getting Started with Create React App
+# 1. 서류 발급 필요 없는 보험금 청구 자동화, REMEDi
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+REMEDi는 서류 발급과 보험금 청구 과정을 생략하여 환자에게 편리함을 제공하고자 하는 프로젝트입니다.
 
-## Available Scripts
+<details>
+<summary>REMEDi 이름 알아보기</summary>
+<div markdown="1">
+REMEDi는 원격을 의미하는 remote와 의료를 의미하는 medical에서 따온 이름입니다.
+처리 방안, 해결책, 치료약이라는 뜻을 가진 단어 remedy와도 유사하여, 불편한 보험금 청구 과정을 해결해 줄 서비스라는 의미 또한 담았습니다.
+</div>
+</details>
 
-In the project directory, you can run:
+<br/>
 
-### `npm start`
+# 2. 실행하는 방법
+### 개발환경 실행
+npm start
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 빌드
+npm run build
+npm install -g serve
+npx serve -s build
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<br/>
 
-### `npm test`
+# 3. 사용하는 기술
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **코어**: React
+- **분산 버전 관리**: Git with Github-flow
+- **협업**: Github
 
-### `npm run build`
+<details>
+<summary>System Design</summary>
+<div markdown="1">
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Flow of system
+<br/>
+![flow of system](https://user-images.githubusercontent.com/102170253/207873663-d17a3934-6bbf-4ea8-8c57-9c4c7fb09259.png)
+<br/>
+- Tools
+<br/>
+![tools](https://user-images.githubusercontent.com/102170253/207873673-352e742a-cf4f-4080-a1ef-233ef40834b8.png)
+<br/>
+- System design
+![sys design](https://user-images.githubusercontent.com/102170253/207918278-25e8cd9f-85ab-4591-8b5f-ecf18c8c677b.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+</div>
+</details>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<br/>
 
-### `npm run eject`
+# 4. 주요 기능 - EMR, 보험사
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![emr_home](https://user-images.githubusercontent.com/102170253/207537231-498200df-b95a-4f9d-9679-7e08e5d2dde3.png)
+<br/>
+![insurance_1](https://user-images.githubusercontent.com/102170253/207592298-acc0669d-39d7-4578-9a9c-de8236efe27e.png)
+<br/>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 4.1. 원무 (원무과)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+|                       신환 등록                              |                     환자 접수                    |
+| :----------------------------------------------------------: | :----------------------------------------------: |
+|          신환 등록하기 → 환자 정보 작성 → 환자 등록           |  환자 이름 검색 → 접수 정보 기입 → 환자 접수 |
+| ![administration_home](https://user-images.githubusercontent.com/102170253/207537274-3f4a3b1b-ea71-49e8-a6bc-3697c5878989.png) | ![searching_patient](https://user-images.githubusercontent.com/102170253/207537271-bd6adbab-27bc-485d-93cf-450d834a0141.png) |
+| ![register_new](https://user-images.githubusercontent.com/102170253/207537268-eaab742b-ada8-45ac-9bd6-85015767dcdb.png) | ![reception](https://user-images.githubusercontent.com/102170253/207537263-4ba78a0a-90b7-46c7-a33c-7c1b9a8ea477.png) |
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<details>
+<summary>자세히</summary>
+<div markdown="1">
 
-## Learn More
+  - 환자의 정보를 기입하여 신규환자를 등록합니다.
+  - 환자의 보험정보, 접수정보, 바이탈 싸인을 기입하여 접수를 완료합니다.
+</div>
+</details>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<br/>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 4.2. 진료 (의료진)
 
-### Code Splitting
+|                         진료                         |                         MD 등록                         |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+|    진료 기록 작성 → 처방 및 진단 → 진료 완료     |              제품 정보 입력 → 등록              |
+| ![examination](https://user-images.githubusercontent.com/102170253/207537277-d09d1ed9-137b-48fc-91d7-f12980ce5fe5.png) | ![md_register_1](https://user-images.githubusercontent.com/102170253/207537287-4a65b00f-e966-4409-a654-3bfe263c7fa0.png) ![md_register_2](https://user-images.githubusercontent.com/102170253/207537292-4beaae22-b26e-45a4-9c84-9ef5478be099.png) |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<details>
+<summary>자세히</summary>
+<div markdown="1">
 
-### Analyzing the Bundle Size
+  - 진료화면의 왼쪽 내원이력을 클릭하여 환자의 이전 내원이력을 확인할 수 있습니다.
+  - 진료화면의 오른쪽 MD 리스트에서 항목을 클릭하여 MD를 처방할 수 있습니다.
+  - 진료홈에서 새로운 MD를 직접 등록할 수 있습니다.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+</div>
+</details>
 
-### Making a Progressive Web App
+<br/>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 4.3. 원무 (원무과)
 
-### Advanced Configuration
+|                     수납                     |
+| :----------------------------------------------------------: |
+| 수납 진행하기 → 수납 완료  |
+| ![payment_1](https://user-images.githubusercontent.com/102170253/207537296-b6b6f870-a74a-4df9-864a-dc895037ee4b.png) ![payment_2](https://user-images.githubusercontent.com/102170253/207537255-3fd4c7df-089c-4da5-86cd-c4b12330fb32.png) |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+<div markdown="1">
 
-### Deployment
+  - 진료가 완료된 환자의 수납정보를 확인하고 수납을 완료합니다.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+</div>
+<br/>
 
-### `npm run build` fails to minify
+## 4.4. 보험
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+|                     수납                     |
+| :----------------------------------------------------------: |
+| 수납 진행하기 → 수납 완료  |
+| ![payment_1](https://user-images.githubusercontent.com/102170253/207537296-b6b6f870-a74a-4df9-864a-dc895037ee4b.png) ![payment_2](https://user-images.githubusercontent.com/102170253/207537255-3fd4c7df-089c-4da5-86cd-c4b12330fb32.png) |
+
+<div markdown="1">
+
+  - 진료가 완료된 환자의 수납정보를 확인하고 수납을 완료합니다.
+
+</div>
+<br/>
+
+# 5. 프로젝트 팀원
+
+| [박선민](https://github.com/miiiniii) | [우성주](https://github.com/seongjoow) | [이연수](https://github.com/yeonsu97) |
+|              EMR Web Page             |              EMR Web Page             |      Insurance Company Web Page       |
+
+<br/>
+
+
+
