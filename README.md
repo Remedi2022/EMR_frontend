@@ -33,9 +33,6 @@ npx serve -s build
 <summary>System Design</summary>
 <div markdown="1">
 
-- Flow of system
-<br/>
-![flow of system](https://user-images.githubusercontent.com/102170253/207873663-d17a3934-6bbf-4ea8-8c57-9c4c7fb09259.png)
 <br/>
 - Tools
 <br/>
