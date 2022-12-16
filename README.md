@@ -79,7 +79,7 @@ npx serve -s build
 |                   진료                   |                         MD 등록                         |
 | :--------------------------------------: | :-----------------------------------------------------: |
 | 진료 기록 작성 → 처방 및 진단 → 진료 완료 |     제품 정보 입력 → 등록     |
-| ![chart_start](https://user-images.githubusercontent.com/102170253/208050235-0a17d8f0-de4d-490e-9f1a-c5d0ff8eefb6.png)![examination](https://user-images.githubusercontent.com/102170253/207537277-d09d1ed9-137b-48fc-91d7-f12980ce5fe5.png) | ![md_register_1](https://user-images.githubusercontent.com/102170253/207537287-4a65b00f-e966-4409-a654-3bfe263c7fa0.png) ![md_register_2](https://user-images.githubusercontent.com/102170253/207537292-4beaae22-b26e-45a4-9c84-9ef5478be099.png) |
+| ![chart_start](https://user-images.githubusercontent.com/102170253/208051472-2afebdb9-89bf-4c76-bd67-d190a77e72a3.png)![examination](https://user-images.githubusercontent.com/102170253/208051467-7a6a7f14-7a4e-4fcf-8d26-57943984d296.png) | ![md_register_1](https://user-images.githubusercontent.com/102170253/208051410-eb933cac-00e6-490d-8644-f86385987a56.png) ![md_register_2](https://user-images.githubusercontent.com/102170253/208051415-7a598cdb-c1b8-435e-80f2-3f1b3aa307b1.png) |
 
 <details>
 <summary>자세히</summary>
