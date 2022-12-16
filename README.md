@@ -40,14 +40,13 @@ npx serve -s build
 <summary>System Design</summary>
 <div markdown="1">
 
-<br/>
+
 - Tools
-<br/>
-![tools](https://user-images.githubusercontent.com/102170253/207873673-352e742a-cf4f-4080-a1ef-233ef40834b8.png)
-<br/>
+![tools_2](https://user-images.githubusercontent.com/102170253/208053543-b2c2ba88-5a64-47f7-9335-3a7e25dee67f.png)
+
 - System design
 ![sys design](https://user-images.githubusercontent.com/102170253/208051848-fe2f7e8c-9406-49d0-80a2-c731570f54ee.png)
-<br/>
+
 </div>
 </details>
 
