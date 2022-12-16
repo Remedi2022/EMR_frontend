@@ -43,9 +43,8 @@ npx serve -s build
 ![tools](https://user-images.githubusercontent.com/102170253/207873673-352e742a-cf4f-4080-a1ef-233ef40834b8.png)
 <br/>
 - System design
-  <br/>
 ![sys design](https://user-images.githubusercontent.com/102170253/208051848-fe2f7e8c-9406-49d0-80a2-c731570f54ee.png)
-
+<br/>
 </div>
 </details>
 
